@@ -1,0 +1,111 @@
+% Diese Vorlage wurde mit freundlicher Unterstützung von Felix Neumann angefertigt.
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[german]{babel}    % Deutsche Sprache in automatisch generiertem
+\usepackage{latexsym}         % Fuer recht seltene Zeichen
+\usepackage[utf8]{inputenc}   % =E4 =F6 =FC =DF; danach  geht auch das ß richtig
+\usepackage{caption}          % Figure-Captions formatieren
+\usepackage{hyperref}	      % for the EMAIL links
+\usepackage{graphicx}		  % for Pics
+\usepackage{color}
+\usepackage{float}
+\usepackage[fixlanguage]{babelbib}
+\usepackage[a4paper,lmargin={2.5cm},rmargin={2.5cm},tmargin={3cm},bmargin={2.5cm}]{geometry}
+
+\pdfinfo{
+	/Title		(Effects of Artificial Intelligence on Endoscopic Imaging)
+	/Subject	(Expose zur Masterarbeit)
+	/Author		(Maximilian Heichler)
+}
+
+\selectbiblanguage{german}
+\captionsetup{margin=1cm,font=small,labelfont=bf}
+
+\newcommand\notice[1]{}
+\newcommand\seppar{ \vspace{2ex} \noindent }
+
+
+\begin{document}
+
+\title{{\bf Effects of Artificial Intelligence on Endoscopic Imaging} \\ \begin{large}
+Einfluss von KI auf Endoscopische Bildgebung
+\end{large}}
+
+\author{
+	Max Heichler \\
+	Hochschule Ulm\\
+	\href{Heichler@mail.hs-ulm.de}{Heichler@mail.hs-ulm.de}
+}
+\date{\today}
+
+\maketitle
+
+\section{Einführung}
+In der modernen Medizin verdrängen minimal invasive Eingriffe, wie Laparoskopien immer häufiger konventionelle Operationen mit direkter Sichtverbindung zum Operationsgebiet. Weshalb die Bildgebung mittels Endoskopen die einzige Möglichkeit ist das Operationsgebiet in dieser Art von Eingriffen zu sehen.
+Diese Endoskope befinden sich im innern des Patienten und sind den Verschmutzungen der Operation aussgesetzt. \newline
+\newline
+Es ist nicht unüblich das die Sicht der Endoskop-Kamera durch Verschmutzungen von Körperflüssigkeiten oder Rauchentwicklung durch Kauteurisierung von Wunden beeinträchtigt wird.
+Diese Verschmutzungen können dazu führen dass, das Endoskop aus dem Patienten entfert und gereinigt werden muss. Im schlimmsten Fall können dadurch Verzögerungen enstehen die den Patienten gefährden.
+
+\section{Ziele der Arbeit}
+Das Ziel der Arbeit ist es, das vom Endoskop aufgenommene Bild, welches mit Fehlern und Rauschen behaftet ist aufzuarbeiten, sodass eine Bildqualität gewährleistet werden kann, die Nötig ist um Operationen sicher und effizient durchzuführen.
+Konkret geht es um die Frage "Ist es Möglich Bilder live so zu bearbeiten das eine reibungslose Operation bei schlechter Sicht ermöglicht wird?". \newline
+\newline
+Ein Schwerpunkt der Arbeit soll darauf liegen konventionelle Machine-Vision-Algorithmen mit modernen Deep-Learning Ansätzen aus dem Gebiet der Künstlichen Intelligenz zu vergleichen, zu kombinieren und zu evaluieren.
+\newpage
+\newpage
+
+\section{Methodik}
+Zentraler Bestandteil der Arbeit wird der Vergleich von konventionellen Machine-learning Algorithmen mit Deep-learning Algorithmen. So wie der Ausblick und die Bewertung derer Eigenschaften im Hinblick auf das Anwendungsgebiet von Endoskopischen Laparoskopien. \newline
+Basierend auf bereits erprobten Methodiken (\cite{SmokeRemoval}) soll eine Methode der Bildaufbereitung mittels Deep-Learning aufgebaut werden, um letztendlich Vergleichbare Ergebisse zu generieren. \newline
+Abbildung \ref{fig:schema} zeigt wie sich die Arbeit in das Umfeld von klassischen Endoskopien einordnen lässt. Die Analyse der Video daten soll parallel zum bestehenden system möglich sein und so einen direkten Vergleich zwischen manipulierten und originalen Bilddaten ermöglichen.\newline
+\newline 
+
+\textbf{Geplante Vorgehensweise:}
+\begin{itemize}
+	\item Analyse existierender bildbearbeitungs Algorithmen
+	\item Analyse von Deep-Learing Algorithmen
+	\item Implementierung von Szenarien und Erprobung der Algorithmen an Beispieldaten (Manipulation von Bildern)
+	\item Analyse der Ergebnisse und Ausblick auf die Verwendung im medizinischen Kontext
+	\item Praxisnaher Prototyp ( Manipulation in Live-Video daten )
+	\item Ergebnis und Diskussion
+	\begin{itemize}
+		\item Risiken von Image Manipulation im medizinischen Kontext
+		\item Verwendung geeigneter Hardware (Systemanforderungsanalyse)
+		\item Bewertung der Szenarien und Prototypen
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{pics/schema.png}
+	\caption{Schematische Darstellung des Systems}
+	\label{fig:schema}
+\end{figure}
+
+\section{Rahmen}
+\begin{itemize}
+	\item Bearbeitungszeit:
+	\begin{itemize}
+		\item Begin:	1.Oktober 2018
+		\item Ende: 	1. April 2019
+	\end{itemize}
+	\item Betreuer:
+	\begin{itemize}
+		\item Prof. Dr. Alfred Franz	\hspace*{10mm} \href{mailto:franz@hs-ulm.de}{franz@hs-ulm.de}
+		\item Prof. Dr. Herbert Frey	\hspace*{10mm} \href{mailto:frey@hs-ulm.de}{frey@hs-ulm.de}
+		\item XXX \hspace*{10mm} \href{mailto:XXX@newtec.de}{@newtec.de}
+	\end{itemize}
+	\item Sprache
+	\begin{itemize}
+		\item Englisch
+	\end{itemize}
+\end{itemize}
+
+\bibliographystyle{alpha}
+\bibliography{literature/lit}
+
+%%\listoffigures
+
+\end{document}

@@ -1,0 +1,91 @@
+Fr: 18.05.2018
+
+Prof.Dr.med. Lotspeich, Erkki	Ansprechpartner
+Dr.med Tannheimer, Markus 	operierender Chirurg
+
+Prof. Franz			mein Prof. 
+(icke)
+
+#PUNKTION
+=========
+
+## Anwendungsbreiche
+
+* Interventionelle Radiologie	(mittels CT)
+* Gastroenterologie	/ Urologie 	(mittels Ultraschall) 
+* etc.
+
+## Werkzeuge
+
+* Veres cannula		<< Hierrum gehts -> bildgebung beim ersteinstich
+	* Scharfe hohlnadel  +  Mandrin 
+* Trokare
+* Endoskope ( gerade / 30°-gewinkelt)
+
+## Anwendungsgebiete
+* Laparoskopien - generell minimal invasive Operation
+* 
+
+## Ablauf
+* haut wird ausseinander gezogen und vom Körper weg gezogen (-> risiko minimieren beim Durchstechen)
+* einstich mit VeresCanula -> gibt nach wenn haut durchstoßen und "internals" berührt werden (scharfe kante wird eingefahren)
+* CO2 wird via VeresCanual in den Bauchraum gepumpt (Pneumoperitoneum)[ist der Zustand]
+* in den aufgepumpten Bauch werden mit dem Scalpel schnitte gesetzt um die Trokare (großer Durchmesser) zu plazieren.
+* Trokare für Cam (meist groß) + Trokare für Werkzeuge (meist klein) werden plaziert.
+	--> erst hier ist es Moeglich das Darm verletzt wird ? 
+	--> schon beim einstechen der VeresCanula?
+[ ?? *VeresCanula verbleibt im Körper zur regulierung des Pneumoperitoneums ?? ]
+* Operation wird Durchgeführt 
+[ * Stich in Darm wird dedektiert via Trokar-Cam -> ggf wird dann der Darm repariert ]
+	--> seltener fall
+	-> Problem enstet nur wenn das verursachte loch nicht gefunden wird -> interne infection durch Darminhalt 
+
+## Vokabeln
+ * Pneumoperitoneum	- Luft gefuelle (bauch)-hoehle
+ * Invasiv			- eindringen / einfallen
+ * Mandrin 			- (Hilfsmittel fuer Katheter & Tuben)
+ * Intubation		- (in - tube - ieren) Tubus einfuehren ( meist Lunge )
+ * Hyperkapnie		- CO2 absorbtion im inneren des Körpers (gas geht ins blut)
+
+## Bildbearbeitung
+ * Nebel / beschlagen der Camera
+	-> Rotes rauschen (2D bilder sehen aus wie nebelfeld)
+ * untersuchen von Rauschen in bildern anhand von Mathe auf verrauchte bilder
+ * zeitmäßiges integrieren zur rausch ausblendung?
+	-> könnte zu "Verschmieren führen"
+
+
+// Overall
+-> Thema bezieht sich medizinisch stärker auf Punktion nen und auf eibringen von werkzeugen via Veres-Nadeln 
+
+-> Fragst mal 
+Dani - bisherige arbeit an PunktionsNadeln
+Axel - erfahrung im Medizinbereich
+Franz- Punktionsführung (vor operation)
+
+Pedram -> Laparoskopie - Punktion(vorgehen) / Reihenfolge / Veres Canula
+Frey  /Lunde
+-> Herrausrechnen von Bildfehlern in laufenden Kamera bildern
+
+
+## Kritische Komponenten
+--> Verbesserung der Sicht des kamera Bildes --> etwaiges herrausrechnen der Stoerfaktoren
+
+
+Veres Canula:
+-> aussendurchmesser ca 2mm
+-> Camera sollte wiederverwertbar sein -> muss steril bleiben
+	!! Aussage behandelnder Artzt : 1€ mehr ist schon zu viel geld !! [im hinterkopf behalten]
+
+
+===============================================================================
+Soviel zur Medizin - Jetzt kommt die Informatik
+===============================================================================
+
+# Problem:
+	Camera bild beschlägt und versperrt zeitweise die sicht auf organe
+
+## Algorithmen
+	* Median stacking 
+		* Rausch reduzierung durch "mitteln" mehrerer bilder
+		* 	

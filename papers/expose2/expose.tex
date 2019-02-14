@@ -1,0 +1,127 @@
+% Diese Vorlage wurde mit freundlicher Unterstützung von Felix Neumann angefertigt.
+
+\documentclass[12pt,a4paper]{article}
+
+%\usepackage[german]{babel}    % Deutsche Sprache in automatisch generiertem
+\usepackage{latexsym}         % Fuer recht seltene Zeichen
+\usepackage[utf8]{inputenc}   % =E4 =F6 =FC =DF; danach  geht auch das ß richtig
+\usepackage{caption}          % Figure-Captions formatieren
+\usepackage{hyperref}	      % for the EMAIL links
+\usepackage{graphicx}		  % for Pics
+\usepackage{color}
+\usepackage{float}
+%\usepackage[fixlanguage]{babelbib}
+\usepackage[a4paper,lmargin={2.5cm},rmargin={2.5cm},tmargin={3cm},bmargin={2.5cm}]{geometry}
+
+\hypersetup{
+        pdftitle={Detection and Removal of Surgical Smoke in Endoscopic Imaging},
+        pdfsubject={Exposé Master Thesis},
+        pdfauthor={MHC},
+        pdfkeywords={smoke, haze, staining, steam, removal, endoscopy, MIS, surgical vision}
+}
+
+%\selectbiblanguage{german}
+\captionsetup{margin=1cm,font=small,labelfont=bf}
+
+\newcommand\notice[1]{}
+\newcommand\seppar{ \vspace{2ex} \noindent }
+
+
+\begin{document}
+
+\title{{\bf Detection and Elimination of Surgical Smoke in Endoscopic Imaging} \\ \begin{large}
+\end{large}}
+
+\author{
+	Max Heichler \\
+	Hochschule Ulm\\
+	\href{Heichler@mail.hs-ulm.de}{Heichler@mail.hs-ulm.de}
+}
+\date{\today}
+
+\maketitle
+
+\section{Introduction}
+	\textit{Minimal Invasive Surgery} more and more expels conventional Surgeries with a direct view to the operational area, due to its immense advantages for the patients post-surgical recovery.
+	This surgical method requires the insertion of a \textit{Laparoscope} into the patients body, in order to create visual contact to the operational area. 
+\newline
+	These \textit{Laparoscopes} and their \textit{Images} suffer from strong external influences since they are inserted into the patients body. 
+	These factors,that are part of the surgery and include:\newline
+	 \textit{smoke}, created by cauters which are commonly used for cutting, \textit{steam / fog} created by the body's internal moisture. As well as \textit{reflections} from light sources that also need to be placed inside the patients body.\newline
+	Another influence is introduced by fluids include blood, lipids, excrement, lymph, etc. that cause \textit{staining} on the Endoscope. These stains can blur certain areas of the image and the currently existing removal-method is to extract the endoscope form the patients body and clean the objective manually.  
+
+\section{State of the Art}
+	Noisy, blurred or stained objectives have not been in the focus of scientific papers lately but the problem of noise or haze in images is already a commonly known and has been discussed in various papers from different points of view. \newline
+This section will give a quick overview of papers with promising approaches to the problem of hazy or noisy images. 
+
+\subsection{Image Processing View}
+	A starting point is the detection of smoke as proposed in \cite{SmokeDetection}. Although this paper addresses the detection of smoke in surveillance systems, the detection of smoke appears to be essential for its removal. \newline
+One of the most common approaches to remove haze or fog from images is described in \cite{DarkChannel}. The use of the 'Dark Channel Prior' archives promising results within landscape pictures and might easily be extended for laparoscopic imaging.\newline
+The paper \cite{DeepPhoto} compares dehazing and relighting approaches on taken Photos of landscapes. This paper moves the focus to the enhancement of DSLR-Photographs, which includes image enhancement via \textit{Dehazing} and \textit{Relighting}.
+	
+\subsection{Medical View}
+Medical papers of course have deployed some of these ideas, like the 'Dark Channel Prior' in \cite{SmokeRemoval} or filtering haze by contrast in \cite{ChromaticityBasedRemoval}.
+But overall the most medical papers focus the avoiding of surgical smoke, its hazards or the mechanical removal, like extraction by suction or ultrasonic dispense.\newline
+
+\subsection{AI influences}
+	\textit{Artificial Intelligence} and \textit{Machine learning} always had a great impact on \textit{Machine Vision}, for example in the field of pattern recognition. With modern approaches in \textit{Convolutional Neuronal Networks} machines can even be thought to \textit{transfer the style of a painting} onto other Images \cite{NN_styleTransfer} or to \textit{resharpening} images \cite{google_RAISR}.
+
+\subsection{Data Acquisition}
+	To work with this topic in general example images and videos are required. \newline
+	Recent searches for presets of endoscopic images that contain smoke and ,or staining have not been to successful. Therefore a possible solution could be the creation of own endoscopic images that fulfil the requirements.\newline
+	The biggest disadvantage of the self created data would be the lack of usability in practice, since it wont be possible to take actual images form laparoscopic surgeries. \newline
+	The requirements for these images will have to be made out in the upcoming thesis, as well as the data itself.
+
+\section{Outcome}
+	In general the surgeon should not be affected by the use of the system discussed in this thesis. Especially further preparation, like special setups or training on the system, should not become a requirement for usage.
+	\newline
+	Desired is a easy to deploy system setup that can improve the live data given by the endoscope on the fly by filtering out the negative effects.\newline
+
+\subsection{Idea}
+	The basic idea for this thesis is the evaluation of different algorithms that could help to reduce image noise, especially haze from laparoscopic images.\newline
+	On the technical side of the problem machine-learning as well as deep-learning approaches will be analyzed for their suitability to solve the parameterization of the previously selected algorithms, as well as the calibration of the finalized image. \newline
+	\newline
+	These Learning algorithms should perform in a live-learning way to interact with the previously mentioned parameters. E.g. when a scene starts to become brighter due to the fact that smoke rises, the algorithm should detect this change from the previously taken images and start to counter it with adequate adjustment of filters. Same procedures could be used for staining or steam in the video images. 
+
+\subsection{Result}
+	The final result should provide a setup that reduces haze inside of the live camera data given by the endoscope and processed on the fly to equip the surgeon with better image to create a flawless workflow.\newline	
+	Another part of the thesis should be the creation, evaluation and comparison of the test-data, that will be created during the process. \newline
+	Also the Evaluation of the Algorithms will be evaluated with respect to their suitability to each of the given problems (haze, noise, staining, reflections).\newline 
+\newline
+	The Figure[\ref{fig:schema}] shows a first impression on the System setup, which is meant be adapted between the camera-input and the video-output as part of the whole, already given, endoscope device.
+	
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{pics/schema.png}
+	\caption{system setup schematic}
+	\label{fig:schema}
+\end{figure}
+
+
+\newpage
+\section{Conditions}
+\begin{itemize}
+	\item Timing schedule:
+	\begin{itemize}
+		\item Start:	1.October 2018
+		\item End: 	1. April 2019
+	\end{itemize}
+	\item Supervisors:
+	\begin{itemize}
+		\item Prof. Dr. Alfred Franz	\hspace*{10mm} \href{mailto:franz@hs-ulm.de}{franz@hs-ulm.de}\hspace*{10mm} 	Hochschule Ulm
+		\item Prof. Dr. Herbert Frey	\hspace*{10mm} \href{mailto:frey@hs-ulm.de}{frey@hs-ulm.de}\hspace*{10mm} 	Hochschule Ulm
+		\item Dr. Axel Newe\hspace*{15mm} \href{mailto:axel.newe@newtec.de}{axel.newe@newtec.de}\hspace*{10mm} 	NewTec GmbH
+	\end{itemize}
+	\item Language
+	\begin{itemize}
+		\item English
+	\end{itemize}
+\end{itemize}
+
+\bibliographystyle{unsrt}
+\bibliography{literature/lit}
+
+\listoffigures
+
+\end{document}

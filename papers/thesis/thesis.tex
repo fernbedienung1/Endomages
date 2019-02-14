@@ -1,0 +1,152 @@
+% Diese Vorlage wurde mit freundlicher Unterstützung von Felix Neumann angefertigt.
+% And since I now know how Latex works it has been raped until its own Father couldn't recognize it anymore...
+% MX 
+
+\documentclass[10pt,a4paper,twocolumn]{report}
+\usepackage[a4paper,lmargin={1.5cm},rmargin={1.5cm},tmargin={1cm},bmargin={2cm}]{geometry}
+\usepackage[english]{babel}    % Deutsche Sprache in automatisch generiertem
+\usepackage[fixlanguage]{babelbib}
+\usepackage[utf8]{inputenc}
+
+\usepackage{caption}          % Figure-Captions formatieren
+\usepackage{hyperref}	      % for linking
+\usepackage{graphicx}		  % for Pics
+\usepackage{listings}		% For code
+\usepackage{color}
+\usepackage{float}
+\usepackage{pbox}		% multiple lines within tables etc.
+\usepackage{subcaption} % Used in Subfigure environment
+\usepackage{glossaries}
+\usepackage{draftwatermark}	%create my sexy "in Progress" watermark
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% METADATA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%language selection
+\selectbiblanguage{english}
+
+
+\captionsetup{margin=1cm,font=small,labelfont=bf}
+                                             
+\pdfinfo{                                    
+    /Title        (Detection and Remaval of Surgical Smoke and Staining in Endoscopic Imaging)
+    /Subject    (Master Thesis - Information Systems)
+    /Author        (Maximilian Heichler)     
+}                                            
+
+%Watermark Setup
+\SetWatermarkText{\texttt{\textsc{in Progress}}}
+\SetWatermarkScale{3}
+\SetWatermarkColor[gray]{0.9}
+
+% my very noble way to mark all the Fucks i give ...... and sadly have to remove when I publish this
+\newcommand{\fuck}[1]{\colorbox{red}{\color{yellow}{\texttt{#1\newline}}}}
+\newcommand{\cmt}[1]{\colorbox{blue}{\color{white}{\texttt{#1\newline}}}}
+
+% my very noble way to color code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+
+
+%create gloassary
+\makeglossaries
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACTUAL DOCUMENT 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\begin{titlepage}
+        \centering
+
+		\title{{\bf Detection and Removal of Surgical Smoke and Staining in Endoscopic Imaging} \\ 
+			\begin{large}
+                \textbf{Master Thesis} \\ 
+                Information Systems \\
+                University of Applied Sciences Ulm \\
+                \vspace{1.5cm}
+                \includegraphics[scale=1]{pics/logos/HSULogo.png} \\
+                % how can i put a space in here ? neither \vspace nor \hspace works...
+                %\large{\textit{\textbf{\&}}} \\ %also not to nice....
+                \includegraphics[scale=.7]{pics/logos/NEWTECLogo.png} \\
+                \vspace{1.5cm}
+			\end{large}
+		}
+
+		\author{
+			Maximilian Heichler \\
+			University of Applied Sciences Ulm  -  NewTec GmbH\\
+			\href{Heichler@mail.hs-ulm.de}{Heichler@mail.hs-ulm.de} \\
+			\href{Maximilian.Heichler@newtec.de}{Maximilian.Heichler@newtec.de} \\
+		}
+
+		\date{\today}
+        
+	\end{titlepage}
+
+\maketitle
+\input{literature/glossary.tex}
+
+\newpage
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Actual Content of Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+	\textit{ % Usually the abstracts are given cursive
+		\input{chapters/abstract.tex}
+	}
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+	\input{chapters/introduction.tex}
+\chapter{Method}
+	\input{chapters/methodic.tex}
+\chapter{Results}
+	\input{chapters/results.tex}
+\chapter{Discussion}
+	\input{chapters/discussion.tex}
+\chapter{Conclusion}
+	\input{chapters/conclusion.tex}
+
+%\chapter{Acknowledgements}	
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Content of Bib and Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
+\listoftables
+\printglossaries		%doesnt work...but not erroring either...
+\bibliographystyle{alpha}	% {unsrt},{apalike} would be options
+\bibliography{literature/lit}
+
+
+\end{document}

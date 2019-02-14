@@ -1,0 +1,108 @@
+\documentclass[10pt, a4paper]{article}
+
+\title{dataAcquirement V2} 	
+\author{Max}
+
+\pdfinfo{
+	/Title		(dataAcquirement V2)
+	/Subject	(V2 - smoke generation)
+	/Author		(M)
+	/Keywords	(Endoscope, laparoskope, 42, surgical smoke)
+}
+
+\begin{document}
+	\maketitle 
+
+	\section{Preset}
+		\subsection{Organs}\label{subsec:Organs}
+			\paragraph{Organ order \\}
+				slaughter-date:	21.12.2018 8:00 - 12:00 \\
+				pickup date:	21.12.2018 - 13:00 \\
+			\paragraph{location\\}
+				Michael Kleiber GmbH \\
+				Saarlandstr. 23 \\
+				87700 Memmingen \\
+			\paragraph{organs}
+				\begin{itemize}
+					\item Liver
+					\item Gallbladder 
+					\item Stomach
+					\item Pancreas 
+					\item Intestines 
+					\item 1L Blood
+				\end{itemize}
+				All the organs are withdrawn form a domestic Pig.
+
+		\subsection{Tools}\label{subsec:Tools}
+			\paragraph{Cameras}
+				\begin{itemize}
+					\item \textbf{Wolf} - 1CCD Endocam 5520\\
+						Bronchoscope  
+					\item \textbf{Wolf} - 3D-HD-Endocam F1014\\
+						Stereo Laparoscope
+					\item \textbf{IDS} vi-3240cp-c-gl \\
+						Industrial Camera with endoscope Optic
+				\end{itemize}
+			\paragraph{Frame Grabbers}
+				\begin{itemize}
+					\item \textbf{Epiphan Video} - DVI2USB3.0 \\
+						DVI Frame grabber
+					\item \textbf{reflecta} - USB Video Grabber \\
+						Composite Frame grabber	
+					\item \textbf{Terratec} - G1 \\
+						Analog Frame grabber
+				\end{itemize}
+
+			\paragraph{Cauter}
+				\begin{itemize}
+					\item \textbf{Aesculap} - Caiman 5\\
+						Electro cauter
+					\item \textbf{Aesculap} - GN200\\
+						High Frequency Generator	
+				\end{itemize}
+
+		\subsection{Environment}\label{subsec:Environment}
+			Endoscopic Test box - build to be close to a Laparoscopic training simulator. \\
+			
+		\section{Method}\label{subsec:Method}
+		\subsection{scene}
+			Videos will be captured with 3 different Laparoscope\ref{subsec:Tools} \\
+			The Cameras as well as the Cauter will be inserted into the Test box through a neoprene layer, which simulates the insertion through the Patients Skin. \\
+			The Organs are going to be placed inside of the Test box all at once to create a setup similar to a real visceral surgery.\\
+			During the Video Capturing process multiple organs are about to be incinerated. \\	
+			Preliminary tests for a good camera setup will be performed on a extra liver, which is ought to be organized previously. \\
+		
+		\subsection{setup types}
+			Multiple setups of the scene will be taken:
+			\begin{itemize}
+				\item Static Setup and Dynamic \\
+					(moved and fix Camera Position)
+				\item 3 different Cameras (see \ref{subsec:Tools})
+				\item with and without active Cauter 
+				\item with and without Tools in the operational Area
+			\end{itemize}
+			All of the created Video Clips should have a length of 30 seconds.\\
+
+		\paragraph{Dynamic Setup}
+			The movements within the dynamic part imitate real camera movements in surgeries, which mostly include movements like:\\ 
+			\begin{itemize}
+				\item \textbf{90 degrees right/left around the Patients Axis} 
+				\item \textbf{30 degrees right/left around the laparoscopies Axis}
+				\item \textbf{Zooming in and out a distance of ~5-7 cm}
+			\end{itemize}
+		\paragraph{output files \\}
+			the Pattern:	\textbf{CAMERA\_GRABBER\_TIME\_SETUP.type \\}
+			Will be used for the naming of the files for identification.
+
+	\section{Timing}
+		\paragraph{9:15} departure at NewTec with Company Car
+		\paragraph{10:00} loading Car at HSU with Equipment and return to NewTec.
+		\paragraph{11:00} Setup of environment at NewTec ( Internet / etc.)
+		\paragraph{11:30} departure to Memmingen for Organs.
+		\paragraph{\\ \textit{further planning depends on Pickup time in Memmingen\\}}
+		\paragraph{14:00} latest expected Arrival time at NewTec and start of data-acquirement.
+		\paragraph{17:30} finalization of Tests and packing of Equipment.
+		\paragraph{18:00} departure to HSU
+		\paragraph{19:00} Company Car return to Carpool, Cleanup of NewTec Laboratory
+		
+\end{document}

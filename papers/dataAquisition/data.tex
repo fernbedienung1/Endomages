@@ -1,0 +1,98 @@
+% Diese Vorlage wurde mit freundlicher Unterstützung von Felix Neumann angefertigt.
+
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage[a4paper,lmargin={1.5cm},rmargin={1.5cm},tmargin={1cm},bmargin={2cm}]{geometry}
+
+\usepackage[english]{babel}    % language selection
+\usepackage[fixlanguage]{babelbib}	% this is for bibtex language
+\usepackage[utf8]{inputenc}   % =E4 =F6 =FC =DF; danach  geht auch das ß richtig
+
+\usepackage{caption}          % Figure-Captions   for \captionsetup
+\usepackage{hyperref}	      % for linking
+\usepackage{graphicx}		  % for Pics
+\usepackage{color}		% text and Backgroud color
+\usepackage{float}
+\usepackage{draftwatermark}	%watermark in background of the paper
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PERSONAL SETUP 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Watermark setup
+\SetWatermarkText{\texttt{\textsc{Work in Progress}}}	% actually what I need
+%\SetWatermarkText{\includegraphics{pics/gonzo.png}}	% lel - this works very nicely
+\SetWatermarkScale{3}
+\SetWatermarkColor[gray]{0.9}
+
+% my very noble way to mark all the Fucks i give ...... and sadly have to remove when I publish this
+\newcommand{\fuck}[1]{\colorbox{red}{\color{yellow}{\texttt{#1\newline}}}}
+\newcommand{\cmt}[1]{\colorbox{blue}{\color{white}{\texttt{#1\newline}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% META - DATA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pdfinfo{
+	/Title		(Data Acquisition)
+	/Subject	(noisy and adverse Endoscopic Images)
+	/Author		(Maximilian Heichler)
+}
+
+\selectbiblanguage{english}
+\captionsetup{margin=1cm,font=small,labelfont=bf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACTUAL DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Create Seperate TitlePage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{titlepage}
+
+		\title{{\bf Data Acquisition} \\ \begin{large}
+			for Endoscopic images that contain:\newline
+		 Fog, Smoke, Staining and other Noise		
+		\end{large}}
+
+		\author{
+			Maximilian Heichler \\
+			University of Applied Sciences Ulm  -  NewTec GmbH\\
+			\href{Heichler@mail.hs-ulm.de}{Heichler@mail.hs-ulm.de} \\
+			\href{Maximilian.Heichler@newtec.de}{Maximilian.Heichler@newtec.de}
+		}
+
+
+		\date{\today}
+
+	\end{titlepage}
+
+\maketitle
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Actual Content of Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Idea} \label{Idea}
+	\input{chapters/idea.tex}
+\section{Preliminaries} \label{Preliminaries}
+	\input{chapters/preliminaries.tex}
+\section{Setup} \label{Setup}
+	\input{chapters/setup.tex}
+%\section{Methodic} \label{Methodic}		% I feel like I won't need this section....
+%	\input{chapters/methodic.tex}
+\section{Results} \label{Results}
+	\input{chapters/results.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Content of Bib and Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\listoffigures
+\listoftables
+\bibliographystyle{alpha}
+\bibliography{literature/lit}
+
+\end{document}

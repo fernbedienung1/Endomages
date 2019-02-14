@@ -1,0 +1,245 @@
+As the Prototypes improve the quality and realism of the images are improved to create test data as reaslistic as posslible.\newline
+This section holds information about the setups of the Data generation.\newline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% FIRST SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{Setup 1}
+	The first prototype is designed to be a "prove of concept" - the general setup will be tested with minimal effort on the realism, but a focus on the equipment, its usability and the suitability for future tests and data generation. 
+
+	\subsubsection{Hardware setup}
+		\paragraph{Capturing Setup\newline}
+			Within this phase multiple cameras are be tested regarding their usability, these Cameras are:
+			\begin{table}[H]
+				\centering
+				\label{tab:usedCams}
+				\caption{Cameras under Test}
+				\begin{tabular}{l|l|l|l}	%all left aligned
+					\textbf{Company} & \textbf{Model} & \textbf{Resolution} & \textbf{REF}\\ 
+					\hline
+					Nikon & D3400 & 6000x4000px & \cite{dslr} \\
+					Logitec & C270 & 1280x720px & \cite{webcam} \\
+					Alcor Micro & SJ00446-01 & 1280x720px & \fuck{NONE?}\\ 
+				\end{tabular}
+			\end{table}
+
+			\fuck{Missing China-CAM Datasheet}
+
+		\paragraph{Temperature and Humility\newline}
+			To keep the setup as close as possible to real surgeries the temperature and humility  need to be monitored and even better regulated. Therefore measurement devices will be placed inside of the testing environment. \newline
+			For the first prototype the no temperature or humility actor's will be used to improve the realism of the setup.\newline
+			The sensor setup is ought to be tested for its usability - especially within terms of the connection through the test boxes walls. \newline
+			The sensor board is a ''self-made''-PCB that contains a ESP8266F \cite{esp8266} and the HDC1080 from TI \cite{hdc1080}. The ESP8266F creates a wireless connection to the capturing Computer and distributes the data of the HDC1080.
+	 
+		\paragraph{Cauter\newline}
+			For the Prove of concept setup no medical cauter is used, due to availability. The cauters substitutional device is a simple soldering iron, manufactured by Weller \cite{iron}.
+			The soldering iron is expected to act like a thermo-cauter. Modern surgery relies on electrical cauterization \cite{electroSurgery} because it has benefits on the carbonization of organic matter, leading to better healing of the incinerated area.\newline
+			Since the healing factor does not need to be considered the use of a thermal cauter is expected to be sufficient for the creation of surgical smoke.
+			
+			
+	\subsubsection{Target}
+		\paragraph{Organ}
+			The first Organ that will be tested is a bovine liver, out of its pure availability on the open Market.\newline
+			The Organ is placed on a dish inside of the box and is incinerated with the above mentioned soldering iron as a cauter. \newline
+
+		\paragraph{externals}
+			The Box is closed over the whole generation time, so no smoke can leave the laparoscopic setup. Also the Box is completely left ''as is'' no cuts, holes or other modifications are performed on the box. Because of the convenience of the Wireless connection through the boxes walls the only insertion from outside is the power supply of the soldering iron.\newline
+			Within this test setup no Blood or other liquids are used, since this prove of concept operates as a testing environment for the sensors, the cauter and the cameras.	
+
+	\subsubsection{Expectations}
+		\fuck{ repair pro / con titles }
+			\paragraph{DSLR \newline}
+				With a high resolution and frame rate this camera is expected to deliver the highest quality shots of the Setup. \newline
+			\begin{itemize}
+				%%TODO: apearently this fucks up a little bit in the result - leave in for now because its in Progress..
+				\item [\textbf{Advantages}]
+				\item High Quality images
+				\item High Frame Rates
+				\item [\textbf{Disadvantages}]
+				\item No close up recording
+			\end{itemize}
+
+			\paragraph{Webcam \newline}
+				The Webcam setup is a more minimalistic camera to be compared to the DSLR camera. The data created by the Webcam should create a contrast to the DSLRs high-quality videos, showing the impact of higher frame rates and resolutions on the effect of the Algorithm. 
+
+			\begin{itemize}
+				%%TODO: apearently this fucks up a little bit in the result - leave in for now because its in Progress..
+				\item [\textbf{Advantages}]
+				\item comparable images
+				\item [\textbf{Disadvantages}]
+				\item No close up recording
+			\end{itemize}
+
+			\paragraph{Endoscope \newline}
+				The Endoscope cam promises to give good results regarding the creation of staining on the cameras lens as well as the pollution with steam settling down on the objective of the camera. \newline
+				This small will be placed close to the incineration area so a strong pollution can be expected.
+			
+			\begin{itemize}
+				%%TODO: apearently this fucks up a little bit in the result - leave in for now because its in Progress..
+				\item [\textbf{Advantages}]
+				\item placeable close to the Organ
+				\item [\textbf{Disadvantages}]
+				\item bad Frame rate and Image quality
+			\end{itemize}
+
+		\begin{figure*}[hp]
+			\centering
+			\includegraphics[scale=0.45]{pics/setup1_schematic.png}
+			\caption{schematic of the first setup}
+			\label{fig:setup1_schematic}
+		\end{figure*}
+
+		Focus of this Prototype is the image quality concerning smoke, haze, and staining. Since the setup is static, which means that none of the cameras or objects are being moved through the capturing of the video data. Also the handling of the Camera-setup and the cautering device is evaluated and expected to be a improvable topic over the upcoming prototypes.
+
+\subsection{Prototype 1}
+	
+	\begin{figure*}[hp]
+		\centering
+		\includegraphics[scale=0.5]{pics/setup1_setupReal.png}
+		\caption{real setup of video generation V1}
+		\label{fig:setup1_setupReal}
+	\end{figure*}
+
+	As the Figure\ref{fig:setup1_setupReal} shows, multiple cameras are used at the same time to capture comparable videos of the same scenario.\newline
+	The following explanations fit for both the setups schematic \ref{fig:setup1_schematic} as also for the picture of the setup \ref{fig:setup1_setupReal}. 
+
+	\begin{table}[H]
+		\centering
+		\label{tab:usedCams}
+		\begin{tabular}{c|l|l}	
+			\textbf{REF} & \textbf{Device} & \textbf{Description} \\ 
+			\hline
+			\textbf {1} & Raspberry PI & controlling element\\
+			\textbf {2} & DSLR & Main Camera\\
+			\textbf {3} & Webcam & USB-Camera\\
+			\textbf {4} & Endoscope & close up shots\\
+			\textbf {5} & Environmental sensor & Temperature / Humility\\
+			\textbf {6} & Soldering Iron & improvised cauter\\
+			\textbf {7} & LED light & controlled light source\\
+		\end{tabular}
+		\caption{number references for Images \ref{fig:setup1_schematic} and \ref{fig:setup1_setupReal}}
+	\end{table}
+
+\subsection{Result}
+	The results of the first testing setup are about 2.6GB of Video data containing 5 Iterations of incineration attempts from 2 different perspectives, filmed by 3 different cameras.\newline
+	
+	\subsubsection{generated Data}	
+		\paragraph{Video Data \newline}
+			The following Pictures are taken out of the Videos form the fifth and final video generation iteration.\newline
+			They represent the best setup but contain the already quite heavily damaged liver that suffered from the previous tests.
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.13]{pics/setup1_CAP5_DSLR.jpg}
+				\caption{DSLR output V5}
+				\label{fig:setup1_DSLR}
+			\end{figure}
+			
+			The DSLR results are as expected the qualitatively best ones, with a stable frame rate and high resolution
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.4]{pics/setup1_CAP5_ENDO.jpg}
+				\caption{Endoscope camera output V5}
+				\label{fig:setup1_ENDO}
+			\end{figure}
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.4]{pics/setup1_CAP5_WEBC.jpg}
+				\caption{Webcam output V5}
+				\label{fig:setup1_WEBC}
+			\end{figure}
+			
+			All of these pictures have been taken in the same testing iteration within a range of 2 seconds, so the show the same situation.\newline
+			Noticeable is that haze intensity appears to differ, depending on the resolution of the camera.
+	
+		\paragraph{Temperature Data \newline}
+			\cmt{Temperature data given format} \newline
+			mention the self heating effect of the PCB....\newline
+
+	\subsubsection{evaluation}
+		\paragraph{Critical View \newline}
+			\cmt{Bad staining - haze only in some images - frame rate issues - static Setup - } \newline
+			\newline
+			\cmt{good results with soldering iron - for haze} \newline
+			\newline
+
+		\paragraph{Conclusion \newline}
+			Even though the results lag behind the expectations, the produced data gives video files about smoke in a proper environment.
+			A use for the implementation of a smoke detection algorithm is still considerable, while the use as evaluation data might not be appropriate.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% SECOND SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Setup 2}
+	The second setup focuses on the elimination of the Errors which where encountered in the previous prototype. 
+	This mainly focuses on the replacement of the Cameras as well as using a none-static working environment with a real moving endoscope.
+
+	\paragraph{Improvements\newline}
+		\cmt{Self-made Endoscope Trainer}
+
+		Use of Box with neoprene top to be pierced by the tools. 
+
+		\cmt{Pics!}
+
+		\begin{table}[H]
+			\centering
+			\label{tab:usedCams}
+			\begin{tabular}{c|l|l}
+				\textbf{REF} & \textbf{Device} & \textbf{Description} \\ 
+				\hline
+				\textbf {1} & Endoscope & capturing device\\
+				\textbf {2} & Neoprene layer & simulates pierce able skin\\
+				\textbf {3} & Objective & combines Camera and Lighting\\
+				\textbf {4} & Soldering Iron & improvised cauter\\
+			\end{tabular}
+			\caption{number references for Images \ref{fig:setup1_schematic} and \ref{fig:setup1_setupReal}}
+		\end{table}
+		
+		Table corresponds to schematic\ref{fig:setup2_schematic}.\newline 
+			
+		\begin{figure*}[hp]
+			\centering
+			\includegraphics[scale=0.45]{pics/setup2_schematic.png}
+			\caption{schematic of the second setup}
+			\label{fig:setup2_schematic}
+		\end{figure*}
+
+	\subsubsection{capturing Setup}
+		\paragraph{Hardware Setup\newline}
+		\paragraph{Cauter\newline}
+		\paragraph{Temperature and Humility\newline}
+	\subsubsection{Target}
+		\paragraph{Organ\newline}
+		\paragraph{Externals\newline}
+			The externals have been reconsidered so that the setup no is no longer static. Therefore the Testing box has been manipulated to create some kind of \textit{laparoscope trainer} as they are used to train upcoming surgeons under praxis close conditions.\newline
+			This setup now includes a Box that is primed with holes that are covered with a neoprene layer to create a skin like surface through which the endoscopes can be inserted.
+
+\subsection{Prototype 2}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% THIRD SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Setup 3}
+	The third setup generates data that is only going to be used as a reference, but not for the development of the algorithm. This should face the problem of over fitting of the Algorithm.
+	\subsubsection{capturing Setup}
+		\paragraph{Hardware Setup\newline}
+		\paragraph{Cauter\newline}
+		\paragraph{Temperature and Humility\newline}
+	\subsubsection{Target}
+		\paragraph{Organ\newline}
+		\paragraph{Externals\newline}
+
+%	\begin{figure*}[hp]
+%		\centering
+%		\includegraphics[scale=0.45]{pics/setup1_schematic.png}
+%		\caption{schematic of the first setup}
+%		\label{fig:setup1_schematic}
+%	\end{figure*}
+
+\subsection{Prototype 3}

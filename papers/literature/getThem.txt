@@ -1,0 +1,45 @@
+NEXT UP:
+https://www.sciencedirect.com/science/article/abs/pii/S0031320306003396
+STEAM detection in images
+
+https://www.sciencedirect.com/science/article/pii/S0379711209001155
+SMOKE detecion
+
+#########################
+
+
+Machine learning in embedded systems
+http://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.506188
+
+Implementation of an RBD neural network on embedded systems:
+real time face tracking and identity verification
+https://ieeexplore.ieee.org/abstract/document/1243718/ 			GOT THAT
+
+
+#########################
+NEWEST interesting:
+
+surface detectin in real time 
+https://ieeexplore.ieee.org/abstract/document/1334512/ 			GOT THAT	
+
+3D suface reconstrucion in Laparoscopic surgeries
+https://ieeexplore.ieee.org/abstract/document/6820756/			GOTHAT
+
+Pattern Recognition in images 
+https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470050118.ecse302
+
+
+#########################
+NEXT ROUND:
+
+https://ieeexplore.ieee.org/document/7950623		DONE
+
+https://ieeexplore.ieee.org/document/7493446		DONE
+
+https://www.sciencedirect.com/science/article/pii/S1871259206000852 	// training of laparoscopes and Urologes		DONE
+
+https://europepmc.org/abstract/med/1828943		// Laparoscopic testing
+
+
+NASA - Paper image enhancement:	
+	https://ieeexplore.ieee.org/abstract/document/5454395			DONE
