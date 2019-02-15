@@ -1,103 +1,38 @@
 This Document describes the creation of \textit{hazy, foggy, blurry and stained} endoscopic images and videos. \\
 As well as method to find these \textit{noises} and remove them from the video data. In order to improve the endoscopic video that the surgeon uses to navigate during a surgery.\\
-
-\cmt{Bilder Triplet IST SOLL und ALGO (ganz | teil)} \\
-
+\newline
 The removing method combines the detection of \textit{noises} with a focus on \textit{surgical smoke} and \textit{haze} with the application of filters only in these detected and noisy areas. \\
 
 \section{Background}
-A state of the art method for abdominal surgeries is a laparoscopic approach, in which the surgeons only open small access channels into the patients body, to insert tools and a camera into the gas filled body. \\
+    A state of the art method for abdominal surgeries is a laparoscopic approach, in which the surgeons only open small access channels into the patients body, to insert tools and a camera into the gas filled body. \\
+    Based on a guest visit and observation of a laparoscopic surgery in the \textbf{\gls{ADK Blaubeuren}} with interviews to the surgeons, noises turned out to be one of the most impeding incidents.
 
-Since the laparoscope-camera is inserted into the body alongside with other tools like electrocauters it is exposed to environmental influences. The workflow of especially cautering tools causes a lot of so called \textbf{\gls{surgical smoke}}. \\
+    Since the laparoscope-camera is inserted into the body alongside with other tools like electrocauters it is exposed to environmental influences. The workflow of especially cautering tools causes a lot of so called \textbf{\gls{surgical smoke}}. \\
 
-This surgical smoke interferes with a proper workflow, since in usual cases the smoke cannot leave the \textbf{\gls{Pneumoperitoneum}}. Although there exist multiple methods to remove this smoke physically, like suction or using electrical dispense systems.\cmt{SRC}. \\
-The biggest advantage of a pure software approach is that no further hardware is needed. Without additional hardware the surgeons wont need setup time previous to the Surgery what saves time and costs equally. 
+    This surgical smoke interferes with a proper workflow, since in usual cases the smoke cannot leave the \textbf{\gls{Pneumoperitoneum}}. Although there exist multiple methods to remove this smoke physically, like suction or using electrical dispense systems. \\
+    The biggest advantage of a pure software approach is that no further hardware is needed. Without additional hardware the surgeons wont need setup time previous to the Surgery what saves time and costs equally. 
 
-\section{Data Acquisition}
-	A early encountered problem is the availability of a database of smoked and noisy images or videos that are essential for the development of the algorithms. \\
-	The need of a video database showing static and dynamic environments as well as movements and different kinds of noise combinations ended in the decision to create laparoscopic testing simulator.
-	This simulator enabled the recording of videos a surgical like setup. \\
-
-	Additional to the generation of on simulated test data, real surgery data has been obtained from the Kreisklinken Günzburg-Krumbach. \\
-	While the data created within the simulator is used to develop detection and removal algorithms, the real surgical videos are only used to examine the algorithms. This is done in order to avoid over fitting the algorithms to special videos.\\
-
-	\subsection{Endoscopic Video Data}
-		The objective is to create data in a custom setup, outside of the body of any creature. The simulation consists of a capturing setup and multiple iterations of data grabbing, with different documented changes to the environment as well as to the cauterized objects.\\
-
-	The archived data will contain a set of \textbf{videos} and \textbf{images} that show \textit{noise}. This noise is defined by:\\
-		\paragraph{surgical smoke \\} 
-			Surgical smoke occurs when surgeons cauterize organs, veins or other body internal objects.
-				Although its contents are mostly steam, there are multiple other particles dispensed within this kind of Fog. The applied thermal energy of the cauter causes the tissues cells to explode. The exploding cell therefore releases its contents into the environment. This smoke is mostly composed by steam as well as tissue particles, but can also contain tentative bacteria \cite{contentOfSmoke} \\
-		Depending on the time, type and tissue of the cauterization the smoke can vary in its aspect, also the carbonisation level and the kind of tissue influences the smoke and its aspect. \\
-        This surgical smoke is seen in picture\ref{fig:realNoise} under the point \textbf{(1)} in the upper right area.
-
-		\paragraph{haze \\} 
-            Haze is a effect that also appears alongside to cauterization, the heat of the surgical cauters leads to the vaporization of body liquids. This leads to fog, steam and haze that can block the direct vision to the targeted areas and also can build a thin film on the endoscopes objective, as well as \textit{staining} which shows up as the formation of drops on the objectives. An example of haze is given in point \textbf{(2)} in picture\ref{fig:realNoise}.
-
-		\paragraph{staining \\} 
-			Multiple body internal fluids get directly in touch with the endoscopes objective. These fluids gather to build drops, which blur or cover certain parts of the cameras vision. 
-            
-            \begin{figure}[h]
-                \centering
-                \includegraphics[scale=.35]{pics/schmauch/noisesMarked.png}
-                \caption{Noises in real Laparoscopic surgeries \\ \textbf{(1)}surgical smoke, \textbf{(2)}haze caused by steam}
-                \label{fig:realNoise}
-            \end{figure}
-
-	\subsection{Video Data Requirements}
-	All of the above mentioned effects are required to occur withing the generated test data, as it would be the case in a real surgery. 
-	The Quality of the images should be quite high, since typically used endoscopes in modern surgery often have high frame rates (above 60FPS) and resolutions of more than 4K2K (4000x2000 Pixels).
-	\\
-	The produced data focuses on a setup that is as close as possible to a real surgery. \\
-	The quality of the images is therefore just a secondary goal. More important is the creation of videos, as well as images that contain multiple combinations of the given noises. \\
-    
-    A special requirement for on the data is a setup in which the noise slowly rises, which might not be a real world situation but helps to implement code and debug the algorithms. \\
-    Following, the self generated data need to contain videos with fixed movements and planned noises. Their generation is based on laparoscopic video data, from which the most common movements and noise combinations will be derived and imitated.\\
-
-\section{Algorithms}
-    
-    Popular literature focuses on the removal of surgical smoke within the whole image. Two new aspects will be introduces in this paper.\\
+\section{Approach}
+    Given these issues a combination of noise detection and its removal promises to archive better results that just apply one filter to a whole image.\\
     \newline
-    The first one is to find noises within the given video-files and the second one will be the removal of not only surgical smoke, but also fog, haze and staining. \\
-    The removal of the noises is then performed only in the certain sections of the videos frames, where they actually occur. Instead of the common approach, which applies filters on the whole frame.\\
-    This aims to archive a selective filter, with can find different kinds of noises to then apply the proper filter to remove them within a single frame.
-    So every noise will be treated with the corresponding algorithm to remove it. \\
-    \newline
+    The implemented code aims therefore to be portable over multiple platforms and provide easy access to the Algorithms used. The usage will be designed to flexibly switch through multiple combinations of detections methods for direct comparison of the algorithms. \\
 
-    Based on picture\ref{fig:realNoise} the noisy areas could be detected as shown in image\ref{fig:coloredNoise} and different filters can be applied for both the surgical smoke \textbf{(1)} and haze \textbf{(2)}.
+\section{Intention}
+    Several goals are focused in this paper, given by the circumstances of surgical noises. Since the surgical noise blocks visual contact to the actual operation most video footage of surgical noise is deleted by surgeons, who actually want to show the operation and not blurred pictures. \\
+    This caused the urge to create own video data showing the requested noises through establishing a surgical environment using a laparoscope phantom, as it is common used in surgeon-to-be training setups.
+    Therefore the first goal is the creation of video data to work on. \\
+    \newline
+    Next up is the usage of this data for the implementation of algorithms that reduce the surgical noises within the videos.
+    The creation, implementation and evaluation of these algorithms consequently is the second intention of this Thesis paper.\\
+    Focus of the mentioned approach is a combination of noise detection followed by selecting the right filter for the given noise. This aims to only modify the parts of the frames that actually contain noises. Furthermore multiple filters can be applied in different parts of the frame, to optimize the overall output.\\
+    \newline
 
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=.35]{pics/schmauch/coloredNoises.png}
-        \caption{Areas to apply filters on.\\ \textbf{(1)}smoke filters, \textbf{(2)}haze removal}
-        \label{fig:coloredNoise}
+        \includegraphics[scale=.19]{pics/schmauch/realNoise.jpg}
+        \caption{Different noises in real laparoscopic surgeries. \\ 
+            Blocked or blurred vision interferes with a smooth operation progress.
+        }
+        \label{fig:introNoise}
     \end{figure}
-    
-\subsection{Detection}
-    The detection of noises is fundamental for a succeeding in the implementation of the filters, only a reliable detection of noises will ensure that the proper filters are selected and applied to the given area of the image.
 
-    \paragraph{Smoke Detection \\}
-        A widespread application for smoke detection is within traffic- and riot-control \cite{vision}. Mostly these algorithms rely on smoke diffusion. In order to detect smoking objects they compare following frames and detect Smoke on its dispersal behaviour.\\
-    
-    \paragraph{Haze Detection \\}
-        The detection of haze, respectively steam is a difficult task, but a very common problem within the surgical setup, since almost all cutting or sealing procedures are performed using a cauter, which heats up tissue and liquids.\\
-        
-    \paragraph{Stain Detection \\}
-        Staining can be caused by body internal fluids like blood, lipids or lymph. These fluids tend to sputter into the surrounding as they are heated rapidly. \\
-        When these kinds of pollutions occur on the image the surgeons have to remove the endoscope from the patients body. This procure costs often critical time.
-
-\subsection{Removal}
-    To remove the previously detected noises different Filters will be evaluated for their suitability. \\
-    
-    \paragraph{Contrast Based}
-        Contrast - works with Smoke - \cite{detectSmoke} and \cite{imageDehaze},
-    \paragraph{Dark Channel prior}
-        Dark Channel Prior,
-    \paragraph{Bayesian Inference}
-        Bayesian Inference, \cite{jointDesmoke}
-
-\subsection{Approach}
-    Given these issues a combination of noise detection and its removal promises to archive better results that just apply one filter to a whole image.\\
-    \newline
-    For a simple Proof of concept setup a implementation in Python3.7 using openCV is selected. \\
-    The implemented code aims therefore to be portable over multiple platforms and provide easy access to the Algorithms used. The usage will be designed to flexibly switch through multiple combinations of detections methods for direct comparison of the algorithms. \\
