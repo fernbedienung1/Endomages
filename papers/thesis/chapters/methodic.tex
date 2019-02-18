@@ -35,11 +35,10 @@
         The \textit{Stereo endoscope \cite{endocam}} collects 2 parallel videos which are grabbed by two identical frame grabbers \cite{epiphan} and then saved to RAM before they are written to the Computers hard drive. \\
         Writing to the RAM is done to prevent frame loss due to possible speed limitations of the hard disk. 
         This limits the time of the recordings to a maximum of less then one minute, but ensures the quality of the footage. \\
+        \newline
+        Stereoscopic grabbing is not essential for the desired purpose of the algorithm implementation, but could be in further work (see Discussion \ref{sec:Discussion}).
+        Therefore stereo videos are grabbed because the setup allows it.\\
         
-
-    \newpage
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%% Pictures of Acquirement Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{figure*}[hp]
         \begin{subfigure}[b]{\textwidth}
@@ -65,10 +64,7 @@
         \label{fig:MK_II}
     \end{figure*}
 
-    \newpage
-        
-    \newpage
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsection{Produced Data}
     The produced data can be put into 3 different categories. \\
     \paragraph{Static shots \\}
@@ -88,7 +84,7 @@
         Realistic shots do not follow a special form of movement pattern, but focus on a clear sight on the cauter and the parts that are incinerated. \\
         They combine all \textit{Dynamic Movements} mentioned above. But are in contrast to the Dynamic shots these movements are not intended. They result from the goal to keep the Endoscope focus on the operation area, the tools and the Organs that the surgeon works with. \\
         \newline
-        This setup results in data that is very close to real surgery-footage, compared to the real data \cmt{Ref Günzburg} given by Dr.Widmaier.\\
+        This setup results in data that is very close to real surgery-footage, compared to the real data given by Dr.Widmaier \cite{uwe}.\\
 
     \begin{figure*}[hp]
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIRST ROW
@@ -181,18 +177,15 @@
     \newpage
 
 \section{Real Data}
-        \cmt{Last but not least} \\
-        \cmt{Creds to Uwe Widmair} \\
-        \newline
-        \cmt{Pictures out of his different setups}
+    The whole generation of test data and their outcome is based on real surgical smoke video images that have been provided by Dr.Widmaier \cite{uwe}, who created real in surgery data as a ideal to follow. \\
+    \cmt{
+        its actally quite bad since without the permission on the pictures... \\
+        I cant do very much here...
+    }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MATH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algorithmic \& Mathematical}
-
-	\subsection{Fundamentals}
-		\cmt{explanations about.... Color representation? - RGB BGR LAB}
-        \fuck{Bring this into own Main Chapters!}
 
 	\subsection{Detection}
 		\subsubsection{Riot Detection in CCTV}
@@ -206,35 +199,6 @@
 	\subsection{Combination}
 		\cmt{first find - then filter}
 	
-	\subsection{Implementation}
-		The selected framework for the video manipulation is openCV \cmt{REF}. Used via the Pyhton3.6.7 on a Linux 18.04 with a 4.15.0-43 generic Kernel.\\
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% CODE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Code}
-	\subsection{Mathematical functions - Implementation}
-
-    	\begin{lstlisting}[language=Python]
-def testingMode(self, frame):
-    #create contrast
-    mask = []
-    mask.append(cv2.cvtColor(frame, cv2.COLOR_BGR2LAB))
-    l, a, b = cv2.split(mask[0])
-
-    #clahe means "Contrast Limited Adaptive Histogram Equalization"
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(4, 4))
-    cl = clahe.apply(l)		# reduce contrast
-
-    limg = cv2.merge((cl, a, b))
-    mask.append(limg)
-
-    res = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
-
-    return res, mask
-
-		\end{lstlisting}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%        THIS is the FIRST LAB setup and will not be in the Thesis....
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
