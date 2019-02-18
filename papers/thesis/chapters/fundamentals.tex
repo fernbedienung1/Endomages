@@ -25,7 +25,10 @@
             \begin{figure}[h]
                 \centering
                 \includegraphics[scale=.35]{pics/schmauch/noisesMarked.png}
-                \caption{Noises in real Laparoscopic surgeries \\ \textbf{(1)}surgical smoke, \textbf{(2)}haze caused by steam}
+                \caption{Noises in real Laparoscopic surgeries \\ 
+                    \textbf{(1)}surgical smoke, \textbf{(2)}haze caused by steam \\
+                    \cmt{PIC CANNOT BE USED - LEGAL ISSUES}
+                }
                 \label{fig:realNoise}
             \end{figure}
 
@@ -54,7 +57,10 @@
     \begin{figure}[h]
         \centering
         \includegraphics[scale=.35]{pics/schmauch/coloredNoises.png}
-        \caption{Areas to apply filters on.\\ \textbf{(1)}smoke filters, \textbf{(2)}haze removal}
+        \caption{Areas to apply filters on.\\
+            \textbf{(1)}smoke filters, \textbf{(2)}haze removal
+            \cmt{PIC CANNOT BE USED - LEGAL ISSUES}
+        }
         \label{fig:coloredNoise}
     \end{figure}
     
@@ -81,3 +87,113 @@
     \paragraph{Bayesian Inference}
         Bayesian Inference, \cite{jointDesmoke}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Taken from Methodic up 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fuck{Check this section again with ANE-comments}
+\section{Bench Test Background}
+	Surgical smoke is different to ''normal'' smoke because of its contents and their composition as given by the paper \cite{contentOfSmoke}. Therefore the generation of the test data needs to be performed with a special focus on the realism of the smoke and haze. Also not only the cauterized organs and their humidity are important to the aspect of the smoke. According to experts also the method as well as the duration of cauterization is an important influence on the smokes quality.  \newline
+
+	Training situation for doctors-to-be include exercises in laparoscopic simulations, so called phantoms. These phantoms are a emulation of a real laparoscopic surgery and 
+	The paper \cite{MIS_host} introduces a learning method for expectant surgeons to practice without living patients, be it human or animal. Since these surgeries are expensive, time consuming and moreover they need to be authorized by governmental or veterinarian institutions in the European Union. \newline
+
+	The data generation of surgical smoke and artefacts requires the use of organic material that can be cauterized. Porcine visceral organs are very similar to human visceral organs which the paper \cite{swineModel} postulates and are therefore a appropriate candidate for the test setups. \newline
+
+	Laparoscopic trainers are often used in eduction and training of future surgeons. Therefor a source for the setup of these kind of trainers and how they should look like is taken from the papers \cite{MIS_host} and \cite{MIS_trainer}. \newline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREQUISITES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Test Perquisites}
+		In order to capture videos that are related to real surgeries multiple factors need to be considered. Since not all animals have tissue similar to humans a suitable host needs to be selected.\\
+
+	\paragraph{\textbf{Mice} \textit{(Mus musculus)}\\} have a quite high similarity to the human body, but problems occur in the availability and the handling of these organs. Therefore Mice's organs drop out, since they are expected to have a bad handling due to their small size. \newline
+	\newline
+	\paragraph{\textbf{Porcine Organs}\textit{(Sus scrofa domesticus)}\\} fit better for this purpose, but especially their internals are not very commonly consumed. For closer testings it is expected that porcine organs are necessary, while for first setup tests or technical evaluations other organs might be sufficient.\newline
+	\newline
+	\paragraph{\textbf{Bovine Organs} \textit{(Bos primigenius taurus)}\\} are the most commonly available visceral organs, since they are often used in culinary way. Tripes or livers especially. Although their similarity to human internals is not that high, their advantages in availability and usability makes them a good choice for first experiments.\newline
+	\newline	 \\
+	As given in \cite{swineModel}, the common domestic pig has already often been used as the major species for animal testing of both pharmaceutical and surgical experiments. Due to the fact that pigs have a lot of similarities to the human body, e.g. the resemblance of their cardiovascular systems or the digestive systems.\newline
+
+	Concluding to this, the data should contain a set of video footage that is based on the cauterization of porcine internals.
+
+	\paragraph{Organs\\}
+    	The most laparoscopic surgeries are performed in the area of the abdomen, so the most reasonable things to use as target objects for the cauterization would include:
+		\begin{itemize}
+			\item Gallbladders ( Vesica biliaris),
+			\item Livers ( Hepar ),
+			\item Stomaches ( Gaster ),
+			\item Gastrointestinal tracts ( Tractus digestorius ).
+		\end{itemize}
+
+		The selection of organs depends on similar choices as the selection of animals. The decision is based on their availability and usability, countering to real surgeries like liver resections or cholecystectomies.\newline
+		Another point is the internal moisture that is given by mucous membranes, their cauterisation leads to fog and steam. This issue needs to be considered since moisture is expected to create foggier images that therefore are closer to real surgeries within wet environments.\\
+\newline
+		This moisture occurs in forms like Blood, lipid and other body internal fluids. By heating up these liquids different forms of steam, fog and stains are created which all have different aspects. Based on this information a insertion of Blood, etc. into the simulation needs to be considered. \\ 
+	\newline
+       Body internal humidity has impact on the distribution of smoke and staining within the surgical area (e.g. a \gls{Pneumoperitoneum}). 
+
+	\paragraph{Hardware \\}
+        The hardware setup includes:\\
+        \cmt{Table to big - fix required}
+        \begin{table}[H]
+
+            \centering
+            \label{tab:Cameras}
+            \begin{tabular}{l|l|l|l}	%all left aligned
+                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \hline
+                Wolf & Endocam & Bronchoscope & \cite{endocam} \\		%1CCD Endocam 5520 
+                Wolf & 3D-Endocam & Stereoendscope & \cite{} \\		%3D-HD-Endocam F1014 
+                IDS & ui-3240cp & 1280x1024/60FPS& \cite{} \\ 
+                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
+                Logitec & C270 & 1280x720 & \cite{webcam} \\
+                Alcor Micro & SJ00446 & 1280x170 & \fuck{NONE} \\
+                \hline
+                Epiphan & DVI2USB3.0 & 1920x1080/30FPS & \cite{epiphan} \\
+                \hline
+                Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
+                Aesculap & Letrafuse & RF-Generator & \cite{hfgen} \\
+            \end{tabular}
+            \caption{Capturing Hardware}
+        \end{table}
+
+    The Cameras are inserted into a self-made laparoscopic trainer\ref{fig:phantomI}.
+        
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.06]{pics/setups/Laparoscope_box.jpg}
+        \caption{self build Laparoscope phantom}
+        \label{fig:phantomI}
+    \end{figure}
+    
+    With penetrable neoprene cloth to simulate skin. \ref{fig:phantomII}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.06]{pics/setups/Laparoscope_box_cover.jpg}
+        \caption{neoprene cloth with holes form tool insertion}
+        \label{fig:phantomII}
+    \end{figure}
+	
+	\subsection{Required Data}
+		
+	The resulting data needs to fulfill several requirements, mostly concerning the occurrence and mixture of noise the as well as the quality of the images.\newline
+	Investigated noises are:
+	\begin{itemize}
+		\item Surgical Smoke,
+		\item Haze,
+		\item Staining of
+		\begin{itemize}
+			\item Blood,
+			\item Water,
+			\item Lipids.
+		\end{itemize}
+	\end{itemize}
+	
+    The generation of data is based on video data given by the \textit{Kreiskrankenhaus Günzburg}.
+	These videos have been used as a template to generate own Data corresponding to the given real videos.
+    The videos \fuck{video REF here} \cmt{screenshot form vid}, show prevalent movements of surgeries which are reproduced as close as the setup and experience allow.\\
+    \\
+    As the generated Data will used as base for the code generation additional requirements besides the realism aspect need to be met.\\ 
+    One of these conditions is the slow rise of noise, which is expected to support the algorithm creation. By e.g. showing the thresholds for recognition or reconstruction.
