@@ -1,10 +1,17 @@
-all:	thesis.tex literature/lit.bib
+all:	thesis.tex literature/lit.bib literature/thesis.gls
 	mkdir -p out
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
 	TEXMFOUTPUT="out:" bibtex out/thesis.aux
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
 
+debug:	thesis.tex literature/lit.bib literature/thesis.gls
+	mkdir -p out
+	pdflatex  -output-directory out thesis.tex
+	TEXMFOUTPUT="out:" bibtex out/thesis.aux
+	pdflatex  -output-directory out thesis.tex
+	pdflatex  -output-directory out thesis.tex
+	
 run:	out/thesis.pdf
 	evince out/thesis.pdf 2> /dev/null &
 

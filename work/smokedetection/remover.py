@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("videoFile", help="video to remove smoke from")
 parser.add_argument("-v", "--verbose", help="Debug output on", action="store_true")
 parser.add_argument("-o", "--output", help="specify output file name for Resulting Video [MP4]")
-parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','prior','detect','edge','test'], default='test')	#test is for debugging
+parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','prior','detect','edge','test'], default='prior')	#test is for debugging
 #parser.add_argument("-r", "--remove", help="Targeted noise to remove", type=str, choices=['smoke','steam','staining','all'], default='smoke')
 parser.add_argument("-f", "--framerate", help="display Framrate", action="store_true")
 
@@ -90,7 +90,7 @@ while True :
 	# check if user interrupts using ESC
 	if cv2.waitKey(5) & 0xFF == 27 or cv2.waitKey(5) & 0xFF == 113:		break			# thats ESC or 'q'
 
-	if cv2.waitKey(5) & 0xFF == 32 : 				#Play / Pause funktion
+	if cv2.waitKey(5) & 0xFF == 32 : 				#Play / Pause funktion with Space
 		while True:
 			if cv2.waitKey(5) & 0xFF == 32 : 
 				break	# resume

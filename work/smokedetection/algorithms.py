@@ -35,10 +35,18 @@ class Algorithm (object):
         # applying mask to Frame
         mask = cv2.inRange(hsv, lower, upper)
         res = cv2.bitwise_and(frame, frame, mask=mask)
-        return res 
+        return res
 
     def byContrast(self, frame):
-        res = self.__preConf(frame)
+        frame = self.__preConf(frame)
+# these funcitons kind of take a different Format?  - truly got n2 working once
+        if False:
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+            res = clahe.apply(frame)
+        else:
+            frame = self.__preConf(frame)
+            res = cv2.equalizeHist(frame)
+
         return res
 
     def byPrior(self, frame):
