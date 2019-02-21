@@ -38,19 +38,31 @@ class Algorithm (object):
         return res
 
     def byContrast(self, frame):
-        frame = self.__preConf(frame)
-# these funcitons kind of take a different Format?  - truly got n2 working once
-        if False:
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-            res = clahe.apply(frame)
-        else:
-            frame = self.__preConf(frame)
-            res = cv2.equalizeHist(frame)
+
+        # Create and fill mask with LAB 
+        mask = []
+        mask.append(cv2.cvtColor(frame, cv2.COLOR_BGR2LAB))
+
+        # l is "Lightness part"
+        l, a, b = cv2.split(mask[0])
+
+        # create filter
+        clahe = cv2.createCLAHE(clipLimit=1.0, tileGridSize=(4, 4))
+
+        # apply filter to lightness part only
+        cl = clahe.apply(l)
+
+        # fuse lightness part back to IMG
+        img = cv2.merge((cl, a, b))
+
+        # result (converted back to BGR)
+        res = cv2.cvtColor(img, cv2.COLOR_LAB2BGR)
 
         return res
 
     def byPrior(self, frame):
         res = self.__preConf(frame)
+        res = cv2.equalizeHist(res)
         return res
 
     def canny(self, frame):
@@ -66,7 +78,7 @@ class Algorithm (object):
         mask.append(cv2.cvtColor(frame, cv2.COLOR_BGR2LAB))
         l, a, b = cv2.split(mask[0])
 
-        clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(4, 4))
+        clahe = cv2.createCLAHE(clipLimit=1.0, tileGridSize=(4, 4))
         cl = clahe.apply(l)		# reduce contrast
 
         limg = cv2.merge((cl, a, b))
