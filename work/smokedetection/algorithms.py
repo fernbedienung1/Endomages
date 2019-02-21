@@ -37,14 +37,30 @@ class Algorithm (object):
         res = cv2.bitwise_and(frame, frame, mask=mask)
         return res
 
-    def byContrast(self, frame):
+    def byEqualHist(self, frame):
 
-        # Create and fill mask with LAB 
-        mask = []
-        mask.append(cv2.cvtColor(frame, cv2.COLOR_BGR2LAB))
+        # Create and fill mask with LAB
+        lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
 
         # l is "Lightness part"
-        l, a, b = cv2.split(mask[0])
+        l, a, b = cv2.split(lab)
+
+        # create filter
+        hist = cv2.equalizeHist(l)
+
+        # fuse lightness part back to IMG and reconvert
+        img = cv2.merge((hist, a, b))
+        res = cv2.cvtColor(img, cv2.COLOR_LAB2BGR)
+
+        return res
+
+    def byContrast(self, frame):
+
+        # Create and fill mask with LAB
+        lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
+
+        # l is "Lightness part"
+        l, a, b = cv2.split(lab)
 
         # create filter
         clahe = cv2.createCLAHE(clipLimit=1.0, tileGridSize=(4, 4))
@@ -52,17 +68,14 @@ class Algorithm (object):
         # apply filter to lightness part only
         cl = clahe.apply(l)
 
-        # fuse lightness part back to IMG
+        # fuse lightness part back to IMG and reconvert
         img = cv2.merge((cl, a, b))
-
-        # result (converted back to BGR)
         res = cv2.cvtColor(img, cv2.COLOR_LAB2BGR)
 
         return res
 
     def byPrior(self, frame):
         res = self.__preConf(frame)
-        res = cv2.equalizeHist(res)
         return res
 
     def canny(self, frame):
@@ -72,30 +85,19 @@ class Algorithm (object):
 ###############################################################################
 # 	DEBUGGING PART
 ###############################################################################
+    # While in development this is the Standart function to be called
+
     def testingMode(self, frame):
-        # acutally this time i try to create contrast
+        # create mask
         mask = []
-        mask.append(cv2.cvtColor(frame, cv2.COLOR_BGR2LAB))
-        l, a, b = cv2.split(mask[0])
-
-        clahe = cv2.createCLAHE(clipLimit=1.0, tileGridSize=(4, 4))
-        cl = clahe.apply(l)		# reduce contrast
-
-        limg = cv2.merge((cl, a, b))
-        mask.append(limg)
-
-        res = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
-
+        res = mask
         return res, mask
-
-    def detect(self, frame):
-        res = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        return res
-
 
 ###############################################################################
 # further Adjustments
 ###############################################################################
+
+
 if __name__ == '__main__':
     print("contains algorithms - not meant to be run standalone")
     exit(1)

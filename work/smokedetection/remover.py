@@ -15,8 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("videoFile", help="video to remove smoke from")
 parser.add_argument("-v", "--verbose", help="Debug output on", action="store_true")
 parser.add_argument("-o", "--output", help="specify output file name for Resulting Video [MP4]")
-parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','prior','detect','edge','test'], default='test')	#test is for debugging
-#parser.add_argument("-r", "--remove", help="Targeted noise to remove", type=str, choices=['smoke','steam','staining','all'], default='smoke')
+parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','hist','prior','edge','test'], default='test')	#test is for debugging
 parser.add_argument("-f", "--framerate", help="display Framrate", action="store_true")
 
 args = parser.parse_args()
@@ -26,7 +25,6 @@ if args.verbose:
 	print("using video:\t\t%s" % args.videoFile)
 	if args.output	: print("Writingto:\t\t%s.mp4" % args.output) 
 	if args.type	: print("FilterType:\t\t%s" % args.type)
-	#if args.remove 	: print("TargetNoise:\t\t%s" % args.remove)
 
 #OUTPUT FILE
 if args.output :
@@ -58,11 +56,11 @@ while True :
 	elif args.type == 'contrast' :
 		res = algo.byContrast(frame)
 
+	elif args.type == 'hist' :
+		res = algo.byEqualHist(frame)
+
 	elif args.type == 'prior' :
 		res = algo.byPrior(frame)
-
-	elif args.type == 'detect' :
-		res = algo.detect(frame)
 
 	elif args.type == 'test' : 
 		res, mask = algo.testingMode(frame)
