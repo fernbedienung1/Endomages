@@ -97,3 +97,4 @@ while True :
 #Cleanup after video is done
 cap.release()
 cv2.destroyAllWindows()
+print("\n")     # just to get bash prompt below the last FPS numbe

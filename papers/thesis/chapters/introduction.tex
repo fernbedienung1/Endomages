@@ -1,5 +1,5 @@
 This Document describes the creation of \textit{hazy, foggy, blurry and stained} endoscopic images and videos. \\
-As well as methods to find these \textit{noises} and remove them from the video data. In order to improve the endoscopic video which the surgeon uses to navigate during a surgery.\\
+As well as methods to find these \textit{noises} and remove them from the video data. In order to improve the endoscopic video which surgeons use to navigate during a surgery.\\
 \newline
 The removing method combines the detection of \textit{noises} with a focus on \textit{surgical smoke} and \textit{haze} with the application of filters only in these detected and noisy areas. \\
 
@@ -7,9 +7,9 @@ The removing method combines the detection of \textit{noises} with a focus on \t
     A state of the art method for abdominal surgeries is a laparoscopic approach, in which the surgeons only open small access channels into the patients body, to insert tools and a camera into the gas filled body. \\
     Based on a guest visit and observation of a laparoscopic surgery in the \textbf{\gls{ADK}} with interviews to the surgeons, noises turned out to be one of the most impeding incidents.
 
-    Since the laparoscope-camera is inserted into the body alongside with other tools like electrocauters it is exposed to environmental influences. The workflow of especially cautering tools causes a lot of so called \textbf{\gls{surgical smoke}}. \\
+    Since the laparoscope-camera is inserted into the body alongside with other tools like electrocauters, it is exposed to environmental influences. The workflow, of especially cautering, tools causes a lot of so called \textbf{\gls{surgical smoke}}. \\
 
-    This surgical smoke interferes with a proper workflow, since in usual cases the smoke cannot leave the \textbf{\gls{Pneumoperitoneum}}. Although there exist multiple methods to remove this smoke physically, like suction or using electrical dispense systems. \\
+    This surgical smoke interferes with a proper workflow, since in usual cases the smoke cannot leave a \textbf{\gls{Pneumoperitoneum}}. Although there exist multiple methods to remove this smoke physically, like suction or using electrical dispense systems a pure Software approach can make Sense. \\
     The biggest advantage of a pure software approach is that no further hardware is needed. Without additional hardware the surgeons wont need setup time previous to the Surgery, with the intend to save time and costs equally. 
 
 \section{Approach}
@@ -20,7 +20,7 @@ The removing method combines the detection of \textit{noises} with a focus on \t
 \section{Intention}
     Several goals are focused in this paper, given by the circumstances of surgical noises. Since the surgical noise blocks visual contact to the actual operation most video footage of surgical noise is deleted by surgeons, who actually want to show the operation and not blurred pictures. \\
     This caused the urge to create own video data showing the requested noises through establishing a surgical environment using a laparoscope phantom, as it is common used in surgeon-to-be training setups.
-    Therefore the first goal is the creation of video data to work on. \\
+    Therefore the first goal is the creation of video data to work with. \\
     \newline
     Next up is the usage of this data for the implementation of algorithms that reduce the surgical noises within the videos.
     The creation, implementation and evaluation of these algorithms consequently is the second intention of this Thesis paper.\\
@@ -31,9 +31,7 @@ The removing method combines the detection of \textit{noises} with a focus on \t
         \centering
         \includegraphics[scale=.19]{pics/schmauch/realNoise.jpg}        % Cant use this one - get one of your owns
         \caption{Different noises in real laparoscopic surgeries. \\ 
-            Blocked or blurred vision interferes with a smooth operation progress.\\
+            \textsc{\textbf{Pic will be replaced due to legal issues}}
         }
         \label{fig:introNoise}
     \end{figure}
-
-    \cmt{PIC CANNOT BE USED - LEGAL ISSUES}
