@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("videoFile", help="video to remove smoke from")
 parser.add_argument("-v", "--verbose", help="Debug output on", action="store_true")
 parser.add_argument("-o", "--output", help="specify output file name for Resulting Video [MP4]")
-parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','hist','prior','edge','test'], default='test')	#test is for debugging
+parser.add_argument("-t", "--type", help="specify removal Algorithm", type=str, choices=['color','contrast','hist','prior','stain','test'], default='test')	#test is for debugging
 parser.add_argument("-f", "--framerate", help="display Framrate", action="store_true")
 
 args = parser.parse_args()
@@ -69,8 +69,8 @@ while True :
 			cv2.imshow('stage_'+str(n), i)	# Display Intermediate steps
 			n += 1
 
-	elif args.type == 'edge' : 
-                res = algo.canny(frame)
+	elif args.type == 'stain' : 
+                res = algo.stain(frame)
 
 	# Compare Origian to Result
         # Input and Output will always be shown

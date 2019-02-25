@@ -78,7 +78,8 @@ class Algorithm (object):
         res = self.__preConf(frame)
         return res
 
-    def canny(self, frame):
+    def stain(self, frame):
+        # stains might be determined by edges around dark patterns like Rain
         res = cv2.Canny(frame, 100, 200)
         return res
 
@@ -88,9 +89,11 @@ class Algorithm (object):
     # While in development this is the Standart function to be called
 
     def testingMode(self, frame):
-        # create mask
+        # get a histogram and so on
         mask = []
-        res = mask
+        mask.append(frame)
+
+        res = frame.ravel() # no idea what this does but it crashes the VM!!
         return res, mask
 
 ###############################################################################
