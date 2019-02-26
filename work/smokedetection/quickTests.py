@@ -5,9 +5,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 jpg = "/home/m/Pictures/Rick.jpg"
+# jpg = "/home/m/Pictures/miniRick.jpg"
 
 
-def myHist(bgr_pic):
+def calcHist(bgr_pic):
     r = []
     g = []
     b = []
@@ -17,34 +18,61 @@ def myHist(bgr_pic):
             g.append(pixel[1])
             r.append(pixel[2])
 
-    print("half done")              # keep trak of time consumpution
-
     hist_b = []
     hist_g = []
     hist_r = []
 
-    for i in range(0, 255):
+    # Could be improoved by converting the image down...should not have to much
+    # effect since all pixles would disappear equally?
+    for i in range(255):            # This one takes a fuckload of time..
         hist_b.append(b.count(i))
         hist_g.append(g.count(i))
         hist_r.append(r.count(i))
+        print("%s / 255" % i)
 
     return hist_b, hist_g, hist_r
 
 
+def showPlt(blue, green, red):
+    scale = range(0, 255, 1)
+    plt.plot(scale, blue, 'b.', scale, green, 'g.', scale, red, 'r.')
+    plt.show()
+
+
+def showHist(blue, green, red):
+    plt.figure(1)
+
+    # Blue
+    plt.subplot(311)
+    plt.hist(blue, color='b')
+    plt.subtitle('Blue')
+    plt.plot()
+
+    # Green
+    plt.subplot(321)
+    plt.hist(green, color='g')
+    plt.subtitle('Green')
+    plt.plot()
+
+    # Red
+    plt.subplot(331)
+    plt.hist(red, color='r')
+    plt.subtitle('Red')
+    plt.plot()
+
+    plt.title(jpg)
+    plt.show()
+
+
 def test():
-    # histogram
     img = cv2.imread(jpg)
-    # hist = cv2.calcHist([img], [0], None, [256], [0, 256])
 
-    cv2.imshow("Original", img)
+    blue, green, red = calcHist(img)
 
-    print("original\t%s " % img[0][0])
-    blue, green, red = myHist(img)      # TODO  - this needs a shitload of time
-    print(blue)
-    # cv2.imshow("histogram", hist)     # appearently this needs a matplot
-#    plt.hist(img.ravel(), 256, [0, 256])
-#    plt.show()
+    showPlt(blue, green, red)
+    showHist(blue, green, red)
 
+#    cv2.imshow("Original", img)
     while(1):
         if cv2.waitKey(5) & 0xFF == 27 or cv2.waitKey(5) & 0xFF == 113:
             break			# thats ESC or 'q'
