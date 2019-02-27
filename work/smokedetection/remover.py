@@ -11,7 +11,7 @@ from algorithms import Algorithm
 ###############################################################################
 #### ARG Parsing
 ###############################################################################
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="provides easy access to Algorithms for my thesis")
 parser.add_argument("videoFile", help="video to remove smoke from")
 parser.add_argument("-v", "--verbose", help="Debug output on", action="store_true")
 parser.add_argument("-o", "--output", help="specify output file name for Resulting Video [MP4]")

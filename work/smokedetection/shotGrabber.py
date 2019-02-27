@@ -3,14 +3,26 @@
 import cv2
 import time
 import argparse
+import os
 
 
 def main(vid, outFolder):
     start = time.time()
-    _, frame = vid.read()
+    
+    cnt = 0
+    while vid.isOpened():
+        print(start, end='\r') 
+        cnt += 1
+        ret, frame = vid.read()
+        
+        if ret == False:
+            print ("CRITCAL ERROR IN READIN\'")
+            exit(ret)
 
-    print(start)
-    #TODO - make this thing create screenshots - 
+        cv2.imshow('name', frame)
+        # cv2.imwrite("%s/shot_%d.jpg" % (outFolder, cnt), frame, cnt)    # this still throws erros
+        
+        
 
 
 if __name__ == "__main__":
@@ -21,4 +33,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     inFile = cv2.VideoCapture(args.video)
 
+    if os.path.exists(args.output):
+        os.rmdir(args.output)
+        
+    os.mkdir(args.output)
     main(inFile, args.output)
