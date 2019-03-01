@@ -50,12 +50,11 @@ stage3(){
     printf "__________________________\n\n"
 
     printf "create ONE histogramm of ALL shots"
-    # Now there should be a wohle lot of .csv files in this struckture
-    # collector.py will rule them all
 
-    # TODO - Gather all CSV files and fuse them into one
-    # Probably this is one again easier usning PYTHON
-
+    # this will search through the directories for CSV files
+    # then cummulates them and creates a overall output
+    ring                # doesn't even need a parameter =D
+    
 }
 
 
@@ -67,6 +66,7 @@ printf "start at\t%s\n" $(date +%F_%T)
 stage1
 pritnf "SCREENSHOT GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_I - Screenshot generation" &
 
+# the most time intense one should be this here.
 stage2
 pritnf "HISTOGRAMM GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_II - Histogramm generation" &
 
