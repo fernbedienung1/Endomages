@@ -3,6 +3,7 @@
 import cv2
 from matplotlib import pyplot as plt
 import argparse
+import csv
 
 # first and obligatory arguent is the picture
 parser = argparse.ArgumentParser()
@@ -10,16 +11,18 @@ parser.add_argument("jpg", help="Input picture for Histogram")
 args = parser.parse_args()
 jpg = args.jpg
 # TODO - add switch for fileoutput / screenoutput
+    # actually thas no longer very important...
 
 # more globals
 output = jpg + "_HIST.png"
+log = jpg + "_HIST.csv"
 
 
 def calcHist(bgr_pic):
     r = []
     g = []
     b = []
-    
+ 
     # split up the image
     for line in bgr_pic:           # each row (or line....i actually dont care)
         for pixel in line:         # each pixel in line (or row)
@@ -69,6 +72,20 @@ def __showHist(blue, green, red):
     plt.title(jpg)
 
 
+def __createLog(b, g, r):
+    # This will write a file with the calculated history data 
+    # will be necessary for the "OVERALL" - histogramm
+
+    with open(log , mode='w') as csv_f:
+        csvWrite= csv.writer(csv_f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            
+        csvWrite.writerow(b)
+        csvWrite.writerow(g)
+        csvWrite.writerow(r)
+
+    print("logFile Created:\t %s" % log )
+    
+
 def main():
     img = cv2.imread(jpg)
 
@@ -76,11 +93,13 @@ def main():
 
     __showPlt(blue, green, red)
     __showHist(blue, green, red)
+    __createLog(blue, green, red)
 
 
 if __name__ == '__main__':
     print("-----  Histogram  -----")
     print("Input File:\t%s" % jpg)
     print("OutputFile:\t%s" % output)
+    print("CSV File:\t%s" % log)
     main()
     print("\n")
