@@ -40,7 +40,7 @@ def oneFunctionToRuleThemAll():
 
     scale = range(0, 255, 1)
     plt.plot(scale, blue, 'b.', scale, green, 'g.', scale, red, 'r.')
-    plt.savefig("theOneJPG.jpg", bbox_inches='tight')
+    plt.savefig("theOneJPG.png", bbox_inches='tight')
 
 
 def oneFunctionToBindThem(files):

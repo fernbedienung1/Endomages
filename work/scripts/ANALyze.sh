@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-$MADDR = "maximilianhei92@gmail.com"
+MADDR="maximilianhei92@gmail.com"
 
 stage1(){
     printf "__________________________"
@@ -9,6 +9,7 @@ stage1(){
     printf "__________________________\n\n"
     printf "creating shots of every second\n"
     
+    mkdir OUT
     # this should take a while....
     for i in *.mp4; do
         grabber $i -o OUT/vid\_$i           # Actual work happenes here 
@@ -17,7 +18,7 @@ stage1(){
         fi
     done
 
-    printf "Shotcreation [DONE]:\t%s\n" $(date +%F_%T) >> TimeLog.txt
+    printf "SCREENSHOT CREATION [DONE]:\t\t%s\n" $(date +%F_%T) >> TimeLog.txt
 }
 
 
@@ -41,6 +42,7 @@ stage2(){
 
     cd ..       #Go back up when done
 
+    printf "HISTOGRAMM CREATION [DONE]:\t\t%s\n" $(date +%F_%T) >> TimeLog.txt
 }
 
 
@@ -54,7 +56,8 @@ stage3(){
     # this will search through the directories for CSV files
     # then cummulates them and creates a overall output
     ring                # doesn't even need a parameter =D
-    
+
+    printf "Cumulative HISTOGRAM [DONE]:\t%s\n" $(date +%F_%T) >> TimeLog.txt
 }
 
 
@@ -64,14 +67,14 @@ printf "   expect this to take forever\n"
 printf "start at\t%s\n" $(date +%F_%T)
 
 stage1
-pritnf "SCREENSHOT GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_I - Screenshot generation" &
+printf "SCREENSHOT GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_I - Screenshot generation" &
 
 # the most time intense one should be this here.
 stage2
-pritnf "HISTOGRAMM GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_II - Histogramm generation" &
+printf "HISTOGRAMM GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_II - Histogramm generation" &
 
 stage3
-pritnf "EVERY GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_III - Execution ended Successfully!!" &
+printf "EVERY GENERATION\n\n\t [[SUCCESS]]" | mail $MADDR -s "[INFO] - DONE STAGE_III - Execution ended Successfully!!" &
 
 printf "_____ FINALLY DONE ______\n" 
 printf "finished at\t%s\n" $(date +%F_%T)
