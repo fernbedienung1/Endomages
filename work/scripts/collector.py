@@ -5,13 +5,13 @@ import os
 
 def oneFunctionToFindThem():
     # find all CSV data
-    files = []
-    for root, dirs, files in os.walk('.'):
+    csvs = []
+    for root, dirs, files in os.walk("."):
         for file in files:
             if file.endswith(".csv"):
-                files.append(os.path.join(root, file))
+                csvs.append(os.path.join(root, file))
 
-    return files
+    return csvs
 
 
 def oneFunctionToRuleThemAll():
