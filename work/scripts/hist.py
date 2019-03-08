@@ -4,6 +4,7 @@ import cv2
 from matplotlib import pyplot as plt
 import argparse
 import csv
+import time
 
 # first and obligatory arguent is the picture
 parser = argparse.ArgumentParser()
@@ -36,7 +37,7 @@ def calcHist(bgr_pic):
         hist_b.append(b.count(i))
         hist_g.append(g.count(i))
         hist_r.append(r.count(i))
-        print("%s / 255" % i, end='\r')
+        print("%s / 255" % i, end='\r') # TODO - repalce this with fance bar ;-D
 
     return hist_b, hist_g, hist_r
 
@@ -110,5 +111,6 @@ def main():
 
 
 if __name__ == '__main__':
-    print("-----  Histogram  -----")
+    start = time.time()
     main()
+    print("time:\t%f" % time.time()-start)

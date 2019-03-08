@@ -106,10 +106,15 @@
         \end{figure}
 
         Figure \ref{fig:hist_example} shows a typically scene of a endoscopic capture and its resulting histogram.\\
-        The Histogram shows that especially a lot of Values gather in the lower area (Pixel values of 50 and below), especially present are blue and green parts. This refers to the quite large part of black in the left side of the input picture \ref{fig:hist_example_pic}. While the red pixels have another spike in the right side of the histogram, meaning that the picture also contains high red-share, which corresponds to the tissue color in the right side of the input picture.\\
+        The Histogram shows that a lot of Values gather in the lower area (Pixel values of 50 and below), especially present are blue and green parts. This refers to the quite large part of black in the left side of the input picture \ref{fig:hist_example_pic}. While the red pixels have another spike in the right side of the histogram, meaning that the picture also contains high red-share, which corresponds to the tissue color in the right side of the input picture.\\
         \newline
         Histograms can be used to classify Pictures and illustrate attributes like contrast or color composition.\\
-        Using the video data of real surgeries and creating their histograms gives a pattern that describes the composition of Colors that appear often in such surgeries. Of cause a similar composition can also be created with other pictures that by coincidence. But pictures of related situations tend to create comparable images and the histograms of these images can then again be compared reasonable.
+        Using the video data of real surgeries and creating their histograms gives a pattern that describes the composition of Colors that appear often in such surgeries. Of cause a similar composition can also be created with other pictures that by coincidence. But pictures of related situations tend to create comparable images and the histograms of these images can then again be compared reasonable. \\
+        \newline
+
+        Workflow of creating histograms is to count every pixels values and plot their count over the value \ref{fig:hist_example_hist}. The compleity of this problem is a 
+        $$ O(n^3) $$ 
+        problem, where $ n $ is the count of pixels in the Pictures \fuck{this is NOT TRUE}.\\
 
     \paragraph{Contrast Based \\}
         Contrast can not only be used to describe images, but also as a tunable characteristic to improve certain properties of a image.

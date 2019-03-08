@@ -191,10 +191,33 @@
 %% MATH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algorithmic \& Mathematical}
+    \subsection{Database comparison}
+        Given that the created data is not captured in a surgery, the data differs form real videos.\\
+        In the Fundamentals-section \ref{sec:Fundamentals} histograms have been introduces as a comparison method for pictures regarding their color composition.\\
+        These characteristics are used to show the upsides and downsides of our created data.\\
+        \newline
+        The chosen way is to create histograms of all data created and corresponding to that also of all provided real data.\\
+        Since Histograms are usually created over single images rather then over video data, only screenshots are evaluated. This decision is a compromise between speed and completeness.
+
+        \begin{figure}[h]
+            \begin{subfigure}[h]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
+                \caption{ PLATZHALTER IMG}
+            \end{subfigure}
+            ~
+            \begin{subfigure}[h]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
+                \caption{ PLATZHALTER IMG}
+            \end{subfigure}
+            \caption{Comparing histograms}
+            \label{fig:comparingHists}
+        \end{figure}
+            
+        The Figure \ref{fig:comparingHists} shows 
+        \subsection{Color composition}
 
 	\subsection{Detection}
 		\subsubsection{Riot Detection in CCTV}
-        \subsubsection{\cmt{another one would be nice}}
 	\subsection{Filters}
 		\subsubsection{Dark Channel Prior}
 		\subsubsection{Model Based Removal}
