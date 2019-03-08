@@ -72,7 +72,7 @@
     The produced data can be put into 3 different categories. \\
     \paragraph{Static shots \\}
         The static shots are performed within a not moving environment.\\
-        They show a scene in which the mentioned noises of surgeries slowly rise. This Video data can be used to test the Algorithm until a breaking point.
+        They show a scene in which the mentioned noises of surgeries slowly rise. This Video data can be used to test the algorithm until a breaking point.
         E.g. steam rises slow within the environment and then starts to stick to the camera. The breaking point is then reached when the algorithm has no chance left to reconstruct the original image through the steam. \\
 
     \paragraph{Dynamic shots \\}
@@ -191,6 +191,12 @@
 %% MATH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algorithmic \& Mathematical}
+    \subsection{Histogram creation}
+        \cmt{show some script stuff}
+        Workflow of creating histograms is to count every pixels values and plot their count over the value \ref{fig:hist_example_hist}. The compleity of this problem is a 
+        $$ O(n^3) $$ 
+        problem, where $ n $ is the count of pixels in the Pictures \fuck{this is NOT TRUE}.\\
+
     \subsection{Database comparison}
         Given that the created data is not captured in a surgery, the data differs form real videos.\\
         In the Fundamentals-section \ref{sec:Fundamentals} histograms have been introduces as a comparison method for pictures regarding their color composition.\\

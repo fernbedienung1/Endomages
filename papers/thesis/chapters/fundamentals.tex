@@ -1,5 +1,5 @@
 \section{Data Acquisition}
-	A early encountered problem is the availability of a database of smoked and noisy images or videos that are essential for the development of the algorithms. \\
+	 early encountered problem is the availability of a database of smoked and noisy images or videos that are essential for the development of the algorithms. \\
 	The need of a video database showing static and dynamic environments as well as movements and different kinds of noise combinations ended in the decision to create laparoscopic testing simulator.
 	This simulator enabled the recording of videos a surgical like setup. \\
 
@@ -75,59 +75,75 @@
         When these kinds of pollutions occur on the image the surgeons have to remove the endoscope from the patients body. This procure costs often critical time.\\
         Detection methods for stains can base on outer lines of stainings which often have the outline of drips. The outlines then can be used to mark the stained area and apply filters inside of it.
 
-\subsection{Removal}
-    To remove the previously detected noises different Filters will be evaluated for their suitability. \\
+    \fuck{ Hier sollte noch mehr über die methoden aus der}\\
+    \fuck{ Riot-controll geschichterein kommen }
+\subsection{Histograms}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
+            \label{fig:hist_example_pic}
+            \caption{
+                Example Picture with large black and red parts
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
+            \label{fig:hist_example_singles}
+            \caption{
+                Histogram of each colorchannel of Picture above \ref{fig:hist_example_pic}
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
+            \label{fig:hist_example_hist}
+            \caption{
+                combined histogram of the based on figure \ref{fig:hist_example_pic}\\
+                \textbf{x-axis:}\hspace{1cm}Pixel value\\
+                \textbf{y-axis:}\hspace{1cm}Pixel count 
+            }
+        \end{subfigure}
+        \caption{ Endoscopic shot and its histogram}
+        \label{fig:hist_example}
+    \end{figure}
 
-    \paragraph{Histograms \\}
-        Histograms describe the color composition of Pictures. This information can be used to compare pictures.
-        They are a graphical representation of the count of colors in a picture. \\
+\newpage
 
-        \begin{figure}[h]
-            \centering
-            \begin{subfigure}[h]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
-                \label{fig:hist_example_pic}
-                \caption{
-                    Example Picture with large black and red parts
-                }
-            \end{subfigure}
-            ~
-            \begin{subfigure}[h]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
-                \label{fig:hist_example_hist}
-                \caption{
-                    Histogram of the based on Picture above\\
-                    \textbf{x-axis:}\hspace{1cm}Pixel value\\
-                    \textbf{y-axis:}\hspace{1cm}Pixel count 
-                }
-            \end{subfigure}
-            \caption{ Endoscopic shot and its histogram }
-            \label{fig:hist_example}
-        \end{figure}
+    Figure \ref{fig:hist_example} shows a typically scene of a endoscopic capture and its resulting histogram.\\
+    The Histogram shows that a lot of Values gather in the lower area (Pixel values of 50 and below), especially present are blue and green parts. This refers to the quite large part of black in the left side of the input picture \ref{fig:hist_example_pic}. While the red pixels have another spike in the right side of the histogram, meaning that the picture also contains high red-share, which corresponds to the tissue color in the right side of the input picture.\\
+    \newline
+    Histograms can be used to classify Pictures and illustrate attributes like contrast or color composition.\\
+    Using the video data of real surgeries and creating their histograms gives a pattern that describes the composition of Colors that appear often in such surgeries. Of cause a similar composition can also be created with other pictures that by coincidence. But pictures of related situations tend to create comparable images and the histograms of these images can then again be compared reasonable. \\
+    \newline
 
-        Figure \ref{fig:hist_example} shows a typically scene of a endoscopic capture and its resulting histogram.\\
-        The Histogram shows that a lot of Values gather in the lower area (Pixel values of 50 and below), especially present are blue and green parts. This refers to the quite large part of black in the left side of the input picture \ref{fig:hist_example_pic}. While the red pixels have another spike in the right side of the histogram, meaning that the picture also contains high red-share, which corresponds to the tissue color in the right side of the input picture.\\
-        \newline
-        Histograms can be used to classify Pictures and illustrate attributes like contrast or color composition.\\
-        Using the video data of real surgeries and creating their histograms gives a pattern that describes the composition of Colors that appear often in such surgeries. Of cause a similar composition can also be created with other pictures that by coincidence. But pictures of related situations tend to create comparable images and the histograms of these images can then again be compared reasonable. \\
-        \newline
-
-        Workflow of creating histograms is to count every pixels values and plot their count over the value \ref{fig:hist_example_hist}. The compleity of this problem is a 
-        $$ O(n^3) $$ 
-        problem, where $ n $ is the count of pixels in the Pictures \fuck{this is NOT TRUE}.\\
-
-    \paragraph{Contrast Based \\}
+    \paragraph{Contrast \& Gamma Correction\\}
         Contrast can not only be used to describe images, but also as a tunable characteristic to improve certain properties of a image.
-        The main aspects of contrast help to detect \cite{detectSmoke}  and remove \cite{imageDehaze} smoke.\\
+        The main aspects of contrast help to detect \cite{darkChannel}  and remove \cite{imageDehaze} smoke.\\
         Color-contrast and light-contrast can be used to detect and remove smoke, especially surgical smoke does not have a great color variety and is mostly greyish. \\
         This characteristic can be used to detect the smoke using light-contrast and then ''overpaint'' the detected areas using color contrast enhancement.
-        \cmt{Picture of contrast enhancement and its outcome in a histogram}
+        $$ g(x) = \alpha * f(x) + \beta $$
+        which can be used for every pixel $ i = row $ and $ j = column $. This changes the Equation to 
+        $$ g(i,j) = \alpha * f(i,j) + \beta $$
+        where $ \alpha $ is the \textit{Gain} and $ \beta $ is the \textit{Bias}.
+        \cmt{Picture of contrast enhancement} \\
+        \newline
+        Another tunable part of the picture is the $ \gamma $-value of a picture, which can be described by Formula \ref{eq:1}
+        \begin{equation} \label{eq:1}
+            O = (\frac{I}{255})^\gamma * 255
+        \end{equation}
 
-    \paragraph{Dark Channel prior \\}
-        Dark Channel Prior, which is a enhancement to the contrast based approach.
+        \cmt{rest should be in methods I guess... }
 
-    \paragraph{Bayesian Inference \\}
-        Bayesian Inference, \cite{jointDesmoke}
+
+    \paragraph{Dark Channel prior  \& Histogram Equalization\\}
+        Dark Channel Prior (further refered as \gls{DCP}, which is a enhancement to the contrast based approach. \\
+        By concentrating on the darker parts of the color composition the dark channel can help to identify parts of the image that contian smoke using the previously mentioned characteristics of smoke.\cite{jointDesmoke} \\
+        A depth-map that works as a mask for the image is created \cite{darkChannel}
+        \cmt{in Fundamentals?} \\
+        actually no! - dont put this here put rest of DCP in Methodes just quickly mention that it exists
+        \fuck{QUOTING!}\\
 
 \section{Bench Test Background}
 	Surgical smoke is different to ''normal'' smoke because of its contents and their composition as given by the paper \cite{contentOfSmoke}. Therefore the generation of the test data needs to be performed with a special focus on the realism of the smoke and haze. Also not only the cauterized organs and their humidity are important to the aspect of the smoke. According to experts also the method as well as the duration of cauterization is an important influence on the smokes quality.  \newline

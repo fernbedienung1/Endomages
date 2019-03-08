@@ -22,3 +22,8 @@
 	name=Deutsches Krebsforschungszentrum,
 	description={German Cancer Research Center, is a natinal cancer research center located in Heidelberg, Germany. Member of the Helmholtz Association of German Reseach Centers.}
 }
+
+\newglossaryentry{DCP}{
+    name=Dark Channel Prior,
+    description={algorithm for smoke removal, based on dark pixels in images}
+}
