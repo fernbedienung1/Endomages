@@ -191,11 +191,6 @@
 %% MATH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algorithmic \& Mathematical}
-    \subsection{Histogram creation}
-        \cmt{show some script stuff}
-        Workflow of creating histograms is to count every pixels values and plot their count over the value \ref{fig:hist_example_hist}. The compleity of this problem is a 
-        $$ O(n^3) $$ 
-        problem, where $ n $ is the count of pixels in the Pictures \fuck{this is NOT TRUE}.\\
 
     \subsection{Database comparison}
         Given that the created data is not captured in a surgery, the data differs form real videos.\\
@@ -205,22 +200,33 @@
         The chosen way is to create histograms of all data created and corresponding to that also of all provided real data.\\
         Since Histograms are usually created over single images rather then over video data, only screenshots are evaluated. This decision is a compromise between speed and completeness.
 
-        \begin{figure}[h]
-            \begin{subfigure}[h]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
-                \caption{ PLATZHALTER IMG}
-            \end{subfigure}
-            ~
-            \begin{subfigure}[h]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
-                \caption{ PLATZHALTER IMG}
-            \end{subfigure}
-            \caption{Comparing histograms}
-            \label{fig:comparingHists}
-        \end{figure}
+        \subsubsection{Histogram creation}
+            The Process of creating histograms is performed using python scripts \cmt{ref Py scripts} \\
+            \newline
+            \cmt{put the scripty into appendix}\\
             
-        The Figure \ref{fig:comparingHists} shows 
-        \subsection{Color composition}
+            
+
+
+            \begin{figure}[h]
+                \begin{subfigure}[h]{0.5\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/cumumlatedHISTOGRAM_OWNData.png}
+                    \caption{ 
+                       Sum over all Generated Pictures
+                    }
+                \end{subfigure}
+                ~
+                \begin{subfigure}[h]{0.5\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/cumumlatedHISTOGRAM_REALData.png}
+                    \caption{ 
+                       Sum over all Pictures from Guenzburg
+                    }
+                \end{subfigure}
+                \caption{Comparing histograms}
+                \label{fig:comparingHists}
+            \end{figure}
+                
+            The Figure \ref{fig:comparingHists} shows 
 
 	\subsection{Detection}
 		\subsubsection{Riot Detection in CCTV}
