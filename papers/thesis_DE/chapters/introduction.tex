@@ -1,0 +1,41 @@
+Diese Arbeit beschreibt eine Mehtode um \textit{Surgical Noise} aus Bildern und Videos laparoscopischer Eingriffe zu entfernen. \\
+Dieses entfernen geschiet vollständing mittels software, es wird keine zusätzliche Hardware benötigt um eine Verbesserung herbeizuführen. \\
+\newline
+Die Idee dieser Arbeit basiert auf einer Hostpitaion einer Laparoscopischen Cholezystektomie vom XX.XX.XXXX im \gls{ADK}. \\
+Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des Endoskopes die Arbeit deutlich behindern und somit dem Arbeitsfluss der Chirurgen stören.
+
+\section{Hintergrund}
+    
+    Laparoskopische Eingriffe erfordern spezielle Werkzeuge, wie beispielsweise Kauter (Rechts im Bild \ref{fig:introNoise}), die durch ihre Verwendung Verschmutzungen erzeugen. Durch das notwendige \gls{Pneumoperitoneum} können Verschmutzungen wie beispielsweise Rauch und Dampf das Operationsgebiet nicht verlassen und behindern dadurch das Sichtfeld der Endoskope Kamera.\\
+    Eine reine Software Lösung des Problems ist erstrebenswert um Anschaffungskosten und zeitlichen Aufwand während der Operationen gering zu halten.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{pics/schmauch/realNoise.jpg}
+        \caption{
+           Verschiedene Arten von ''Surgical Smoke'' 
+        }
+        \label{fig:introNoise}
+    \end{figure}
+
+    Bild \ref{fig:introNoise} zeit einen Ausschnitt einer Operation bei der \textit{Surgical Smoke} und Beschlagen der Kamera die Sicht auf das Operationsgebiet behindern.\\
+    
+
+\section{Ziel}
+    Das Ziel dieser Arbeit ist es deshalb diesen \textit{Surgical Noise} Software seitig mittels Bildbearbeitungsalgorithmen zu erkennen und zu entfernen.\\
+    Während der Bearbeitung des Themas wurde es notwendige eine entsprechende Datenbasis, die mit Aufnahmen von \textit{Surgical Noises} enthalten selbst zu generieren. Diese Daten sind die Grundlage der Erkennungs- und Entfernungs- Algorithmen die im Rahmen der Arbeit entstehen sollen.\\
+    \newline
+
+    Um dieses Ziel zu erreichen wurden folgende Unterpunkte erstellt welche das Hauptproblem aufteilen und Teilprobleme definieren:\\
+    \begin{enumerate}
+        \item Generation von Bildern die Störungen enthalten,
+        \item Erkennen der Störungen,
+        \item Entfernen der Störungen,
+        \item Kombination von Erkennen und Entfernen,
+        \item Evaluation und vergleich der Generireten Bilder mit realen intraoperativen Bildern.
+        \item Evaluation der Bereinigten Bilder im vergleich zu den unbereinigten Bildern
+    \end{enumerate}
+
+    Folglich soll das Endergebnis Störungen in Bildern und Videos finden und entsprechend der gefundenen Störung einen passenden Filter auf den Bildbereich anwenden der die Störung enthält. \\
+    \newline
+    Das daraus resultierende Bild soll eine verbesserte sicht auf das Operationsgebiet zeigen, im vergleich zum ursprünglichen eingangesbild der Laparoskop Kamera.
