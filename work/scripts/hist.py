@@ -11,9 +11,9 @@ import tqdm
 # first and obligatory arguent is the picture
 parser = argparse.ArgumentParser()
 parser.add_argument("jpg", help="Input picture for Histogram")
-parser.add_argument("-l", "--createLog", help="create csv logfile", type=str, nargs='?')
+parser.add_argument("-l", "--createCSV", help="create csv logfile", type=str, nargs='?')
 parser.add_argument("-o", "--outFile", help="save to file instead of Display Result", type=str, nargs='?')
-parser.add_argument("-s", "--short", help="create combined Histogram instead of 3 singe channels", action="store_false")
+parser.add_argument("-s", "--single", help="create 3 single histograms instead of the combined", action="store_false")
 parser.add_argument("-g", "--greyscale", help="create histogramm over greyscale converted image", action="store_true")
 
 args = parser.parse_args()
@@ -36,7 +36,7 @@ def calcHist(bgr_pic):
     hist_r = []
 
     # Smaller images speed things up ... but also change the result
-    for i in tqdm.tqdm(range(255)):
+    for i in tqdm.tqdm(range(255), ascii=True):
         hist_b.append(b.count(i))
         hist_g.append(g.count(i))
         hist_r.append(r.count(i))
@@ -56,7 +56,7 @@ def calcHist_Grey(bgr_pic):
 
     # this should be way faster (factor 3)
     hist_grey = []
-    for i in tqdm.tqdm(range(255)):
+    for i in tqdm.tqdm(range(255), ascii=True):
         hist_grey.append(gr.count(i))
 
     return hist_grey
@@ -77,7 +77,7 @@ def __histShort(blue, green=None, red=None):
         plt.show()
 
 
-def __createLog(name, b, g=None, r=None):
+def __createCSV(name, b, g=None, r=None):
     # This will write a file with the calculated history data
     # will be necessary for the "OVERALL" - histogramm
 
@@ -138,17 +138,19 @@ def main():
         __histShort(grey)
     else:
         blue, green, red = calcHist(img)
-        if args.short:
+        if args.single:
             __histShort(blue, green, red)
         else:
             __histLong(blue, green, red)
 
-    if args.createLog and not args.greyscale:
-        __createLog(args.createLog, blue, green, red)
-    elif args.createLog and args.greyscale:
-        __createLog(args.createLog, grey)
+    if args.createCSV:
+        if not args.greyscale:
+            __createCSV(args.createCSV, blue, green, red)
+        else:
+            __createCSV(args.createCSV, grey)
 
-    print("logFile Created:\t %s" % args.createLog)
+        print("logFile Created:\t %s" % args.createCSV)
+
     cv2.destroyAllWindows()
 
 
