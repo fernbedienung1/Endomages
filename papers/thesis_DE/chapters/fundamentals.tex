@@ -1,5 +1,5 @@
+\fuck{Noch keine Quellen eingeführt} \\
 \section{Verunreinigungen in Laparoskopischen Eingriffen}
-\fuck{Noch keine Quellen eingeführt}
     Laparoskopien sind minimal invasiven Eingriffe, bei denen ein Endoskope in ein Pneumoperitoneum eingeführt wird, um so Sichtkontakt zum Operationsgebiet zu erhalten. Die Bilder die das Endoskope hierbei aufnimmt und mittels Monitor den Chirurgen zur Verfügung stellt sind oft die einzige Möglichkeit zur Navigation innerhalb des Patienten.\\
     \newline
     Durch die Arbeit der Chirurgen, insbesondere durch den Einsatz von Kautern entstehen innerhalb des Pneumoperitoneums Verunreinigungen. Kauter erhitzen das Gewebe um die enden von beispielsweise Venen zu veröden, damit keine Blutung, wie etwa bei einem Schnitt, entsteht. Da es sich hierbei jedoch um eine Verbrennung von Gewebe handelt enstehe für Verbrennungen typische Nebeneffekte. \\
@@ -7,7 +7,7 @@
 
     \subsection{Surgical Smoke}
         Der in der Literatur meist vertretene Effekt ist die Entstehung von Verbrennungsrauch (engl. \textit{Surgical Smoke}). Dieser surgical smoke blockiert die Sicht, da er sich im Pneumoperitoneum nicht verflüchtigen bzw. Abziehen kann. \\
-        Die gestalten dieses Rauches reichen von dichten Schwaden bis zu einer Nebelartigen Diffusion die sich wie ein Film über das Kamerabild legt (siehe Rechts oben in Bild \ref{fig:coloredNoise}/(1)). \\
+        Die gestalten dieses Rauches reichen von dichten Schwaden bis zu einer Nebelartigen Diffusion die sich wie ein Film über das Kamerabild legt (siehe Rechts oben in Bild \ref{fig:realNoise}/(1)). \\
         Das entfernen dieses Rauches kann physisch mittels Absaugung oder Magnetischer Verdrängung erfolgen. Diese Methoden erfordern allerdings zusätzliche Anschaffungen von Geräten und teure Aufbauzeiten für die Chirurgen und deren Assistenten. 
 
     \subsection{Dampf und Beschlag}
@@ -19,55 +19,36 @@
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{pics/schmauch/noisesMarked.png}
-        \caption{Noises in real Laparoscopic surgeries \\ 
+        \caption{ Verunreinigungen in Endoskope aufnahmen, \\
             \textbf{(1)}surgical smoke, \textbf{(2)}Beschlagen des Endoskopes durch aufsteigenden Dampf\\
         }
         \label{fig:realNoise}
     \end{figure}
 
-    \subsection{Anforderungen der Video Daten}
-	All of the above mentioned effects are required to occur withing the generated test data, as it would be the case in a real surgery. 
-    The Quality of the images should be quite high, since typically used endoscopes in modern surgery often have high frame rates (above 60FPS) and resolutions of more than 4K2K (4000x2000 Pixels) \cite{endocam}.\\
-	However, the quality of the images is therefore just a secondary goal. More important is the creation of videos, as well as images that contain multiple combinations of the given noises, with respect to realism.\\
-    A special requirement for on the data is a setup in which the noise slowly rises, which might not be a real world situation but helps to implement code and debug the algorithms. \\
-    Following, the self generated data need to contain videos with fixed movements and planned noises. Their generation is based on laparoscopic video data, from which the most common movements and noise combinations will be derived and imitated.\\
-
-\section{Bildverbesserung}
+\section{Bild Bearbeitung}
     
-    Popular literature focuses on the removal of surgical smoke within the whole image. Two new aspects will be introduces in this paper.\\
-    \newline
-    The first one is to find noises within the given video-files and the second is the removal of not only surgical smoke, but also fog, haze and staining. \\
-    \newline
-    The removal of the noises is then performed only in the certain sections of the videos frames, where they actually occur. Instead of the common approach, which applies filters on the whole frame.\\
-    This aims to archive a selective filter, with can find different kinds of noises to then apply the proper filter to remove them within a single frame.
-    So every noise will be treated with the corresponding algorithm to remove it. \\
-    \newline
+    Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
+    Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt. Basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
 
-    Based on picture\ref{fig:realNoise} the noisy areas could be detected as shown in image\ref{fig:coloredNoise} and different filters can be applied for both the surgical smoke \textbf{(1)} and haze \textbf{(2)}.
-
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.5\textwidth]{pics/schmauch/coloredNoises.png}
-        \caption{Areas to apply filters on.\\
-            \textbf{(1)}smoke filters, \textbf{(2)}haze removal
-        }
-        \label{fig:coloredNoise}
-    \end{figure}
-    
 \subsection{Erkennung der Verschmutzungen}
-    The detection of noises is fundamental for a succeeding in the implementation of the filters, only a reliable detection of noises will ensure that the proper filters are selected and applied to the given area of the image.
+    Um die Bilder des Endoskopes so wenig wie möglich zu verändern und somit zu verfälschen ist es Ziel der Arbeit Verschmutzungen zu erkennen. 
+    Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das unverändert lassen von nicht verschmutzten Arealen im Bild. \\
+    \newline
+    Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen. Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
 
     \paragraph{Rauch\\}
-        A widespread application for smoke detection is within traffic- and riot-control \cite{vision}. Mostly these algorithms rely on smoke diffusion. In order to detect smoking objects they compare following frames and detect Smoke on its dispersal behaviour.\\
-    
+        Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' Anwendungen für Überwachungskameras\cite{vision}.
+        Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analisiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
+
     \paragraph{Dampf \& Beschlagen\\}
-        The detection of haze, respectively steam is a difficult task, but a very common problem within the surgical setup, since almost all cutting or sealing procedures are performed using a cauter, which heats up tissue and liquids.\\
-        Promising are approaches that use sharpness and focus detection to determine if the vision is blurred or not.\cmt{SRC missing}
-        
+        Ein bisher vernachlässigtes Problem besteht im beschlagen der Kamera durch Dampf.\\
+        Durch die bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
+        \cmt{Sources! - noch suchen!}
+
     \paragraph{Flecken \& Spritzer\\}
-        Staining can be caused by body internal fluids like blood, lipids or lymph. These fluids tend to sputter into the surrounding as they are heated rapidly. \\
-        When these kinds of pollutions occur on the image the surgeons have to remove the endoscope from the patients body. This procure costs often critical time.\\
-        Detection methods for stains can base on outer lines of stainings which often have the outline of drips. The outlines then can be used to mark the stained area and apply filters inside of it.
+        Flecken und Spritzer auf der Kamera sind ein nicht besonders häufiges, jedoch schwerwiegenden Problem. Da meist die einzige Möglichkeit um diese Verunreinigungen zu beseitigen darin besteht das Endoskope aus dem Patienten zu entfernen um es zu reinigen.\\
+        Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
+        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
@@ -76,7 +57,7 @@
             \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
             \label{fig:hist_example_pic}
             \caption{
-                Example Picture with large black and red parts
+                Beispielbild mit großen Dunkelstellen sowie hohem Rot Anteil.
             }
         \end{subfigure}
         ~
@@ -84,7 +65,8 @@
             \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
             \label{fig:hist_example_singles}
             \caption{
-                Histogram of each colorchannel of Picture above \ref{fig:hist_example_pic}
+                Histogram des Bildes \ref{fig:hist_example_pic}
+                Jeder Farbkanal ist einzeln dargestellt.
             }
         \end{subfigure}
         ~
@@ -92,160 +74,120 @@
             \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
             \label{fig:hist_example_hist}
             \caption{
-                combined histogram of the based on figure \ref{fig:hist_example_pic}\\
-                \textbf{x-axis:}\hspace{1cm}Pixel value\\
-                \textbf{y-axis:}\hspace{1cm}Pixel count 
+                Kombiniertes Histogram der des Bildes \ref{fig:hist_example_pic}\\
+                \textbf{x-axis:}\hspace{1cm}Pixel wert\\
+                \textbf{y-axis:}\hspace{1cm}Anzahl der Pixel
             }
         \end{subfigure}
-        \caption{ Endoscopic shot and its histogram}
+        \caption{Bild eines Endoskopes und dessen Histogramme}
         \label{fig:hist_example}
     \end{figure}
 
 \newpage
-
-    Figure \ref{fig:hist_example} shows a typically scene of a endoscopic capture and its resulting histogram.\\
-    The Histogram shows that a lot of Values gather in the lower area (Pixel values of 50 and below), especially present are blue and green parts. This refers to the quite large part of black in the left side of the input picture \ref{fig:hist_example_pic}. While the red pixels have another spike in the right side of the histogram, meaning that the picture also contains high red-share, which corresponds to the tissue color in the right side of the input picture.\\
+    
+    Das Bild \ref{fig:hist_example} zeigt eine Laparoskopische Szene, und deren Histogram. 
+    Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\
+    Dies ermöglicht den Vergleich der Bilder auf Basis ihrer Farbzusammenstellung.\\
     \newline
-    Histograms can be used to classify Pictures and illustrate attributes like contrast or color composition.\\
-    Using the video data of real surgeries and creating their histograms gives a pattern that describes the composition of Colors that appear often in such surgeries. Of cause a similar composition can also be created with other pictures that by coincidence. But pictures of related situations tend to create comparable images and the histograms of these images can then again be compared reasonable. \\
+    Beispielsweise Dominieren in Bild \ref{fig:hist_example} die Schwarze linke Seite des Bildes sowie die Rötlichen Farben des Gewebes rechts im Bild.
+    Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
     \newline
+    Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
 
-    \paragraph{Kontrast \& Gamma \\}
-        Contrast can not only be used to describe images, but also as a tunable characteristic to improve certain properties of a image.
-        The main aspects of contrast help to detect \cite{darkChannel}  and remove \cite{imageDehaze} smoke.\\
-        Color-contrast and light-contrast can be used to detect and remove smoke, especially surgical smoke does not have a great color variety and is mostly greyish. \\
-        This characteristic can be used to detect the smoke using light-contrast and then ''overpaint'' the detected areas using color contrast enhancement.
+    \subsubsection{Kontrast \& Gamma \\}
+        MATHE ÜR KONTRAST UND GAMMA KOMMT HIER REIN 
+        aber das meinste kennst du ja schon vom immageick und python
         $$ g(x) = \alpha * f(x) + \beta $$
-        which can be used for every pixel $ i = row $ and $ j = column $. This changes the Equation to 
+        in der gleichungsteht  $ i = zeile$ and $ j = spalte $ des Bildes mit RGB werten.\\ 
         $$ g(i,j) = \alpha * f(i,j) + \beta $$
-        where $ \alpha $ is the \textit{Gain} and $ \beta $ is the \textit{Bias}.
-        \cmt{Picture of contrast enhancement} \\
-        \newline
-        Another tunable part of the picture is the $ \gamma $-value of a picture, which can be described by Formula \ref{eq:1}
         \begin{equation} \label{eq:1}
             O = (\frac{I}{255})^\gamma * 255
         \end{equation}
 
-        \cmt{rest should be in methods I guess... }
 
+    \subsubsection{Dark Channel prior  \& Histogram Equalization\\}
+        Der \gls{DCP} ist eine auf Kontrast basierende Erweiterung die Nebel und Rach aufgrund von geringen intensitäten in Farbkanälen 
+        Ja, hier musst du nochmal deutlicher nachlesen...
 
-    \paragraph{Dark Channel prior  \& Histogram Equalization\\}
-        Dark Channel Prior (further refered as \gls{DCP}, which is a enhancement to the contrast based approach. \\
-        By concentrating on the darker parts of the color composition the dark channel can help to identify parts of the image that contian smoke using the previously mentioned characteristics of smoke.\cite{jointDesmoke} \\
-        A depth-map that works as a mask for the image is created \cite{darkChannel}
-        \cmt{in Fundamentals?} \\
-        actually no! - dont put this here put rest of DCP in Methodes just quickly mention that it exists
-        \fuck{QUOTING!}\\
-
-\section{Laparoskopischer Laborversuch}
-    \fuck{Jaaaa, das hier gehört in die Methoden} \\
-	Surgical smoke is different to ''normal'' smoke because of its contents and their composition as given by the paper \cite{contentOfSmoke}. Therefore the generation of the test data needs to be performed with a special focus on the realism of the smoke and haze. Also not only the cauterized organs and their humidity are important to the aspect of the smoke. According to experts also the method as well as the duration of cauterization is an important influence on the smokes quality.  \newline
-
-	Training situation for doctors-to-be include exercises in laparoscopic simulations, so called phantoms. These phantoms are a emulation of a real laparoscopic surgery and 
-	The paper \cite{MIS_host} introduces a learning method for expectant surgeons to practice without living patients, be it human or animal. Since these surgeries are expensive, time consuming and moreover they need to be authorized by governmental or veterinarian institutions in the European Union. \newline
-
-	The data generation of surgical smoke and artefacts requires the use of organic material that can be cauterized. Porcine visceral organs are very similar to human visceral organs which the paper \cite{swineModel} postulates and are therefore a appropriate candidates for the test setups. \newline
-
-	Laparoscopic trainers are often used in eduction and training of future surgeons. Therefor a source for the setup of these kind of trainers and how they should look like is taken from the papers \cite{MIS_host} and \cite{MIS_trainer}. \newline
+    \subsubsection{Raucherkennung}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PREQUISITES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Grundlagen laparoskopischer Eingriffe}
-		In order to capture videos that are related to real surgeries multiple factors need to be considered. Since not all animals have tissue similar to humans a suitable host needs to be selected.\\
+    Um eigene Bilder von Laparoskopien zu erstellen müssen einige Aspekte beachtet werden, um zu gewährleisten dass die Generierten Daten echten Operationen ähnlich sind.
+    Desweiteren sollten die Generierten Daten geeignet sein um mit ihnen Algorithmen zu entwickeln. \\
+    Diese Eignung schließt bestimmte Aspekte ein, wie beispielsweise das langsame erscheinen von Verunreinigungen, definierte Bewegungen der Kamera,etc. \\
+    \newline
 
-	\paragraph{\textbf{Mice} \textit{(Mus musculus)}\\} have a quite high similarity to the human body, but problems occur in the availability and the handling of these organs. Therefore Mice's organs drop out, since they are expected to have a bad handling due to their small size. \newline
+    Die Befragung verschiedener Chirurgen ergab das insbesondere die Art der Kauterisation (sprich: Elektrisch, Thermisch oder etwa via Laser) maßgeblich ist für die Beschaffenheit und das aussehen des Rauches.\\
+    Desweiteren bestimmt die Art des zu kauterisierenden Gewebes die Verschmutzungen die entstehen.\\
+    \newline
+    
+    Das Generieren eines eigenen Datensatzes unterliegt deshalb einigen Restriktionen, insbesondere ist es nicht möglich aufnahmen von Menschen zu erzeugen.\\
+    Dies führt dazu das ein Ersatz gefunden werden muss, potentielle Kandidaten hierfür sind:\\
+
+	\paragraph{\textbf{Mäuse} \textit{(Mus musculus)}\\}
+        Haben eine große Ähnlichkeit zum menschlichen Organismus, sie werden deshalb häufig für Versuche im Medizinischen Bereich eingesetzt. Jedoch Beschränkens sich diese versuche häufig auf die Verträglichkeit von Medikamenten oder anderer, weitgehend konventioneller chirurgischer eingriffe.
+        Mäuse sind jedoch für die Erstellung der Daten nicht geeignet, aus rein gründen.\\
+    \fuck{Citations!}
 	\newline
-	\paragraph{\textbf{Porcine Organs}\textit{(Sus scrofa domesticus)}\\} fit better for this purpose, but especially their internals are not very commonly consumed. For closer testings it is expected that porcine organs are necessary, while for first setup tests or technical evaluations other organs might be sufficient.\newline
-	\newline
-	\paragraph{\textbf{Bovine Organs} \textit{(Bos primigenius taurus)}\\} are the most commonly available visceral organs, since they are often used in culinary way,especially livers. Although their similarity to human internals is not that high, their advantages in availability and usability makes them a good choice for first experiments.\newline
+
+	\paragraph{\textbf{Organe von Rindern} \textit{(Bos primigenius taurus)}\\}
+        Organe von Rindern unterscheiden deutlicher von Menschlichen Organen, sind aber insbesondere wenn es um viszerale Organe geht deutlich verfügbarer und einfacher zu handhaben als Innereien von Mäusen. \\
+        Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einem optimalen Kandidaten für erste Tests, insbesondere für die Erstellung von Laparoskopischen Trainern.\\
+    \fuck{Citations!}
 	\newline	 \\
-	As given in \cite{swineModel}, the common domestic pig has already often been used as the major species for animal testing of both pharmaceutical and surgical experiments. Due to the fact that pigs have a lot of similarities to the human body, e.g. the resemblance of their cardiovascular systems or the digestive systems.\newline
 
-	Concluding to this, the data should contain a set of video footage that is based on the cauterization of porcine internals.
+	\paragraph{\textbf{Organe von Schweinen}\textit{(Sus scrofa domesticus)}\\} 
+        Die Brücke zwischen Handhabung, Verfügbarkeit und Ähnlichkeit zu Menschlichen Organen schlagen Schweine.\\
+        Während es bei schweinischen Innereien seltener als bei Rinderinnereien zum Verzehr durch den Menschen kommt, ist es trotzdem möglich an Frische viszerale Organe von Schweinen zu kommen, da diese andern falls zu Hundefutter oder ähnlichem verarbeitet werden und damit häufig ein Abfall Produkt von Schlachtern sind.\\
+        Wie auch bei Mäusen ist es üblich Medikamente oder andere verfahren aus Medizin und Medizintechnik an Schweinen zu testen bevor sie am Menschen freigegeben werden.
+        Die Ähnlichkeit und Eignung von Schweinen zeigt sich unter anderem daran dass sie auch auch in Medizinischen Ausbildungen häufig als erste Instanz für Chirurgen dienen, die in Lebendigen Organismen operieren \cite{swineModel}. \\
+        Bei Schweinen ist zudem der Aufbau des Kardiovaskulären Systems sowie die Anordnung der viszeralen und digestiven Organe analog zum Menschlichen Aufbau.\\
+        Folglich sind Schweine die Optimalen Kandidaten für die Generierung der Datenbasis. \\
+    \newline
 
 	\paragraph{Organe\\}
-    	The most laparoscopic surgeries are performed in the area of the abdomen, so the most reasonable things to use as target objects for the cauterization would include:
+        Endoskope werden in verschiedenen Szenarien verwendet und durch verschiedenste Öffingen ins Körperinnere gebracht, 
+        die in Deutschland und Europa meisten durchgeführten minimal invasiven Eingriffe stellen Cholezystektomien dar\fuck{CITATION}.\\
+        Bei diesen Laparoskopien, sind Endoskope unverzichtbar, da sie die einzige Möglichkeit sind ins innere des Patienten zu sehen.
+        \cmt{Endoskopie != Laparoskopie}\\
+        Die entsprechend meist vorkommenden Bilder zeigen viszerale und andere abdominale Organe wie beispielsweise:
+
 		\begin{itemize}
-			\item Gallbladders ( Vesica biliaris),
-			\item Livers ( Hepar ),
-			\item Stomaches ( Gaster ),
-			\item Gastrointestinal tracts ( Tractus digestorius ).
+			\item Gallenblasen( Vesica biliaris),
+			\item Lebern( Hepar ),
+			\item Mägen ( Gaster )
+			\item oder dem Gastrointestinaltrakt( Tractus digestorius ).
 		\end{itemize}
 
-		The selection of organs depends on similar choices as the selection of animals. The decision is based on their availability and usability, countering to real surgeries like liver resections or cholecystectomies.\newline
-		Another point is the internal moisture that is given by mucous membranes, their cauterisation leads to fog and steam. This issue needs to be considered since moisture is expected to create foggier images that therefore are closer to real surgeries within wet environments.\\
-\newline
-		This moisture occurs in forms like Blood, lipid and other body internal fluids. By heating up these liquids different forms of steam, fog and stains are created which all have different aspects. Based on this information a insertion of Blood, etc. into the simulation needs to be considered. \\ 
-	\newline
-       Body internal humidity has impact on the distribution of smoke and staining within the surgical area (e.g. a \gls{Pneumoperitoneum}). 
+        Die Auswahl erfolgt auch hier, wie schon bei der Auswahl des Host-Tieres nach den Kriterien der Verfügbarkeit und des Realitätsaspektes.\\
+        Weiterhin zu beachten ist bei der Selektion der Organe die Qualität bzw. die Frische.
+        Frische Organe sind notwendig da unter anderem Feuchtigkeit ein wichtiger Aspekt ist der vor allem die Bildung von Rauch und Dampf beeinflusst.
+        Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten.\\
+        Auch Körperinnere Luftfeuchtigkeit und Temperatur wirkt sich auf das Beschlagen der Kamera aus sowie auf die Bewegungen und Dispersion des Rauches.\\
+        \newline
 
-	\paragraph{Hardware \\}
-        The hardware setup includes:\\
-        \begin{table}[H]
-
-            \centering
-            \label{tab:Kameras}
-            \begin{tabular}{l|l|l|l}	%all left aligned
-                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
-                \hline
-                Wolf & Endocam & Bronchoscope & \cite{endocam} \\		%1CCD Endocam 5520 
-                Wolf & 3D-Endocam & Stereoendscope & \cite{} \\		%3D-HD-Endocam F1014 
-                IDS & ui-3240cp & 1280x1024/60FPS& \cite{} \\ 
-                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
-                Logitec & C270 & 1280x720 & \cite{webcam} \\
-                Alcor Micro & SJ00446 & 1280x170 & \fuck{NONE} \\
-                \hline
-                Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
-                Aesculap & Letrafuse & RF-Generator & \cite{hfgen} \\
-            \end{tabular}
-            \caption{Capturing and cauterisation Hardware}
-        \end{table}
-
-    The endoscope cameras are inserted into a self-made laparoscopic trainer\ref{fig:phantomI}.\\
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{pics/setups/Laparoscope_box.jpg}
-        \caption{self build Laparoscope phantom}
-        \label{fig:phantomI}
-    \end{figure}
-    
-    With penetrable neoprene cloth to simulate skin. \ref{fig:phantomII}.
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{pics/setups/Laparoscope_box_cover.jpg}
-        \caption{neoprene cloth with holes form tool insertion}
-        \label{fig:phantomII}
-    \end{figure}
-
-    This trainer is purpose-build based on suggestions and experiences of Urologists \cite{MIS_trainer}.\\
-    The design is a compromise of available materials and professional proposals. With an eye mark on endoscope movements and realistic video footage. The trainer is created manually out of a simple, nontransparent Box. Which has been provided with a neoprene covered whole, for the insertion of tools and endoscopes.\\
-    As in professional phantoms the neoprene ''skin'' needs to be cut to insert the tools and therefore intended for one-time use. \\
-    Given the bad glueing characteristics of neoprene, the fabric is sewed through drilled holes into the boxes lid. This complicates the replacement of the neoprene fabric.but also serves as a very stable connection of the both materials.\\
-    \newline
-    The Pictures \ref{fig:phantomI} and \ref{fig:phantomII} show the phantom with the already pierced neoprene, since the pictures are taken after the Tests have been performed. On the right hand of the pic the tools were inserted and the left whole served as entrance for the endoscopes.
-	
 	\subsection{Benötigte Eigenschaften}
-		
-	The resulting data needs to fulfill several requirements, mostly concerning the occurrence and mixture of noise the as well as the quality of the images.\newline
-	Investigated noises are: \\
 
+        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte qualität und realismus. Sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
+        Die benötigten Verschmutzungen sind:\\
+        \newline
+		
 	\begin{itemize}
 		\item Surgical Smoke,
-		\item Haze,
-		\item Staining of
+		\item Dampf,
+		\item Fleckenbildung von:
 		\begin{itemize}
-			\item Blood,
-			\item Water,
-			\item Lipids.
+			\item Blut,
+			\item Wasser,
+			\item Lymphflüssigkeit.
 		\end{itemize}
 	\end{itemize}
 	
-    The generation of data is based on video data given by the \gls{kkhgzkru}.
-	These videos have been used as a template to generate own Data corresponding to the given real videos.
-    The videos show prevalent movements of surgeries which are reproduced as close as the setup and experience allow.\\
-    \\
-    As the generated Data will used as base for the code generation additional requirements besides the realism aspect need to be met.\\ 
-    One of these conditions is the slow rise of noise, which is expected to support the algorithm creation. By e.g. showing the thresholds for recognition or reconstruction.
+    Als Vorbild für die Generation eigener Daten dienen Videos von Verschmutzungen des \gls{kkhgzkru}.\\
+    Diese Videos zeigen verschiedene Arten von Rauch (verschiedene Kauterisationsmethoden) sowie Instrumente im Operationsbereich. 
+    Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge, etc.\\
+    \newline
+    

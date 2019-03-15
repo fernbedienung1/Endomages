@@ -1,347 +1,271 @@
-\section{Acquirement Setup}
-\cmt{kommt aus Fundamentals runter}
-    Um sinnvoll Algorithmen zu implementieren zu können muss eine Datenbasis vorhanden sein, welche die betreffenden Verunreinigungen aufweist. Das Problem hierbei ist dass Chirurgen, die Laparoskopische eingriffe vornehmen und Aufnehmen genau diese teile der Aufnahmen nicht gebrauchen können. Die benötigten verunreinigten Bilder eignen sich nicht Lehr- oder Vorführungszwecke, da sie oft essentielle teile des Operationsgebiet verdecken, was auch genau das zu behebende Problem darstellt.\\
+\section{Laparoskopische Laborversuche}
+    Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden von Chirurgen entsorgt, da dieser ja die für Mediziner notwendigen Areale verdecken.
+    Zusätzlich dazu spielen Rechtliche Aspekte eine Rolle, den Patientendaten dürfen nur mit ausdrücklicher Einverständnis des betreffenden Patienten veröffentlicht werden. \\
+    Um die Benötigten Daten selbst zu generieren wurden 2 Versuchs reihen erstellt.\\
+    Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und video aufnahmen von Rauch und Dampf erzeugen. Nach einem Fehlschlag dieses Vorhabens wurde unter deutlichem Mehraufwand ein zweiter Laborversuch initiiert welche brauchbare Ergebnisse lieferte.
 
-	Additional to the generation of on simulated test data, real surgery data has been obtained from the Kreisklinken Günzburg-Krumbach. \\
-	While the data created within the simulator is used to develop detection and removal algorithms, the real surgical videos are only used to examine the algorithms. This is done in order to avoid overfitting the algorithms to special videos.\\
-    Previous to the implementation of algorithms video data to work on has to be organized. As already mentioned in the Fundamentals chapter \ref{sec:Fundamentals}, noisy images are hard to find and often do not suit the needs as base-data for the algorithm implementation. \\
-    Therefore the described setup is created according to the specifications, also given in the Fundamentals chapter \ref{sec:Fundamentals}.\\
-
-    The table \ref{table:usedHW_II} in combination with pictures \ref{fig:MK_I_schematic} and \ref{fig:MK_I_real} show the used Items and their constellation.
-    \newline 
-    
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{c|l|l}	
-            \textbf{REF} & \textbf{Device} & \textbf{Description} \\ 
-            \hline
-            \textbf {1} & Laparoscope & capturing element\\
-            \textbf {2} & Neoprene & penetrable skin \\
-            \textbf {3} & Optic & inserted into trainer\\
-            \textbf {4} & Cauter & active tool\\
-        \end{tabular}
-        \label{table:usedHW_II}
-        \caption{Used hardware in first prototype \\ numbers correspond to \ref{fig:MK_II_schematic} and \ref{fig:MK_II_real}}
-    \end{table}
-
-    \paragraph{Cauter\\}
-        Previous tests have shown that there is a urgent need to perform the data acquirement using real endoscopes and cauterization equipment.\\
-        Since the cauterization method has great impact on the constellation and aspect of the emerging surgical smoke.
-        The used cauter is a \textit{Aesculap Caiman 5 one-time-use Cauter \cite{sealer}} connected to a \textit{Aesculap HF-Generator \cite{hfgen}}.\\
-        Both are professional equipment and commonly used in electo-surgeries.
-
-
-    \paragraph{Phantom\\}
-        The phantom is used to create a setup with realistic circumstances. The biggest advantage are realistic light conditions and proper access to the organs with respect to the planned movement patterns.\\
-        Furthermore the Phantom prevents smoke and haze to leave the artificial Pseudopneumoperitoneum which is an obligatory aspect of realism in this scenario.\\
+    \subsection{Erster Prototyp}
+        Der erste Prototyp besteht aus leicht zugänglichen Materialien und sollte das Problem der fehlenden endoskopischen Bilder mit wenig Aufwand lösen.\\
+        Zum Einsatz kahmen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
+        Hauptaugenmerk des ersten Prototypes war eine ''Machbarkeits Überprüfung'', bei der das Ziel war herauszufinden ob mittels der verwendeten Kameras Bilder erzeugt werden können die Laparoskopien ähnlich sind und sich als Basis für die Algorithmenentwicklung eignen. 
         \newline 
-        In the Fundamentals\ref{sec:Fundamentals} under "Test Perquisites" the insertion of Blood and lipids was mentioned. Due to already very good results during the data generation without additional liquids, further insertion is not performed.\\
-        The good and realistic results might be explained by the recentness of the provided Organs which where butchered at the morning of the test-day.
 
-    \paragraph{Endoscopes\\}
-        Most critical part of the generation is the actual frame grabbing of the endoscopes. The used endoscopes are on loan of the \gls{DKFZ}.\\
-        The \textit{Stereo endoscope \cite{endocam}} collects 2 parallel videos which are grabbed by two identical frame grabbers \cite{epiphan} and then saved to RAM before they are written to the Computers hard drive. \\
-        Writing to the RAM is done to prevent frame loss due to possible speed limitations of the hard disk. 
-        This limits the time of the recordings to a maximum of less then one minute, but ensures the quality of the footage. \\
-        \newline
-        Stereoscopic grabbing is not essential for the desired purpose of the algorithm implementation, but could be in further work (see Discussion \ref{sec:Discussion}).
-        Therefore stereo videos are grabbed because the setup allows it.\\
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c|l|l}	
+                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\ 
+                \hline
+                \textbf {1} & Raspberry PI & Steuergerät\\
+                \textbf {2} & DSLR & Haupt-Kamera\\
+                \textbf {3} & Webcam & USB-Kamera\\
+                \textbf {4} & Endoscope & Amateur Endoskope\\
+                \textbf {5} & Umgebungssensor & Temperatur/Feuchtigkeit\\
+                \textbf {6} & Lötkolben & improvisierter Kauter\\
+                \textbf {7} & LED licht & Lichtquelle innerhalb des Trainers\\
+            \end{tabular}
+            \label{tab:usedHW_I}
+            \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}}
+        \end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \newpage
+	    \begin{figure*}[hp]
+             \begin{subfigure}[b]{\textwidth}
+                 \centering
+                 \includegraphics[scale=0.34]{pics/setups/setup1_schematic.png}
+                 \caption{\textbf{Schematic} \\
+                     Plan for fist Prototype, with the intention to evaluate Cameras and Tools. \\ 
+                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
+                     \textit{Devices correspond to table \ref{tab:usedHW_I}.}
+                 }
+                 \label{fig:MK_I_schematic}
+             \end{subfigure}
+
+             \hspace{1cm}
+
+             \begin{subfigure}[b]{\textwidth}
+                 \centering
+                 \includegraphics[scale=0.4]{pics/setups/setup1_real.png}
+                 \caption{\textbf{Real} \\ 
+                     Real setup based on Schematic\ref{fig:MK_I_schematic}. \\
+                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
+                     \textit{Devices correspond to table \ref{tab:usedHW_I}.}
+                 }
+                 \label{fig:MK_I_real}
+             \end{subfigure}
+
+             \hspace{1cm}
+
+             \begin{subfigure}[b]{\textwidth}
+                 \centering
+                 \includegraphics[scale=0.2]{pics/setups/setup1_result.png}
+                 \caption{\textbf{Result} \\ 
+                     Images taken form the videos produced with Setup \ref{fig:MK_I_real}. \\
+                     (1)DSLR-output, (2)Webcam-output, (3)Endocam-output.
+                 }
+                 \label{fig:MK_I_result}
+             \end{subfigure}
+
+             \caption{fist Surgery phantom Prototype}
+             \label{fig:MK_I}
+         \end{figure*}
+
+         \newpage
+
+         Das Erkenntnisse des ersten Prototypen folgerten das eine sinnvolle Aufnahme von Daten nur mit medizinischen Endoskopen zu Stande kommen kann.\\
+         
+    \newpage   
+    \subsection{Zweiter Prototyp}
+
+        Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
+        \begin{table}[H]
+            \centering
+            \label{tab:Kameras}
+            \begin{tabular}{l|l|l|l}	%all left aligned
+                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \hline
+                Wolf & Endocam & Bronchoscope & \cite{endocam} \\		%1CCD Endocam 5520 
+                Wolf & 3D-Endocam & Stereoendscope & \cite{} \\		%3D-HD-Endocam F1014 
+                IDS & ui-3240cp & 1280x1024/60FPS& \cite{} \\ 
+                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
+                Logitec & C270 & 1280x720 & \cite{webcam} \\
+                Alcor Micro & SJ00446 & 1280x170 & \fuck{NONE} \\
+                \hline
+                Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
+                Aesculap & Letrafuse & RF-Generator & \cite{hfgen} \\
+            \end{tabular}
+            \caption{Capturing and cauterisation Hardware}
+        \end{table}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{pics/setups/Laparoscope_box.jpg}
+            \caption{Gesamt Aufnahme des gebauten Laparoskopie Trainers}
+            \label{fig:phantomI}
+        \end{figure}
         
-%%%%%%%%%%%%%%%%%%%%%%%%%% Pictures of Acquirement Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{figure*}[hp]
-        \begin{subfigure}[b]{\textwidth}
-            \centering
-            \includegraphics[scale=0.4]{pics/setups/setup2_schematic.png}
-            \caption{\textbf{Schematic} \\
-                Schematic of the data acquirement setup \\
-                (1)Endoscope, (2)Neoprene, (3)Optic, (4)Electrocauter
-            }
-            \label{fig:MK_II_schematic}
-        \end{subfigure}
-        \hspace{1cm}
-        \begin{subfigure}[b]{\textwidth}
-            \centering
-            \includegraphics[scale=0.4]{pics/setups/setup2_real.png}
-            \caption{\textbf{Real} \\ 
-                acquisition progress with Stereo-Laparoscope \\
-                (1)Endoscope, (2)Neoprene, (3)Optic, (4)Electrocauter
-            }
-            \label{fig:MK_II_real}
-        \end{subfigure}
-        \caption{surgery phantom Setup}
-        \label{fig:MK_II}
-    \end{figure*}
+        Einstiche im Neoprenstoff für die Einbringung der Werkzeuge in das künstliche Peritoneum \ref{fig:phantomII}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \subsection{Produced Data}
-    The produced data can be put into 3 different categories. \\
-    \paragraph{Static shots \\}
-        The static shots are performed within a not moving environment.\\
-        They show a scene in which the mentioned noises of surgeries slowly rise. This Video data can be used to test the algorithm until a breaking point.
-        E.g. steam rises slow within the environment and then starts to stick to the camera. The breaking point is then reached when the algorithm has no chance left to reconstruct the original image through the steam. \\
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{pics/setups/Laparoscope_box_cover.jpg}
+            \caption{Neoprensstoff im Deckel des Trainers, mit Einstichen der Werkzeuge und des Endoskopes}
+            \label{fig:phantomII}
+        \end{figure}
 
-    \paragraph{Dynamic shots \\}
-        The dynamic setups show scenes that include the most common movements in surgeries, \\ with are:
-        \begin{itemize}
-            \item rotations around the tool axis (-45 to 45 Degrees),
-            \item insertions (push / pull) movements,
-            \item rotations around the patients axis (-60 to 60 Degrees).
-        \end{itemize}
+        \cmt{ hier noch bissle text über den Trainer bzw Organ Transport etc. }
 
-    \paragraph{Realistic shots \\}
-        Realistic shots do not follow a special form of movement pattern, but focus on a clear sight on the cauter and the parts that are incinerated. \\
-        They combine all \textit{Dynamic Movements} mentioned above. But are in contrast to the Dynamic shots these movements are not intended. They result from the goal to keep the Endoscope focus on the operation area, the tools and the Organs that the surgeon works with. \\
-        \newline
-        This setup results in data that is very close to real surgery-footage, compared to the real data given by Dr.Widmaier \cite{uwe}.\\
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c|l|l}	
+                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\ 
+                \hline
+                \textbf {1} & Endoskope & Aufnahmeelement\\
+                \textbf {2} & Neopren & Haut für Einstiche\\
+                \textbf {3} & Optik & einzuführender teil des Endoskopes\\
+                \textbf {4} & Kauter & Verbrennung Werkzeug\\
+            \end{tabular}
+            \label{tab:usedHW_II}
+            \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren \ref{fig:MK_II_schematic} und \ref{fig:MK_II_real}}
+        \end{table}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%% Pictures of Acquirement Result %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse            % TODO - Send it to axel as a small doc then bring them back in
-    \begin{figure*}[hp]
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIRST ROW
-        \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für plazierung neben einander
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/dynamicSmoke_s0.jpg}
-            \caption{\textbf{dynamic Smoke}  \\
-                Dynamic smoke 1
-            }
-            \label{fig:dynamic_1}
-        \end{subfigure}
-        ~ 
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/rotation_s0.jpg}
-            \caption{\textbf{more dynamicsmoke} \\ 
-            }
-            \label{fig:dynamic_2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/stain_s0.jpg}
-            \caption{\textbf{even more dynamic smoke} \\ 
-                Dynamic smoke 3
-            }
-            \label{fig:dynamic_3}
-        \end{subfigure}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% second ROW
-        \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/dynamicSmoke_s1.jpg}
-            \caption{\textbf{dynamic Smoke}  \\
-                Pic 1
-            }
-            \label{fig:dynamic_1}
-        \end{subfigure}
-        ~       % when I am Right, this should mean that they are placed next to each other
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/rotation_s1.jpg}
-            \caption{\textbf{more dynamicsmoke} \\ 
-                Picture 2
-            }
-            \label{fig:dynamic_2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/stain_s1.jpg}
-            \caption{\textbf{even more dynamic smoke} \\ 
-                Dynamic smoke 2
-            }
-            \label{fig:dynamic_3}
-        \end{subfigure}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% third ROW
-        \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/dynamicSmoke_s2.jpg}
-            \caption{\textbf{dynamic Smoke}  \\
-                Pic 1
-            }
-            \label{fig:dynamic_1}
-        \end{subfigure}
-        ~       % when I am Right, this should mean that they are placed next to each other
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/rotation_s2.jpg}
-            \caption{\textbf{more dynamicsmoke} \\ 
-                Picture 2
-            }
-            \label{fig:dynamic_2}
-        \end{subfigure}
-        ~           
-        \begin{subfigure}[b]{0.3\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{pics/ownData/stain_s2.jpg}
-            \caption{\textbf{even more dynamic smoke} \\ 
-                Pictu 3
-            }
-            \label{fig:dynamic_3}
-        \end{subfigure}
+        \cmt{Bilder aus Fundamentals }
+        \begin{figure*}[hp]
+            \begin{subfigure}[b]{\textwidth}
+                \centering
+                \includegraphics[scale=0.4]{pics/setups/setup2_schematic.png}
+                \caption{Schematische Darstellung des Versuchsaufbaus\\
+                    (1)Endoskope, (2)Neopren, (3)Optik, (4)Elektrokauter
+                }
+                \label{fig:MK_II_schematic}
+            \end{subfigure}
+            \hspace{1cm}
+            \begin{subfigure}[b]{\textwidth}
+                \centering
+                \includegraphics[scale=0.4]{pics/setups/setup2_real.png}
+                \caption{Bild aus der Generierung der Testdaten mit einem Stereoendoskope,\\
+                    (1)Endoskope, (2)Neopren, (3)Optik, (4)Elektrokauter
+                }
+                \label{fig:MK_II_real}
+            \end{subfigure}
+            \caption{Aufbau der Daten Generierung}
+            \label{fig:MK_II}
+        \end{figure*}
 
-        \caption{Results of the Data Acquirement}
-        \label{fig:DataAcq}
-    \end{figure*}
-    % This somehow does not display as expected....
-    % maybe add even more pictures to fill the page.... I mean: there are more then enough...
+\iffalse
+        \cmt{ Und hier ist das Ergebnis  }
 
-    \newpage
+
+        \begin{figure*}[hp]
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIRST ROW
+            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für plazierung neben einander
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s0.jpg}
+                \caption{\textbf{dynamic Smoke}  \\
+                    Dynamic smoke 1
+                }
+                \label{fig:dynamic_1}
+            \end{subfigure}
+            ~ 
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s0.jpg}
+                \caption{\textbf{more dynamicsmoke} \\ 
+                }
+                \label{fig:dynamic_2}
+            \end{subfigure}
+            ~
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_stain_s0.jpg}
+                \caption{\textbf{even more dynamic smoke} \\ 
+                    Dynamic smoke 3
+                }
+                \label{fig:dynamic_3}
+            \end{subfigure}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% second ROW
+            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s1.jpg}
+                \caption{\textbf{dynamic Smoke}  \\
+                    Pic 1
+                }
+                \label{fig:dynamic_1}
+            \end{subfigure}
+            ~       % when I am Right, this should mean that they are placed next to each other
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s1.jpg}
+                \caption{\textbf{more dynamicsmoke} \\ 
+                    Picture 2
+                }
+                \label{fig:dynamic_2}
+            \end{subfigure}
+            ~
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_stain_s1.jpg}
+                \caption{\textbf{even more dynamic smoke} \\ 
+                    Dynamic smoke 2
+                }
+                \label{fig:dynamic_3}
+            \end{subfigure}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% third ROW
+            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s2.jpg}
+                \caption{\textbf{dynamic Smoke}  \\
+                    Pic 1
+                }
+                \label{fig:dynamic_1}
+            \end{subfigure}
+            ~       % when I am Right, this should mean that they are placed next to each other
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s2.jpg}
+                \caption{\textbf{more dynamicsmoke} \\ 
+                    Picture 2
+                }
+                \label{fig:dynamic_2}
+            \end{subfigure}
+            ~           
+            \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pics/ownData/old_stain_s2.jpg}
+                \caption{\textbf{even more dynamic smoke} \\ 
+                    Pictu 3
+                }
+                \label{fig:dynamic_3}
+            \end{subfigure}
+
+            \caption{Results of the Data Acquirement}
+            \label{fig:DataAcq}
+        \end{figure*}
+        % This somehow does not display as expected....
+        % maybe add even more pictures to fill the page.... I mean: there are more then enough...
+
+        \newpage
 \fi
-\section{Real Data}
-    The whole generation of test data and their outcome is based on real surgical smoke video images that have been provided by Dr.Widmaier \cite{uwe}, who created real in surgery data as a ideal to follow. \\
-    \cmt{
-        its actally quite bad since without the permission on the pictures... \\
-        I cant do very much here...
-    }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MATH
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Algorithmic \& Mathematical}
-
-    \subsection{Database comparison}
-        Given that the created data is not captured in a surgery, the data differs form real videos.\\
-        In the Fundamentals-section \ref{sec:Fundamentals} histograms have been introduces as a comparison method for pictures regarding their color composition.\\
-        These characteristics are used to show the upsides and downsides of our created data.\\
+    \subsection{Reale Daten}
+        Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
+        Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
         \newline
-        The chosen way is to create histograms of all data created and corresponding to that also of all provided real data.\\
-        Since Histograms are usually created over single images rather then over video data, only screenshots are evaluated. This decision is a compromise between speed and completeness.
+        Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
 
-        \subsubsection{Histogram creation}
-            The Process of creating histograms is performed using python scripts \cmt{ref Py scripts} \\
-            \newline
-            \cmt{put the scripty into appendix}\\
-            
-            
+\section{Bildbearbeitung}
 
-
-            \begin{figure}[h]
-                \begin{subfigure}[h]{0.5\textwidth}
-                    \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_OWNData.png}
-                    \caption{ 
-                       Sum over all Generated Pictures
-                    }
-                \end{subfigure}
-                ~
-                \begin{subfigure}[h]{0.5\textwidth}
-                    \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_REALData.png}
-                    \caption{ 
-                       Sum over all Pictures from Guenzburg
-                    }
-                \end{subfigure}
-                \caption{Comparing histograms}
-                \label{fig:comparingHists}
-            \end{figure}
-                
-            The Figure \ref{fig:comparingHists} shows 
-
-	\subsection{Detection}
-		\subsubsection{Riot Detection in CCTV}
-	\subsection{Filters}
-		\subsubsection{Dark Channel Prior}
-		\subsubsection{Model Based Removal}
-		\subsubsection{Chromaticity Based Removal}
+    \subsection{Detection}
+        \subsubsection{Riot Detection in CCTV}
+        
+    \subsection{Filters}
+        \subsubsection{Dark Channel Prior}
+        \subsubsection{Model Based Removal}
+        \subsubsection{Chromaticity Based Removal}
         \subsubsection{Depth Estimates}
-		
-	\subsection{Combination}
-		\cmt{first find - then filter}
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%        THIS is the FIRST LAB setup and will not be in the Thesis....
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	\subsection{Test Setup}
-%        Within the project multiple setups have been created. With each iteration of prototypes the quality of realism and the coverage of the requirements improved.\\
-%        \newline
-%        Since laparoscopes, cauters and other medical equipment tend to be rare and expensive within causal working environments the first prototype \ref{sec:Prototyp} focuses on a way to avoid this kind of professional equipment. With minor success in this belonging, a more realistic setup is created this Acquirement setup \ref{sec:Acquirement} uses real medical devices with have been provided by Prof. Dr. Alfred Franz and the \textit{DKFZ \gls{DKFZ}}. \\
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FAKE DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%        \subsubsection{Prototype} \label{sec:Prototype}
-%            The first prototype was created to identify to most likely issues that could interfere with the data generation. \\
-%            Prototype \texttt{\textbf{MK\_I}} is assembled from common items, out of pure convenience. Since the organization of real, fresh porcine visceral organs as well as the acquisition of corresponding medical equipment created various organizational and bureaucratic hurdles. \\
-%            \newline
-%            The table \ref{table:usedHW_I} in combination with pictures \ref{fig:MK_I_schematic} and \ref{fig:MK_I_real} show the used Items and their constellation.
-%            \newline 
-%            
-%            \begin{table}[H]
-%                \centering
-%                \begin{tabular}{c|l|l}	
-%                    \textbf{REF} & \textbf{Device} & \textbf{Description} \\ 
-%                    \hline
-%                    \textbf {1} & Raspberry PI & controlling element\\
-%                    \textbf {2} & DSLR & Main Camera\\
-%                    \textbf {3} & Webcam & USB-Camera\\
-%                    \textbf {4} & Endoscope & close up shots\\
-%                    \textbf {5} & Environmental sensor & Temperature/humidity\\
-%                    \textbf {6} & Soldering Iron & improvised cauter\\
-%                    \textbf {7} & LED light & controlled light source\\
-%                \end{tabular}
-%                \label{table:usedHW_I}
-%                \caption{Used hardware in first prototype \\ numbers correspond to \ref{fig:MK_I_schematic} and \ref{fig:MK_I_real}}
-%            \end{table}
-%
-%            The phantom is shown in the picture \ref{fig:MK_I_real}. These pictures where taken during the process of video generation. 
-%            The schematic \ref{fig:MK_I_schmatic} shows the composition of the single components, with their connections to the internals. \\
-%            An example of the created data is shown in picture \ref{fig:MK_I_result} \\
-%            \newpage
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%		    \begin{figure*}[hp]
-%                \begin{subfigure}[b]{\textwidth}
-%                    \centering
-%                    \includegraphics[scale=0.34]{pics/setups/setup1_schematic.png}
-%                    \caption{\textbf{Schematic} \\
-%                        Plan for fist Prototype, with the intention to evaluate Cameras and Tools. \\ 
-%                        (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
-%                        \textit{Devices correspond to table \ref{tab:usedHW_I}.}
-%                    }
-%                    \label{fig:MK_I_schematic}
-%                \end{subfigure}
-%
-%                \hspace{1cm}
-%
-%                \begin{subfigure}[b]{\textwidth}
-%                    \centering
-%                    \includegraphics[scale=0.4]{pics/setups/setup1_real.png}
-%                    \caption{\textbf{Real} \\ 
-%                        Real setup based on Schematic\ref{fig:MK_I_schematic}. \\
-%                        (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
-%                        \textit{Devices correspond to table \ref{tab:usedHW_I}.}
-%                    }
-%                    \label{fig:MK_I_real}
-%                \end{subfigure}
-%
-%                \hspace{1cm}
-%
-%                \begin{subfigure}[b]{\textwidth}
-%                    \centering
-%                    \includegraphics[scale=0.2]{pics/setups/setup1_result.png}
-%                    \caption{\textbf{Result} \\ 
-%                        Images taken form the videos produced with Setup \ref{fig:MK_I_real}. \\
-%                        (1)DSLR-output, (2)Webcam-output, (3)Endocam-output.
-%                    }
-%                    \label{fig:MK_I_result}
-%                \end{subfigure}
-%
-%                \caption{fist Surgery phantom Prototype}
-%                \label{fig:MK_I}
-%            \end{figure*}
-%
-%            \newpage
-%
-%            \paragraph{lessons learned}
-%                Working with the first Prototype, resulted mostly in technical experience in the field of bench tests. \\
-%                The evaluation of cameras and cauters had the conclusion that a generation of realistic data will only be possible with professional tools. \\
-%                While the test of the laparoscopes phantom was quite successful, it created the need for further improvements, like a way to insert tools through a skin-like material. In all other means the phantom was suitable designed and fulfilled its purpose quite convenient. \\
-%                \newline
-%                The Prototype-setup therefore concluded that the given cameras are not sufficient to meet the requirements of the required data because:
-%                \begin{itemize}
-%                        \item their usage does not allow to perform the requested movements. 
-%                        \item the produced smoke was created using a soldering Iron. \\
-%                            Its Temperature curve is different to medical Thermokauters, which heat up way faster. \\
-%                            Besides this most cauterization is performed using electrocauters. This type of cauters will create different forms and composition of  smoke than a thermal cauter.
-%                \end{itemize}
-%
-%            First tests using the shown setup led to the assumption that the used cameras are not capable of creating realistic videos. \\
-%            The smokes physical aspect is depended to the form of its creation. Smoke created by lasers will look different than Smoke created by a incineration using electro-cauters or thermal-cauters.
-%
-%            \newpage    % Check if that makes it nice
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%% REAL DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection{Combination}
+
+\section{Evaluations Maßnahmen}
+    Hier sollte evtl ein bisschen CODE für die Histogramme rein kommen\\
+    kannst was schreiben darüber das du keine Mediziner mehr hast die dir bei der eval helfen
+    sowas halt....
