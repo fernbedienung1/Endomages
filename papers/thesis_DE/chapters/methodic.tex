@@ -1,10 +1,11 @@
-\section{Laparoskopische Laborversuche}
+\section{Generierung von Basisdaten}
+\subsection{Laparoskopische Laborversuche}
     Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden von Chirurgen entsorgt, da dieser ja die für Mediziner notwendigen Areale verdecken.
     Zusätzlich dazu spielen Rechtliche Aspekte eine Rolle, den Patientendaten dürfen nur mit ausdrücklicher Einverständnis des betreffenden Patienten veröffentlicht werden. \\
     Um die Benötigten Daten selbst zu generieren wurden 2 Versuchs reihen erstellt.\\
     Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und video aufnahmen von Rauch und Dampf erzeugen. Nach einem Fehlschlag dieses Vorhabens wurde unter deutlichem Mehraufwand ein zweiter Laborversuch initiiert welche brauchbare Ergebnisse lieferte.
 
-    \subsection{Erster Prototyp}
+    \subsubsection{Erster Prototyp}
         Der erste Prototyp besteht aus leicht zugänglichen Materialien und sollte das Problem der fehlenden endoskopischen Bilder mit wenig Aufwand lösen.\\
         Zum Einsatz kahmen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
         Hauptaugenmerk des ersten Prototypes war eine ''Machbarkeits Überprüfung'', bei der das Ziel war herauszufinden ob mittels der verwendeten Kameras Bilder erzeugt werden können die Laparoskopien ähnlich sind und sich als Basis für die Algorithmenentwicklung eignen. 
@@ -75,7 +76,7 @@
          Das Erkenntnisse des ersten Prototypen folgerten das eine sinnvolle Aufnahme von Daten nur mit medizinischen Endoskopen zu Stande kommen kann.\\
          
     \newpage   
-    \subsection{Zweiter Prototyp}
+    \subsubsection{Zweiter Prototyp}
 
         Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
         \begin{table}[H]
@@ -246,26 +247,23 @@
 
         \newpage
 \fi
-    \subsection{Reale Daten}
+    \subsubsection{Reale Daten}
         Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
         Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
         \newline
         Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
 
-\section{Bildbearbeitung}
+\section{Erkennen von Störungen}
+\section{Entfernen von Störungen}
 
-    \subsection{Detection}
-        \subsubsection{Riot Detection in CCTV}
-        
-    \subsection{Filters}
-        \subsubsection{Dark Channel Prior}
-        \subsubsection{Model Based Removal}
-        \subsubsection{Chromaticity Based Removal}
-        \subsubsection{Depth Estimates}
+    \subsection{Dark Channel Prior}
+    \subsection{Model Based Removal}
+    \subsection{Chromaticity Based Removal}
+    \subsection{Depth Estimates}
 
-    \subsection{Combination}
-
-\section{Evaluations Maßnahmen}
+\section{Evaluation}
+    \subsection{Eigene vs. Reale Daten}
+    \subsection{Rauchentfernung}
     Hier sollte evtl ein bisschen CODE für die Histogramme rein kommen\\
     kannst was schreiben darüber das du keine Mediziner mehr hast die dir bei der eval helfen
     sowas halt....
