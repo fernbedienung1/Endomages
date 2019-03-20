@@ -1,4 +1,4 @@
-function s_new = histogram_match(pic)
+function s_new = histogram_match(s_old, I_vals, type, params)
 
 if strcmp(type, 'cosine')
     if nargin~=4
@@ -41,7 +41,7 @@ F = cumsum(f);
 
 switch type 
 case 'uniform'
-    T = Imax*F;
+    T = I_max*F;
 case 'linear'
     T = I_max * sqrt(F);
 case 'sine'
