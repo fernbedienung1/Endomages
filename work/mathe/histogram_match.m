@@ -46,14 +46,20 @@ case 'linear'
     T = I_max * sqrt(F);
 case 'sine'
     T = real(I_max*acos(1 - 2*F)/pi);
-case 'cosine'
+case 'cosine'       % can be removed, a cosine doesn't make any sense...
     A = params.A;
     phi = params.phi;
     x_hat = fsolve(...
     @(x) (F- x - (A/(2*pi))*(sin(2*pi*x + phi) - sin(phi))), ...
     zeros(size(F)));
     T = I_max*x_hat;
+case 'custom'   % should now be equivalent to the uniform type
+    x_hat = fsolve(...
+        @(x) (x*F), ...
+        I_max
+    );
 end
+% TODO is to replace the Cosine with some DCP shit
 
 
 s_new = T(s_old - min(I_vals) + 1);

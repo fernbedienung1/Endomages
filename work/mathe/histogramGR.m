@@ -1,6 +1,6 @@
-function  [f, F] = histogra (pic)
-    f = 0;
-    F = 0;
+function  [f, F] = histogramGR (pic)
+    f = 0;  % Frequency histogram 
+    F = 0;  % cummulative Frequency (all between 1 and one)
     %read picture and create average over all colors (greyscale histogram)
 %    pic = imread(picture);
     s = sum(pic,3)/3;
