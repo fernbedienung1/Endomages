@@ -1,8 +1,6 @@
-function [adjusted] = histogramMatch(imageName, matchingFunc)
+function [adjusted] = histogramMatch(img, matchingFunc)
     %img = imread(imageName)
-    [frq, cumFreq] = histogram(imageName);
-    printf("dicho y hecho! \n")
-    whos
-    feval(matchingFunc, )
-    % called via defining function handle
-    % and then call histogramMatch("imname", handle)
+    [frq, cumFreq, I_vals] = histogram(img);
+    %need to adjust matchingfunc (with F / I_max) before evaluating it?
+    T = feval(matchingFunc, cumFreq);
+    adjusted = T(img -min(I_vals) +1);

@@ -1,5 +1,5 @@
-function [f,F] = histogram(imageName)
-    img = imread(imageName);
+function [f,F,I_vals] = histogram(img)
+%    img = imread(imageName);
     % get dimension
     dim = size(img);
     % create monochrome Picture by average colors
