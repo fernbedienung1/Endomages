@@ -15,5 +15,3 @@ function [f,F,I_vals] = histogram(img)
     h = hist(mono(:), I_vals);
     f = h/length(mono(:));
     F = cumsum(f);      % hihihihi cumsum 
-
-
