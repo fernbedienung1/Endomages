@@ -5,9 +5,9 @@ function [f,F,I_vals] = histogram(img)
     % create monochrome Picture by average colors
     mono = sum(img,3)/dim(3);
     % get maximum intensity of monochrome image
-    I_max = max(max(mono));
+%    I_max = max(max(mono));
     % create scale (all intesities)
-    I_vals = [1:1:I_max];
+    I_vals = [1:1:255];
 
     % Here happens the action
 
