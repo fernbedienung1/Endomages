@@ -96,19 +96,24 @@
 
     \subsubsection{Kontrast \& Gamma \\}
 
-    
+    Kontrast und Gamma werte sind typische Stellräder für die Bearbeitung von Bilddaten, sie sind wie Folgt mathematisch definiert:\\
+        \begin{equation} \label{eq:1}
+            I_{out} = {I_{in}}^{\gamma}
+        \end{equation}
         
-%        $$ g(x) = \alpha * f(x) + \beta $$
-%        in der gleichungsteht  $ i = zeile$ and $ j = spalte $ des Bildes mit RGB werten.\\ 
-%        $$ g(i,j) = \alpha * f(i,j) + \beta $$
-%        \begin{equation} \label{eq:1}
-%            O = (\frac{I}{255})^\gamma * 255
-%        \end{equation}
+        Wobei:
+        $ (I_{out}, I_{in}) \in {\Bbb R} \| \{0,1\} $\\
+        \newline
+        Für die Verwendung innerhalb von Computergrafiken müssen dieser werte auf unit8 konvertiert werden und enthalten so werte zwischen 0-255.\\
+        $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen.\\
+
 
 
     \subsubsection{Dark Channel prior  \& Histogram matching\\}
-        Der \gls{DCP} ist eine auf Kontrast basierende Erweiterung die Nebel und Rach aufgrund von geringen intensitäten in Farbkanälen 
-        Ja, hier musst du nochmal deutlicher nachlesen...
+        ''Histogram matching'' beschreibt eine weiter Möglichkeit der Bildbearbeitung die auf die auf Kontrast und Gamma Korrektur aufbaut, während Kontrast und gamma-Korrektur nur jeweils einen teil der Histogram kurve bearbeiten wird beim Histogram matching das Histogram des Bildes an eine beliebige Funktion angepasst. \\
+
+        Der \gls{DCP} greift dieses Prinzip des Histogram matchings auf und konzentrieren sich hier auf den dunklen teil des Bildes, sprich die Pixel mit kleinen werten. \\
+
 
     \subsubsection{Raucherkennung}
 
