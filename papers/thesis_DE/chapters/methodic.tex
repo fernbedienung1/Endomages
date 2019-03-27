@@ -253,17 +253,30 @@
         \newline
         Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
 
-\section{Erkennen von Störungen}
-\section{Entfernen von Störungen}
 
-    \subsection{Dark Channel Prior}
-    \subsection{Model Based Removal}
-    \subsection{Chromaticity Based Removal}
-    \subsection{Depth Estimates}
+\section{Daten Bearbeitung}
+    Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
+    Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
+    Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
+    \lstinline{
+        for i in videos/*; do 
+            ffmpeg -i \$i -vf scale=800:600 \$i.mp4
+        done
+    }
+    Für die Verwendung der erstellten Bildbearbeitungsprogamme werden Bilder im JPG-format verwendet, wobei das Format sowie die Auflösung der Bilder aus Einfachheit so gewählt wurde damit möglichst viele Sprachen und Bibliotheken eine Bearbeitung zulassen.\\
+    
+    Mittels Python scripten 
 
+
+    \subsection{Histogram Equalization}
+        Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen.
+        
 \section{Evaluation}
     \subsection{Eigene vs. Reale Daten}
-    \subsection{Rauchentfernung}
-    Hier sollte evtl ein bisschen CODE für die Histogramme rein kommen\\
-    kannst was schreiben darüber das du keine Mediziner mehr hast die dir bei der eval helfen
-    sowas halt....
+        \begin{itemize}
+                \item histogramme als Vergelichsbasis Real vs Own.
+                \item Expertenmeinung
+                \item
+        \end{itemize}
+    \subsection{Bildbearbeitung}
+

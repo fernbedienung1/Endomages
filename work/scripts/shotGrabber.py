@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if os.path.exists(args.output):     # remove the folder if i was lazy
+    if os.path.exists(args.output):     # remove the folder if exists
         shutil.rmtree(args.output)
 
     os.mkdir(args.output)
