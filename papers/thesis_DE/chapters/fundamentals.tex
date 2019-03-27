@@ -25,98 +25,6 @@
         \label{fig:realNoise}
     \end{figure}
 
-\section{Bild Bearbeitung}
-    
-    Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
-    Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt. Basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
-
-\subsection{Erkennung der Verschmutzungen}
-    Um die Bilder des Endoskopes so wenig wie möglich zu verändern und somit zu verfälschen ist es Ziel der Arbeit Verschmutzungen zu erkennen. 
-    Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das unverändert lassen von nicht verschmutzten Arealen im Bild. \\
-    \newline
-    Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen. Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
-
-    \paragraph{Rauch\\}
-        Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' Anwendungen für Überwachungskameras\cite{vision}.
-        Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analisiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
-
-    \paragraph{Dampf \& Beschlagen\\}
-        Ein bisher vernachlässigtes Problem besteht im beschlagen der Kamera durch Dampf.\\
-        Durch die bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
-        \cmt{Sources! - noch suchen!}
-
-    \paragraph{Flecken \& Spritzer\\}
-        Flecken und Spritzer auf der Kamera sind ein nicht besonders häufiges, jedoch schwerwiegenden Problem. Da meist die einzige Möglichkeit um diese Verunreinigungen zu beseitigen darin besteht das Endoskope aus dem Patienten zu entfernen um es zu reinigen.\\
-        Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
-        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.
-
-\subsection{Evaluierung von Bilddaten}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}[h]{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
-            \label{fig:hist_example_pic}
-            \caption{
-                Beispielbild mit großen Dunkelstellen sowie hohem Rot Anteil.
-            }
-        \end{subfigure}
-        ~
-        \begin{subfigure}[h]{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
-            \label{fig:hist_example_singles}
-            \caption{
-                Histogram des Bildes \ref{fig:hist_example_pic}
-                Jeder Farbkanal ist einzeln dargestellt.
-            }
-        \end{subfigure}
-        ~
-        \begin{subfigure}[h]{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
-            \label{fig:hist_example_hist}
-            \caption{
-                Kombiniertes Histogram der des Bildes \ref{fig:hist_example_pic}\\
-                \textbf{x-axis:}\hspace{1cm}Pixel wert\\
-                \textbf{y-axis:}\hspace{1cm}Anzahl der Pixel
-            }
-        \end{subfigure}
-        \caption{Bild eines Endoskopes und dessen Histogramme}
-        \label{fig:hist_example}
-    \end{figure}
-
-\newpage
-    
-    Das Bild \ref{fig:hist_example} zeigt eine Laparoskopische Szene, und deren Histogram. 
-    Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\
-    Dies ermöglicht den Vergleich der Bilder auf Basis ihrer Farbzusammenstellung.\\
-    \newline
-    Beispielsweise Dominieren in Bild \ref{fig:hist_example} die Schwarze linke Seite des Bildes sowie die Rötlichen Farben des Gewebes rechts im Bild.
-    Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
-    \newline
-    Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
-
-    \subsubsection{Kontrast \& Gamma \\}
-
-    Kontrast und Gamma werte sind typische Stellräder für die Bearbeitung von Bilddaten, sie sind wie Folgt mathematisch definiert:\\
-        \begin{equation} \label{eq:1}
-            I_{out} = {I_{in}}^{\gamma}
-        \end{equation}
-        
-        Wobei:
-        $ (I_{out}, I_{in}) \in {\Bbb R} \| \{0,1\} $\\
-        \newline
-        Für die Verwendung innerhalb von Computergrafiken müssen dieser werte auf unit8 konvertiert werden und enthalten so werte zwischen 0-255.\\
-        $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen.\\
-
-
-
-    \subsubsection{Dark Channel prior  \& Histogram matching\\}
-        ''Histogram matching'' beschreibt eine weiter Möglichkeit der Bildbearbeitung die auf die auf Kontrast und Gamma Korrektur aufbaut, während Kontrast und gamma-Korrektur nur jeweils einen teil der Histogram kurve bearbeiten wird beim Histogram matching das Histogram des Bildes an eine beliebige Funktion angepasst. \\
-
-        Der \gls{DCP} greift dieses Prinzip des Histogram matchings auf und konzentrieren sich hier auf den dunklen teil des Bildes, sprich die Pixel mit kleinen werten. \\
-
-
-    \subsubsection{Raucherkennung}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PREQUISITES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,3 +105,122 @@
     Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge, etc.\\
     \newline
     
+\section{Bild Bearbeitung}
+    
+    Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
+    Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt. Basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
+
+\subsection{Erkennung der Verschmutzungen}
+    Um die Bilder des Endoskopes so wenig wie möglich zu verändern und somit zu verfälschen ist es Ziel der Arbeit Verschmutzungen zu erkennen. 
+    Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das unverändert lassen von nicht verschmutzten Arealen im Bild. \\
+    \newline
+    Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen. Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
+
+    \paragraph{Rauch\\}
+        Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' Anwendungen für Überwachungskameras\cite{vision}.
+        Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analisiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
+
+    \paragraph{Dampf \& Beschlagen\\}
+        Ein bisher vernachlässigtes Problem besteht im beschlagen der Kamera durch Dampf.\\
+        Durch die bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
+        \cmt{Sources! - noch suchen!}
+
+    \paragraph{Flecken \& Spritzer\\}
+        Flecken und Spritzer auf der Kamera sind ein nicht besonders häufiges, jedoch schwerwiegenden Problem. Da meist die einzige Möglichkeit um diese Verunreinigungen zu beseitigen darin besteht das Endoskope aus dem Patienten zu entfernen um es zu reinigen.\\
+        Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
+        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.
+
+\subsection{Evaluierung von Bilddaten}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
+            \label{fig:hist_example_pic}
+            \caption{
+                Beispielbild mit großen Dunkelstellen sowie hohem Rot Anteil.
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
+            \label{fig:hist_example_singles}
+            \caption{
+                Histogram des Bildes \ref{fig:hist_example_pic}
+                Jeder Farbkanal ist einzeln dargestellt.
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
+            \label{fig:hist_example_hist}
+            \caption{
+                Kombiniertes Histogram der des Bildes \ref{fig:hist_example_pic}\\
+                \textbf{x-axis:}\hspace{1cm}Pixel wert\\
+                \textbf{y-axis:}\hspace{1cm}Anzahl der Pixel
+            }
+        \end{subfigure}
+        \caption{Bild eines Endoskopes und dessen Histogramme}
+        \label{fig:hist_example}
+    \end{figure}
+
+\newpage
+    
+    Das Bild \ref{fig:hist_example} zeigt eine Laparoskopische Szene, und deren Histogram. 
+    Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\
+    Dies ermöglicht den Vergleich der Bilder auf Basis ihrer Farbzusammenstellung.\\
+    \newline
+    Beispielsweise Dominieren in Bild \ref{fig:hist_example} die Schwarze linke Seite des Bildes sowie die Rötlichen Farben des Gewebes rechts im Bild.
+    Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
+    \newline
+    Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
+
+    \subsubsection{Kontrast, Helligkeit \& Gamma \\}
+
+    Kontrast, Helligkeit und Gamma werte sind typische Stellräder für die Bearbeitung von Bilddaten.
+    Diese Anpassungen bestehen aus mathematischen Operationen die auf fertige Bilder angewandt werden, weswegen sie sich optimal für eine reine Softwarelösung eignen. \\
+    Abbildung \ref{fig:contrastCurves} zeigt Veränderung der Histograme bei einer Anpassung der jeweiligen Stellgröße.
+    
+    \begin{figure}[H]
+        \includegraphics[width=0.5\textwidth]{pics/net/Helligkeit_Kontrast_Gamma.png}
+        \label{fig:contrastCurves}
+        \caption{Histogramme für Helligkeit-, Kontrast-, und Gamma Anpassungen}
+        %Das bild ist aus Wiki.....evtl bissle scheiße?
+    \end{figure}
+
+    Um die Bilder im entsprechenden Maße zu bearbeiten werden deren Histogramme an entsprechende Funktionen angeglichen.\\
+    Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
+
+    \begin{equation} \label{eq:1}
+        I_{out} = {I_{in}}^{\gamma}
+    \end{equation}
+    
+    Wobei:
+    $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
+    \newline
+    $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
+    Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
+    \begin{equation} \label{eq:2}
+        I_{out} = I_{in} + I_{helligkeit}
+    \end{equation}
+
+    Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
+    \begin{equation} \label{eq:3}
+        I_{out} = I_{in} * sig(I_{kontrast})
+    \end{equation}
+    wobei die Sigmoid-Funktion wie folgt definiert ist:\\
+    $$ sig(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x} $$
+
+    Eine vollständige Anpassung kann somit aus der Kombination der Formeln:
+    \ref{eq:1}, \ref{eq:2} und \ref{eq:3} erreicht werden. Daraus ergibt sich die Formel:
+
+    \begin{equation} \label{eq:4}
+        I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
+    \end{equation}
+
+    Dies ist die Grundlage für die ''Histogram matching''. \\
+    Beim Histogram matching 
+    Der \gls{DCP} greift dieses Prinzip des Histogram matchings auf und konzentrieren sich hier auf den dunklen teil des Bildes, sprich die Pixel mit kleinen werten. \\
+
+
+    \subsubsection{Raucherkennung}
+

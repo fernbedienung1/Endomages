@@ -1,8 +1,8 @@
 %reading Images from pic folder
-own = imread("../pic/own.jpg");
-real = imread("../pic/real.jpg");
+own = imread("../pic/smoke.jpg");
+%real = imread("../pic/real.jpg");
 [own_f, own_F] = histogram(own);
-[real_f, real_F] = histogram(real);
+%[real_f, real_F] = histogram(real);
 
 % Matching Functions as handles
 g = @(x) sqrt(x);
@@ -23,16 +23,16 @@ adjusted_h_own = imread("out/adjusted_h_own.jpg");
 [own_h_f, own_h_F] = histogram(adjusted_h_own);
 
 
-adjusted_g_real = histogramMatch(real, g);
-adjusted_h_real = histogramMatch(real, h);
+%adjusted_g_real = histogramMatch(real, g);
+%adjusted_h_real = histogramMatch(real, h);
 % super stupid workaround - TODO: remove before you show this to anyone -.-
-imwrite(adjusted_g_real, "out/adjusted_g_real.jpg");
-imwrite(adjusted_h_real, "out/adjusted_h_real.jpg");
-adjusted_g_real = imread("out/adjusted_g_real.jpg");
-adjusted_h_real = imread("out/adjusted_h_real.jpg");
+%imwrite(adjusted_g_real, "out/adjusted_g_real.jpg");
+%imwrite(adjusted_h_real, "out/adjusted_h_real.jpg");
+%adjusted_g_real = imread("out/adjusted_g_real.jpg");
+%adjusted_h_real = imread("out/adjusted_h_real.jpg");
 
-[real_g_f, real_g_F] = histogram(adjusted_g_real);
-[real_h_f, real_h_F] = histogram(adjusted_h_real);
+%[real_g_f, real_g_F] = histogram(adjusted_g_real);
+%[real_h_f, real_h_F] = histogram(adjusted_h_real);
 
 % finaly display them
 fig1 = figure(1); clf;
@@ -79,43 +79,44 @@ title("cumulated Freq Hist")
 %------------------------------------------------------------------------------
 %------------------------------------------------------------------------------
 
-fig2 = figure(2); clf;
-title("Original Image")
+%fig2 = figure(2); clf;
+%title("Original Image")
 
-subplot(3,3,1)
-imshow(real)
-title("Input")
+%subplot(3,3,1)
+%imshow(real)
+%title("Input")
 
-subplot(3,3,2)
-plot(real_f)
-title("frequency Histogram")
-
-subplot(3,3,3)
-plot(real_F)
-title("cumulated Freq Hist")
-%------------------------------------------------------------------------------
-
-subplot(3,3,4)
-imshow(adjusted_g_real)
-title("squareRoot filter")
-
-subplot(3,3,5)
-plot(real_g_f)
-title("frequency Histogram")
-
-subplot(3,3,6)
-plot(real_g_F)
-title("cumulated Freq Hist")
-%------------------------------------------------------------------------------
-
-subplot(3,3,7)
-imshow(adjusted_h_real)
-title("squared filter")
-
-subplot(3,3,8)
-plot(real_h_f)
-title("frequency Histogram")
-
-subplot(3,3,9)
-plot(real_h_F)
-title("cumulated Freq Hist")
+%subplot(3,3,2)
+%plot(real_f)
+%title("frequency Histogram")
+%
+%subplot(3,3,3)
+%plot(real_F)
+%title("cumulated Freq Hist")
+%%------------------------------------------------------------------------------
+%
+%subplot(3,3,4)
+%imshow(adjusted_g_real)
+%title("squareRoot filter")
+%
+%subplot(3,3,5)
+%plot(real_g_f)
+%title("frequency Histogram")
+%
+%subplot(3,3,6)
+%plot(real_g_F)
+%title("cumulated Freq Hist")
+%%------------------------------------------------------------------------------
+%
+%subplot(3,3,7)
+%imshow(adjusted_h_real)
+%title("squared filter")
+%
+%subplot(3,3,8)
+%plot(real_h_f)
+%title("frequency Histogram")
+%
+%subplot(3,3,9)
+%plot(real_h_F)
+%title("cumulated Freq Hist")
+pause;
