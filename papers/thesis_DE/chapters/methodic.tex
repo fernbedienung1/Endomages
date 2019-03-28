@@ -219,55 +219,54 @@
                     Pic 1
                 }
                 \label{fig:dynamic_1}
-            \end{subfigure}
-            ~       % when I am Right, this should mean that they are placed next to each other
-            \begin{subfigure}[b]{0.3\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s2.jpg}
-                \caption{\textbf{more dynamicsmoke} \\ 
-                    Picture 2
-                }
-                \label{fig:dynamic_2}
-            \end{subfigure}
-            ~           
-            \begin{subfigure}[b]{0.3\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{pics/ownData/old_stain_s2.jpg}
-                \caption{\textbf{even more dynamic smoke} \\ 
-                    Pictu 3
-                }
-                \label{fig:dynamic_3}
-            \end{subfigure}
+        \end{subfigure}
+        ~       % when I am Right, this should mean that they are placed next to each other
+        \begin{subfigure}[b]{0.3\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s2.jpg}
+            \caption{\textbf{more dynamicsmoke} \\ 
+                Picture 2
+            }
+            \label{fig:dynamic_2}
+        \end{subfigure}
+        ~           
+        \begin{subfigure}[b]{0.3\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pics/ownData/old_stain_s2.jpg}
+            \caption{\textbf{even more dynamic smoke} \\ 
+                Pictu 3
+            }
+            \label{fig:dynamic_3}
+        \end{subfigure}
 
-            \caption{Results of the Data Acquirement}
-            \label{fig:DataAcq}
-        \end{figure*}
-        % This somehow does not display as expected....
-        % maybe add even more pictures to fill the page.... I mean: there are more then enough...
+        \caption{Results of the Data Acquirement}
+        \label{fig:DataAcq}
+    \end{figure*}
+    % This somehow does not display as expected....
+    % maybe add even more pictures to fill the page.... I mean: there are more then enough...
 
-        \newpage
+    \newpage
 \fi
-    \subsubsection{Reale Daten}
-        Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
-        Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
-        \newline
-        Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
+\subsubsection{Reale Daten}
+    Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
+    Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
+    \newline
+    Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
 
 
 \section{Daten Bearbeitung}
-    Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
-    Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
-    Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
-    \lstinline{
-        for i in videos/*; do 
-            ffmpeg -i \$i -vf scale=800:600 \$i.mp4
-        done
-    }
+Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
+Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
+Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
+
+\begin{lstlisting}[language=bash, numbers=none]
+    for i in ./VideoFiles; do 
+        ffmpeg -vf scale=800x600 -i $i $i.mp3
+    done
+\end{lstlisting}
+
     Für die Verwendung der erstellten Bildbearbeitungsprogamme werden Bilder im JPG-format verwendet, wobei das Format sowie die Auflösung der Bilder aus Einfachheit so gewählt wurde damit möglichst viele Sprachen und Bibliotheken eine Bearbeitung zulassen.\\
     
-    Mittels Python scripten 
-
-
     \subsection{Histogram Equalization}
         Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen.
         

@@ -1,5 +1,5 @@
 %reading Images from pic folder
-own = imread("../pic/smoke.jpg");
+own = imread("../pic/example_pic_0.jpg");
 %real = imread("../pic/real.jpg");
 [own_f, own_F] = histogram(own);
 %[real_f, real_F] = histogram(real);

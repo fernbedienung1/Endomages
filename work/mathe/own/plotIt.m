@@ -1,5 +1,5 @@
 %reading Images from pic folder
-own = imread("../pic/smoke.jpg");
+own = imread("../pic/example_pic_0.jpg");
 %real = imread("../pic/real.jpg");
 
 % get the histograms - just to show them nicely

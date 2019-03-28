@@ -222,8 +222,47 @@
     \begin{equation} \label{eq:5}
         I_{out} = T(I_{in})
     \end{equation}
-    Wobei sich die Transformationsmatrix 
 
-    \subsubsection{Raucherkennung}
+    Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
+    
+    
+    \begin{figure}[H]
+        \begin{subfigure}[h]{0.4\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
+            \label{fig:contrast}
+            \caption{
+                Änderung der Helligkeit um 10\%
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.4\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
+            \label{fig:contrast}
+            \caption{
+                Änderung der Helligkeit um 10\%
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.4\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
+            \label{fig:contrast}
+            \caption{
+                Änderung des Gamma-wertes um 10\%
+            }
+        \end{subfigure}
+        ~
+        \begin{subfigure}[h]{0.4\textwidth}
+            \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
+            \label{fig:contrast}
+            \caption{
+                Änderung des Kontrastes um 10\%
+            }
+        \end{subfigure}
+        \label{fig:imageAdjust}
+        \caption{Bildbearbeitung von intraoperativen Bildern}
+        %Das bild ist aus Wiki.....evtl bissle scheiße?
+    \end{figure}
+
+    \subsubsection{Rauch Erkennung}
 
 
