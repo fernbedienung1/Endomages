@@ -253,22 +253,123 @@
     \newline
     Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
 
-
 \section{Daten Bearbeitung}
 Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
 Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
 Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
 
-\begin{lstlisting}[language=bash, numbers=none]
+    \subsection{Vorverarbeitung}
+        Ziel der Vorverarbeitung ist es die aus den Versuchen generierten Video Rohdaten für die Implementation vorzubereiten.
+        Beispielsweise werden für die ersten versuche der Bildbearbeitung mit den bereits erwähnten Gamma/Kontrast/Helligkeit -filtern einzelne Bilder (Frames) der Videos benötigt.\\
+        Die Vorverarbeitung soll die Daten aufbereiten um komfortables arbeiten mit ihnen zu ermöglichen, indem die Videos in Standard Formate mit kleineren Größen konvertiert werden. Mit den Bildern wird gleich verfahren.\\
+        \newline
+
+        Durch die Verwendung einer Bash auf einem Linuxsystem kann mittels ffmpeg in wenigen Zeilen die Konversion aller Video-Dateien angestoßen werden \ref{code:vidConf}.
+
+\begin{lstlisting}[language=bash, numbers=none, caption={converting avi to scaled mp4}, label={code:vidConf}]
     for i in ./VideoFiles; do 
-        ffmpeg -vf scale=800x600 -i $i $i.mp3
+        ffmpeg -vf scale=800x600 -i $i $i.mp4
     done
 \end{lstlisting}
+        Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format das die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
+        \begin{table}
+            \begin{tabular}{c|c|c|c}
+                Konversion & Format & Dateigröße & Geometrie\\
+                \hline
+                input: & AVI & 837MB & 1920x1080\\
+                output: & MP4 & 9,4MB & 800x600 \\
+            \end{tabular}
+            \caption{ File:\\
+                Stereo-LiverTest-Smoke-RotLapAxis-#1-Right.avi\\
+                Informationen der Konversion.
+            }
+            \label{tab:formatVid}
+        \end{table}
 
-    Für die Verwendung der erstellten Bildbearbeitungsprogamme werden Bilder im JPG-format verwendet, wobei das Format sowie die Auflösung der Bilder aus Einfachheit so gewählt wurde damit möglichst viele Sprachen und Bibliotheken eine Bearbeitung zulassen.\\
-    
-    \subsection{Histogram Equalization}
-        Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen.
+        
+        %TODO: repair this here...
+        Für die Verwendung der erstellten Bildbearbeitungsprogamme werden Bilder im JPG-format verwendet, wobei das Format sowie die Auflösung der Bilder aus Einfachheit so gewählt wurde damit möglichst viele Sprachen und Bibliotheken eine Bearbeitung zulassen.\\
+
+
+
+    \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
+        Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
+
+        \begin{equation} \label{eq:1}
+            I_{out} = {I_{in}}^{\gamma}
+        \end{equation}
+        
+        Wobei:
+        $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
+        \newline
+        $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
+        Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
+        \begin{equation} \label{eq:2}
+            I_{out} = I_{in} + I_{helligkeit}
+        \end{equation}
+
+        Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
+        \begin{equation} \label{eq:3}
+            I_{out} = I_{in} * sig(I_{kontrast})
+        \end{equation}
+        wobei die Sigmoid-Funktion wie folgt definiert ist:\\
+        $$ sig(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x} $$
+
+        Eine vollständige Anpassung kann somit aus der Kombination der Formeln:
+        \ref{eq:1}, \ref{eq:2} und \ref{eq:3} erreicht werden. Daraus ergibt sich die Formel:
+
+        \begin{equation} \label{eq:4}
+            I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
+        \end{equation}
+
+        Dies ist die Grundlage für die ''Histogram matching''. \\
+        Beim Histogram Malching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
+        \begin{equation} \label{eq:5}
+            I_{out} = T(I_{in})
+        \end{equation}
+
+        Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
+        
+        
+        \begin{figure}[H]
+            \begin{subfigure}[h]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
+                \label{fig:contrast}
+                \caption{
+                    Änderung der Helligkeit um 10\%
+                }
+            \end{subfigure}
+            ~
+            \begin{subfigure}[h]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
+                \label{fig:contrast}
+                \caption{
+                    Änderung der Helligkeit um 10\%
+                }
+            \end{subfigure}
+            ~
+            \begin{subfigure}[h]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
+                \label{fig:contrast}
+                \caption{
+                    Änderung des Gamma-wertes um 10\%
+                }
+            \end{subfigure}
+            ~
+            \begin{subfigure}[h]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
+                \label{fig:contrast}
+                \caption{
+                    Änderung des Kontrastes um 10\%
+                }
+            \end{subfigure}
+            \label{fig:imageAdjust}
+            \caption{Bildbearbeitung von intraoperativen Bildern}
+            %Das bild ist aus Wiki.....evtl bissle scheiße?
+        \end{figure}
+        
+        \subsection{Histogram Equalization}
+            Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen.
         
 \section{Evaluation}
     \subsection{Eigene vs. Reale Daten}

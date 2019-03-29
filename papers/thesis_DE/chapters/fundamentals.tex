@@ -1,4 +1,3 @@
-\fuck{Noch keine Quellen eingeführt} \\
 \section{Verunreinigungen in Laparoskopischen Eingriffen}
     Laparoskopien sind minimal invasiven Eingriffe, bei denen ein Endoskope in ein Pneumoperitoneum eingeführt wird, um so Sichtkontakt zum Operationsgebiet zu erhalten. Die Bilder die das Endoskope hierbei aufnimmt und mittels Monitor den Chirurgen zur Verfügung stellt sind oft die einzige Möglichkeit zur Navigation innerhalb des Patienten.\\
     \newline
@@ -173,95 +172,6 @@
     Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
     \newline
     Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
-
-    \subsubsection{Kontrast, Helligkeit \& Gamma \\}
-
-    Kontrast, Helligkeit und Gamma werte sind typische Stellräder für die Bearbeitung von Bilddaten.
-    Diese Anpassungen bestehen aus mathematischen Operationen die auf fertige Bilder angewandt werden, weswegen sie sich optimal für eine reine Softwarelösung eignen. \\
-    Abbildung \ref{fig:contrastCurves} zeigt Veränderung der Histograme bei einer Anpassung der jeweiligen Stellgröße.
-    
-    \begin{figure}[H]
-        \includegraphics[width=0.5\textwidth]{pics/net/Helligkeit_Kontrast_Gamma.png}
-        \label{fig:contrastCurves}
-        \caption{Histogramme für Helligkeit-, Kontrast-, und Gamma Anpassungen}
-        %Das bild ist aus Wiki.....evtl bissle scheiße?
-    \end{figure}
-
-    Um die Bilder im entsprechenden Maße zu bearbeiten werden deren Histogramme an entsprechende Funktionen angeglichen.\\
-    Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
-
-    \begin{equation} \label{eq:1}
-        I_{out} = {I_{in}}^{\gamma}
-    \end{equation}
-    
-    Wobei:
-    $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
-    \newline
-    $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
-    Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
-    \begin{equation} \label{eq:2}
-        I_{out} = I_{in} + I_{helligkeit}
-    \end{equation}
-
-    Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
-    \begin{equation} \label{eq:3}
-        I_{out} = I_{in} * sig(I_{kontrast})
-    \end{equation}
-    wobei die Sigmoid-Funktion wie folgt definiert ist:\\
-    $$ sig(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x} $$
-
-    Eine vollständige Anpassung kann somit aus der Kombination der Formeln:
-    \ref{eq:1}, \ref{eq:2} und \ref{eq:3} erreicht werden. Daraus ergibt sich die Formel:
-
-    \begin{equation} \label{eq:4}
-        I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
-    \end{equation}
-
-    Dies ist die Grundlage für die ''Histogram matching''. \\
-    Beim Histogram Malching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
-    \begin{equation} \label{eq:5}
-        I_{out} = T(I_{in})
-    \end{equation}
-
-    Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
-    
-    
-    \begin{figure}[H]
-        \begin{subfigure}[h]{0.4\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
-            \label{fig:contrast}
-            \caption{
-                Änderung der Helligkeit um 10\%
-            }
-        \end{subfigure}
-        ~
-        \begin{subfigure}[h]{0.4\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
-            \label{fig:contrast}
-            \caption{
-                Änderung der Helligkeit um 10\%
-            }
-        \end{subfigure}
-        ~
-        \begin{subfigure}[h]{0.4\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
-            \label{fig:contrast}
-            \caption{
-                Änderung des Gamma-wertes um 10\%
-            }
-        \end{subfigure}
-        ~
-        \begin{subfigure}[h]{0.4\textwidth}
-            \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
-            \label{fig:contrast}
-            \caption{
-                Änderung des Kontrastes um 10\%
-            }
-        \end{subfigure}
-        \label{fig:imageAdjust}
-        \caption{Bildbearbeitung von intraoperativen Bildern}
-        %Das bild ist aus Wiki.....evtl bissle scheiße?
-    \end{figure}
 
     \subsubsection{Rauch Erkennung}
 
