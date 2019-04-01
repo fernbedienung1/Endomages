@@ -28,6 +28,8 @@
             \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}}
         \end{table}
 
+        \fuck{ include your PY - captureing Scripts}
+
 %%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \newpage
 	    \begin{figure*}[hp]
@@ -279,18 +281,18 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
                 input: & AVI & 837MB & 1920x1080\\
                 output: & MP4 & 9,4MB & 800x600 \\
             \end{tabular}
-            \caption{ File:\\
-                Stereo-LiverTest-Smoke-RotLapAxis-#1-Right.avi\\
-                Informationen der Konversion.
+            \caption{Informationen der Konversion\\
+                File:\\
+                Stereo-LiverTest-Smoke-RotLapAxis-\#1-Right.avi
             }
             \label{tab:formatVid}
         \end{table}
 
-        
-        %TODO: repair this here...
-        Für die Verwendung der erstellten Bildbearbeitungsprogamme werden Bilder im JPG-format verwendet, wobei das Format sowie die Auflösung der Bilder aus Einfachheit so gewählt wurde damit möglichst viele Sprachen und Bibliotheken eine Bearbeitung zulassen.\\
-
-
+        der Coder \ref{code:vidConf} wandelt die Eingabe Videos in ein besser handhabbares Format um \ref{tab:formateVid}. \\
+        Aus den MP4 Videos ist es nun leicht Bilder zu extrahieren, die Herangehensweise hierbei ist es jede Sekunde des Videos einen Screenshot zu erstellen.\\
+        das Skript \ref{code:shotGrabber}.      % besser noch als anhang hintendran? - pdf aus vim?
+        \lstinputlisting[language=Python, caption={script zur sekündlichen Erstellung von Screenshots}, label={code:shotGrabber}, firstline=14, lastline=28]
+        {../../work/scripts/shotGrabber.py}         % okay, lets check if this works nice...
 
     \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
         Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
@@ -370,13 +372,20 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         
         \subsection{Histogram Equalization}
             Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen.
+            \begin{itemize}
+                \item Octave code 
+                \item python code der das gleiche macht?
+            \end{itemize}
         
 \section{Evaluation}
     \subsection{Eigene vs. Reale Daten}
         \begin{itemize}
-                \item histogramme als Vergelichsbasis Real vs Own.
-                \item Expertenmeinung
-                \item
+            \item histogramme als Vergelichsbasis Real vs Own.
+            \item Expertenmeinung- joa, kannste vergessen erreichst ja keinen 
         \end{itemize}
     \subsection{Bildbearbeitung}
+        \begin{itemize} 
+            \item zeigst halt wie weit du gekommen bist....
+            \item also genau die bilder über dir.... mierda...
+        \end{itemize} 
 

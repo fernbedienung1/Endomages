@@ -11,6 +11,7 @@
 \usepackage{caption}          % Figure-Captions formatieren
 \usepackage{hyperref}	      % for linking
 \usepackage{graphicx}		  % for Pics
+\usepackage{pdfpages}         % insertion of PDF files
 \usepackage{listings}		% For code
 \usepackage{color}
 \usepackage{float}
@@ -123,6 +124,8 @@
 \end{abstract}
 \input{literature/thesis.gls}
 
+\chapter*{Danksagungen}	
+
 \tableofcontents
 
 \chapter{Einführung}\label{sec:Introduction} 
@@ -140,8 +143,8 @@
 %\chapter{Zusammenfassung}\label{sec:Conclusion} 
 %	\input{chapters/conclusion.tex}
 
-%\chapter{Acknowledgements}	
-
+\chapter*{Appendix}
+    \input{pdf/code/collector.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Content of Bib and Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

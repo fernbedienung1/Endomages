@@ -1,8 +1,8 @@
 %!PS-Adobe-3.0
-%%Title: scripts/shotGrabber.py
+%%Title: shotGrabber.py
 %%For: m
 %%Creator: VIM - Vi IMproved 8.0 (2016 Sep 12)
-%%CreationDate: Wed Mar 27 16:08:46 2019
+%%CreationDate: Mon Apr  1 12:01:09 2019
 %%DocumentData: Clean8Bit
 %%Orientation: Portrait
 %%Pages: (atend)
@@ -146,7 +146,7 @@ sv
 F0 sf
 %%EndPageSetup
 F1 sf
-(scripts/shotGrabber.py                                                          Page 1)61.2 744.9 ms
+(shotGrabber.py                                                                  Page 1)61.2 744.9 ms
 F2 sf
 0.298 0.294 0.271 r
 (#!/usr/bin/env  python3)61.2 724.9 ms
@@ -172,26 +172,31 @@ F0 sf
 0 g
 ( os)s
 0.271 0.388 0.475 r
-(def)61.2 634.9 ms
+(def)61.2 644.9 ms
 0 g
 ( )s
 0.396 0.451 0.255 r
 (main)s
 0 g
 (\(inFile, outFolder\):)s
-(    vid = cv2.VideoCapture\(inFile\))61.2 624.9 ms
-(    cnt = )61.2 604.9 ms
+(    vid = cv2.VideoCapture\(inFile\))61.2 634.9 ms
+(    cnt = )61.2 614.9 ms
 0.447 0.235 0.212 r
 (0)s
 0 g
-(    start = time.time\(\))61.2 594.9 ms
-(    )61.2 584.9 ms
+(    start = time.time\(\)     )61.2 604.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# start time needed to calculate the second passed)s
+F0 sf
+0 g
+(    )61.2 594.9 ms
 0.271 0.388 0.475 r
 (while)s
 0 g
 ( vid.isOpened\(\):)s
-(        ret, frame = vid.read\(\))61.2 574.9 ms
-(        )61.2 564.9 ms
+(        ret, frame = vid.read\(\))61.2 584.9 ms
+(        )61.2 574.9 ms
 0.271 0.388 0.475 r
 (if)s
 0 g
@@ -207,10 +212,21 @@ F0 sf
 0.396 0.451 0.255 r
 (None)s
 0 g
-(\):)s
-(            )61.2 554.9 ms
+(\):   )s
+F2 sf
+0.298 0.294 0.271 r
+(# check if video is over \(frame valid?\))s
+F0 sf
+0 g
+(            )61.2 564.9 ms
 0.271 0.388 0.475 r
 (break)s
+0 g
+(        )61.2 544.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# show the frame - otherfwise video is procced to fast.)s
+F0 sf
 0 g
 (        cv2.imshow\()61.2 534.9 ms
 F2 sf
@@ -219,7 +235,13 @@ F2 sf
 F0 sf
 0 g
 (, frame\))s
-(        )61.2 514.9 ms
+(        )61.2 504.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# take frame and write it as Screenshot)s
+F0 sf
+0 g
+(        )61.2 494.9 ms
 0.271 0.388 0.475 r
 (if)s
 0 g
@@ -228,14 +250,14 @@ F0 sf
 (1)s
 0 g
 ( <= time.time\(\):)s
-(            cv2.imwrite\()61.2 504.9 ms
+(            cv2.imwrite\()61.2 484.9 ms
 F2 sf
 0.29 0.447 0.165 r
 ("%s/shot_%d.jpg")s
 F0 sf
 0 g
 ( % \(outFolder, cnt\), frame\))s
-(            )61.2 494.9 ms
+(            )61.2 474.9 ms
 0.396 0.451 0.255 r
 (print)s
 0 g
@@ -252,12 +274,18 @@ F2 sf
 F0 sf
 0 g
 ( % \(outFolder,inFile, cnt\)\))s
-(            cnt += )61.2 484.9 ms
+(            cnt += )61.2 464.9 ms
 0.447 0.235 0.212 r
 (1)s
 0 g
-(            start = time.time\(\))61.2 474.9 ms
-(        )61.2 454.9 ms
+(            start = time.time\(\))61.2 454.9 ms
+(        )61.2 434.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# emergency break - manually killable by pressing q or ESC)s
+F0 sf
+0 g
+(        )61.2 424.9 ms
 0.271 0.388 0.475 r
 (if)s
 0 g
@@ -290,7 +318,7 @@ F0 sf
 (113)s
 0 g
 (:)s
-(            )61.2 444.9 ms
+(            )61.2 414.9 ms
 0.271 0.388 0.475 r
 (break)s
 0 g
@@ -300,13 +328,13 @@ F2 sf
 (# thats ESC or 'q')s
 F0 sf
 0 g
-(    vid.release\(\))61.2 424.9 ms
+(    vid.release\(\))61.2 394.9 ms
 F2 sf
 0.298 0.294 0.271 r
-(# This makes only the Parsing, actual "inteligence" happens above)61.2 394.9 ms
+(# This makes only the Parsing, actual "inteligence" happens above)61.2 364.9 ms
 F0 sf
 0.271 0.388 0.475 r
-(if)61.2 384.9 ms
+(if)61.2 354.9 ms
 0 g
 ( __name__ == )s
 F2 sf
@@ -315,15 +343,21 @@ F2 sf
 F0 sf
 0 g
 (:)s
-(    parser = argparse.ArgumentParser\(description=)61.2 374.9 ms
+(    )61.2 344.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# configureation of argumentparser input from Bash)s
+F0 sf
+0 g
+(    parser = argparse.ArgumentParser\(description=)61.2 334.9 ms
 F2 sf
 0.29 0.447 0.165 r
 ('creats screenshots every second and )s
-(writs them to given Folder')61.2 364.9 ms
+(writs them to given Folder')61.2 324.9 ms
 F0 sf
 0 g
 (\))s
-(    parser.add_argument\()61.2 354.9 ms
+(    parser.add_argument\()61.2 314.9 ms
 F2 sf
 0.29 0.447 0.165 r
 ("video")s
@@ -340,7 +374,7 @@ F2 sf
 F0 sf
 0 g
 (\))s
-(    parser.add_argument\()61.2 344.9 ms
+(    parser.add_argument\()61.2 304.9 ms
 F2 sf
 0.29 0.447 0.165 r
 ("-o")s
@@ -360,7 +394,7 @@ F0 sf
 F2 sf
 0.29 0.447 0.165 r
 ("specify output directory name for Resu)s
-(lting Video [MP4]")61.2 334.9 ms
+(lting Video [MP4]")61.2 294.9 ms
 F0 sf
 0 g
 (, default=)s
@@ -370,8 +404,14 @@ F2 sf
 F0 sf
 0 g
 (\))s
-(    args = parser.parse_args\(\))61.2 314.9 ms
-(    )61.2 294.9 ms
+(    )61.2 284.9 ms
+F2 sf
+0.298 0.294 0.271 r
+(# to show the usage - type "./shotGrabber.py --help")s
+F0 sf
+0 g
+(    args = parser.parse_args\(\))61.2 264.9 ms
+(    )61.2 244.9 ms
 0.271 0.388 0.475 r
 (if)s
 0 g
@@ -381,10 +421,10 @@ F2 sf
 (# remove the folder if exists)s
 F0 sf
 0 g
-(        shutil.rmtree\(args.output\))61.2 284.9 ms
-(    os.mkdir\(args.output\))61.2 264.9 ms
-(    main\(args.video, args.output\))61.2 254.9 ms
-(    cv2.destroyAllWindows\(\))61.2 234.9 ms
+(        shutil.rmtree\(args.output\))61.2 234.9 ms
+(    os.mkdir\(args.output\))61.2 214.9 ms
+(    main\(args.video, args.output\))61.2 204.9 ms
+(    cv2.destroyAllWindows\(\))61.2 184.9 ms
 re sp
 %%PageTrailer
 %%Trailer
