@@ -273,6 +273,7 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         ffmpeg -vf scale=800x600 -i $i $i.mp4
     done
 \end{lstlisting}
+
         Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format das die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
         \begin{table}
             \begin{tabular}{c|c|c|c}
@@ -290,9 +291,55 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
 
         der Coder \ref{code:vidConf} wandelt die Eingabe Videos in ein besser handhabbares Format um \ref{tab:formateVid}. \\
         Aus den MP4 Videos ist es nun leicht Bilder zu extrahieren, die Herangehensweise hierbei ist es jede Sekunde des Videos einen Screenshot zu erstellen.\\
-        das Skript \ref{code:shotGrabber}.      % besser noch als anhang hintendran? - pdf aus vim?
+        \newline
+        Das Skript \textbf{shotGrabber.py} \ref{code:shotGrabber} dient als folge Skript um aus den generierten Videodaten letztendlich Bilder zu erstellen.\\
         \lstinputlisting[language=Python, caption={script zur sekündlichen Erstellung von Screenshots}, label={code:shotGrabber}, firstline=14, lastline=28]
-        {../../work/scripts/shotGrabber.py}         % okay, lets check if this works nice...
+        {../../work/scripts/shotGrabber.py} 
+
+        Die Vorgehensweise dabei ist es alle Videos anzusehen und dann nach jeweils einer Sekunde einen Screenshot abzuspeichern. Der Screenshot ist hierbei der aktuelle Frame des Videos \ref{code:shotGrabber} Zeile 12.\\
+        Gespeichert werden die Bilder jeweils in einen Ordner mit dem Namen des Videos, die Files selbst haben einen einheitlichen Namen: \textit{''shot\_\%d.jpg''}, wobei das \textit{\%d} die Sekunde der Aufnahme codiert. \\
+        Das Ergbnis  der Bilddaten Generierung sind 1244 (221 Originale aus \cite{uwe} und 1023 Bilder aus den Selbst gerierten Daten). \\
+        \newline
+        Diese Bilder dienen im Anschluss als Eingabe für ebensoviele Histogramme.
+
+    \subsection{Histogramme als Vergleichs Grundlage}
+        Mit Hilfe des \ref{code:histPY_calc} Scriptes, können Histogramme erzeugt werden, die Auskunft über die Farbliche zusammensetzung der Bilder geben. 
+
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:calcHist}, label={code:histPY_calc}, firstline=22, lastline=44]
+        {../../work/scripts/hist.py}         
+
+        Die Methode zeigt das iterative kumulieren der Werte jedes Pixels, die Arrays \lstinline{hhist_b, hist_g, hist_r} enthalten die Anzahl der \lstinline{uint8_t} werte für die Farbkanäle Rot, Grün und Blau des RGB Formates.\\
+        Weitere Methoden sorgen dann für die generation von csv-dateien für die Weiterverarbeitung \ref{code:histPY_csv} oder für die darstellung als Kurve \ref{code:histPY_fun}. \\
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:createCSV}, label={code:histPY_csv}, firstline=80, lastline=90]
+        {../../work/scripts/hist.py}
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:histLong}, label={code:histPY_fun}, firstline=93, lastline=129]
+        {../../work/scripts/hist.py}
+
+        Der Ausgabe Plot für das Kommando:\lstinline{gram shot_24.jpg -l s24.csv -o hist_24.png} sieht wie folgt aus \ref{fig:histInUse}.
+        \begin{figure*}[h]
+                \includegraphics[width=\textwidth]{pics/code/histInUse.png}
+                \label{fig:histInUse_code}
+                \caption{
+                    Hilfe und verwendung des histogram-erstellungs scripts
+                }
+        \end{figure*}
+
+        \begin{figure*}[h]
+            \centering
+            \begin{subfigure}[b]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/code/shot_24.jpg}
+                \caption{Eingabe Datei von \ref{fig:histInUse}}
+                \label{fig:histInUse_in}
+            \end{subfigure}
+            ~
+            \begin{subfigure}[b]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/code/hist_24.png}
+                \caption{Ausgabe Datei von \ref{fig:histInUse}}
+                \label{fig:histInUse_out}
+            \end{subfigure}
+            \caption{Ein und Ausgabe sowie Screenshot des Prozesses des Histogramgenerators}
+            \label{fig:histInUse}
+        \end{figure*}
 
     \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
         Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
