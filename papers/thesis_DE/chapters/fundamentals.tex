@@ -18,8 +18,9 @@
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{pics/schmauch/noisesMarked.png}
-        \caption{ Verunreinigungen in Endoskope aufnahmen, \\
+        \caption{Verunreinigungen in Endoskope aufnahmen, \\
             \textbf{(1)}surgical smoke, \textbf{(2)}Beschlagen des Endoskopes durch aufsteigenden Dampf\\
+            \textsc{[Eigene Aufnahme]}
         }
         \label{fig:realNoise}
     \end{figure}
@@ -30,7 +31,7 @@
 \section{Grundlagen laparoskopischer Eingriffe}
     Um eigene Bilder von Laparoskopien zu erstellen müssen einige Aspekte beachtet werden, um zu gewährleisten dass die Generierten Daten echten Operationen ähnlich sind.
     Desweiteren sollten die Generierten Daten geeignet sein um mit ihnen Algorithmen zu entwickeln. \\
-    Diese Eignung schließt bestimmte Aspekte ein, wie beispielsweise das langsame erscheinen von Verunreinigungen, definierte Bewegungen der Kamera,etc. \\
+    Diese Eignung schließt bestimmte Aspekte ein, wie beispielsweise das langsame erscheinen von Verunreinigungen oder definierte Bewegungen der Kamera. \\
     \newline
 
     Die Befragung verschiedener Chirurgen ergab das insbesondere die Art der Kauterisation (sprich: Elektrisch, Thermisch oder etwa via Laser) maßgeblich ist für die Beschaffenheit und das aussehen des Rauches.\\
@@ -42,14 +43,16 @@
 
 	\paragraph{\textbf{Mäuse} \textit{(Mus musculus)}\\}
         Haben eine große Ähnlichkeit zum menschlichen Organismus, sie werden deshalb häufig für Versuche im Medizinischen Bereich eingesetzt. Jedoch Beschränkens sich diese versuche häufig auf die Verträglichkeit von Medikamenten oder anderer, weitgehend konventioneller chirurgischer eingriffe.
-        Mäuse sind jedoch für die Erstellung der Daten nicht geeignet, aus rein gründen.\\
-    \fuck{Citations!}
+        Mäuse sind jedoch aus rein physischen Gründen für die Erstellung der Daten nicht geeignet, da es schlichtweg unnötig schwierig ist Endoskope in sie einzubringen.\\
+        \cmt{zu ''leger''?}
+
+        
 	\newline
 
 	\paragraph{\textbf{Organe von Rindern} \textit{(Bos primigenius taurus)}\\}
         Organe von Rindern unterscheiden deutlicher von Menschlichen Organen, sind aber insbesondere wenn es um viszerale Organe geht deutlich verfügbarer und einfacher zu handhaben als Innereien von Mäusen. \\
-        Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einem optimalen Kandidaten für erste Tests, insbesondere für die Erstellung von Laparoskopischen Trainern.\\
-    \fuck{Citations!}
+        Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einer guten Wahl für erste Tests, insbesondere für die Verwendung in Laparoskopischen Trainern, wie sie von angehenden Chirurgen zum trainieren verwendet werden.\\
+        Für weitergehende Tests sollten jedoch Organe verwendet werden die Menschenähnlicher oder Menschlich sind, um sicher zu gehen dass das Gewebe auch realistisch verbrennt und entsprechenden Rauch, Dampf und andere Verschmutzungen produziert.
 	\newline	 \\
 
 	\paragraph{\textbf{Organe von Schweinen}\textit{(Sus scrofa domesticus)}\\} 
@@ -63,7 +66,7 @@
 
 	\paragraph{Organe\\}
         Endoskope werden in verschiedenen Szenarien verwendet und durch verschiedenste Öffingen ins Körperinnere gebracht, 
-        die in Deutschland und Europa meisten durchgeführten minimal invasiven Eingriffe stellen Cholezystektomien dar\fuck{CITATION}.\\
+        die in Deutschland und Europa meisten durchgeführten minimal invasiven Eingriffe stellen Cholezystektomien dar.\\
         Bei diesen Laparoskopien, sind Endoskope unverzichtbar, da sie die einzige Möglichkeit sind ins innere des Patienten zu sehen.
         \cmt{Endoskopie != Laparoskopie}\\
         Die entsprechend meist vorkommenden Bilder zeigen viszerale und andere abdominale Organe wie beispielsweise:
@@ -75,7 +78,7 @@
 			\item oder dem Gastrointestinaltrakt( Tractus digestorius ).
 		\end{itemize}
 
-        Die Auswahl erfolgt auch hier, wie schon bei der Auswahl des Host-Tieres nach den Kriterien der Verfügbarkeit und des Realitätsaspektes.\\
+        Die Auswahl erfolgt auch hier, wie schon bei der Auswahl des Tieres dessen Organe zur Verwendung kommen nach den Kriterien der Verfügbarkeit und des Realitätsaspektes.\\
         Weiterhin zu beachten ist bei der Selektion der Organe die Qualität bzw. die Frische.
         Frische Organe sind notwendig da unter anderem Feuchtigkeit ein wichtiger Aspekt ist der vor allem die Bildung von Rauch und Dampf beeinflusst.
         Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten.\\
@@ -84,7 +87,7 @@
 
 	\subsection{Benötigte Eigenschaften}
 
-        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte qualität und realismus. Sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
+        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte qualität und realismus, sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
         Die benötigten Verschmutzungen sind:\\
         \newline
 		
@@ -101,7 +104,7 @@
 	
     Als Vorbild für die Generation eigener Daten dienen Videos von Verschmutzungen des \gls{kkhgzkru}.\\
     Diese Videos zeigen verschiedene Arten von Rauch (verschiedene Kauterisationsmethoden) sowie Instrumente im Operationsbereich. 
-    Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge, etc.\\
+    Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge.\\
     \newline
     
 \section{Bild Bearbeitung}
@@ -117,17 +120,19 @@
 
     \paragraph{Rauch\\}
         Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' Anwendungen für Überwachungskameras\cite{vision}.
-        Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analisiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
+        Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analysiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
 
     \paragraph{Dampf \& Beschlagen\\}
-        Ein bisher vernachlässigtes Problem besteht im beschlagen der Kamera durch Dampf.\\
-        Durch die bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
-        \cmt{Sources! - noch suchen!}
+        Laut Chirurgen des \gls{ADK} scheint es ein bissher wenig bearbeitetes Thema zu sein das beschlagen des Endoskopes abzumindern, auch Recherchen nach Lösungen für dieses Problem bestätigen diese Annahme. \\
+        Durch die Bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Verursacht wird dies durch Dampf, welcher beim erhitzen von Gewebe, o.ä. durch den Einsatz der Kauter ensteht. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
 
     \paragraph{Flecken \& Spritzer\\}
         Flecken und Spritzer auf der Kamera sind ein nicht besonders häufiges, jedoch schwerwiegenden Problem. Da meist die einzige Möglichkeit um diese Verunreinigungen zu beseitigen darin besteht das Endoskope aus dem Patienten zu entfernen um es zu reinigen.\\
         Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
-        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.
+        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.\\
+        Ebenso können opake Verschmutzungen auftreten, bei denen das filtern oder bearbeiten nicht weiterhelfen kann.
+        Für diese Fälle kann es fatal sein den Chirurgen falsche fakten anzuzeigen.  \\
+
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
