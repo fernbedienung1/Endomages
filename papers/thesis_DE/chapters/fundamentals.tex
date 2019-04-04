@@ -47,8 +47,6 @@
         \cmt{zu ''leger''?}
 
         
-	\newline
-
 	\paragraph{\textbf{Organe von Rindern} \textit{(Bos primigenius taurus)}\\}
         Organe von Rindern unterscheiden deutlicher von Menschlichen Organen, sind aber insbesondere wenn es um viszerale Organe geht deutlich verfügbarer und einfacher zu handhaben als Innereien von Mäusen. \\
         Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einer guten Wahl für erste Tests, insbesondere für die Verwendung in Laparoskopischen Trainern, wie sie von angehenden Chirurgen zum trainieren verwendet werden.\\
@@ -65,11 +63,8 @@
     \newline
 
 	\paragraph{Organe\\}
-        Endoskope werden in verschiedenen Szenarien verwendet und durch verschiedenste Öffingen ins Körperinnere gebracht, 
-        die in Deutschland und Europa meisten durchgeführten minimal invasiven Eingriffe stellen Cholezystektomien dar.\\
-        Bei diesen Laparoskopien, sind Endoskope unverzichtbar, da sie die einzige Möglichkeit sind ins innere des Patienten zu sehen.
-        \cmt{Endoskopie != Laparoskopie}\\
-        Die entsprechend meist vorkommenden Bilder zeigen viszerale und andere abdominale Organe wie beispielsweise:
+        Endoskope werden häufig in Laparoskopien eingesetzt um so an den visceralen Organen operieren zu können.
+        Zu diesen Organen gehören unter anderen:
 
 		\begin{itemize}
 			\item Gallenblasen( Vesica biliaris),
@@ -78,16 +73,39 @@
 			\item oder dem Gastrointestinaltrakt( Tractus digestorius ).
 		\end{itemize}
 
-        Die Auswahl erfolgt auch hier, wie schon bei der Auswahl des Tieres dessen Organe zur Verwendung kommen nach den Kriterien der Verfügbarkeit und des Realitätsaspektes.\\
-        Weiterhin zu beachten ist bei der Selektion der Organe die Qualität bzw. die Frische.
+        Insbesondere Gallenblasen sind mit 200.555 Cholezystektomien die im Jahr 2017 \cite{destatis} durchgeführt wurden, typische Organe die auf endoskopischen Aufnahmen auftauchen. Cholezystektomien gehören damit zu den häufigsten Laparoskop ische Eingriffen und sind Standard in vielen Krankenhäusern.
+
+
+        Die Gallenblasen ist mit der Leber verbunden ist selbst für Laien durch ihre Form und Farbe meist gut zu identifizieren.
+        Die schematische Darstellung \ref{fig:schema_biliaris} zeigt die Position der Gallenblase beim Menschen. \\
+        Die Leber hat an der stelle an der die Gallenblase aufsitzt eine Mulde, die sogenannte Gallenblasengrube \textit{(Fossa vesicae biliaris)}.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{pics/net/vesicaBiliaris.png}
+            \caption{ Schematische Darstellung einer Gallenblasen (grün), die auf der Leber sitzt.}
+            \label{fig:schema_biliaris}
+        \end{figure}
+
+        Bild \ref{fig:real_biliaris} zeigt eine schweinische Gallenblasen, die minimal invasiv operiert wird. Der Kauter verbrennt Gewebe der Gallenblasengrube um die Gallenblase von der Leber zu lösen.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{pics/ownData/vesicaBiliaris_REAL.jpg}
+            \caption{Reales Bild einer Gallenblase eines Schweines\\
+                \textsc{[eigene Aufnahme]}
+            }
+            \label{fig:real_biliaris}
+        \end{figure}
+
+        Ein weiterer Punkt der Selektion der Organe ist die Qualität bzw. die Frische.
         Frische Organe sind notwendig da unter anderem Feuchtigkeit ein wichtiger Aspekt ist der vor allem die Bildung von Rauch und Dampf beeinflusst.
         Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten.\\
         Auch Körperinnere Luftfeuchtigkeit und Temperatur wirkt sich auf das Beschlagen der Kamera aus sowie auf die Bewegungen und Dispersion des Rauches.\\
-        \newline
 
 	\subsection{Benötigte Eigenschaften}
 
-        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte qualität und realismus, sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
+        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte Qualität und Realismus, sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
         Die benötigten Verschmutzungen sind:\\
         \newline
 		
@@ -106,7 +124,19 @@
     Diese Videos zeigen verschiedene Arten von Rauch (verschiedene Kauterisationsmethoden) sowie Instrumente im Operationsbereich. 
     Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge.\\
     \newline
-    
+
+    \cmt{Videos werden unten beschrieben? In Methodik?}
+    \subsection{Kauterisierungsmethoden}
+        Die Moderne Chirurgie kennt mehrere Kauterisationsmethoden für Gewebe
+        \begin{itemize}
+            \item Thermische Kauterisation 
+            \item Diathermie 
+            \item Laserschnittverfahren
+        \end{itemize}
+
+        \cmt{bescheiden wie die funktionieren und was für Schmutz raus kommt}
+
+
 \section{Bild Bearbeitung}
     
     Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
@@ -123,7 +153,7 @@
         Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analysiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
 
     \paragraph{Dampf \& Beschlagen\\}
-        Laut Chirurgen des \gls{ADK} scheint es ein bissher wenig bearbeitetes Thema zu sein das beschlagen des Endoskopes abzumindern, auch Recherchen nach Lösungen für dieses Problem bestätigen diese Annahme. \\
+        Laut Chirurgen des \gls{ADK} scheint es ein bisher wenig bearbeitetes Thema zu sein das beschlagen des Endoskopes abzumindern, auch Recherchen nach Lösungen für dieses Problem bestätigen diese Annahme. \\
         Durch die Bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Verursacht wird dies durch Dampf, welcher beim erhitzen von Gewebe, o.ä. durch den Einsatz der Kauter ensteht. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
 
     \paragraph{Flecken \& Spritzer\\}
