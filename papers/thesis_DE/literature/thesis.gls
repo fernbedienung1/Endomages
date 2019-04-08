@@ -27,3 +27,8 @@
     name=Dark Channel Prior,
     description={algorithm for smoke removal, based on dark pixels in images}
 }
+
+\newglossaryentry{overfitting}{
+    name=overfitting,
+    description={dt.:Überanpassung, Overfitting kann auftreten wenn algorithmen auf einer kleinen Datenbasis implementiert werden. Es beschreit das problem das der Algorithmus auf den verwendeten daten gut funktiniert, nicht jedoch auf anderen daten mit der gleichen Problemstellung. Der Algorithmus ist so auf die vorgabedaten überangepasst.}
+}

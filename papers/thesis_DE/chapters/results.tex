@@ -1,9 +1,35 @@
 \section{Testdaten Generierung}
-    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}
-    
+    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Roh-Daten mit einer Dauer von 1 Stunde und 16 Minuten. \\
+    Zusätzlich zu den 293MB realer Laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
 
-    
-    \subsection{Comparision}
+    Die generierten Daten dienen als Grundlage der für die Algorithmen, um \gls{overfitting} zu vermeiden.
+
+    \subsection{Vergleich}
+        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+
+        \begin{figure}[h]
+            \centering
+            \begin{subfigure}[b]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_OWNData.png}
+                \caption{kumuliertes Histogram der eigenen Daten}
+                \label{fig:cumsum_mine}
+            \end{subfigure}
+            ~
+            \begin{subfigure}[b]{0.4\textwidth}
+                \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_REALData.png}
+                \caption{kumuliertes Histogram der Daten aus Günzburg}
+                \label{fig:cumsum_real}
+            \end{subfigure}
+            \caption{Vergleich der Generierten Daten mit realen Laparoskopien}
+            \label{fig:Cmp_hists}
+        \end{figure}
+        Deutlich zu erkennen ist das die selbst generierten Daten \ref{fig:cumsum_mine} Dunkler sind als die realen Daten, zu erkennen ist dies daran dass, das Histogram \ref{fig:cumsum_mine} die meisten Pixel im Bereichen $ < 50 $ enthält, während in den realen Daten die meisten Pixel auf dem Bereich zwischen 25 und 150 fallen. \\
+        In den realen Daten ist zudem zu erkennen das ein großer Anteil der Bilder über eine weite Bandbreite von Rot-tönen verfügt.\\
+\newline
+        Die selbstgenerierten Daten \cmt{stauchung von realdaten} \\
+        Ausserdem überblendet - nah ran weil dunkel.\\
+        
+
         \subsubsection{realism}
             \begin{itemize}
                 \item wie ein unbeholfener arzt
