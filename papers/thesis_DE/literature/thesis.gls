@@ -29,6 +29,6 @@
 }
 
 \newglossaryentry{overfitting}{
-    name=overfitting,
+    name=Overfitting,
     description={dt.:Überanpassung, Overfitting kann auftreten wenn algorithmen auf einer kleinen Datenbasis implementiert werden. Es beschreit das problem das der Algorithmus auf den verwendeten daten gut funktiniert, nicht jedoch auf anderen daten mit der gleichen Problemstellung. Der Algorithmus ist so auf die vorgabedaten überangepasst.}
 }

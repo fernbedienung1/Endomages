@@ -5,7 +5,9 @@
     Die generierten Daten dienen als Grundlage der für die Algorithmen, um \gls{overfitting} zu vermeiden.
 
     \subsection{Vergleich}
-        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+        Im Kapitel Methoden \ref{sec:Methods} beschrieben werden histogramme für den Vergleich der generierten Daten mit den Vorgabedaten verwendet, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der Realen aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
+        Zu erwähnen ist das sich die generierten Histogramme auf unterschiedlich große Datensätze beziehen, während die aufnahmen aus Günzburg nur 293MB(Gesamtdauer: 5min 44s) groß sind,
+        basiert das Histogram der Labor-Daten die verkleinert bereits 1GB(Gesamtdauer: 1h 15min 18s) groß sind.
 
         \begin{figure}[h]
             \centering
@@ -23,9 +25,19 @@
             \caption{Vergleich der Generierten Daten mit realen Laparoskopien}
             \label{fig:Cmp_hists}
         \end{figure}
+
+        Das Histogram der selbst generierten Daten (\ref{fig:cumsum_mine})gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist das im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin das die Bilder insgesamt dunkel ausfallen. Ein Indiz für große schwarze Anteile der Bilder kann eine Häufung von werten mit gleichem wert darstellen.\\
+        ( Pixel mit der Eigenschaft:$$ R=G=B $$ stellen Graustufen dar).\\
+        
+
+
         Deutlich zu erkennen ist das die selbst generierten Daten \ref{fig:cumsum_mine} Dunkler sind als die realen Daten, zu erkennen ist dies daran dass, das Histogram \ref{fig:cumsum_mine} die meisten Pixel im Bereichen $ < 50 $ enthält, während in den realen Daten die meisten Pixel auf dem Bereich zwischen 25 und 150 fallen. \\
         In den realen Daten ist zudem zu erkennen das ein großer Anteil der Bilder über eine weite Bandbreite von Rot-tönen verfügt.\\
 \newline
+
+        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+
+        \cmt{vergleich besser hier? / in diskussion?}
         Die selbstgenerierten Daten \cmt{stauchung von realdaten} \\
         Ausserdem überblendet - nah ran weil dunkel.\\
         
