@@ -1,7 +1,10 @@
 \section{Generierung von Basisdaten}
-Die hier beschriebenen Daten sind unter der DOI \url{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{figshare}. 
-
+Die hier beschriebenen Daten sind unter der DOI \url{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{figshare}.\\
 Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
+\newline
+Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{GitHub}.\\
+
+
 \subsection{Laparoskopische Laborversuche}
     Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden von Chirurgen entsorgt, da dieser ja die für Mediziner notwendigen Areale verdecken.
     Zusätzlich dazu spielen Rechtliche Aspekte eine Rolle, den Patientendaten dürfen nur mit ausdrücklicher Einverständnis des betreffenden Patienten veröffentlicht werden. \\
@@ -29,6 +32,25 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
             \end{tabular}
             \label{tab:usedHW_I}
             \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}}
+        \end{table}
+        Die aufnahme geräte sind im Tabelle \ref{tab:recHW_1} vermerkt.
+        \begin{table}[H]
+            \centering
+            \label{tab:recHW_1}
+            \begin{tabular}{l|l|l|l}	%all left aligned
+                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \hline
+                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
+                Logitec & C270 & 1280x720 & \cite{webcam} \\
+                Alcor Micro & SJ00446 & 1280x170 & NONE \\
+                \hline
+                Weller & Lötkolben & std & \cite{iron} \\
+                \hline 
+                & V01 & Umbebungssensor & \cite{RJ} \\
+                \hline 
+                Selfmade & V01 & Umbebungssensor & \cite{RJ} \\
+            \end{tabular}
+            \caption{Capturing and cauterisation Hardware}
         \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,24 +106,27 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
         Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
         \begin{table}[H]
             \centering
-            \label{tab:Kameras}
+            \label{tab:recHW_2}
             \begin{tabular}{l|l|l|l}	%all left aligned
                 \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
                 \hline
                 Wolf & Endocam & Bronchoscope & \cite{endocam} \\		%1CCD Endocam 5520 
                 Wolf & 3D-Endocam & Stereoendscope & \cite{} \\		%3D-HD-Endocam F1014 
                 IDS & ui-3240cp & 1280x1024/60FPS& \cite{} \\ 
-                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
-                Logitec & C270 & 1280x720 & \cite{webcam} \\
-                Alcor Micro & SJ00446 & 1280x170 & NONE \\
                 \hline
                 Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
                 Aesculap & Letrafuse & RF-Generator & \cite{hfgen} \\
                 \hline 
-                Wolf & Prototyp & Lichtquelle & NONE \\
+                Prototyp & OSRAM Xenophot & halogen Licht & NONE \\
             \end{tabular}
             \caption{Capturing and cauterisation Hardware}
         \end{table}
+
+        \cmt{Bild der Laborgeräte} \\
+
+        Der Aufbau des 21.12.2018 beinhaltet die Hardware aus Tabelle \ref{tab:recHW_2}.\\
+        Zeitlicher Ablauf der Tests 
+
 
         \begin{figure}[H]
             \centering
@@ -124,7 +149,7 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
             \begin{tabular}{c|l|l}	
                 \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\ 
                 \hline
-                \textbf {1} & Endoskope & Aufnahmeelement\\
+                \textbf {1} & Endoskope & Aufnahme Element\\
                 \textbf {2} & Neopren & Haut für Einstiche\\
                 \textbf {3} & Optik & einzuführender teil des Endoskopes\\
                 \textbf {4} & Kauter & Verbrennung Werkzeug\\
@@ -144,13 +169,13 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
 
         \begin{table}[H]
             \centering
-            \label{tab:Kameras}
+            \label{tab:organlist}
             \begin{tabular}{l|c|c}	%all left aligned
                 \textbf{RefNr} & \textbf{Organ} & \textbf{Bemerkung} \\
                 \hline
                 \textbf {1} & Leber & Hämerperfusioniert\cmt{(?)}\\
                 \textbf {2} & Magen & inklusive Drüsen\\
-                \textbf {3} & Milz & hmmm\\
+                \textbf {3} & Milz & Hämerperfusioniert\cmt{(?)}\\
                 \textbf {4} & Lunge & beide Lungen\\
                 \textbf {5} & Speise- \& Luftröhre & komplettes \\
                 \textbf {6} & Zunge & gesamter Kehlkopf\cmt{(?)}\\
@@ -162,9 +187,7 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
         \cmt{1 -> druchblutet} \\
         \cmt{6 -> fachbegriff innenteil Kehlkopf?} \\
 
-        Da die organe von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende organe gleichzeitig im Trainer verwendet werden.
-        
-
+        Da die Organe (\ref{tab:organlist} und \ref{fig:organs}) von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende Organe gleichzeitig im Trainer verwendet werden.
         \begin{figure*}[hp]
             \begin{subfigure}[b]{\textwidth}
                 \centering
@@ -273,9 +296,6 @@ Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel
         \caption{Results of the Data Acquirement}
         \label{fig:DataAcq}
     \end{figure*}
-    % This somehow does not display as expected....
-    % maybe add even more pictures to fill the page.... I mean: there are more then enough...
-
     \newpage
 %%\fi
 \subsubsection{Reale Daten}

@@ -27,9 +27,19 @@
         \end{figure}
 
         Das Histogram der selbst generierten Daten (\ref{fig:cumsum_mine})gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist das im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin das die Bilder insgesamt dunkel ausfallen. Ein Indiz für große schwarze Anteile der Bilder kann eine Häufung von werten mit gleichem wert darstellen.\\
-        ( Pixel mit der Eigenschaft:$$ R=G=B $$ stellen Graustufen dar).\\
-        
+        (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse Toleranz steht.
+        Da es sich bei den Histogrammen jedoch um kumulierte Daten handelt, sprich um ein Histogramm über mehrere Bilder könnten diese sich auch ausmitteln.\\
+        Ein blick auf die Aufnahmen bestätigt jedoch die Annahme, denn die meisten der Bilder enthalten große schwarze Flächen, verursacht durch eine unzureichende Ausleuchtung des laparoskopischen Trainers. \\
+        \newline 
+        Zusätzlich zeigt das Histogram \ref{fig:cumsum_mine} einen erhöhten weiß-Anteil (Pixel mit $ (R=G=B) >= 240$ ). Dieser kann mit dem auftreten von Spiegelungen erklärt werden. Das eingespeiste Licht der Halogen Lichtquelle verursacht wenig diffuses Licht im Trainer und durch die kurzen Abstände zwischen Kamera und Werkzeug, bzw Organ enstehen auf den Feuchten Organen Reflexionen. Dies Reflexionen äussern sich durch weiße Pixel.\\
 
+        Während hingegen die Pixel des Histograms der Realen Daten \ref{fig:cumsum_real} weiter in Richtung Mitte (Werte im Bereich $ 50 < x < 120 $) verteilt ist.\\
+        Die Überlappung von Grün und Blau Anteilen in Kombination mit einer nach rechts verschobenen Rot kurve deutet darauf hin das es sich auch hier um dunkle Bilder handelt, Jedoch mit deutlichem Einschlag Rot Tones. \\
+        Logischerweise lässt sich das durch dass durch das Aufgezeichnete Motiv erklären, den viszeralen Organen der Patienten.\\
+        
+        Vergleichend lässt sich hier folglich sagen das die Realen Daten \ref{fig:cumsum_real} Heller sein müssen als die selbst generierten.\\
+        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden. 
+        \cmt{weil wir hatten keine zweite...}.\\
 
         Deutlich zu erkennen ist das die selbst generierten Daten \ref{fig:cumsum_mine} Dunkler sind als die realen Daten, zu erkennen ist dies daran dass, das Histogram \ref{fig:cumsum_mine} die meisten Pixel im Bereichen $ < 50 $ enthält, während in den realen Daten die meisten Pixel auf dem Bereich zwischen 25 und 150 fallen. \\
         In den realen Daten ist zudem zu erkennen das ein großer Anteil der Bilder über eine weite Bandbreite von Rot-tönen verfügt.\\
