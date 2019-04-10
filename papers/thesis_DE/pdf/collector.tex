@@ -1,14 +1,35 @@
-%this one only takes all the code that I have created and puts it here as PDFs
-
 \section{Code}
-%    \begin{figure}[h]
-%        \centering
-%        \includegraphics[width=0.5\textwidth]{pdf/code/shotGrabber.pdf}
-%        \caption{ now wörks?
-%        }
-%        \label{code:shotGrabberCode}
-%    \end{figure}
-%\newpage
+    
+    \subsection{Python}
+        \subsubsection{hist.py}
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript}, label={code:histPY}]
+        {../../work/scripts/hist.py}
+        \newpage
+
+        \subsubsection{shotGrabber.py}
+        \lstinputlisting[language=Python, caption={Script zur Erstellung der Sekundlichen Screenshots}, label={code:shotGrabberPY}]
+        {../../work/scripts/shotGrabber.py}
+        \newpage
+
+        \subsubsection{collector.py}
+        \lstinputlisting[language=Python, caption={Erstellung der gesamt Histogramme aus CSV Dateien}, label={code:collectorPY}]
+        {../../work/scripts/collector.py}
+        \newpage
+
+    \subsection{Octave}
+        \subsubsection{histogram.m}
+        \lstinputlisting[language=matlab, caption={Octave Code zur Histogram Kurven-Erstellung}, label={code:histogramM}]
+        {../../work/mathe/own/histogram.m}
+
+        \subsubsection{histogramMatch.m}
+        \lstinputlisting[language=matlab, caption={Verwendung der histogram.m\ref{code:histogramM} Funktion für Histogrammatching}, label={code:histogramMatchM}]
+        {../../work/mathe/own/histogramMatch.m}
+
+        \subsubsection{createStats.m}
+        \lstinputlisting[language=matlab, caption={Verwendung und Plots der Histogram und Histogrammatching Funktionen}, label={code:createStatsM}, lastline={77}]
+        {../../work/mathe/own/createStats.m}
+
+        \newpage
 
 \section{Files}
     Tabel behindert compilierforgang

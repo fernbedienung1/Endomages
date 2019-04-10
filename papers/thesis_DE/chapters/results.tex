@@ -27,7 +27,7 @@
         \end{figure}
 
         Das Histogram der selbst generierten Daten (\ref{fig:cumsum_mine})gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist das im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin das die Bilder insgesamt dunkel ausfallen. Ein Indiz für große schwarze Anteile der Bilder kann eine Häufung von werten mit gleichem wert darstellen.\\
-        (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse Toleranz steht.
+        (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse varianz steht.
         Da es sich bei den Histogrammen jedoch um kumulierte Daten handelt, sprich um ein Histogramm über mehrere Bilder könnten diese sich auch ausmitteln.\\
         Ein blick auf die Aufnahmen bestätigt jedoch die Annahme, denn die meisten der Bilder enthalten große schwarze Flächen, verursacht durch eine unzureichende Ausleuchtung des laparoskopischen Trainers. \\
         \newline 
@@ -39,13 +39,13 @@
         
         Vergleichend lässt sich hier folglich sagen das die Realen Daten \ref{fig:cumsum_real} Heller sein müssen als die selbst generierten.\\
         Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden. 
-        \cmt{weil wir hatten keine zweite...}.\\
-
-        Deutlich zu erkennen ist das die selbst generierten Daten \ref{fig:cumsum_mine} Dunkler sind als die realen Daten, zu erkennen ist dies daran dass, das Histogram \ref{fig:cumsum_mine} die meisten Pixel im Bereichen $ < 50 $ enthält, während in den realen Daten die meisten Pixel auf dem Bereich zwischen 25 und 150 fallen. \\
-        In den realen Daten ist zudem zu erkennen das ein großer Anteil der Bilder über eine weite Bandbreite von Rot-tönen verfügt.\\
-\newline
-
+        In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
         Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+
+        Vergleichend ist so festzustellen das die selbst generierten Daten dunkler sind als die realen Daten.\\
+        Für die ersten versuche dieser reihe spielt die Helligkeit eine untergeordnete rolle, denn Rauch und andere Verunreinigungen können auch in den Dunkleren Bildern Deutlich mit bloßem Auge erkannt werden.\\
+        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden.\cmt{Bild?}\\
+        Auch dies steht nicht im direkten konflikt des Ziels schmutz aufzuzeichnen, jedoch entsteht so ein deutlich Sichtbarer unterschied zu den Realen Datensätzen.\\
 
         \cmt{vergleich besser hier? / in diskussion?}
         Die selbstgenerierten Daten \cmt{stauchung von realdaten} \\
