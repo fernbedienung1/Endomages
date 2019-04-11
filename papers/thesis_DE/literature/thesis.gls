@@ -1,34 +1,45 @@
 \newglossaryentry{surgical smoke}{
 	name=surgical smoke,
-	description={smoke that accrues during the cauterization of tissue}
+	description={Rauch der durch Kauterisieren von Gewebe entsteht}
 }
 
 \newglossaryentry{ADK}{
 	name=Alb Donau Klinikum und Gesundheitszentrum Blaubeuren,
-	description={Hospital and recoverment Center located in Blaubeuren, Baden-Württemberg, Germany}
+	description={Krankenhaus und Therapie Zentrum in Blaubeuren, Baden-Württemberg, Deutschland.
+    Ort der Hospitation vom 16.05.2018.
+    }
 }
 
 \newglossaryentry{kkhgzkru}{
 	name=Kreiskrankenhaus Günzburg-Krumbach, 
-	description={Hospital located in Günzburg, Bavaria, Germany}
+	description={Kooperationskrankenhaus Günzburg und Krumback in Bayern, DeutschlanKooperationskrankenhaus Günzburg und Krumback in Bayern, Deutschlandd}
 }
 
 \newglossaryentry{Pneumoperitoneum}{
 	name=Pneumoperitoneum,
-	description={gas filled area within a body, widly used to create space within abdominal surgeries}
+	description={Gas gefülltes Arbeitsgebiet von Chirurgen, 
+    Meist der Bauchraum, wird mit C02 geflutet um ein Arbeitsgebiet zu schaffen.
+    }
 }
 
 \newglossaryentry{DKFZ}{
 	name=Deutsches Krebsforschungszentrum,
-	description={German Cancer Research Center, is a natinal cancer research center located in Heidelberg, Germany. Member of the Helmholtz Association of German Reseach Centers.}
+	description={ Biomedizinisches Forschungsinstitut, Mitglied der Helmholtz-Gemeinschaft Deutscher Forschungszentren.
+    }
 }
 
 \newglossaryentry{DCP}{
     name=Dark Channel Prior,
-    description={algorithm for smoke removal, based on dark pixels in images}
+    description={Prior der sich auf die Arbeit in Dunkelstellen von Bildern fokussiert}
 }
 
 \newglossaryentry{overfitting}{
     name=Overfitting,
-    description={dt.:Überanpassung, Overfitting kann auftreten wenn algorithmen auf einer kleinen Datenbasis implementiert werden. Es beschreit das problem das der Algorithmus auf den verwendeten daten gut funktiniert, nicht jedoch auf anderen daten mit der gleichen Problemstellung. Der Algorithmus ist so auf die vorgabedaten überangepasst.}
+    description={dt.:Überanpassung, Overfitting kann auftreten wenn Algorithmen auf einer kleinen Datenbasis implementiert werden. Es beschreit das Problem das der Algorithmus auf den verwendeten Daten gut Funktioniert, nicht jedoch auf anderen Daten mit der gleichen Problemstellung. Der Algorithmus ist so auf die Vorgabedaten überangepasst.}
+}
+
+\newglossaryentry{hfc}{
+    name=Hochfrequenz Chirurgie,
+    description={Bei der Hochfrequenz Chirurgie, auch kurz HF-Chirurgie, wird Wechselstrom durch den Körper geleitet um Gewebe zu Kauterisieren und füglich zu schneiden oder zu veröden.
+    }
 }
