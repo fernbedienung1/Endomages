@@ -44,8 +44,6 @@
 	\paragraph{\textbf{Mäuse} \textit{(Mus musculus)}\\}
         Haben eine große Ähnlichkeit zum menschlichen Organismus, sie werden deshalb häufig für Versuche im Medizinischen Bereich eingesetzt. Jedoch Beschränkens sich diese versuche häufig auf die Verträglichkeit von Medikamenten oder anderer, weitgehend konventioneller chirurgischer eingriffe.
         Mäuse sind jedoch aus rein physischen Gründen für die Erstellung der Daten nicht geeignet, da es schlichtweg unnötig schwierig ist Endoskope in sie einzubringen.\\
-        \cmt{zu ''leger''?}
-
         
 	\paragraph{\textbf{Organe von Rindern} \textit{(Bos primigenius taurus)}\\}
         Organe von Rindern unterscheiden deutlicher von Menschlichen Organen, sind aber insbesondere wenn es um viszerale Organe geht deutlich verfügbarer und einfacher zu handhaben als Innereien von Mäusen. \\
@@ -67,10 +65,10 @@
         Zu diesen Organen gehören unter anderen:
 
 		\begin{itemize}
-			\item Gallenblasen( Vesica biliaris),
-			\item Lebern( Hepar ),
+			\item Gallenblasen ( Vesica biliaris ),
+			\item Lebern ( Hepar ),
 			\item Mägen ( Gaster )
-			\item oder dem Gastrointestinaltrakt( Tractus digestorius ).
+			\item oder dem Gastrointestinaltrakt(Tractus digestorius).
 		\end{itemize}
 
         Insbesondere Gallenblasen sind mit 200.555 Cholezystektomien die im Jahr 2017 \cite{destatis} durchgeführt wurden, typische Organe die auf endoskopischen Aufnahmen auftauchen. Cholezystektomien gehören damit zu den häufigsten Laparoskop ische Eingriffen und sind Standard in vielen Krankenhäusern.
@@ -99,16 +97,17 @@
             \label{fig:real_biliaris}
         \end{figure}
 
-        Ein weiterer Punkt der Selektion der Organe ist die Qualität bzw. die Frische.
+	\paragraph{Qualität\\}
+        Ein weiterer Punkt der Selektion der Organe ist die Qualität bzw. die Frische. \\
         Frische Organe sind notwendig da unter anderem Feuchtigkeit ein wichtiger Aspekt ist der vor allem die Bildung von Rauch und Dampf beeinflusst.
-        Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten.\\
         Auch Körperinnere Luftfeuchtigkeit und Temperatur wirkt sich auf das Beschlagen der Kamera aus sowie auf die Bewegungen und Dispersion des Rauches.\\
         \newline
-        Ausserdem bringen O ...... Chemische Reaktionen die das gewebe oder dessen zusammensetzung verändern sollen so weit wie möglich vermieden werden.
-        Verwesung, Verfaulung und andere Gärungsprozesse werden in der Medizin als Nekrosen bezeichnet 
+        Ausserdem verändern chemische Reaktionen wie Verwesung, Verfaulung und andere Gärungsprozesse die Zusammensetzung des Gewebes. Diese Prozesse werden in der Medizin als Nekrosen bezeichnet und sind unerwünscht, da minimal invasive Operationen nur an lebendigen Patienten Sinn machen, um die Heilung zu beschleunigen bzw unästhetisch Narben zu verhindern.
+
+        Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten um Durchblutungen zu simulieren. \\
+% TODO - in mehtodik erwähnen - warum durchbluten warum nicht Preis / leistung - egal weil tot
 
 	\subsection{Benötigte Eigenschaften}
-
         Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte Qualität und Realismus, sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
         Mögliche und erstrebte Verschmutzungen sind:\\
         \newline
@@ -178,9 +177,12 @@
             \end{figure}
 
             Geräte wie der Caiman5 \ref{sealer} sind Bipolare einmal-Geräte speziell dafür konstruiert um Gewebe wie Adern zu greifen, dann zu kauterisieren und anschließend zu durchtrennen.
-        \subsubsection{Laserschnittverfahren}
-            \cmt{Argon laser} - raucht stark - nur schneiden / schließen.
 
+        \subsubsection{Laserschnittverfahren}
+            Auch \gls{pc}.\\
+            Ähnlich wie bei den vorhergehend beschriebenen Kautern wird auch bei Laser Kauterisationverfahren die Energie exakter verwendet als bei Thermokautern.\\
+            Jedoch eignen sich Laser schlechter zum gezielten versiegeln von Adern oder anderen Gefäßen. Häufig werden sie deshalb lediglich zum durchtrennen verwendet. \\
+            Der Rauch den sie Produzieren ist laut experten \cite{uwe} von dem der Elekokauter zu unterscheiden.
 
 \section{Bild Bearbeitung}
     
@@ -208,6 +210,11 @@
         Ebenso können opake Verschmutzungen auftreten, bei denen das filtern oder bearbeiten nicht weiterhelfen kann.
         Für diese Fälle kann es fatal sein den Chirurgen falsche fakten anzuzeigen.  \\
 
+\subsection{Rauch Erkennung}
+        Die Erkennung von Rauch ist bis dato hauptsächlich Thema in der Gefahren Vermeidung, so behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
+        Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um Festzustellen ob sich der Rauch im Bild ausbreitet.
+
+\subsection{histogram Matching}
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
@@ -252,7 +259,4 @@
     Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
     \newline
     Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
-
-    \subsubsection{Rauch Erkennung}
-
 

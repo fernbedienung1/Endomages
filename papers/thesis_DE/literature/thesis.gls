@@ -43,3 +43,10 @@
     description={Bei der Hochfrequenz Chirurgie, auch kurz HF-Chirurgie, wird Wechselstrom durch den Körper geleitet um Gewebe zu Kauterisieren und füglich zu schneiden oder zu veröden.
     }
 }
+
+\newglossaryentry{pc}{
+    name=Photokoagulation, 
+    description={
+        Kauterisation mit Lasern (meist C02, Argon oder Krypton). Hauptsächlich findet diese Methode Verwendung in der Ophthalmologie als Methode der Refraktiven Chirurgen Bearbeitung der Retina . Bei geeigneten Operationen finden diese Laser auch in viszerale Eingriffen Verwendung.
+    }
+}
