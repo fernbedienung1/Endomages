@@ -16,6 +16,25 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         Zum Einsatz kahmen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
         Hauptaugenmerk des ersten Prototypes war eine ''Machbarkeits Überprüfung'', bei der das Ziel war herauszufinden ob mittels der verwendeten Kameras Bilder erzeugt werden können die Laparoskopien ähnlich sind und sich als Basis für die Algorithmenentwicklung eignen. 
         \newline 
+        
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{l|l|l|l}	%all left aligned
+                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \hline
+                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
+                Logitec & C270 & 1280x720 & \cite{webcam} \\
+                Alcor Micro & SJ00446 & 1280x170 & NONE \\
+                \hline
+                Weller & Lötkolben & std & \cite{iron} \\
+                \hline 
+                Selfmade & V01 & Umbebungssensor & \cite{RJ} \\
+            \end{tabular}
+            \caption{Aufnahme Geräte, Kauter und Sensoren\label{tab:recHW_1}}
+        \end{table}
+    
+        Tabelle \ref{tab:recHW_1} listet die die Verwendeten Komponenten für die Vorabversuche.
+        Die Geräte sind insbesondere für Laien erschwingliche und verfügbare Geräte. Ziel des Versuchs ist es einen gesamt Eindruck über die Komplexität der Versuche zu erhalten um die Komplexität sowie den Aufwand für Folgeversuche abzuschätzen.
 
         \begin{table}[H]
             \centering
@@ -30,102 +49,74 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                 \textbf {6} & Lötkolben & improvisierter Kauter\\
                 \textbf {7} & LED licht & Lichtquelle innerhalb des Trainers\\
             \end{tabular}
-            \label{tab:usedHW_I}
-            \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}}
+            \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}\label{tab:usedHW_I}}
         \end{table}
-        Die aufnahme geräte sind im Tabelle \ref{tab:recHW_1} vermerkt.
-        \begin{table}[H]
-            \centering
-            \label{tab:recHW_1}
-            \begin{tabular}{l|l|l|l}	%all left aligned
-                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
-                \hline
-                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
-                Logitec & C270 & 1280x720 & \cite{webcam} \\
-                Alcor Micro & SJ00446 & 1280x170 & NONE \\
-                \hline
-                Weller & Lötkolben & std & \cite{iron} \\
-                \hline 
-                & V01 & Umbebungssensor & \cite{RJ} \\
-                \hline 
-                Selfmade & V01 & Umbebungssensor & \cite{RJ} \\
-            \end{tabular}
-            \caption{Capturing and cauterisation Hardware}
-        \end{table}
-
+        
 %%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \newpage
+
 	    \begin{figure*}[hp]
              \begin{subfigure}[b]{\textwidth}
                  \centering
                  \includegraphics[scale=0.34]{pics/setups/setup1_schematic.png}
-                 \caption{\textbf{Schematic} \\
-                     Plan for fist Prototype, with the intention to evaluate Cameras and Tools. \\ 
-                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
-                     \textit{Devices correspond to table \ref{tab:usedHW_I}.}
+                 \caption{\textbf{Schematischer Aufbau} \\
+                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperatur- und  Luftfeuchtigkeits-Sensor, (7)LED-Licht \\
+                     \textit{Geräte wie in Tabelle \ref{tab:usedHW_I}.} \\
                  }
                  \label{fig:MK_I_schematic}
              \end{subfigure}
 
-             \hspace{1cm}
+             %\hspace{0.5cm}
 
              \begin{subfigure}[b]{\textwidth}
                  \centering
                  \includegraphics[scale=0.4]{pics/setups/setup1_real.png}
-                 \caption{\textbf{Real} \\ 
-                     Real setup based on Schematic\ref{fig:MK_I_schematic}. \\
-                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperature/Humidity Sensor, (7)LED-light source. \\
-                     \textit{Devices correspond to table \ref{tab:usedHW_I}.}
+                 \caption{\textbf{Realer Aufbau} \\ 
+                     (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperatur- und  Luftfeuchtigkeits-Sensor, (7)LED-Licht \\
+                     \textit{Geräte wie in Tabelle \ref{tab:usedHW_I}.}
                  }
                  \label{fig:MK_I_real}
              \end{subfigure}
 
-             \hspace{1cm}
+             %\hspace{0.5cm}
 
              \begin{subfigure}[b]{\textwidth}
                  \centering
                  \includegraphics[scale=0.2]{pics/setups/setup1_result.png}
-                 \caption{\textbf{Result} \\ 
-                     Images taken form the videos produced with Setup \ref{fig:MK_I_real}. \\
+                 \caption{\textbf{Ergebnis Bilder} \\ 
+                     Bilder aus den Videos des Aufbaus\ref{fig:MK_I_real}. \\
                      (1)DSLR-output, (2)Webcam-output, (3)Endocam-output.
                  }
                  \label{fig:MK_I_result}
              \end{subfigure}
 
-             \caption{fist Surgery phantom Prototype}
+             \caption{Prototype für Laborversuche}
              \label{fig:MK_I}
          \end{figure*}
+        \newpage
 
-         \newpage
-
-         Das Erkenntnisse des ersten Prototypen folgerten das eine sinnvolle Aufnahme von Daten nur mit medizinischen Endoskopen zu Stande kommen kann.\\
-         
-    \newpage   
     \subsubsection{Zweiter Prototyp}
 
-        Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
+        Aus den Ergebnissen des Ersten Prototypes ging hervor das es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer in dem die Versuche durchgeführt werden verbessert worden.. \\
+        Um darüber hinaus bessere Ergebnisse zu erzielen werden zusätzlich qualitativ hochwertigere Organe verwendet, sowie vom Versuchstier Rind auf Schwein gewechselt.\\
         \begin{table}[H]
             \centering
-            \label{tab:recHW_2}
             \begin{tabular}{l|l|l|l}	%all left aligned
-                \textbf{Company} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
                 \hline
-                Wolf & Endocam & Bronchoscope & \cite{endocam} \\		%1CCD Endocam 5520 
-                Wolf & 3D-Endocam & Stereoendscope & \cite{} \\		%3D-HD-Endocam F1014 
-                IDS & ui-3240cp & 1280x1024/60FPS& \cite{} \\ 
+                Wolf & Endocam & Bronchoscope & \cite{endocam} \\
+                Wolf & 3D-Endocam & Stereoendscope & \cite{3DHD} \\	
+                IDS & ui-3240cp & 1280x1024/60FPS& \cite{ids} \\ 
+                \hline 
+                OSRAM & Xenophot & 150W Halogen & NONE \\
                 \hline
                 Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
                 Aesculap & Letrafuse & RF-Generator & \cite{hfgen} \\
-                \hline 
-                Prototyp & OSRAM Xenophot & halogen Licht & NONE \\
             \end{tabular}
-            \caption{Capturing and cauterisation Hardware}
+            \caption{Aufnahmegeräte und Kauter\label{tab:recHW_2}}
         \end{table}
 
-        \cmt{Bild der Laborgeräte} \\
-
         Der Aufbau des 21.12.2018 beinhaltet die Hardware aus Tabelle \ref{tab:recHW_2}.\\
-        Zeitlicher Ablauf der Tests 
+        Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
 
 
         \begin{figure}[H]
@@ -154,8 +145,8 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                 \textbf {3} & Optik & einzuführender teil des Endoskopes\\
                 \textbf {4} & Kauter & Verbrennung Werkzeug\\
             \end{tabular}
-            \label{tab:usedHW_II}
-            \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren \ref{fig:MK_II_schematic} und \ref{fig:MK_II_real}}
+            
+            \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren \ref{fig:MK_II_schematic} und \ref{fig:MK_II_real}\label{tab:usedHW_II}}
         \end{table}
 
 
@@ -169,25 +160,23 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
 
         \begin{table}[H]
             \centering
-            \label{tab:organlist}
+            
             \begin{tabular}{l|c|c}	%all left aligned
                 \textbf{RefNr} & \textbf{Organ} & \textbf{Bemerkung} \\
                 \hline
-                \textbf {1} & Leber & Hämerperfusioniert\cmt{(?)}\\
+                \textbf {1} & Leber & Hämerperfusioniert\\
                 \textbf {2} & Magen & inklusive Drüsen\\
-                \textbf {3} & Milz & Hämerperfusioniert\cmt{(?)}\\
+                \textbf {3} & Milz & Hämerperfusioniert\\
                 \textbf {4} & Lunge & beide Lungen\\
                 \textbf {5} & Speise- \& Luftröhre & komplettes \\
-                \textbf {6} & Zunge & gesamter Kehlkopf\cmt{(?)}\\
+                \textbf {6} & Zunge & gesamter Kehlkopf\\
                 \textbf {7} & Fettnetz & Omentum Majus \\
             \end{tabular}
-            \caption{verwendete Organe des 2ten Testaufbaus}
+            \caption{verwendete Organe des 2ten Testaufbaus\label{tab:organlist}}
         \end{table}
-        \cmt{(?): richtig so?} \\
-        \cmt{1 -> druchblutet} \\
-        \cmt{6 -> fachbegriff innenteil Kehlkopf?} \\
 
-        Da die Organe (\ref{tab:organlist} und \ref{fig:organs}) von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende Organe gleichzeitig im Trainer verwendet werden.
+        Da die Organe (Tabelle \ref{tab:organlist} und Bild \ref{fig:organs}) von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende Organe gleichzeitig im Trainer verwendet werden.
+
         \begin{figure*}[hp]
             \begin{subfigure}[b]{\textwidth}
                 \centering
@@ -209,8 +198,9 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \caption{Aufbau der Daten Generierung}
             \label{fig:MK_II}
         \end{figure*}
+        \clearpage
 
-
+        \iffalse
         \begin{figure*}[hp]
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIRST ROW
             \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für plazierung neben einander
@@ -296,14 +286,25 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \caption{Results of the Data Acquirement}
         \label{fig:DataAcq}
     \end{figure*}
+    \fi
+
     \newpage
-%%\fi
 \subsubsection{Reale Daten}
     Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
     Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
     \newline
-    Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.
+    Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.\\
+    \newline
+    Der Ausschnitt \ref{fig:wolfVid} einem auf Youtube veröffentlichten Werbe-Video der Firma RICHARD WOLF GmbH von 2014 \cite{WolfVid} zeigt ein Bild das ebenfalls mit dem Stereoendoskop 3DHD \cite{3DHD} aufgenommen wurde und den Aufnahmen Uwe Widmaiers \cite{uwe} stark ähnelt.\\
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{pics/usable_unsure/wolfVid.jpg}
+        \caption{Aufnahme einer realen Laparoskopische Eingriffes}
+        \label{fig:wolfVid}
+    \end{figure}
 
+
+\newpage
 \section{Daten Bearbeitung}
 Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
 Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
@@ -324,9 +325,9 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
 \end{lstlisting}
 
         Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format das die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
-        \begin{table}
+        \begin{table}[h]
             \begin{tabular}{c|c|c|c}
-                Konversion & Format & Dateigröße & Geometrie\\
+                newonversion & Format & Dateigröße & Geometrie\\
                 \hline
                 input: & AVI & 837MB & 1920x1080\\
                 output: & MP4 & 9,4MB & 800x600 \\
@@ -334,8 +335,8 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
             \caption{Informationen der Konversion\\
                 File:\\
                 Stereo-LiverTest-Smoke-RotLapAxis-\#1-Right.avi
+                \label{tab:formatVid}
             }
-            \label{tab:formatVid}
         \end{table}
 
         der Coder \ref{code:vidConf} wandelt die Eingabe Videos in ein besser handhabbares Format um \ref{tab:formateVid}. \\
@@ -354,14 +355,14 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
     \subsection{Histogramme als Vergleichs Grundlage}
         Mit Hilfe des \ref{code:histPY_calc} Scriptes, können Histogramme erzeugt werden, die Auskunft über die farbliche Zusammensetzung der Bilder geben. 
 
-        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:calcHist}, label={code:histPY_calc}, firstline=22, lastline=44]
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:calcHist}, label={code:histPY_calc}, firstline=22, lastline=44, xleftmargin=0.5cm]
         {../../work/scripts/hist.py}         
 
         Die Methode zeigt das iterative kumulieren der Werte jedes Pixels, die Arrays \lstinline{hhist_b, hist_g, hist_r} enthalten die Anzahl der \lstinline{uint8_t} werte für die Farbkanäle Rot, Grün und Blau des RGB Formates.\\
         Weitere Methoden sorgen dann für die generation von csv-dateien für die Weiterverarbeitung \ref{code:histPY_csv} oder für die Darstellung als Kurve \ref{code:histPY_fun}. \\
-        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:createCSV}, label={code:histPY_csv}, firstline=80, lastline=90]
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:createCSV}, label={code:histPY_csv}, firstline=80, lastline=90, xleftmargin=0.5cm]
         {../../work/scripts/hist.py}
-        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:histLong}, label={code:histPY_fun}, firstline=93, lastline=129]
+        \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:histLong}, label={code:histPY_fun}, firstline=93, lastline=129, xleftmargin=0.5cm]
         {../../work/scripts/hist.py}
 
         Der Ausgabe Plot für das Kommando:\lstinline{gram shot_24.jpg -l s24.csv -o hist_24.png} sieht wie folgt aus \ref{fig:histInUse}.\\
@@ -390,11 +391,13 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         \end{figure*}
 
         Der Parameter \lstinline{ --createCSV} sorgt dafür dass die Arrays \lstinline{hhist_b, hist_g, hist_r} als csv-datei abgespeichert werden. So können später alle Farbwerte aufsummiert werden um ein Gesamthistogram über beispielsweise ein Gesamtes Video zu generieren.\\
-        Die Resultierenden CSV datein werden dann mittels des Scriptes \ref{code:collector} zusammengefasst.\\ \fuck{code im Appendix}
-        Gruppiert wird nach Quelle: ein Histogram \ref{TODO} beschreibt die Zusammensetzung aller Realen Daten die durch Uwe Widmaier\ref{uwe} aufgezeichnet wurden und ein weiteres über die Daten die im Laborversuch selbst erstellt wurden.\\
-        Auf der Grundlage dieser histogramme können die erstellten Daten mit den Realen verglichen und evaluiert werden.\\
-        \cmt{Referenz zu RESULTS}.\\
+        Die Resultierenden CSV Dateien werden dann mittels des Scriptes \ref{code:collector} zusammengefasst.\\ 
+        Gruppiert wird nach Quelle: ein Histogram beschreibt die Zusammensetzung aller Realen Daten die durch Uwe Widmaier\ref{uwe} aufgezeichnet wurden und ein weiteres über die Daten die im Laborversuch selbst erstellt wurden.\\
+        Auf der Grundlage dieser Histogramme können die erstellten Daten mit den Realen verglichen und evaluiert werden.\\
+        Der explizite Code zu diesem vorgehen findet sich im \ref{sec:Appendix}, sowie eine Liste der generierten Daten. \\
+        Die Ergebnisse der hier beschriebenen Algorithmen finden sich im Kapitel Ergebnis \ref{sec:Results}.\\
 
+        \newpage
     \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
         Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
 
@@ -480,6 +483,6 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         Diese Version des Codes erzeugt allerdings ein Histogram über die Graustufen des Bildes um ein eindimensionales Array zu erhalten, wärend \ref{code:histPY_calc} für jeweils Rot, Grün und Blau eigene Histogramme erstellt.
         Für die Anpassung mittels Histogram-Matching wird im code \ref{code:histogram} ein eindimensionaler Vektor erstellt ( Zeile 5 ). Durch die Bildung des Mittelwertes wird so ein Monochromes Bild erstellt. Monochrome Bilder bestehen nur aus Graustufen und deren Histogramme sind entsprechenden eindimensionale Matrizen, sprich lediglich Vektoren.\\
 
-        \cmt{ Und hier ist das Ergebnis  }\\
-        \cmt{ Mehr Info über die Beschaffung? }\\
-        \cmt{Geräte verlinken}\\
+        %\cmt{ Und hier ist das Ergebnis  }\\
+        %\cmt{ Mehr Info über die Beschaffung? }\\
+        %\cmt{Geräte verlinken}\\

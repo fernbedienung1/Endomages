@@ -164,7 +164,3 @@ def test():
 
 if __name__ == '__main__':
     main()
-    # test()
-
-
-# TODO: is threre a nice way to FLATEN images?
