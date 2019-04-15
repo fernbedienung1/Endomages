@@ -7,18 +7,17 @@
 \usepackage[english]{babel}    % Deutsche Sprache in automatisch generiertem
 \usepackage[fixlanguage]{babelbib}
 \usepackage[utf8]{inputenc}
-
-\usepackage{caption}          % Figure-Captions formatieren
-\usepackage{hyperref}	      % for linking
-\usepackage{graphicx}		  % for Pics
-\usepackage{pdfpages}         % insertion of PDF files
-\usepackage{listings}		  % For code
+\usepackage{caption}            % Figure-Captions formatieren
+\usepackage{hyperref}	        % for linking
+\usepackage[toc,style=alttree,nonumberlist,acronym,section=section]{glossaries}    % create Glossary  
+\usepackage{graphicx}		    % for Pics
+\usepackage{pdfpages}           % insertion of PDF files
+\usepackage{listings}		    % For code
 \usepackage{color}
 \usepackage{float}
-\usepackage{pbox}		% multiple lines within tables etc.
-\usepackage{subcaption} % Used in Subfigure environment
-\usepackage{glossaries}
-\usepackage{draftwatermark}	%create my sexy "in Progress" watermark
+\usepackage{pbox}		        % multiple lines within tables etc.
+\usepackage{subcaption}         % Used in Subfigure environment
+\usepackage{draftwatermark}	    %create my sexy "in Progress" watermark
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% METADATA
@@ -67,12 +66,14 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=2,
+    xleftmargin=0.5cm
 }
  
 \lstset{style=mystyle}
 
 
+%\newglossaryentry{Fuck}{name = FUCK, description="deine scheiß mudda"}
 
 %create gloassary
 \makeglossaries
@@ -153,16 +154,17 @@
     %\input{chapters/outlook.tex}
 
 \onecolumn
-\chapter*{Appendix}
+\chapter*{Appendix}\label{sec:Appendix}
     \input{pdf/collector.tex}
 \twocolumn
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Content of Bib and Figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\glsaddall
+%\printglossaries
 \listoffigures
 \listoftables
 \lstlistoflistings
-\printglossaries		%doesnt work...but not erroring either...
 \bibliographystyle{alpha}	% {unsrt},{apalike} would be options
 \bibliography{literature/lit}
 

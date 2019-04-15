@@ -23,17 +23,6 @@ adjusted_h_own = imread("out/adjusted_h_own.jpg");
 [own_h_f, own_h_F] = histogram(adjusted_h_own);
 
 
-%adjusted_g_real = histogramMatch(real, g);
-%adjusted_h_real = histogramMatch(real, h);
-% super stupid workaround - TODO: remove before you show this to anyone -.-
-%imwrite(adjusted_g_real, "out/adjusted_g_real.jpg");
-%imwrite(adjusted_h_real, "out/adjusted_h_real.jpg");
-%adjusted_g_real = imread("out/adjusted_g_real.jpg");
-%adjusted_h_real = imread("out/adjusted_h_real.jpg");
-
-%[real_g_f, real_g_F] = histogram(adjusted_g_real);
-%[real_h_f, real_h_F] = histogram(adjusted_h_real);
-
 % finaly display them
 fig1 = figure(1); clf;
 title("Original Image")

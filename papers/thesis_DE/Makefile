@@ -1,6 +1,7 @@
 all:	thesis.tex literature/lit.bib literature/thesis.gls
 	mkdir -p out
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
+	makeglossaries -s /usr/share/texmf/tex/latex/glosstex/glosstex.sty out/thesis.glo
 	TEXMFOUTPUT="out:" bibtex out/thesis.aux
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
 	pdflatex  -interaction=nonstopmode -output-directory out thesis.tex
@@ -8,6 +9,7 @@ all:	thesis.tex literature/lit.bib literature/thesis.gls
 debug:	thesis.tex literature/lit.bib literature/thesis.gls
 	mkdir -p out
 	pdflatex  -output-directory out thesis.tex
+	makeglossaries -s /usr/share/texmf/tex/latex/glosstex/glosstex.sty out/thesis.glo
 	TEXMFOUTPUT="out:" bibtex out/thesis.aux
 	pdflatex  -output-directory out thesis.tex
 	pdflatex  -output-directory out thesis.tex
