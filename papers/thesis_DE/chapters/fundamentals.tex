@@ -217,7 +217,43 @@
         Die Erkennung von Rauch ist bis dato hauptsächlich Thema in der Gefahren Vermeidung, so behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
         Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um Festzustellen ob sich der Rauch im Bild ausbreitet.
 
-%\subsection{histogram Matching}    % TODO wie geht das matching ? evtl aus methodic hoch holen?
+\subsection{Helligkeit-, Gamma- und Kontrastanpassung}
+        Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
+
+        \begin{equation} \label{eq:1}
+            I_{out} = {I_{in}}^{\gamma}
+        \end{equation}
+        
+        Wobei:
+        $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
+        \newline
+        $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
+        Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
+        \begin{equation} \label{eq:2}
+            I_{out} = I_{in} + I_{helligkeit}
+        \end{equation}
+
+        Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
+        \begin{equation} \label{eq:3}
+            I_{out} = I_{in} * sig(I_{kontrast})
+        \end{equation}
+        wobei die Sigmoid-Funktion wie folgt definiert ist:\\
+        $$ sig(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x} $$
+
+        Eine vollständige Anpassung kann somit aus der Kombination der Formeln:
+        \ref{eq:1}, \ref{eq:2} und \ref{eq:3} erreicht werden. Daraus ergibt sich die Formel:
+
+        \begin{equation} \label{eq:4}
+            I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
+        \end{equation}
+
+        Dies ist die Grundlage für die ''Histogram matching''. \\
+        Beim Histogram Malching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
+        \begin{equation} \label{eq:5}
+            I_{out} = T(I_{in})
+        \end{equation}
+
+        Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
@@ -251,8 +287,6 @@
         \caption{Bild eines Endoskopes und dessen Histogramme}
         \label{fig:hist_example}
     \end{figure}
-
-\newpage
     
     Das Bild \ref{fig:hist_example} zeigt eine Laparoskopische Szene, und deren Histogram. 
     Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\

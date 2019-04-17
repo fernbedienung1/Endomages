@@ -404,85 +404,55 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         Die Ergebnisse der hier beschriebenen Algorithmen finden sich im Kapitel Ergebnis \ref{sec:Results}.\\
 
         \newpage
-    \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
-        Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
-
-        \begin{equation} \label{eq:1}
-            I_{out} = {I_{in}}^{\gamma}
-        \end{equation}
+         \subsection{Anwendung von Bildanpassungsalgorithmen}
         
-        Wobei:
-        $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
-        \newline
-        $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
-        Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
-        \begin{equation} \label{eq:2}
-            I_{out} = I_{in} + I_{helligkeit}
-        \end{equation}
+            Die unter \ref{sec:Fundamentals} beschriebenen Algorithmen wirken sehen im code folgendermassen aus \ref{code:plotIt}.
+            Dieses Skript produziert die Ausgabe bilder in \ref{fig:imageAdjust}. \\
+            \begin{figure}[H]
+                \begin{subfigure}[h]{0.4\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
+                    \label{fig:contrast}
+                    \caption{
+                        Originales eingabe Bild 
+                    }
+                \end{subfigure}
+                ~
+                \begin{subfigure}[h]{0.4\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
+                    \label{fig:contrast}
+                    \caption{
+                        Änderung der Helligkeit um 10\%
+                    }
+                \end{subfigure}
+                ~
+                \begin{subfigure}[h]{0.4\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
+                    \label{fig:contrast}
+                    \caption{
+                        Änderung des Gamma-wertes um 10\%
+                    }
+                \end{subfigure}
+                ~
+                \begin{subfigure}[h]{0.4\textwidth}
+                    \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
+                    \label{fig:contrast}
+                    \caption{
+                        Änderung des Kontrastes mittels Sigmoid-funktion um 10\%
+                    }
+                \end{subfigure}
+                \label{fig:imageAdjust}
+                \caption{Bildbearbeitung von intraoperativen Bildern}
+            \end{figure}
 
-        Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
-        \begin{equation} \label{eq:3}
-            I_{out} = I_{in} * sig(I_{kontrast})
-        \end{equation}
-        wobei die Sigmoid-Funktion wie folgt definiert ist:\\
-        $$ sig(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x} $$
+            Die Anpassung wird hier bereits über Histogrammatching vorgenommen, welches die kumulierte Summe der Bilder an eine Eingabe Funktion anpasst.
+            Dadurch ensteht eine Matrix die auf die Pixel des Bildes angewandt werden kann und so jeden Pixel anpasst.
 
-        Eine vollständige Anpassung kann somit aus der Kombination der Formeln:
-        \ref{eq:1}, \ref{eq:2} und \ref{eq:3} erreicht werden. Daraus ergibt sich die Formel:
-
-        \begin{equation} \label{eq:4}
-            I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
-        \end{equation}
-
-        Dies ist die Grundlage für die ''Histogram matching''. \\
-        Beim Histogram Malching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
-        \begin{equation} \label{eq:5}
-            I_{out} = T(I_{in})
-        \end{equation}
-
-        Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
-        
-        \begin{figure}[H]
-            \begin{subfigure}[h]{0.4\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
-                \label{fig:contrast}
-                \caption{
-                    Originales eingabe Bild 
-                }
-            \end{subfigure}
-            ~
-            \begin{subfigure}[h]{0.4\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
-                \label{fig:contrast}
-                \caption{
-                    Änderung der Helligkeit um 10\%
-                }
-            \end{subfigure}
-            ~
-            \begin{subfigure}[h]{0.4\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
-                \label{fig:contrast}
-                \caption{
-                    Änderung des Gamma-wertes um 10\%
-                }
-            \end{subfigure}
-            ~
-            \begin{subfigure}[h]{0.4\textwidth}
-                \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
-                \label{fig:contrast}
-                \caption{
-                    Änderung des Kontrastes mittels Sigmoid-funktion um 10\%
-                }
-            \end{subfigure}
-            \label{fig:imageAdjust}
-            \caption{Bildbearbeitung von intraoperativen Bildern}
-        \end{figure}
         
         \subsection{Histogram Equalization}
             Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen. Die Implementierung dieser Mathematischen Funktionen erfolgt aus Performance-Gründen mittels Octave.\\
             So kann die Histogramm Generierung, die bisher mittels des python Skripts hist.py \ref{code:histPY_calc} erreicht wurde, verkürzt werden.\\
             \newline
-            Der unterschied der den immensen geschwindigkeits zuwachs ermöglicht ist hierbei nicht der wechsel der sprache, sondern der methodic.\\
+            Der unterschied der den immensen Geschwindigkeitszuwachs ermöglicht ist hierbei nicht der Wechsel der Sprache, sondern der Methodik.\\
             Während das python-Script iterativ alle Pixel aufsummiert, ist die Vorgehensweise des Octave Scripts vektoriell. Dies kann mit Hilfe der numpy-Bibliothek auch in Python realisiert werden\cite{numpy}.
             Der Zeitgewinn durch die Vektorielle Rechnung mittels Octave ist immens, er verringert sich von ca 4 Minuten (für RGB Histogramme ungefähr 12 Minuten)) auf unter 1 Sekunde auf dem Verwendeten System. \\
             Den entsprechenden Code zeigt der Auszug \ref{code:histogram} aus histogram.m \ref{code:histogramM}.\\
@@ -492,7 +462,3 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
 
         Diese Version des Codes erzeugt allerdings ein Histogram über die Graustufen des Bildes um ein eindimensionales Array zu erhalten, wärend \ref{code:histPY_calc} für jeweils Rot, Grün und Blau eigene Histogramme erstellt.
         Für die Anpassung mittels Histogram-Matching wird im code \ref{code:histogram} ein eindimensionaler Vektor erstellt ( Zeile 5 ). Durch die Bildung des Mittelwertes wird so ein Monochromes Bild erstellt. Monochrome Bilder bestehen nur aus Graustufen und deren Histogramme sind entsprechenden eindimensionale Matrizen, sprich lediglich Vektoren.\\
-
-        %\cmt{ Und hier ist das Ergebnis  }\\
-        %\cmt{ Mehr Info über die Beschaffung? }\\
-        %\cmt{Geräte verlinken}\\
