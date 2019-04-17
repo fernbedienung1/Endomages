@@ -17,7 +17,7 @@
         
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\textwidth]{pics/schmauch/noisesMarked.png}
+        \includegraphics[width=\textwidth]{pics/schmauch/noisesMarked.png}
         \caption{Verunreinigungen in Endoskope aufnahmen, \\
             \textbf{(1)}surgical smoke, \textbf{(2)}Beschlagen des Endoskopes durch aufsteigenden Dampf\\
             \textsc{[Eigene Aufnahme]}
@@ -80,7 +80,7 @@
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.5\textwidth]{pics/net/vesicaBiliaris.png}
+            \includegraphics[width=\textwidth]{pics/net/vesicaBiliaris.png}
             \caption{ Schematische Darstellung einer Gallenblasen (grün), die auf der Leber sitzt.}
             % sourch http://medbox.iiab.me:3000/wikipedia_en_medicine_2018-01/A/Cystohepatic_triangle.html
             \label{fig:schema_biliaris}
@@ -90,7 +90,7 @@
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.5\textwidth]{pics/ownData/vesicaBiliaris_REAL.jpg}
+            \includegraphics[width=\textwidth]{pics/ownData/vesicaBiliaris_REAL.jpg}
             \caption{Reales Bild einer Gallenblase eines Schweines\\
                 \textsc{[eigene Aufnahme]}
             }
@@ -150,33 +150,36 @@
             In der Technik auch als Hochfrequenzthermotherapie (\gls{hfc})bekannt.\\
             Diese Technik verwendet Elektroden die ähnlich dem schweißen am Körper angebracht werden um einen Stromfluss zu ermöglichen, welcher die Hitze erzeugt, die letztendlich zum Kauterisieren benötigt wird. Die Diathermie teilt sich auf zwei verschiedene Methoden auf: \\
 
+                \begin{figure}[h]
+                    \centering
+                    \begin{subfigure}[h]{0.4\textwidth}
+                        \includegraphics[width=\textwidth]{pics/usable_unsure/monopolar.png}
+                        \caption{
+                            Diathermie - Monopolares Verfahren.
+                        }
+                        \label{fig:monopolar}
+                    \end{subfigure}
+                    \begin{subfigure}[h]{0.4\textwidth}
+                        \includegraphics[width=\textwidth]{pics/usable_unsure/bipolar.png}
+                        \caption{
+                            Diathermie - Bipolares Verfahren.
+                        }
+                        \label{fig:bipolar}
+                    \end{subfigure}
+                    \caption{ Monopolares vs Bipolares Kauterisiern }
+                    \label{fig:cauterizationMethodes}
+                \end{figure}
             \paragraph{Monopolar}
-                Beim Monopolaren arbeiten wird der Patient auf einer leitfähigen Unterlage positioniert, der strom fließt so von Elektrode durch den Körper des Patienten.
+                Beim Monopolaren\ref{fig:monopolar} arbeiten wird der Patient auf einer leitfähigen Unterlage positioniert, der strom fließt so von Elektrode durch den Körper des Patienten.
                 Die stelle mit den Stärksten Konzentration des Stroms erhitzt sich so und kauterisiert das Gewebe. Tieferliegendes Gewebe wird weniger stark erhitzt durch die dispersen des Stromes, der wie in einer Parallelschaltung aufgeteilt wird.
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=0.5\textwidth]{pics/usable_unsure/monopolar.png}
-                \caption{
-                    Diathermie - Monopolares Verfahren.
-                }
-                \label{fig:monopolar}
-            \end{figure}
 
             \paragraph{Bipolar}
-                Beim Bipolaren verfahren werden 2 Elektroden des Werkzeugs verwendet um einen Stomfluss zwischen diesen zu erzeugen.
+                Beim Bipolaren \ref{fig:bipolar} verfahren werden 2 Elektroden des Werkzeugs verwendet um einen Stomfluss zwischen diesen zu erzeugen.
                 So fließt der Strom nicht durch den gesamten Körper des Patienten und es ist eine Leitfähige Unterlage notwendig.
                 Insbesondere Zangen oder Pinzetten können so verwendet werden um Gefäße oder adern gezielt zu versiegeln.
 
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=0.5\textwidth]{pics/usable_unsure/bipolar.png}
-                \caption{
-                    Diathermie - Bipolares Verfahren.
-                }
-                \label{fig:bipolar}
-            \end{figure}
 
-            Geräte wie der Caiman5 \ref{sealer} sind Bipolare einmal-Geräte speziell dafür konstruiert um Gewebe wie Adern zu greifen, dann zu kauterisieren und anschließend zu durchtrennen.
+            Geräte wie der Caiman5 \cite{sealer} sind Bipolare einmal-Geräte speziell dafür konstruiert um Gewebe wie Adern zu greifen, dann zu kauterisieren und anschließend zu durchtrennen.
 
         \subsubsection{Laserschnittverfahren}
             Auch \gls{pc}.\\
@@ -219,7 +222,7 @@
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
         \centering
-        \begin{subfigure}[h]{0.5\textwidth}
+        \begin{subfigure}[h]{\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
             \label{fig:hist_example_pic}
             \caption{
@@ -227,7 +230,7 @@
             }
         \end{subfigure}
         ~
-        \begin{subfigure}[h]{0.5\textwidth}
+        \begin{subfigure}[h]{\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
             \label{fig:hist_example_singles}
             \caption{
@@ -236,7 +239,7 @@
             }
         \end{subfigure}
         ~
-        \begin{subfigure}[h]{0.5\textwidth}
+        \begin{subfigure}[h]{\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
             \label{fig:hist_example_hist}
             \caption{

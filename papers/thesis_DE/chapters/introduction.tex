@@ -6,12 +6,13 @@ Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des End
 
 \section{Hintergrund}
     
-    Laparoskopische Eingriffe erfordern spezielle Werkzeuge, wie beispielsweise Kauter (Rechts im Bild \ref{fig:introNoise}), die durch ihre Verwendung Verschmutzungen erzeugen. Durch das \gls{Pneumoperitoneum} können Verschmutzungen des Endoskopes wie beispielsweise Rauch und Dampf das Operationsgebiet nicht verlassen und behindern dadurch das Sichtfeld der Endoskope Kamera.\\
+    Laparoskopische Eingriffe erfordern spezielle Werkzeuge, wie beispielsweise Kauter, die durch ihre Verwendung Verschmutzungen erzeugen. Durch das \gls{Pneumoperitoneum} können Verschmutzungen des Endoskopes wie beispielsweise Rauch und Dampf das Operationsgebiet nicht verlassen und behindern dadurch das Sichtfeld der Endoskope Kamera.\\
     Eine reine Software Lösung des Problems ist erstrebenswert um Anschaffungskosten und zeitlichen Aufwand während der Operationen gering zu halten.
-    
+
+\iffalse    
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.5\textwidth]{pics/schmauch/noisesMarked.png}
+        \includegraphics[width=\textwidth]{pics/schmauch/noisesMarked.png}
         \caption{
            Verschiedene Arten von ''Surgical Smoke'' 
         }
@@ -19,12 +20,11 @@ Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des End
     \end{figure}
 
     Bild \ref{fig:introNoise} zeit einen Ausschnitt einer Operation bei der \textit{Surgical Smoke} und Beschlagen der Kamera die Sicht auf das Operationsgebiet behindern.\\
-    
+\fi
 
 \section{Ziel}
     Das Ziel dieser Arbeit ist es deshalb diesen \textit{Surgical Noise} Software seitig mittels Bildbearbeitungsalgorithmen zu erkennen und zu entfernen.\\
     Während der Bearbeitung des Themas wurde es notwendige eine entsprechende Datenbasis, die mit Aufnahmen von \textit{Surgical Noises} enthalten selbst zu generieren. Diese Daten sind die Grundlage der Erkennungs- und Entfernungs- Algorithmen die im Rahmen der Arbeit entstehen sollen.\\
-    \newline
 
     Um dieses Ziel zu erreichen wurden folgende Unterpunkte erstellt welche das Hauptproblem aufteilen und Teilprobleme definieren:\\
     \begin{enumerate}
@@ -38,7 +38,5 @@ Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des End
     Folglich soll das Endergebnis Störungen in Bildern und Videos finden und entsprechend der gefundenen Störung einen passenden Filter auf den Bildbereich anwenden der die Störung enthält. \\
     \newline
     Das daraus resultierende Bild soll eine verbesserte Sicht auf das Operationsgebiet zeigen, im Vergleich zum ursprünglichen Eingangsbild der Laparoskop Kamera.\\
-    \newline
-
     Im Rahmen der Möglichkeiten dieser Arbeit wird eine Methode Vorgestellt entsprechendes Bildmaterial zu generieren, zu Bearbeiten und zu Evaluieren. \\
     Die generierten Daten werden mit realem intraoperativen Videomaterial verglichen und bereits bekannte Bildbearbeitungsalgorithmen werden implementer um eine Verwendung zu Demonstrieren.\\
