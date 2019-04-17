@@ -1,4 +1,4 @@
-\section{Testdaten Generierung}
+\section{testdaten Generierung}
     Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Roh-Daten mit einer Dauer von 1 Stunde und 16 Minuten. \\
     Zusätzlich zu den 293MB realer Laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
 
@@ -42,31 +42,17 @@
         In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
         Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
 
-        Vergleichend ist so festzustellen das die selbst generierten Daten dunkler sind als die realen Daten.\\
-        Für die ersten versuche dieser reihe spielt die Helligkeit eine untergeordnete rolle, denn Rauch und andere Verunreinigungen können auch in den Dunkleren Bildern Deutlich mit bloßem Auge erkannt werden.\\
-        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. 
-        \vspace{5cm}
-         \hspace{5cm}   \paragraph{\textbf{\textsc{\textit{Weitere Results folgen in Druckversion}}}}
-        \iffalse
+        Für die ersten Versuche dieser reihe spielt die Helligkeit eine untergeordnete rolle, denn Rauch und andere Verunreinigungen können auch in den Dunkleren Bildern Deutlich mit bloßem Auge erkannt werden.\\
+        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
+
         \begin{figure}[h]
-            \includegraphics[width=\textwidth]{pics/net/vesicaBiliaris.png}
-            % TODO - eins finden! - schlechtes licht + nahem zoom!
-            \caption{Bild mit schlechtem Licht}
+            \includegraphics[width=0.5\textwidth]{pics/ownData/darkpic.jpg}
+            \caption{Bild mit schlechtem Licht und deshalb zu nah aufgenommener Leber}
             \label{fig:closeup}
         \end{figure}
-        Auch dies steht nicht im direkten konflikt des Ziels schmutz aufzuzeichnen, jedoch entsteht so ein deutlich Sichtbarer unterschied zu den Realen Datensätzen.\\
 
-        \cmt{vergleich besser hier? / in diskussion?}
-        Die selbstgenerierten Daten \cmt{stauchung von realdaten} \\
-        Ausserdem überblendet - nah ran weil dunkel.\\
-        
+        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich Sichtbarer unterschied zu den Realen Datensätzen.\\
 
-        \subsubsection{realism}
-            \begin{itemize}
-                \item wie ein unbeholfener arzt
-                \item quite dark - due to single light source
-            \end{itemize}
-            
         \subsubsection{quality}
             \begin{itemize}
                 \item tools good
@@ -75,14 +61,12 @@
                 \item Eine einzuelne lichtquelle ist unzureichend!
             \end{itemize}
 
-    \subsection{Use in Application}
-        Generated data is used to generate the algorithms while they are evaluated against the real data. \\
-        This is done to avoid overfitting of the algorithm to special data. \\
-        \newline
-        Pictures in this document are completely taken form the setup to avoid legal issues.
-
-    
 \section{Algorithms}
     \subsection{historgram matching}
-    hiervon verlinkt glaube ich nachher relativ viel in den Appendix....
-    \fi
+        Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogram kurven.\\
+        \begin{figure*}[hp]
+            \includegraphics[width=\textwidth]{pics/eval/smokeHist.pdf}
+            \caption{Anpassungen der Bilder mittels Histogram-matching}
+            \label{fig:smokeHisto}
+        \end{figure*}
+
