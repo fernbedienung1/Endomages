@@ -94,6 +94,19 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
          \end{figure*}
         \newpage
 
+    \paragraph{Fazit des ersten Prototpen}
+        Die Generierung von Daten ist mit ''Haushaltsmittlen'' nicht zu ermöglichen, zwar ist es möglich Rauch zu erzeugen und die ersten Tests und Versuche decken einige Fallstricke auf. Jedoch nicht in einem Realen oder brauchbaren Ausmaß. Für die brauchbare Verwendung für die Algorithmen muss mit Professionelleren Werkzeugen gearbeitet werden. Die Verbesserungen sind insbesondere in den Bereichen: \\
+        \begin{itemize}
+            \item Laparoskopischer Trainer, 
+            \item Qualität der Versuchsorgane,
+            \hspace{1cm}
+            \item \textbf{Endoskope} und 
+            \item \textbf{Kautern}.
+        \end{itemize}
+
+        gemacht werden.\\
+        Folglich ist es notwendig einen 2ten Laborversuch durchzuführen welcher die obrigen Punkte berücksichtigt.
+
     \subsubsection{Zweiter Prototyp}
 
         Aus den Ergebnissen des Ersten Prototypes ging hervor das es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer in dem die Versuche durchgeführt werden verbessert worden.. \\
@@ -288,6 +301,27 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
     \end{figure*}
     \fi
 
+    \cmt{Vergleich mit der auflistung von Versuch 1}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|c|}
+            \hline
+            \textbf{Prototyp 1} & \textbf{Prototyp 2 Verbesserung} \\
+            \hline
+            Organe & Frische Organe \\
+            Phantom & Frische Organe \\
+            Endoskope & bla \\
+            Kauter & \cmt{Betta Cauta} \\
+            \hline
+        \end{tabular}
+        \caption{Informationen der Konversion\\
+            File:\\
+            Stereo-LiverTest-Smoke-RotLapAxis-\#1-Right.avi
+            \label{tab:formatVid}
+        }
+    \end{table}
+
     \newpage
 \subsubsection{Reale Daten}
     Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
@@ -297,6 +331,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
     \newline
     Der Ausschnitt \ref{fig:wolfVid} einem auf Youtube veröffentlichten Werbe-Video der Firma RICHARD WOLF GmbH von 2014 \cite{WolfVid} zeigt ein Bild das ebenfalls mit dem Stereoendoskop 3DHD \cite{3DHD} aufgenommen wurde und den Aufnahmen Uwe Widmaiers \cite{uwe} stark ähnelt.\\
     Das Bild zeigt einen Elektrokauter, der zum schneiden von Gewebe verwendet wird und Ansätze von Surgical smoke, welcher sich im Pneumoperitoneum ausbreitet.
+
     \begin{figure}[h]
         \centering
         \includegraphics[width=\textwidth]{pics/usable_unsure/wolfVid.jpg}
@@ -305,7 +340,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             Aufgenommen mit einem 3DHD \cite{3DHD}, \\
             Werkzeug im Bild ist ein Monopolarer Elektrokauter.\\
         }
-        \label{fig:wolfVid}
+        \label{fig:compareP1P2}
     \end{figure}
 
 
@@ -315,6 +350,29 @@ Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgor
 Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
 Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
 
+    \subsection{Tools und Sprachen}
+        Die Verarbeitung der Daten erfolgt auf einem Dell Latitude \cite{laptop} als Host-System, in Verbindung mit einer Ubuntu18.04 Virtuellen Maschine die mittels VMware-Player auf dem Hostsystem die Verwendung der Bash und anderen Programierwerkzeugen ermöglicht. \\
+        Die gewählten sprachen sind: \\
+        \begin{itemize}
+            \item Python3.6.7, 
+            \item Bash 4.4.19  und 
+            \item Octave 4.2.2 .
+        \end{itemize}
+ 
+        Insbesondere für Python wurden weitere Bibliotheken verwendet, welche alle via Python-pip:\\
+        \lstinline[language=python, numbers=none ]{python3 -m pip install <package> [<package>] } \\
+        installiert werden können. Die packte sind: \\
+
+        \begin{itemize}
+            \item numpy         1.16.2
+            \item opencv-python 4.1.0.25
+            \item matplotlib    3.3.0
+            \item pycparser     2.17
+            \item scipy         1.2.1
+        \end{itemize}
+        % additionals : argparser and csv (parser)
+
+        
     \subsection{Vorverarbeitung}
         Ziel der Vorverarbeitung ist es die aus den Versuchen generierten Video Rohdaten für die Implementation vorzubereiten.
         Beispielsweise werden für die ersten versuche der Bildbearbeitung mit den bereits erwähnten Gamma/Kontrast/Helligkeit -filtern einzelne Bilder (Frames) der Videos benötigt.\\

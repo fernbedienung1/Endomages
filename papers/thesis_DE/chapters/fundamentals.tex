@@ -192,7 +192,7 @@
     Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
     Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt. Basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
 
-\subsection{Erkennung der Verschmutzungen}
+\subsection{der Verschmutzungen}
     Um die Bilder des Endoskopes so wenig wie möglich zu verändern und somit zu verfälschen ist es Ziel der Arbeit Verschmutzungen zu erkennen. 
     Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das unverändert lassen von nicht verschmutzten Arealen im Bild. \\
     \newline
@@ -211,11 +211,13 @@
         Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
         Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.\\
         Ebenso können opake Verschmutzungen auftreten, bei denen das filtern oder bearbeiten nicht weiterhelfen kann.
-        Für diese Fälle kann es fatal sein den Chirurgen falsche fakten anzuzeigen.  \\
+        Für diese Fälle kann es fatal sein den Chirurgen falsche Fakten anzuzeigen.  \\
 
 \subsection{Rauch Erkennung}
         Die Erkennung von Rauch ist bis dato hauptsächlich Thema in der Gefahren Vermeidung, so behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
         Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um Festzustellen ob sich der Rauch im Bild ausbreitet.
+        \newline
+        \cmt{Bilder aus Smoke paper}
 
 \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
         Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
@@ -254,6 +256,9 @@
         \end{equation}
 
         Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
+
+\subsection{Dark Channel Prior}
+    \cmt{Bilder aus Papers wie in Praesi!}
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
