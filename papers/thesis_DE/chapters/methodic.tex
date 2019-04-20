@@ -301,28 +301,28 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
     \end{figure*}
     \fi
 
-    \cmt{Vergleich mit der auflistung von Versuch 1}
-
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|c|}
             \hline
             \textbf{Prototyp 1} & \textbf{Prototyp 2 Verbesserung} \\
             \hline
-            Organe & Frische Organe \\
-            Phantom & Frische Organe \\
-            Endoskope & bla \\
-            Kauter & \cmt{Betta Cauta} \\
+            Organe & Frische Organe (schlachtung am versuchstag (21.12.2018)\\
+            Phantom & angepasst an laparoskopische Trainer \\
+            Endoskope & Leihgaben des DKFZ und Prof.Dr. Alfred Franz \\
+            Kauter & Kauter und HF-generator, Leihgaben der NewTec GmbH. \\
             \hline
         \end{tabular}
-        \caption{Informationen der Konversion\\
-            File:\\
-            Stereo-LiverTest-Smoke-RotLapAxis-\#1-Right.avi
-            \label{tab:formatVid}
-        }
+        \caption{ Verbesserungen der Testumgegbung \label{tab:improvements}}
     \end{table}
 
-    \newpage
+    Die Verbesserungen in \ref{tab:improvements} erzeugen Daten die für eine weiterverarbeitung in frage kommen, jedoch noch qualitativ mit mit echten Daten gegenübergestellt werden müssen. \\
+    
+    Die generierten bilder sollten im laufe der Arbeit noch Chirurgen zur validierung vorgelegt werden, aufgrund schlechter kontakte und verfügbarkeiten der Chriurgen ist dies Jedoch zeitlich nicht mehr im Rahmen der Arbeit zustande gekommen. \\
+    Die gerneriten Daten bedürfen daher noch einer Prüfung durch Mediziner, Chirurgen oder andwereitig Qualifizierte Experten, die bestätigen oder verneinen das es sich hierbei um realitätsnahe Daten handelt.\\
+    Ausserdem ist zu klären unter welchen Aspekten sich die generierten Daten letztendlich von Realen unterscheiden und in wiefern dies eine Weiterverarbeitung beeinflusst. 
+
+    \clearpage
 \subsubsection{Reale Daten}
     Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
     Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
@@ -346,9 +346,10 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
 
 \newpage
 \section{Daten Bearbeitung}
-Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
-Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
-Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
+    Die Bearbeitung der generierten Daten teil sich in mehrere Teile.
+    Zuerst müssen die Daten aufgrund ihrer Größe verwertbarer gemacht werden, mit Hilfe von Konversion des Dateiformates sowie einer Reduktion der Auflösung.\\
+    Im Anschluss werden die Bilder mit Hilfe von Histogrammen verglichen und bearbeitet. \\
+    Eine Implementation von Rauch oder Dampf Erkennung ist nicht mehr teil der Arbeit.
 
     \subsection{Tools und Sprachen}
         Die Verarbeitung der Daten erfolgt auf einem Dell Latitude \cite{laptop} als Host-System, in Verbindung mit einer Ubuntu18.04 Virtuellen Maschine die mittels VMware-Player auf dem Hostsystem die Verwendung der Bash und anderen Programierwerkzeugen ermöglicht. \\
@@ -365,15 +366,27 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
 
         \begin{itemize}
             \item numpy         1.16.2
-            \item opencv-python 4.1.0.25
+            \item openCV-python 4.1.0.25
             \item matplotlib    3.3.0
             \item pycparser     2.17
             \item scipy         1.2.1
         \end{itemize}
         % additionals : argparser and csv (parser)
 
-        
+        Insbesondere die openCV-python bibliothek wurde verwendet, da es sich hierbei um eine C++-Bibliothek mit einem Python-wrapper handelt, die Bildbearbeitung in Bildern sowie Videos zulässt. In Verbindung mit Numpy und matplotlib ist es so möglich schnell zu prototypischen Ergebnissen zu gelangen.\\
+        Python als geskriptete Sprache erlaubt eine schnelle Implementation des Codes, jedoch bleiben die Ausführungszeiten hinter derer von kompilierten sprachen wie C++ zurück. Da die openCV-bibliothek für python nur ein wrapper um die eigentliche C++ Implementierung ist, kann so erwartet werden das sich etwaiger Portierungsaufwand gering hält. Desweiteren ist openCV eine in sowohl in Wissenschaft also auch in der Industrie weit verbreitete Bibliothek für Bildbearbeitungen.\\
+        Matplotlib und numpy sind Mathematische bibliothek die bei der erstellung von Beispielsweise Histogrammen vorgefertige algorithmen mitbringen auf die zugegriffen werden kann. \\ 
+        Sowohl numpy, welches eigene Datentypen mitbringt, als auch Matplotlib, das Bilder aus openCV in Plots darstellen kann sind Kompatibel mit OpenCV und machen eine Kombinierte Verwendung einfach.\\
+        \newline
+        Dennoch wurde im Laufe der Arbeit auch auf Octave zurückgegriffen, einer unter GNU GPLv3 lizenzierten Software für numerische Berechnungen. Um schneller an Ergebnisse zu kommen als über Python mittels Opencv und numpy.\\
+        Ein weiterer vorteil von Octave ist die produzierte Code, der sehr mathematisch zu lesen ist und so eine einfache übersetzung von Formeln in Quelltext ermöglicht.\\
+
     \subsection{Vorverarbeitung}
+
+        Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
+        Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
+        Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
+        \newline
         Ziel der Vorverarbeitung ist es die aus den Versuchen generierten Video Rohdaten für die Implementation vorzubereiten.
         Beispielsweise werden für die ersten versuche der Bildbearbeitung mit den bereits erwähnten Gamma/Kontrast/Helligkeit -filtern einzelne Bilder (Frames) der Videos benötigt.\\
         Die Vorverarbeitung soll die Daten aufbereiten um komfortables arbeiten mit ihnen zu ermöglichen, indem die Videos in Standard Formate mit kleineren Größen konvertiert werden. Mit den Bildern wird gleich verfahren.\\
@@ -466,6 +479,7 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
         
             Die unter \ref{sec:Fundamentals} beschriebenen Algorithmen wirken sehen im code folgendermassen aus \ref{code:plotIt}.
             Dieses Skript produziert die Ausgabe bilder in \ref{fig:imageAdjust}. \\
+            
             \begin{figure}[H]
                 \begin{subfigure}[h]{0.4\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
@@ -498,8 +512,8 @@ Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertiere
                         Änderung des Kontrastes mittels Sigmoid-funktion um 10\%
                     }
                 \end{subfigure}
-                \label{fig:imageAdjust}
-                \caption{Bildbearbeitung von intraoperativen Bildern}
+                ~
+                \caption{Bildbearbeitung von intraoperativen Bildern\label{fig:imageAdjust}}
             \end{figure}
 
             Die Anpassung wird hier bereits über Histogrammatching vorgenommen, welches die kumulierte Summe der Bilder an eine Eingabe Funktion anpasst.
