@@ -1,13 +1,13 @@
-Diese Arbeit beschreibt eine Mehtode um \textit{Surgical Noise} aus Bildern und Videos laparoscopischer Eingriffe zu entfernen. \\
-Dieses entfernen geschiet vollständing mittels software, es wird keine zusätzliche Hardware benötigt um eine Verbesserung herbeizuführen. \\
+Diese Arbeit beschreibt eine Mehtode um \textit{Surgical Noise} aus Bildern und Videos laparoskopischer Eingriffe zu entfernen. \\
+Dieses Entfernen geschieht vollständing mittels Software, es wird keine zusätzliche Hardware benötigt um eine Verbesserung herbeizuführen. \\
 \newline
-Die Idee dieser Arbeit basiert auf einer Hostpitaion einer Laparoscopischen Cholezystektomie vom 16.05.2018 im \gls{ADK}. \\
-Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des Endoskopes die Arbeit deutlich behindern und somit dem Arbeitsfluss der Chirurgen stören.
+Die Idee dieser Arbeit basiert auf einer Hospitation einer laparoscopischen Cholezystektomie vom 18.05.2018 im \gls{ADK}. \\
+Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des Endoskopes die Arbeit deutlich behindern und somit den Arbeitsfluss der Chirurgen stören.
 
 \section{Hintergrund}
     
-    Laparoskopische Eingriffe erfordern spezielle Werkzeuge, wie beispielsweise Kauter, die durch ihre Verwendung Verschmutzungen erzeugen. Durch das \gls{Pneumoperitoneum} können Verschmutzungen des Endoskopes wie beispielsweise Rauch und Dampf das Operationsgebiet nicht verlassen und behindern dadurch das Sichtfeld der Endoskope Kamera.\\
-    Eine reine Software Lösung des Problems ist erstrebenswert um Anschaffungskosten und zeitlichen Aufwand während der Operationen gering zu halten.
+    Laparoskopische Eingriffe erfordern spezielle Werkzeuge, wie beispielsweise Kauter, welche durch ihre Verwendung Verschmutzungen erzeugen. Durch das \gls{Pneumoperitoneum} können Verschmutzungen des Endoskopes, wie beispielsweise Rauch und Dampf, das Operationsgebiet nicht verlassen und behindern dadurch das Sichtfeld der Endoskopekamera.\\
+    Eine reine Softwarelösung des Problems ist erstrebenswert um Anschaffungskosten und zeitlichen Aufwand während der Operation gering zu halten.
 
 \iffalse    
     \begin{figure}[h]
@@ -19,24 +19,24 @@ Eine Befragung der Chirurgen ergab dass Schmutz, Rauch und Dampf im Bild des End
         \label{fig:introNoise}
     \end{figure}
 
-    Bild \ref{fig:introNoise} zeit einen Ausschnitt einer Operation bei der \textit{Surgical Smoke} und Beschlagen der Kamera die Sicht auf das Operationsgebiet behindern.\\
+    Bild \ref{fig:realNoise} zeigt einen Ausschnitt einer Operation bei der \textit{Surgical Smoke} und Beschlagen der Kamera die Sicht auf das Operationsgebiet behindern.\\
 \fi
 
 \section{Ziel}
-    Das Ziel dieser Arbeit ist es deshalb diesen \textit{Surgical Noise} Software seitig mittels Bildbearbeitungsalgorithmen zu erkennen und zu entfernen.\\
-    Während der Bearbeitung des Themas wurde es notwendige eine entsprechende Datenbasis, die mit Aufnahmen von \textit{Surgical Noises} enthalten selbst zu generieren. Diese Daten sind die Grundlage der Erkennungs- und Entfernungs- Algorithmen die im Rahmen der Arbeit entstehen sollen.\\
+    Das Ziel dieser Arbeit ist es deshalb diesen \textit{Surgical Noise} Softwareseitig mittels Bildbearbeitungsalgorithmen zu erkennen und zu entfernen.\\
+    Während der Bearbeitung des Themas wurde es notwendig eine entsprechende Datenbasis, die Aufnahmen von \textit{Surgical Noises} enthalten, selbst zu generieren. Diese Daten sind die Grundlage der Erkennungs- und Entfernungsalgorithmen die im Rahmen der Arbeit entstehen sollen.\\
 
     Um dieses Ziel zu erreichen wurden folgende Unterpunkte erstellt welche das Hauptproblem aufteilen und Teilprobleme definieren:\\
     \begin{enumerate}
         \item Generation von Bildern die Störungen enthalten,
         \item Erkennen der Störungen,
         \item Entfernen der Störungen,
-        \item Evaluation und Vergleich der Generierten Bilder mit realen intraoperativen Bildern.
-        \item Evaluation der Bereinigten Bilder im Vergleich zu den unbereinigten Bildern
+        \item Evaluation und Vergleich der generierten Bilder mit realen intraoperativen Bildern.
+        \item Evaluation der bereinigten Bilder im Vergleich zu den unbereinigten Bildern
     \end{enumerate}
 
     Folglich soll das Endergebnis Störungen in Bildern und Videos finden und entsprechend der gefundenen Störung einen passenden Filter auf den Bildbereich anwenden der die Störung enthält. \\
     \newline
     Das daraus resultierende Bild soll eine verbesserte Sicht auf das Operationsgebiet zeigen, im Vergleich zum ursprünglichen Eingangsbild der Laparoskop Kamera.\\
-    Im Rahmen der Möglichkeiten dieser Arbeit wird eine Methode Vorgestellt entsprechendes Bildmaterial zu generieren, zu Bearbeiten und zu Evaluieren. \\
-    Die generierten Daten werden mit realem intraoperativen Videomaterial verglichen und bereits bekannte Bildbearbeitungsalgorithmen werden implementer um eine Verwendung zu Demonstrieren.\\
+    Im Rahmen der Möglichkeiten dieser Arbeit wird eine Methode vorgestellt entsprechendes Bildmaterial zu generieren, zu bearbeiten und zu evaluieren. \\
+    Die generierten Daten werden mit realem intraoperativen Videomaterial verglichen und bereits bekannte Bildbearbeitungsalgorithmen werden implementiert um eine Verwendung zu demonstrieren.\\

@@ -1,5 +1,6 @@
 
 \section{Kritischer Blick auf die Arbeit}
+    
 \subsection{Ziele der Arbeit}
     \begin{table}[H]
         \centering
@@ -31,7 +32,7 @@
     \newline
 
 \subsection{Qualität der Video Daten}
-    Die Qualität der Video Daten wurde bereits im laufe der Methodik via der 
+    Die Qualität der Video Daten wurde bereits im laufe der Methodik mittels Algorithmen bestimmt, für einen Verlgeich wurden Histogramme zu 
     
 \subsection{Was ist der Nutzen?}
     Der gesamt nutzen der Arbeit besteht in vollständigen Datensätzen die die weitergehende Entwicklung der Algorithmen ermöglichen. Diese Video Daten waren vorher nur in kleinen mengen verfügbar, im rahmen dieser Arbeit entstanden 75 Minuten Videomaterials. Besonders Augenmerk der Daten liegt in der Eignung für die Entwicklung von Algorithmen, beispielsweise zeigt sich dies daran das eing Großteil der Videos ohne Verschmutzungen startet die sich dann soweit ausbreiten das mit bloßem Auge nicht mehr damit gearbeitet werden kann. \\
@@ -53,7 +54,9 @@
     \end{figure}
 
     Diese Systeme finden sich jedoch selten in der Realität, denn sie sind mit extra Aufwand bei der Operation verbunden.\\
-    Sauger, etc bringen weitere Hardware in den Operationssaal und sowie unhandliche Kabel und Schläuche mit sich, was bereits als Problem diagnostiziert wurde, wärend der Hospitation im \gls{ADK} beim Gespräch mit Dr Lotspeich \cite{Lotspeich}.
+    Sauger, etc bringen weitere Hardware in den Operationssaal und sowie unhandliche Kabel und Schläuche mit sich, was bereits als Problem diagnostiziert wurde, wärend der Hospitation im \gls{ADK} beim Gespräch mit Dr Lotspeich \cite{Lotspeich}.\\
+    \newline
+    \cmt{Electrical Dispense system}
 
 \subsection{Software Lösungen}
 \fuck{Alesi surgical Ultravision}
@@ -62,19 +65,38 @@ Sieht im video nicht schlecht aus ... gibt aber kaum quellen \\
 unseriös weil Eingabedatei ist anderes Video als Ausgabedatei.
 
 \section{Verbesserungen}
+    \subsection{Generelle Gedanken}
+    Die Anforderungen für Verbesserungen sind in diesem Kontext bereits nicht trivial zu definieren. Denn die aussage ein Video sei ''besser'' als ein anderes ist eine sehr persönliche aussauge die Je nach Betrachter subjektiv bewertet wird. \\
+    Eine verlässlichere aussage über die Realität der Erzeugten Daten sollte von einem Arzt vorgenommen werden. Andernfalls können nur sehr vage aussagen getroffen werden. \\
+    Der versuch über Histogramme die Beschaffenheit der Daten zu erklären ist weitgehend unzureichend. \\
+    Histogramme können Auskunft über die Farbzusammenstellung geben, jedoch gibt es Konstellationen und Muster die eine aussage unmöglich machen.\
+    So können 2 unterschiedliche Bilder über das gleiche Histogram verfügen, ein einfaches umsortieren der Pixel reicht aus um ein Bild unkenntlich zu machen, während dessen Histogram unverändert bleibt. \\
+    \newline
+    Gleiches gilt für bearbeitete Bilder, auch hier gilt es einen Experten zu befragen. \\
+    \newline
+
+    \paragraph{Rechtliches}
+    Ein weiterer Punkt für die Veränderung intraoperativer Bilder ist die Haftung bei Schäden am Patienten.\\
+    Jede Veränderung der Originalen Eingabe Datei zur Verbesserung ist ein Abändern der aufgenommenen Realität, so wäre es beispielsweise möglich das eine Fehlfunktion des Algorithmus dazu führt dass durch die Bearbeitung des Videos kritische Verletzungen verschleiert werden oder etwa an gesunden stellen der Chirurgen zu einem unnötigen schnitt verleitet wird. \\
+    Dies führt zu einer Rechtlich unklaren situation wer die haftung für etwaige schäden übernehmen muss.\\
+    Dies mag mit unter ein Punkt sein weshalb sich systeme wie ''Ultravision'' nicht durchgesetzt haben.
+
 \subsection{Dampf und Spritzer}
     Bis jetzt nur wenig beachtet - Dampf aber relativ großes problem.   
 \subsection{Nutzen der Stereoskopie}
     Einfacher strahlensatz
+
 \subsection{Multispektrales Licht}
     Multispektrale Absorbtion
+
 \subsection{Erkennung durch Neuronale Netze}
-    Formen/Verhalten von Rauch / Dampf / spritzern  einlernen
-    Ausfürlicher gehts dann im Ausblick weiter
+    Ein aktuell sehr nachgefragtes Thema ist die Mustererkennung mittels Neuronaler Netze \cite{CNN_Image}.\\
+
+   Formen/Verhalten von Rauch / Dampf / spritzern  einlernen\\
+    \cmt{Ausfürlicher gehts dann im Ausblick weiter}
 
 \begin{itemize}
 	\item jeder sagt immer irgendwas von wegen \textbf{\textit{DIATHERMIE}} auf jedenfall noch angucken - wie hängt der strom mit dem Rauch zusammen 
-
 	\item LEDs mit verschiedenen Farben für andere spektrale absorbtion im Bild
     \item Stereoskop bilder -> kann helfen bei erkennung?
 	\item ausserdem noch die Licht geschichte mit dem Motorrad helm beschlagen...
