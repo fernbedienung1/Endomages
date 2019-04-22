@@ -7,14 +7,14 @@
     \subsection{Surgical Smoke}
         Der in der Literatur am häufigsten vertretene Effekt ist die Entstehung von Verbrennungsrauch (engl. \textit{Surgical Smoke}). Dieser surgical smoke blockiert die Sicht, da er sich im Pneumoperitoneum nicht verflüchtigen bzw. abziehen kann. \\
         Die Gestalten dieses Rauches reichen von dichten Schwaden bis zu einer nebelartigen Diffusion, die sich wie ein Film über das Kamerabild legt (siehe rechts oben in Bild \ref{fig:realNoise}/(1)). \\
-        Das Entfernen dieses Rauches kann physisch mittels Absaugung oder magnetischer Verdrängung erfolgen. Diese Methoden erfordern allerdings zusätzliche Anschaffungen von Geräten und teure Aufbauzeiten für die Chirurgen und deren Assistenten. 
+        Das Entfernen dieses Rauches kann physisch mittels Absaugung oder magnetischer Verdrängung erfolgen. Diese Methoden erfordern allerdings zusätzliche Anschaffungen von Geräten und teure Aufbauzeiten für die Chirurgen und deren Assistenten.
 
     \subsection{Dampf und Beschlag}
-        Das Kauterisieren von Gewebe hat weiterhin den Effekt das körperinterne Flüssigkeiten, wie Blut, Lymphflüssigkeit oder Fette verdampfen. Auch diese können das Pneumoperitoneum nicht verlassen und kondensieren an den kältesten Punkten innerhalb des Patienten, den Instrumenten und dem Objektiv der Kamera. Zu sehen in der rechten unteren Ecke von Bild \ref{fig:realNoise}/(2). \\
-        
+        Das Kauterisieren von Gewebe hat weiterhin den Effekt das körperinterne Flüssigkeiten wie Blut, Lymphflüssigkeit oder Fette verdampfen. Auch diese können das Pneumoperitoneum nicht verlassen und kondensieren an den kältesten Punkten innerhalb des Patienten, den Instrumenten und dem Objektiv der Kamera. Zu sehen in der rechten unteren Ecke von Bild \ref{fig:realNoise}/(2). \\
+
     \subsection{Verschmutzungen}
         Desweiteren kann es dazu kommen das sich Spritzer der oben genannten Flüssigkeiten auf dem Objektiv der Kamera sammeln. Diese Spritzer bilden Tropfen auf dem Kamerabild durch die nur teilweise bis gar nicht hindurch gesehen werden kann. Dem Chirurgen bleibt bei solchen Verschmutzungen meist nichts anderes als das Entfernen des Endoskopes um es zu reinigen. \cmt{opak}
-        
+
     \begin{figure}[h]
         \centering
         \includegraphics[width=\textwidth]{pics/schmauch/noisesMarked.png}
@@ -29,35 +29,35 @@
 %% PREQUISITES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Grundlagen laparoskopischer Eingriffe}
-    Um eigene Bilder von Laparoskopien zu erstellen müssen einige Aspekte beachtet werden, um zu gewährleisten dass die Generierten Daten echten Operationen ähnlich sind.
-    Desweiteren sollten die Generierten Daten geeignet sein um mit ihnen Algorithmen zu entwickeln. \\
-    Diese Eignung schließt bestimmte Aspekte ein, wie beispielsweise das langsame erscheinen von Verunreinigungen oder definierte Bewegungen der Kamera. \\
+    Um eigene Bilder von Laparoskopien zu erstellen müssen einige Aspekte beachtet werden, um zu gewährleisten dass die generierten Daten echten Operationen ähnlich sind.
+    Desweiteren sollten die generierten Daten geeignet sein um mit ihnen Algorithmen zu entwickeln. \\
+    Diese Eignung schließt bestimmte Aspekte ein, wie beispielsweise das langsame Erscheinen von Verunreinigungen oder definierte Bewegungen der Kamera. \\
     \newline
 
-    Die Befragung verschiedener Chirurgen ergab das insbesondere die Art der Kauterisation (sprich: Elektrisch, Thermisch oder etwa via Laser) maßgeblich ist für die Beschaffenheit und das aussehen des Rauches.\\
-    Desweiteren bestimmt die Art des zu kauterisierenden Gewebes die Verschmutzungen die entstehen.\\
+    Die Befragung verschiedener Chirurgen ergab das insbesondere die Art der Kauterisation (elektrisch, thermisch oder etwa via Laser) maßgeblich ist für die Beschaffenheit und das Aussehen des Rauches.\\
+    Desweiteren bestimmt die Art des zu kauterisierenden Gewebes die Verschmutzungen, die entstehen.\\
     \newline
-    
-    Das Generieren eines eigenen Datensatzes unterliegt deshalb einigen Restriktionen, insbesondere ist es nicht möglich aufnahmen von Menschen zu erzeugen.\\
+
+    Das Generieren eines eigenen Datensatzes unterliegt deshalb einigen Restriktionen, insbesondere ist es nicht möglich Aufnahmen von Menschen zu erzeugen.\\
     Dies führt dazu das ein Ersatz gefunden werden muss, potentielle Kandidaten hierfür sind:\\
 
 	\paragraph{\textbf{Mäuse} \textit{(Mus musculus)}\\}
-        Haben eine große Ähnlichkeit zum menschlichen Organismus, sie werden deshalb häufig für Versuche im Medizinischen Bereich eingesetzt. Jedoch Beschränkens sich diese versuche häufig auf die Verträglichkeit von Medikamenten oder anderer, weitgehend konventioneller chirurgischer eingriffe.
-        Mäuse sind jedoch aus rein physischen Gründen für die Erstellung der Daten nicht geeignet, da es schlichtweg unnötig schwierig ist Endoskope in sie einzubringen.\\
-        
-	\paragraph{\textbf{Organe von Rindern} \textit{(Bos primigenius taurus)}\\}
-        Organe von Rindern unterscheiden deutlicher von Menschlichen Organen, sind aber insbesondere wenn es um viszerale Organe geht deutlich verfügbarer und einfacher zu handhaben als Innereien von Mäusen. \\
-        Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einer guten Wahl für erste Tests, insbesondere für die Verwendung in Laparoskopischen Trainern, wie sie von angehenden Chirurgen zum trainieren verwendet werden.\\
-        Für weitergehende Tests sollten jedoch Organe verwendet werden die Menschenähnlicher oder Menschlich sind, um sicher zu gehen dass das Gewebe auch realistisch verbrennt und entsprechenden Rauch, Dampf und andere Verschmutzungen produziert.
+        Haben eine große Ähnlichkeit zum menschlichen Organismus, sie werden deshalb häufig für Versuche im medizinischen Bereich eingesetzt. Jedoch beschränken sich diese Versuche häufig auf die Verträglichkeit von Medikamenten oder anderer, weitgehend konventioneller chirurgischer Eingriffe.
+        Mäuse sind jedoch aus rein physischen Gründen für die Erstellung der Daten nicht geeignet, da es schlichtweg schwierig ist Endoskope in sie einzubringen.\\
+
+	\paragraph{\textbf{Rinder} \textit{(Bos primigenius taurus)}\\}
+        Organe von Rindern unterscheiden deutlicher von menschlichen Organen, sind aber, insbesondere wenn es um viszerale Organe geht, verfügbarer und deutlich einfacher zu handhaben als Innereien von Mäusen. \\
+        Die Verfügbarkeit sowie einfache Handhabung von Rinderinnerein  macht sie zu einer guten Wahl für erste Tests, insbesondere für die Verwendung in laparoskopischen Trainern, wie sie von angehenden Chirurgen zum trainieren verwendet werden.\\
+        Für weitergehende Tests sollten jedoch Organe verwendet werden die menschenähnlicher oder menschlich sind, um sicher zu gehen, dass das Gewebe auch realistisch verbrennt und entsprechenden Rauch, Dampf und andere Verschmutzungen produziert.
 	\newline	 \\
 
-	\paragraph{\textbf{Organe von Schweinen}\textit{(Sus scrofa domesticus)}\\} 
-        Die Brücke zwischen Handhabung, Verfügbarkeit und Ähnlichkeit zu Menschlichen Organen schlagen Schweine.\\
-        Während es bei schweinischen Innereien seltener als bei Rinderinnereien zum Verzehr durch den Menschen kommt, ist es trotzdem möglich an Frische viszerale Organe von Schweinen zu kommen, da diese andern falls zu Hundefutter oder ähnlichem verarbeitet werden und damit häufig ein Abfall Produkt von Schlachtern sind.\\
-        Wie auch bei Mäusen ist es üblich Medikamente oder andere verfahren aus Medizin und Medizintechnik an Schweinen zu testen bevor sie am Menschen freigegeben werden.
-        Die Ähnlichkeit und Eignung von Schweinen zeigt sich unter anderem daran dass sie auch auch in Medizinischen Ausbildungen häufig als erste Instanz für Chirurgen dienen, die in Lebendigen Organismen operieren \cite{swineModel}. \\
-        Bei Schweinen ist zudem der Aufbau des Kardiovaskulären Systems sowie die Anordnung der viszeralen und digestiven Organe analog zum Menschlichen Aufbau.\\
-        Folglich sind Schweine die Optimalen Kandidaten für die Generierung der Datenbasis. \\
+	\paragraph{\textbf{Schweine}\textit{(Sus scrofa domesticus)}\\}
+        Die Brücke zwischen Handhabung, Verfügbarkeit und Ähnlichkeit zu menschlichen Organen schlagen Schweine.\\
+        Während es bei Schweineinnereien seltener als bei Rinderinnereien zum Verzehr durch den Menschen kommt, ist es trotzdem möglich an frische viszerale Organe von Schweinen zu kommen, da diese häufig ein Abfallprodukt von Schlachtern sind und zu Hundefutter oder ähnlichem verarbeitet werden.\\
+        Wie auch bei Mäusen ist es üblich Medikamente oder andere Verfahren aus Medizin und Medizintechnik an Schweinen zu testen bevor sie am Menschen freigegeben werden.
+        Die Ähnlichkeit und Eignung von Schweineorganen im Vergleich zu menschlichen Organen zeigt sich unter anderem daran das sie auch in der medizinischen Ausbildung häufig als erste Instanz für Chirurgen dienen, die in lebendigen Organismen operieren \cite{swineModel}. \\
+        Bei Schweinen ist zudem der Aufbau des kardiovaskulären Systems sowie die Anordnung der viszeralen und digestiven Organe analog zum menschlichen Aufbau.\\
+        Folglich sind Schweine die optimalen Kandidaten für die Generierung der Datenbasis. \\
     \newline
 
 	\paragraph{Organe\\}
@@ -68,15 +68,15 @@
 			\item Gallenblasen ( Vesica biliaris ),
 			\item Lebern ( Hepar ),
 			\item Mägen ( Gaster )
-			\item oder dem Gastrointestinaltrakt(Tractus digestorius).
+			\item Gastrointestinaltrakt(Tractus digestorius).
 		\end{itemize}
 
-        Insbesondere Gallenblasen sind mit 200.555 Cholezystektomien die im Jahr 2017 \cite{destatis} durchgeführt wurden, typische Organe die auf endoskopischen Aufnahmen auftauchen. Cholezystektomien gehören damit zu den häufigsten Laparoskop ische Eingriffen und sind Standard in vielen Krankenhäusern.
+        Insbesondere Gallenblasen sind mit 200.555 Cholezystektomien die im Jahr 2017 \cite{destatis} durchgeführt wurden, typische Organe, die auf endoskopischen Aufnahmen auftauchen. Cholezystektomien gehören damit zu den häufigsten Laparoskopischen Eingriffen und sind Standard in vielen Krankenhäusern.
 
 
-        Die Gallenblasen ist mit der Leber verbunden ist selbst für Laien durch ihre Form und Farbe meist gut zu identifizieren.
+        Die Gallenblase, mit der Leber verbunden, ist selbst für Laien durch ihre Form und Farbe meist gut zu identifizieren.
         Die schematische Darstellung \ref{fig:schema_biliaris} zeigt die Position der Gallenblase beim Menschen. \\
-        Die Leber hat an der stelle an der die Gallenblase aufsitzt eine Mulde, die sogenannte Gallenblasengrube \textit{(Fossa vesicae biliaris)}.
+        Die Leber hat an der Stelle, an der die Gallenblase aufsitzt, eine Mulde - die sogenannte Gallenblasengrube \textit{(Fossa vesicae biliaris)}.
 
         \begin{figure}[h]
             \centering
@@ -86,7 +86,7 @@
             \label{fig:schema_biliaris}
         \end{figure}
 
-        Bild \ref{fig:real_biliaris} zeigt eine schweinische Gallenblasen, die minimal invasiv operiert wird. Der Kauter verbrennt Gewebe der Gallenblasengrube um die Gallenblase von der Leber zu lösen.
+        Bild \ref{fig:real_biliaris} zeigt eine Gallenblase vom Schwein, die minimal invasiv operiert wird. Der Kauter verbrennt Gewebe der Gallenblasengrube um die Gallenblase von der Leber zu lösen.
 
         \begin{figure}[h]
             \centering
@@ -100,18 +100,18 @@
 	\paragraph{Qualität\\}
         Ein weiterer Punkt der Selektion der Organe ist die Qualität bzw. die Frische. \\
         Frische Organe sind notwendig da unter anderem Feuchtigkeit ein wichtiger Aspekt ist der vor allem die Bildung von Rauch und Dampf beeinflusst.
-        Auch Körperinnere Luftfeuchtigkeit und Temperatur wirkt sich auf das Beschlagen der Kamera aus sowie auf die Bewegungen und Dispersion des Rauches.\\
+        Auch körperinnere Luftfeuchtigkeit und Temperatur wirkt sich auf das Beschlagen der Kamera aus, sowie auf die Bewegungen und Dispersion des Rauches.\\
         \newline
-        Ausserdem verändern chemische Reaktionen wie Verwesung, Verfaulung und andere Gärungsprozesse die Zusammensetzung des Gewebes. Diese Prozesse werden in der Medizin als Nekrosen bezeichnet und sind unerwünscht, da minimal invasive Operationen nur an lebendigen Patienten Sinn machen, um die Heilung zu beschleunigen bzw unästhetisch Narben zu verhindern.
+        Ausserdem verändern chemische Reaktionen wie Verwesung, Verfaulung und andere Gärungsprozesse die Zusammensetzung des Gewebes. Diese Prozesse werden in der Medizin als Nekrosen bezeichnet und sind unerwünscht, da minimal invasive Operationen nur an lebendigen Patienten Sinn machen, um die Heilung zu beschleunigen bzw um unästhetisch Narben zu verhindern.
 
-        Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe einbringen von Flüssigkeiten um Durchblutungen zu simulieren. \\
+        Eine weitere Option um die Feuchtigkeit der Organe zu gewährleisten ist das externe Einbringen von Flüssigkeiten um Durchblutungen zu simulieren. \\
 % TODO - in mehtodik erwähnen - warum durchbluten warum nicht Preis / leistung - egal weil tot
 
 	\subsection{Benötigte Eigenschaften}
-        Eigenschaften der Video Daten die als Grundlage für die Implementation dienen sollen betreffenden nicht nur die bereits erwähnte Qualität und Realismus, sondern ausserdem ein Muster für das auftauchen der Verschmutzungen.\\
+        Eigenschaften der Videodaten die als Grundlage für die Implementation dienen sollen, betreffen nicht nur die bereits erwähnte Qualität und den Realismus, sondern ausserdem ein Muster für das Auftauchen der Verschmutzungen.\\
         Mögliche und erstrebte Verschmutzungen sind:\\
         \newline
-		
+
 	\begin{itemize}
 		\item Surgical Smoke,
 		\item Dampf,
@@ -119,36 +119,38 @@
 		\begin{itemize}
 			\item Blut,
 			\item Wasser,
-			\item Lymphe Flüssigkeit.
+			\item Lympheflüssigkeit.
 		\end{itemize}
 	\end{itemize}
-	
+
     Als Vorbild für die Generation eigener Daten dienen Videos von Verschmutzungen des \gls{kkhgzkru}.\\
-    Diese Videos zeigen verschiedene Arten von Rauch (verschiedene Kauterisationsmethoden) sowie Instrumente im Operationsbereich. 
-    Ausserdem zeigen diese Video Aufnahmen reale Bewegungen des Endoskopes, des Patienten, sowie anderer Werkzeuge.\\
+    Diese Videos zeigen verschiedene Arten von Rauch (verschiedene Kauterisationsmethoden) sowie Instrumente im Operationsbereich.
+    Weiterhin zeigen diese Videoaufnahmen reale Bewegungen des Endoskopes, des Patienten, und anderer Werkzeuge.\\
     \newline
 
-    Da Patientendaten, zu denen ebendiese Operationsvideos gehören, dem Datenschutz unterliegen können leider keine der aus dem \gls{kkhgzkru} erhaltene Bilder Einzug in diese Thesis finden. Daten die einen Krankheitsverlauf, Therapien oder andere Gesundheitskritischen Aspekte enthalten gehören zu den kritischsten persönlichen Daten jedes einzelnen und sind deshalb besonders schützenswert. \\
+    Da Patientendaten, zu denen ebendiese Operationsvideos gehören, dem Datenschutz unterliegen, können leider keine der aus dem \gls{kkhgzkru} erhaltene Bilder in diese Thesis abgebildet werden. Daten die einen Krankheitsverlauf, Therapien oder andere gesundheitliche Aspekte enthalten gehören zu den kritischsten persönlichen Daten jedes einzelnen und sind deshalb besonders schützenswert. \\
 
     \subsection{Kauterisierungsmethoden}
-        Die Moderne Chirurgie kennt mehrere Kauterisationsmethoden für Gewebe, die verbreitetsten sind:
+        Die moderne Chirurgie kennt mehrere Kauterisationsmethoden für Gewebe, am verbreitetsten sind:
         \begin{itemize}
             \item Thermische Kauterisation,
-            \item Diathermie und 
+            \item Diathermie und
             \item Laserschnittverfahren.
         \end{itemize}
 
-        Die Befragung von Chirurgen der Krankenhäuser \gls{ADK} und \gls{kkhgzkru} ergab das verschiedene Kauterisationsmethoden zu unterschiedlichem Rauch und auftretenden Verschmutzungen führen.
+        Die Befragung von Chirurgen der Krankenhäuser \gls{ADK} und \gls{kkhgzkru} ergab, dass verschiedene Kauterisationsmethoden zu unterschiedlichem Rauch und auftretenden Verschmutzungen führen.
 
         \subsubsection{Thermische Kauter}
-            Die Verödung von Gewebe erfolgt durch Erhitzung der betroffenen stellen, klassisch wird dieser Erhitzung extern mit einem sogenannten Thermokauter zum Gewebe gebracht. Die Methode der Thermischen Kauterisation erfolgt durch die elektrische Erhitzung einer Werkzeugspitze, welche dann das Gewebe verbrennt, so kann gleichzeitig geschnitten und verödet werden. Dies verhindert das austreten von Blut und anderen Sekreten.\\
-            Thermisches arbeiten hat jedoch einige Probleme, wie beispielsweise eine gewisse Trägheit, es dauert eine zeit bis die spitze die Arbeitstemperatur erreicht hat und genauso dauert es eine gewisse zeit bis Das Werkzeug wieder abgekühlt ist um es sicher (ohne unbeabsichtigtes Kauterisieren von gesundem Gewebe) umpositionieren zu können. \\
+            Die Verödung von Gewebe erfolgt durch Erhitzung der betroffenen Stellen.
+            Klassisch wird dieser Erhitzung extern mit einem sogenannten Thermokauter zum Gewebe gebracht. Die Methode der Thermischen Kauterisation erfolgt durch die elektrische Erhitzung einer Werkzeugspitze, welche dann das Gewebe verbrennt, so kann gleichzeitig geschnitten und verödet werden. Dies verhindert das austreten von Blut und anderen Sekreten.\\
+            Thermisches Arbeiten bringt jedoch einige Probleme mit sich, beispielsweise eine gewisse Trägheit; es vergeht eine Zeit bis die Spitze die Arbeitstemperatur erreicht hat und genauso dauert es eine gewisse Zeit bis das Werkzeug wieder abgekühlt ist um es sicher umpositionieren zu können(ohne unbeabsichtigtes Kauterisieren von gesundem Gewebe). \\
             \newline
-            Thermische Kauter finde in der modernen Chirurgie deshalb kaum noch Verwendung und wurden durch Modernere verfahren wie Diathermie oder Laserschnittverfahren verdrängt. 
+            Thermische Kauter finden in der modernen Chirurgie deshalb kaum noch Verwendung und wurden durch modernere Verfahren, wie Diathermie oder Laserschnittverfahren, verdrängt.
 
         \subsubsection{Diathermie}
             In der Technik auch als Hochfrequenzthermotherapie (\gls{hfc})bekannt.\\
-            Diese Technik verwendet Elektroden die ähnlich dem schweißen am Körper angebracht werden um einen Stromfluss zu ermöglichen, welcher die Hitze erzeugt, die letztendlich zum Kauterisieren benötigt wird. Die Diathermie teilt sich auf zwei verschiedene Methoden auf: \\
+            Diese Technik verwendet Elektroden, die, ähnlich dem Schweißen, am Körper angebracht werden, um einen Stromfluss zu ermöglichen. Hierdurch wird die Hitze erzeugt, die letztendlich zum Kauterisieren benötigt wird.
+            Die Diathermie teilt sich auf zwei verschiedene Methoden auf: \\
 
                 \begin{figure}[h]
                     \centering
@@ -170,72 +172,73 @@
                     \label{fig:cauterizationMethodes}
                 \end{figure}
             \paragraph{Monopolar}
-                Beim Monopolaren\ref{fig:monopolar} arbeiten wird der Patient auf einer leitfähigen Unterlage positioniert, der strom fließt so von Elektrode durch den Körper des Patienten.
-                Die stelle mit den Stärksten Konzentration des Stroms erhitzt sich so und kauterisiert das Gewebe. Tieferliegendes Gewebe wird weniger stark erhitzt durch die dispersen des Stromes, der wie in einer Parallelschaltung aufgeteilt wird.
+                Beim monopolaren\ref{fig:monopolar} Arbeiten wird der Patient auf einer leitfähigen Unterlage positioniert, der Strom fließt so von der Elektrode durch den Körper des Patienten.
+                Die Stelle mit den stärksten Konzentration des Stroms erhitzt sich so und kauterisiert das Gewebe. Tieferliegendes Gewebe wird weniger stark erhitzt durch die Dispersion des Stromes, der wie in einer Parallelschaltung aufgeteilt wird.
 
             \paragraph{Bipolar}
-                Beim Bipolaren \ref{fig:bipolar} verfahren werden 2 Elektroden des Werkzeugs verwendet um einen Stomfluss zwischen diesen zu erzeugen.
-                So fließt der Strom nicht durch den gesamten Körper des Patienten und es ist eine Leitfähige Unterlage notwendig.
-                Insbesondere Zangen oder Pinzetten können so verwendet werden um Gefäße oder adern gezielt zu versiegeln.
+                Beim bipolaren \ref{fig:bipolar} Verfahren werden 2 Elektroden des Werkzeugs verwendet um einen Stomfluss zwischen diesen zu erzeugen.
+                So fließt der Strom nicht durch den gesamten Körper des Patienten, eine leitfähige Unterlage ist notwendig.
+                Zangen oder Pinzetten werden hier verwendet um Gefäße oder Adern gezielt zu versiegeln.
 
 
-            Geräte wie der Caiman5 \cite{sealer} sind Bipolare einmal-Geräte speziell dafür konstruiert um Gewebe wie Adern zu greifen, dann zu kauterisieren und anschließend zu durchtrennen.
+            Geräte wie der Caiman5 \cite{sealer} sind bipolare Einmal-Geräte, speziell dafür konstruiert, um Gewebe wie Adern zu greifen, zu kauterisieren und anschließend zu durchtrennen.
 
         \subsubsection{Laserschnittverfahren}
             Auch \gls{pc}.\\
-            Ähnlich wie bei den vorhergehend beschriebenen Kautern wird auch bei Laser Kauterisationverfahren die Energie exakter verwendet als bei Thermokautern.\\
+            Ähnlich wie bei den im letzten Abschnitt beschriebenen Kautern wird auch bei Laserkauterisationverfahren die Energie exakter verwendet als bei Thermokautern.\\
             Jedoch eignen sich Laser schlechter zum gezielten versiegeln von Adern oder anderen Gefäßen. Häufig werden sie deshalb lediglich zum durchtrennen verwendet. \\
-            Der Rauch den sie Produzieren ist laut experten \cite{uwe} von dem der Elekokauter zu unterscheiden.
+            Der Rauch, den sie produzieren, ist laut Experten \cite{uwe} von dem der Elekokauter zu unterscheiden.
 
-\section{Bild Bearbeitung}
-    
+\section{Bildbearbeitung}
+
     Aktuelle Literatur beschäftigt sich hauptsächlich mit der Verbesserung des Gesamtbildes, [\cite{vision}, \cite{darkChannel}, \cite{modelBased}, \cite{imageDehaze}].\\
-    Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt. Basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
+    Wobei hier der Fokus insbesondere auf der Entfernung von surgical smoke liegt, basierend auf dessen Eigenschaften hinsichtlich Kontrast und Farbzusammenstellung.
 
-\subsection{der Verschmutzungen}
-    Um die Bilder des Endoskopes so wenig wie möglich zu verändern und somit zu verfälschen ist es Ziel der Arbeit Verschmutzungen zu erkennen. 
-    Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das unverändert lassen von nicht verschmutzten Arealen im Bild. \\
+\subsection{Erkennen der Verschmutzungen}
+    Um die Bilder des Endoskopes so wenig wie möglich zu verändern, und somit zu verfälschen, ist es Ziel der Arbeit Verschmutzungen zu erkennen.
+    Dies ermöglicht Anwendung von unterschiedlichen Bildbearbeitungsfiltern auf unterschiedliche Verunreinigungen im Bild, sowie das Unverändertlassen von nicht verschmutzten Arealen im Bild. \\
     \newline
-    Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen. Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
+    Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen.
+    Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
 
     \paragraph{Rauch\\}
-        Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' Anwendungen für Überwachungskameras\cite{vision}.
+        Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' - Anwendungen für Überwachungskameras\cite{vision}.
         Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analysiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
 
     \paragraph{Dampf \& Beschlagen\\}
-        Laut Chirurgen des \gls{ADK} scheint es ein bisher wenig bearbeitetes Thema zu sein das beschlagen des Endoskopes abzumindern, auch Recherchen nach Lösungen für dieses Problem bestätigen diese Annahme. \\
-        Durch die Bildung kleiner tropen verschwimmt das Bild und wird so unscharf. Verursacht wird dies durch Dampf, welcher beim erhitzen von Gewebe, o.ä. durch den Einsatz der Kauter ensteht. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des Automatischen Fokussierens.\\
+        Laut Chirurgen des \gls{ADK} scheint es ein bisher wenig bearbeitetes Thema zu sein das Beschlagen des Endoskopes abzumindern, auch Recherchen nach Lösungen für dieses Problem bestätigen diese Annahme. \\
+        Durch die Bildung kleiner Tropfen verschwimmt das Bild und wird unscharf. Verursacht wird dies durch Dampf, welcher beim erhitzen von Gewebe, o.ä., durch den Einsatz der Kauter ensteht. Das Erkennen von Unschärfe ist ein bereits wohlbekanntes Problem bei Kameras, wenn auch im Kontext der Scharfstellung von Bildern über Methoden des automatischen Fokussierens.\\
 
     \paragraph{Flecken \& Spritzer\\}
         Flecken und Spritzer auf der Kamera sind ein nicht besonders häufiges, jedoch schwerwiegenden Problem. Da meist die einzige Möglichkeit um diese Verunreinigungen zu beseitigen darin besteht das Endoskope aus dem Patienten zu entfernen um es zu reinigen.\\
-        Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine Tropfenförmige, rund bis ovale Form besitzen.\\
-        Abhängig von der Flüssigkeit die die Verschmutzung hervorruft kann es Sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte wie Brechungen abzumildern und zu entfernen.\\
+        Jedoch es sehr gut möglich diese Verschmutzungen zu erkennen, da sie in den bewegten Bildern des Endoskopes statisch auf dem Objektiv bleiben und meist eine tropfenförmige, rund bis ovale Form besitzen.\\
+        Abhängig von der Flüssigkeit, die die Verschmutzung hervorruft, kann es sinnvoll sein innerhalb der Außenlinien des Tropfens Filter anzuwenden um etwaige verzerrende Effekte, wie Brechungen, abzumildern und zu entfernen.\\
         Ebenso können opake Verschmutzungen auftreten, bei denen das filtern oder bearbeiten nicht weiterhelfen kann.
-        Für diese Fälle kann es fatal sein den Chirurgen falsche Fakten anzuzeigen.  \\
+        In diesen Fälle kann es fatal sein den Chirurgen falsche Fakten anzuzeigen.  \\
 
-\subsection{Rauch Erkennung}
-        Die Erkennung von Rauch ist bis dato hauptsächlich Thema in der Gefahren Vermeidung, so behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
-        Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um Festzustellen ob sich der Rauch im Bild ausbreitet.
+\subsection{Raucherkennung}
+        Das Erkennen von Rauch ist bis dato hauptsächlich Thema in der Gefahrenvermeidung. So behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
+        Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um festzustellen ob sich der Rauch im Bild ausbreitet.
         \newline
         \cmt{Bilder aus Smoke paper}
 
 \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
-        Veranschaulichen lässt sich dies wenn man die Mathematische Funktion der Gamma Korrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gamma Anpassung ist Mathe magisch wie folgt definiert \ref{eq:1}:
+        Veranschaulichen lässt sich dies wenn man die mathematische Funktion der Gammakorrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gammaanpassung ist mathematisch wie folgt definiert \ref{eq:1}:
 
         \begin{equation} \label{eq:1}
             I_{out} = {I_{in}}^{\gamma}
         \end{equation}
-        
+
         Wobei:
         $ (I_{out}, I_{in}) \in R \| \{0,1\} $\\
         \newline
         $ \gamma $-werte $ > 1 $ werden das Bild insgesamt heller erscheinen lassen, während werte $ < 1 $ das Bild dunkler darstellen. \\
-        Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine konstante auf die Pixel aufaddiert\ref{eq:2}.\\
+        Die Anpassung des Bildes  im Helligkeitsbereich wird einfach eine Konstante auf die Pixel aufaddiert\ref{eq:2}.\\
         \begin{equation} \label{eq:2}
             I_{out} = I_{in} + I_{helligkeit}
         \end{equation}
 
-        Während eine Kontrast Transformation ähnlich einer Sigmoid Funktion verhält \ref{eq:3}.
+        Während sich eine Kontrasttransformation ähnlich einer Sigmoid-Funktion verhält \ref{eq:3}.
         \begin{equation} \label{eq:3}
             I_{out} = I_{in} * sig(I_{kontrast})
         \end{equation}
@@ -249,13 +252,13 @@
             I_{out} = sig(I_{kontrast}) * {I_{in}}^{\gamma} + I_{helligkeit}
         \end{equation}
 
-        Dies ist die Grundlage für die ''Histogram matching''. \\
-        Beim Histogram Malching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
+        Dies ist die Grundlage für das ''Histogram matching''. \\
+        Beim Histogram Matching wird das Histogram an eine beliebige Funktion angepasst. Dadurch werden nicht nur einzelne Parameter, wie zuvor Kontrast, Gamma und Helligkeit verändert, sondern eine mathematische Funktion, die ein Transformationsmodel beschreibt verwendet.\\
         \begin{equation} \label{eq:5}
             I_{out} = T(I_{in})
         \end{equation}
 
-        Diese Transformationsmatrix enthält die Parameter für die Funktion die letztendlich auf jeden Pixel des Bildes Angewandt wird.\\
+        Diese Transformationsmatrix enthält die Parameter für die Funktion, die letztendlich auf jeden Pixel des Bildes angewandt wird.\\
 
 \subsection{Dark Channel Prior}
     \cmt{Bilder aus Papers wie in Praesi!}
@@ -267,7 +270,7 @@
             \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
             \label{fig:hist_example_pic}
             \caption{
-                Beispielbild mit großen Dunkelstellen sowie hohem Rot Anteil.
+                Beispielbild mit großen Dunkelstellen sowie hohem Rotanteil.
             }
         \end{subfigure}
         ~
@@ -292,13 +295,12 @@
         \caption{Bild eines Endoskopes und dessen Histogramme}
         \label{fig:hist_example}
     \end{figure}
-    
-    Das Bild \ref{fig:hist_example} zeigt eine Laparoskopische Szene, und deren Histogram. 
-    Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\
+
+    Das Bild \ref{fig:hist_example} zeigt eine laparoskopische Szene und deren Histogram.
+    Histogramme beschreiben die Zusammensetzung von Farben in Bildern, indem sie die Pixel mit Farbwerten zählen und entsprechend die Anzahl (in Bild\ref{fig:hist_example_singles} als y-Achse), die dann über den Wert des Pixels dargestellt werden (in Bild\ref{fig:hist_example_singles} als x-Achse).\\
     Dies ermöglicht den Vergleich der Bilder auf Basis ihrer Farbzusammenstellung.\\
     \newline
-    Beispielsweise Dominieren in Bild \ref{fig:hist_example} die Schwarze linke Seite des Bildes sowie die Rötlichen Farben des Gewebes rechts im Bild.
-    Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes spitzen. Lediglich der Rot Kanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste stärke der Farbe einem wert von $ 2^8 -1 = 255  $ entspricht.\\
+    Beispielsweise dominieren in Bild \ref{fig:hist_example} die schwarze linke Seite des Bildes sowie die rötlichen Farben des Gewebes rechts im Bild.
+    Die aus diesem Bild resultierenden Histogramme haben im dunklen Bereich des Bildes Spitzen. Lediglich der Rotkanal weißt eine höhere Anzahl von Pixeln im Bereich von größer 245 auf. Wobei hier jeder Farbkanal mit 8-bit codiert ist und damit der Maximalwert, also die hellste Stärke der Farbe einem Wert von $ 2^8 -1 = 255  $ entspricht.\\
     \newline
-    Um im weiteren verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.
-
+    Um im weiteren Verlauf der Arbeit Bilder beschreiben zu können die selbst aus Datenschutz gründen nicht veröffentlicht werden dürfen, werden deren Histogramme als Maßstab für die Bewertung und den den Vergleich mit den eigens erstellten Daten herangezogen.

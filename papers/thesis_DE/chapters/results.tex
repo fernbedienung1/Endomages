@@ -1,13 +1,14 @@
 \section{Testdaten Generierung}
-    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Roh-Daten mit einer Dauer von 1 Stunde und 16 Minuten. \\
-    Zusätzlich zu den 293MB realer Laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
+    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Rohdaten mit einer Dauer von 1 Stunde und 16 Minuten. \\
+    Zusätzlich zu den 293MB realer laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
 
-    Die generierten Daten dienen als Grundlage der für die Algorithmen, um \gls{overfitting} zu vermeiden.
+    Die generierten Daten dienen als Grundlage für die Implementierung der Algorithmen, um \gls{overfitting} zu vermeiden.
 
     \subsection{Vergleich}
-        Im Kapitel Methoden \ref{sec:Methods} beschrieben werden histogramme für den Vergleich der generierten Daten mit den Vorgabedaten verwendet, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der Realen aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
-        Zu erwähnen ist das sich die generierten Histogramme auf unterschiedlich große Datensätze beziehen, während die aufnahmen aus Günzburg nur 293MB(Gesamtdauer: 5min 44s) groß sind,
-        basiert das Histogram der Labor-Daten die verkleinert bereits 1GB(Gesamtdauer: 1h 15min 18s) groß sind.
+        Im Kapitel Methoden \ref{sec:Methods} beschrieben werden Histogramme für den Vergleich der generierten Daten mit den Vorgabedaten, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der realen Aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
+        Zu erwähnen ist, dass sich die generierten Histogramme auf unterschiedlich große Datensätze beziehen.
+        Während die Aufnahmen aus Günzburg nur 293MB(Gesamtdauer: 5min 44s) groß sind, erreichen die bereits verkleinerten selbstgenerierten Daten 1GB(Gesamtdauer: 1h 15min 18s).\\
+        Die Histogramme der Datensätze (Abb. \ref{fig:cumsum_mine} und \ref{fig:cumsum_real}) basieren daher nicht auf der selben Datenmenge.
 
         \begin{figure}[h]
             \centering
@@ -26,19 +27,19 @@
             \label{fig:Cmp_hists}
         \end{figure}
 
-        Das Histogram der selbst generierten Daten (\ref{fig:cumsum_mine})gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist das im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin das die Bilder insgesamt dunkel ausfallen. Ein Indiz für große schwarze Anteile der Bilder kann eine Häufung von werten mit gleichem wert darstellen.\\
+        Das Histogram der selbst generierten Daten (Abb. \ref{fig:cumsum_mine}) gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist dass im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin dass die Bilder insgesamt Dunkel ausfallen. Ein Indiz für große Schwarzanteile der Bilder kann eine Häufung von Pixeln mit gleichem wert der Rot, Grün und Blau Anteile darstellen.\\
         (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse varianz steht.
         Da es sich bei den Histogrammen jedoch um kumulierte Daten handelt, sprich um ein Histogramm über mehrere Bilder könnten diese sich auch ausmitteln.\\
         Ein blick auf die Aufnahmen bestätigt jedoch die Annahme, denn die meisten der Bilder enthalten große schwarze Flächen, verursacht durch eine unzureichende Ausleuchtung des laparoskopischen Trainers. \\
-        \newline 
-        Zusätzlich zeigt das Histogram \ref{fig:cumsum_mine} einen erhöhten weiß-Anteil (Pixel mit $ (R=G=B) >= 240$ ). Dieser kann mit dem auftreten von Spiegelungen erklärt werden. Das eingespeiste Licht der Halogen Lichtquelle verursacht wenig diffuses Licht im Trainer und durch die kurzen Abstände zwischen Kamera und Werkzeug, bzw Organ enstehen auf den Feuchten Organen Reflexionen. Dies Reflexionen äussern sich durch weiße Pixel.\\
+        \newline
+        Zusätzlich zeigt das Histogram \ref{fig:cumsum_mine} einen erhöhten weiß-Anteil (Pixel mit $ (R=G=B) >= 240$ ). Dieser kann mit dem auftreten von Spiegelungen erklärt werden. Das eingespeiste Licht der Halogen Lichtquelle,\cite{light} verursacht wenig diffuses Licht im Trainer und durch die kurzen Abstände zwischen Kamera und Werkzeug, bzw Organ enstehen auf den Feuchten Organen Reflexionen. Dies Reflexionen äussern sich durch weiße Pixel.\\
 
         Während hingegen die Pixel des Histograms der Realen Daten \ref{fig:cumsum_real} weiter in Richtung Mitte (Werte im Bereich $ 50 < x < 120 $) verteilt ist.\\
         Die Überlappung von Grün und Blau Anteilen in Kombination mit einer nach rechts verschobenen Rot kurve deutet darauf hin das es sich auch hier um dunkle Bilder handelt, Jedoch mit deutlichem Einschlag Rot Tones. \\
         Logischerweise lässt sich das durch dass durch das Aufgezeichnete Motiv erklären, den viszeralen Organen der Patienten.\\
-        
+
         Vergleichend lässt sich hier folglich sagen das die Realen Daten \ref{fig:cumsum_real} Heller sein müssen als die selbst generierten.\\
-        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden. 
+        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
         In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
         Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
 

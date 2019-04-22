@@ -1,45 +1,46 @@
 \section{Generierung von Basisdaten}
 Die hier beschriebenen Daten sind unter der DOI \textbf{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{figshare}.\\
-Die Dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
+Die dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
 \newline
-Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{GitHub}.\\
+Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{GitHub}.\\
 
 
 \subsection{Laparoskopische Laborversuche}
-    Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden von Chirurgen entsorgt, da dieser ja die für Mediziner notwendigen Areale verdecken.
-    Zusätzlich dazu spielen Rechtliche Aspekte eine Rolle, den Patientendaten dürfen nur mit ausdrücklicher Einverständnis des betreffenden Patienten veröffentlicht werden. \\
-    Um die Benötigten Daten selbst zu generieren wurden 2 Versuchs reihen erstellt.\\
-    Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und video aufnahmen von Rauch und Dampf erzeugen. Nach einem Fehlschlag dieses Vorhabens wurde unter deutlichem Mehraufwand ein zweiter Laborversuch initiiert welche brauchbare Ergebnisse lieferte.
+    Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden vom Chirurgen entsorgt, da diese die für Mediziner notwendigen Areale verdecken.
+    Zusätzlich dazu spielen rechtliche Aspekte eine Rolle, denn Patientendaten dürfen nur mit ausdrücklichem Einverständnis des betreffenden Patienten veröffentlicht werden. \\
+    Um die benötigten Daten selbst zu generieren wurden 2 Versuchsreihen erstellt.\\
+    Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und Videoaufnahmen von Rauch und Dampf erzeugen.
+    Nach einem Fehlschlag dieses Vorhabens wurde unter deutlichem Mehraufwand ein zweiter Laborversuch initiiert, welcher brauchbare Ergebnisse lieferte.
 
     \subsubsection{Erster Prototyp}
         Der erste Prototyp besteht aus leicht zugänglichen Materialien und sollte das Problem der fehlenden endoskopischen Bilder mit wenig Aufwand lösen.\\
-        Zum Einsatz kahmen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
-        Hauptaugenmerk des ersten Prototypes war eine ''Machbarkeits Überprüfung'', bei der das Ziel war herauszufinden ob mittels der verwendeten Kameras Bilder erzeugt werden können die Laparoskopien ähnlich sind und sich als Basis für die Algorithmenentwicklung eignen. 
-        \newline 
-        
-        \begin{table}[H]
-            \centering
-            \begin{tabular}{l|l|l|l}	%all left aligned
-                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
-                \hline
-                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
-                Logitec & C270 & 1280x720 & \cite{webcam} \\
-                Alcor Micro & SJ00446 & 1280x170 & NONE \\
-                \hline
-                Weller & Lötkolben & std & \cite{iron} \\
-                \hline 
-                Selfmade & V01 & Umbebungssensor & \cite{RJ} \\
-            \end{tabular}
-            \caption{Aufnahme Geräte, Kauter und Sensoren\label{tab:recHW_1}}
-        \end{table}
-    
-        Tabelle \ref{tab:recHW_1} listet die die Verwendeten Komponenten für die Vorabversuche.
-        Die Geräte sind insbesondere für Laien erschwingliche und verfügbare Geräte. Ziel des Versuchs ist es einen gesamt Eindruck über die Komplexität der Versuche zu erhalten um die Komplexität sowie den Aufwand für Folgeversuche abzuschätzen.
+        Zum Einsatz kamen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
+        Hauptaugenmerk des ersten Prototypes war eine ''Machbarkeitsüberprüfung'', bei der das Ziel war herauszufinden ob mittels der verwendeten Kameras Bilder erzeugt werden können, die Laparoskopien ähnlich sind, und sich als Basis für die Algorithmenentwicklung eignen.
+        \newline
 
         \begin{table}[H]
             \centering
-            \begin{tabular}{c|l|l}	
-                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\ 
+            \begin{tabular}{l|l|l|l}	%all left aligned
+                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\
+                \hline
+                Nikon & D3400 & 6000x4000 & \cite{dslr} \\
+                Logitec & C270 & 1280x720 & \cite{webcam} \\
+                Alcor Micro & SJ00446 & 1280x170 & \cite{light}\\
+                \hline
+                Weller & Lötkolben & std & \cite{iron} \\
+                \hline
+                Selfmade & V01 & Umgebungssensor & \cite{RJ} \\
+            \end{tabular}
+            \caption{Aufnahme Geräte, Kauter und Sensoren\label{tab:recHW_1}}
+        \end{table}
+
+        Tabelle \ref{tab:recHW_1} listet die die verwendeten Komponenten für die Vorabversuche.
+        Die Geräte sind insbesondere für Laien erschwingliche und verfügbare Geräte. Ziel des Versuchs ist es einen Gesamteindruck über die Komplexität der Versuche zu erhalten, um die Komplexität selbst sowie den Aufwand für Folgeversuche abzuschätzen.
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c|l|l}
+                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\
                 \hline
                 \textbf {1} & Raspberry PI & Steuergerät\\
                 \textbf {2} & DSLR & Haupt-Kamera\\
@@ -51,7 +52,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \end{tabular}
             \caption{Komponenten des ersten Prototypen, Nummern referenzieren \ref{fig:MK_I_schematic} und \ref{fig:MK_I_real}\label{tab:usedHW_I}}
         \end{table}
-        
+
 %%%%%%%%%%%%%%%%%%%%%%% Pictures of Test Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	    \begin{figure*}[hp]
@@ -70,7 +71,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
              \begin{subfigure}[b]{\textwidth}
                  \centering
                  \includegraphics[scale=0.4]{pics/setups/setup1_real.png}
-                 \caption{\textbf{Realer Aufbau} \\ 
+                 \caption{\textbf{Realer Aufbau} \\
                      (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperatur- und  Luftfeuchtigkeits-Sensor, (7)LED-Licht \\
                      \textit{Geräte wie in Tabelle \ref{tab:usedHW_I}.}
                  }
@@ -82,7 +83,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
              \begin{subfigure}[b]{\textwidth}
                  \centering
                  \includegraphics[scale=0.2]{pics/setups/setup1_result.png}
-                 \caption{\textbf{Ergebnis Bilder} \\ 
+                 \caption{\textbf{Ergebnis Bilder} \\
                      Bilder aus den Videos des Aufbaus\ref{fig:MK_I_real}. \\
                      (1)DSLR-output, (2)Webcam-output, (3)Endocam-output.
                  }
@@ -95,31 +96,31 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \newpage
 
     \paragraph{Fazit des ersten Prototpen}
-        Die Generierung von Daten ist mit ''Haushaltsmittlen'' nicht zu ermöglichen, zwar ist es möglich Rauch zu erzeugen und die ersten Tests und Versuche decken einige Fallstricke auf. Jedoch nicht in einem Realen oder brauchbaren Ausmaß. Für die brauchbare Verwendung für die Algorithmen muss mit Professionelleren Werkzeugen gearbeitet werden. Die Verbesserungen sind insbesondere in den Bereichen: \\
+        Die Generierung von Daten ist mit ''Haushaltsmittlen'' nicht zu ermöglichen. Zwar ist es möglich Rauch zu erzeugen, die ersten Tests und Versuche decken einige Fallstricke auf, diese jedoch nicht in einem realen oder brauchbaren Ausmaß. Für die brauchbare Verwendung für die Algorithmen muss mit professionelleren Werkzeugen gearbeitet werden. Die Verbesserungen sind vor allem in den Bereichen: \\
         \begin{itemize}
-            \item Laparoskopischer Trainer, 
+            \item Laparoskopischer Trainer,
             \item Qualität der Versuchsorgane,
             \hspace{1cm}
-            \item \textbf{Endoskope} und 
+            \item \textbf{Endoskope} und
             \item \textbf{Kautern}.
         \end{itemize}
 
-        gemacht werden.\\
-        Folglich ist es notwendig einen 2ten Laborversuch durchzuführen welcher die obrigen Punkte berücksichtigt.
+        gemacht worden.\\
+        Folglich ist es notwendig einen zweiten Laborversuch durchzuführen welcher die obrigen Punkte berücksichtigt.
 
     \subsubsection{Zweiter Prototyp}
 
-        Aus den Ergebnissen des Ersten Prototypes ging hervor das es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer in dem die Versuche durchgeführt werden verbessert worden.. \\
+        Aus den Ergebnissen des ersten Prototypes ging hervor, dass es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer, in dem die Versuche durchgeführt wurden, verbessert worden.. \\
         Um darüber hinaus bessere Ergebnisse zu erzielen werden zusätzlich qualitativ hochwertigere Organe verwendet, sowie vom Versuchstier Rind auf Schwein gewechselt.\\
         \begin{table}[H]
             \centering
             \begin{tabular}{l|l|l|l}	%all left aligned
-                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\ 
+                \textbf{Hersteller} & \textbf{Model} & \textbf{Type} & \textbf{REF}\\
                 \hline
                 Wolf & Endocam & Bronchoscope & \cite{endocam} \\
-                Wolf & 3D-Endocam & Stereoendscope & \cite{3DHD} \\	
-                IDS & ui-3240cp & 1280x1024/60FPS& \cite{ids} \\ 
-                \hline 
+                Wolf & 3D-Endocam & Stereoendscope & \cite{3DHD} \\
+                IDS & ui-3240cp & 1280x1024/60FPS& \cite{ids} \\
+                \hline
                 OSRAM & Xenophot & 150W Halogen & NONE \\
                 \hline
                 Aesculap & Caiman 5 & Vessel sealer & \cite{sealer} \\
@@ -129,16 +130,16 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \end{table}
 
         Der Aufbau des 21.12.2018 beinhaltet die Hardware aus Tabelle \ref{tab:recHW_2}.\\
-        Zweiter Prototyp des Laparoskopie Trainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
+        Zweiter Prototyp des Laparoskopietrainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
 
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth]{pics/setups/Laparoscope_box.jpg}
-            \caption{Gesamt Aufnahme des gebauten Laparoskopie Trainers}
+            \caption{Gesamt Aufnahme des gebauten Laparoskopietrainers}
             \label{fig:phantomI}
         \end{figure}
-        
+
         Einstiche im Neoprenstoff für die Einbringung der Werkzeuge in das künstliche Peritoneum \ref{fig:phantomII}.
 
         \begin{figure}[H]
@@ -150,30 +151,30 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
 
         \begin{table}[H]
             \centering
-            \begin{tabular}{c|l|l}	
-                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\ 
+            \begin{tabular}{c|l|l}
+                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\
                 \hline
                 \textbf {1} & Endoskope & Aufnahme Element\\
                 \textbf {2} & Neopren & Haut für Einstiche\\
                 \textbf {3} & Optik & einzuführender teil des Endoskopes\\
                 \textbf {4} & Kauter & Verbrennung Werkzeug\\
             \end{tabular}
-            
+
             \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren \ref{fig:MK_II_schematic} und \ref{fig:MK_II_real}\label{tab:usedHW_II}}
         \end{table}
 
 
-        Beim Zweiten Prototyp werden frische Organe verwendet die am Morgen des Versuchstages geschlachtet wurden. Die Frische der Organe ist wichtig da so die Feuchtigkeit des Gewebes erhalten bleibt. 
+        Beim Zweiten Prototyp werden frische Organe verwendet die am Morgen des Versuchstages geschlachtet wurden. Die Frische der Organe ist wichtig da so die Feuchtigkeit des Gewebes erhalten bleibt.
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth]{pics/setups/organs_marked.png}
-            \caption{Organe vor der Videodaten Generierung}
+            \caption{Organe vor der Videodatengenerierung}
             \label{fig:organs}
         \end{figure}
 
         \begin{table}[H]
             \centering
-            
+
             \begin{tabular}{l|c|c}	%all left aligned
                 \textbf{RefNr} & \textbf{Organ} & \textbf{Bemerkung} \\
                 \hline
@@ -208,7 +209,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                 }
                 \label{fig:MK_II_real}
             \end{subfigure}
-            \caption{Aufbau der Daten Generierung}
+            \caption{Aufbau der Datengenerierung}
             \label{fig:MK_II}
         \end{figure*}
         \clearpage
@@ -224,11 +225,11 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                 }
                 \label{fig:dynamic_1}
             \end{subfigure}
-            ~ 
+            ~
             \begin{subfigure}[b]{0.3\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s0.jpg}
-                \caption{\textbf{more dynamicsmoke} \\ 
+                \caption{\textbf{more dynamicsmoke} \\
                 }
                 \label{fig:dynamic_2}
             \end{subfigure}
@@ -236,7 +237,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \begin{subfigure}[b]{0.3\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_stain_s0.jpg}
-                \caption{\textbf{even more dynamic smoke} \\ 
+                \caption{\textbf{even more dynamic smoke} \\
                     Dynamic smoke 3
                 }
                 \label{fig:dynamic_3}
@@ -254,7 +255,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \begin{subfigure}[b]{0.3\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s1.jpg}
-                \caption{\textbf{more dynamicsmoke} \\ 
+                \caption{\textbf{more dynamicsmoke} \\
                     Picture 2
                 }
                 \label{fig:dynamic_2}
@@ -263,7 +264,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \begin{subfigure}[b]{0.3\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_stain_s1.jpg}
-                \caption{\textbf{even more dynamic smoke} \\ 
+                \caption{\textbf{even more dynamic smoke} \\
                     Dynamic smoke 2
                 }
                 \label{fig:dynamic_3}
@@ -281,16 +282,16 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \begin{subfigure}[b]{0.3\textwidth}
             \centering
             \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s2.jpg}
-            \caption{\textbf{more dynamicsmoke} \\ 
+            \caption{\textbf{more dynamicsmoke} \\
                 Picture 2
             }
             \label{fig:dynamic_2}
         \end{subfigure}
-        ~           
+        ~
         \begin{subfigure}[b]{0.3\textwidth}
             \centering
             \includegraphics[width=\textwidth]{pics/ownData/old_stain_s2.jpg}
-            \caption{\textbf{even more dynamic smoke} \\ 
+            \caption{\textbf{even more dynamic smoke} \\
                 Pictu 3
             }
             \label{fig:dynamic_3}
@@ -307,7 +308,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \hline
             \textbf{Prototyp 1} & \textbf{Prototyp 2 Verbesserung} \\
             \hline
-            Organe & Frische Organe (schlachtung am versuchstag (21.12.2018)\\
+            Organe & Frische Organe (Schlachtung am Versuchstag (21.12.2018)\\
             Phantom & angepasst an laparoskopische Trainer \\
             Endoskope & Leihgaben des DKFZ und Prof.Dr. Alfred Franz \\
             Kauter & Kauter und HF-generator, Leihgaben der NewTec GmbH. \\
@@ -316,18 +317,18 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \caption{ Verbesserungen der Testumgegbung \label{tab:improvements}}
     \end{table}
 
-    Die Verbesserungen in \ref{tab:improvements} erzeugen Daten die für eine weiterverarbeitung in frage kommen, jedoch noch qualitativ mit mit echten Daten gegenübergestellt werden müssen. \\
-    
-    Die generierten bilder sollten im laufe der Arbeit noch Chirurgen zur validierung vorgelegt werden, aufgrund schlechter kontakte und verfügbarkeiten der Chriurgen ist dies Jedoch zeitlich nicht mehr im Rahmen der Arbeit zustande gekommen. \\
-    Die gerneriten Daten bedürfen daher noch einer Prüfung durch Mediziner, Chirurgen oder andwereitig Qualifizierte Experten, die bestätigen oder verneinen das es sich hierbei um realitätsnahe Daten handelt.\\
-    Ausserdem ist zu klären unter welchen Aspekten sich die generierten Daten letztendlich von Realen unterscheiden und in wiefern dies eine Weiterverarbeitung beeinflusst. 
+    Die Verbesserungen in \ref{tab:improvements} erzeugen Daten, die für eine Weiterverarbeitung in Frage kommen, jedoch noch qualitativ echten Daten gegenübergestellt werden müssen. \\
+
+    Die generierten Bilder sollten im Laufe der Arbeit noch Chirurgen zur Validierung vorgelegt werden, aufgrund zeitlich nicht kompatibler Verfügbarkeiten der Chirurgen ist dies jedoch nicht mehr im Rahmen der Arbeit zustande gekommen. \\
+    Die generierten Daten bedürfen daher noch einer Prüfung durch Mediziner, Chirurgen oder andwereitig qualifizierte Experten, die bestätigen oder verneinen dass es sich hierbei um realitätsnahe Daten handelt.\\
+    Ausserdem ist zu klären unter welchen Aspekten sich die generierten Daten von realen Daten unterscheiden und in wiefern dies eine Weiterverarbeitung beeinflusst.
 
     \clearpage
 \subsubsection{Reale Daten}
-    Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich Reale intraoperative Bilder von Laparoskopien zu erhalten.
-    Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und Dienten als Referenz in Bezug auf Realismus.\\
+    Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich reale intraoperative Bilder von Laparoskopien zu erhalten.
+    Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und dienten als Referenz in Bezug auf Realismus.\\
     \newline
-    Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit auftauchen.\\
+    Die Bilder selbst unterliegen jedoch dem Datenschutz der Patienten und dürfen deshalb nicht in der Arbeit veröffentlicht werden.\\
     \newline
     Der Ausschnitt \ref{fig:wolfVid} einem auf Youtube veröffentlichten Werbe-Video der Firma RICHARD WOLF GmbH von 2014 \cite{WolfVid} zeigt ein Bild das ebenfalls mit dem Stereoendoskop 3DHD \cite{3DHD} aufgenommen wurde und den Aufnahmen Uwe Widmaiers \cite{uwe} stark ähnelt.\\
     Das Bild zeigt einen Elektrokauter, der zum schneiden von Gewebe verwendet wird und Ansätze von Surgical smoke, welcher sich im Pneumoperitoneum ausbreitet.
@@ -336,33 +337,33 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \centering
         \includegraphics[width=\textwidth]{pics/usable_unsure/wolfVid.jpg}
         \caption{
-            Aufnahme einer realen Laparoskopische Eingriffes \\
+            Aufnahme eines realen Laparoskopische Eingriffes \\
             Aufgenommen mit einem 3DHD \cite{3DHD}, \\
-            Werkzeug im Bild ist ein Monopolarer Elektrokauter.\\
+            Werkzeug im Bild ist ein monopolarer Elektrokauter.\\
         }
         \label{fig:compareP1P2}
     \end{figure}
 
 
 \newpage
-\section{Daten Bearbeitung}
-    Die Bearbeitung der generierten Daten teil sich in mehrere Teile.
-    Zuerst müssen die Daten aufgrund ihrer Größe verwertbarer gemacht werden, mit Hilfe von Konversion des Dateiformates sowie einer Reduktion der Auflösung.\\
-    Im Anschluss werden die Bilder mit Hilfe von Histogrammen verglichen und bearbeitet. \\
-    Eine Implementation von Rauch oder Dampf Erkennung ist nicht mehr teil der Arbeit.
+\section{Datenbearbeitung}
+    Die Bearbeitung der generierten Daten teilt sich in mehrere Teile.
+    Zuerst müssen die Daten aufgrund ihrer Größe verwertbarer gemacht werden - mit Hilfe von Konversion des Dateiformates sowie einer Reduktion der Auflösung.\\
+    Im Anschluss werden die Bilder unter Zuhilfenahme von Histogrammen verglichen und bearbeitet. \\
+    Eine Implementation von Rauch- oder Dampferkennung ist nicht mehr Teil der Arbeit.
 
     \subsection{Tools und Sprachen}
-        Die Verarbeitung der Daten erfolgt auf einem Dell Latitude \cite{laptop} als Host-System, in Verbindung mit einer Ubuntu18.04 Virtuellen Maschine die mittels VMware-Player auf dem Hostsystem die Verwendung der Bash und anderen Programierwerkzeugen ermöglicht. \\
-        Die gewählten sprachen sind: \\
+        Die Verarbeitung der Daten erfolgt auf einem Dell Latitude \cite{laptop} als Host-System, in Verbindung mit einer Ubuntu18.04 virtuellen Maschine die mittels VMware-Player auf dem Hostsystem die Verwendung der Bash und anderen Programmierwerkzeugen ermöglicht. \\
+        Die gewählten Sprachen sind: \\
         \begin{itemize}
-            \item Python3.6.7, 
-            \item Bash 4.4.19  und 
+            \item Python3.6.7,
+            \item Bash 4.4.19  und
             \item Octave 4.2.2 .
         \end{itemize}
- 
+
         Insbesondere für Python wurden weitere Bibliotheken verwendet, welche alle via Python-pip:\\
         \lstinline[language=python, numbers=none ]{python3 -m pip install <package> [<package>] } \\
-        installiert werden können. Die packte sind: \\
+        installiert werden können. Die Packete sind: \\
 
         \begin{itemize}
             \item numpy         1.16.2
@@ -373,34 +374,34 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \end{itemize}
         % additionals : argparser and csv (parser)
 
-        Insbesondere die openCV-python bibliothek wurde verwendet, da es sich hierbei um eine C++-Bibliothek mit einem Python-wrapper handelt, die Bildbearbeitung in Bildern sowie Videos zulässt. In Verbindung mit Numpy und matplotlib ist es so möglich schnell zu prototypischen Ergebnissen zu gelangen.\\
-        Python als geskriptete Sprache erlaubt eine schnelle Implementation des Codes, jedoch bleiben die Ausführungszeiten hinter derer von kompilierten sprachen wie C++ zurück. Da die openCV-bibliothek für python nur ein wrapper um die eigentliche C++ Implementierung ist, kann so erwartet werden das sich etwaiger Portierungsaufwand gering hält. Desweiteren ist openCV eine in sowohl in Wissenschaft also auch in der Industrie weit verbreitete Bibliothek für Bildbearbeitungen.\\
-        Matplotlib und numpy sind Mathematische bibliothek die bei der erstellung von Beispielsweise Histogrammen vorgefertige algorithmen mitbringen auf die zugegriffen werden kann. \\ 
-        Sowohl numpy, welches eigene Datentypen mitbringt, als auch Matplotlib, das Bilder aus openCV in Plots darstellen kann sind Kompatibel mit OpenCV und machen eine Kombinierte Verwendung einfach.\\
+        Die openCV-python Bibliothek wurde verwendet, da es sich hierbei um eine C++-Bibliothek mit einem Python-wrapper handelt, die Bildbearbeitung in Bildern sowie Videos zulässt. In Verbindung mit Numpy und matplotlib ist es so möglich schnell zu prototypischen Ergebnissen zu gelangen.\\
+        Python als geskriptete Sprache erlaubt eine schnelle Implementation des Codes, jedoch bleiben die Ausführungszeiten hinter derer von kompilierten Sprachen wie C++ zurück. Da die openCV-Bibliothek für python nur ein wrapper um die eigentliche C++ Implementierung ist, kann so erwartet werden, dass sich etwaiger Portierungsaufwand gering hält. Desweiteren ist openCV eine in sowohl in Wissenschaft also auch in der Industrie weit verbreitete Bibliothek für Bildbearbeitungen.\\
+        Matplotlib und numpy sind mathematische Bibliotheken, die bei der Erstellung von beispielsweise Histogrammen vorgefertige Algorithmen mitbringen, auf die zugegriffen werden kann. \\
+        Sowohl numpy, welches eigene Datentypen mitbringt, als auch Matplotlib, das Bilder aus openCV in Plots darstellen kann, sind kompatibel mit OpenCV und machen eine kombinierte Verwendung einfach.\\
         \newline
-        Dennoch wurde im Laufe der Arbeit auch auf Octave zurückgegriffen, einer unter GNU GPLv3 lizenzierten Software für numerische Berechnungen. Um schneller an Ergebnisse zu kommen als über Python mittels Opencv und numpy.\\
-        Ein weiterer vorteil von Octave ist die produzierte Code, der sehr mathematisch zu lesen ist und so eine einfache übersetzung von Formeln in Quelltext ermöglicht.\\
+        Dennoch wurde im Laufe der Arbeit auch auf Octave zurückgegriffen, einer unter GNU GPLv3 lizenzierten Software für numerische Berechnungen, um schneller an Ergebnisse zu kommen als über Python mittels Opencv und numpy.\\
+        Ein weiterer Vorteil von Octave ist der produzierte Code, der sehr mathematisch zu lesen ist und so eine einfache Übersetzung von Formeln in Quelltext ermöglicht.\\
 
     \subsection{Vorverarbeitung}
 
         Die generierten Daten dienen im Folgenden als Basis für die Bildanpassungsalgorithmen.\\
         Da das Ergebnis der Basisdatengenerierung aus Videodateien in .avi-formaten besteht ist es vorerst nötig diese zu konvertieren, anzupassen und Bilder zu generieren.\\
-        Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px Konvertiert.\\
+        Um die Größe der Videos auf eine einfach zu verwendbare Größe zu konvertieren wurden die .avi Dateien mittels FFMPEG zu .mp3 Dateien mit einer Auflösung von 800x600px konvertiert.\\
         \newline
-        Ziel der Vorverarbeitung ist es die aus den Versuchen generierten Video Rohdaten für die Implementation vorzubereiten.
-        Beispielsweise werden für die ersten versuche der Bildbearbeitung mit den bereits erwähnten Gamma/Kontrast/Helligkeit -filtern einzelne Bilder (Frames) der Videos benötigt.\\
-        Die Vorverarbeitung soll die Daten aufbereiten um komfortables arbeiten mit ihnen zu ermöglichen, indem die Videos in Standard Formate mit kleineren Größen konvertiert werden. Mit den Bildern wird gleich verfahren.\\
+        Ziel der Vorverarbeitung ist es die aus den Versuchen generierten Videorohdaten für die Implementation vorzubereiten.
+        Beispielsweise werden für die ersten Versuche der Bildbearbeitung mit den bereits erwähnten Gamma-, Kontrast-, Helligkeitsfiltern einzelne Bilder (Frames) der Videos benötigt.\\
+        Die Vorverarbeitung soll die Daten aufbereiten um komfortables Arbeiten mit ihnen zu ermöglichen, indem die Videos in Standardformate mit kleineren Größen konvertiert werden. Mit den Bildern wird ebenso verfahren.\\
         \newline
 
-        Durch die Verwendung einer Bash auf einem Linuxsystem kann mittels ffmpeg in wenigen Zeilen die Konversion aller Video-Dateien angestoßen werden \ref{code:vidConf}.
+        Durch die Verwendung einer Bash auf einem Linuxsystem kann mittels ffmpeg in wenigen Zeilen die Konversion aller Videodateien angestoßen werden \ref{code:vidConf}.
 
 \begin{lstlisting}[language=bash, numbers=none, caption={converting avi to scaled mp4}, label={code:vidConf}]
-    for i in ./VideoFiles; do 
+    for i in ./VideoFiles; do
         ffmpeg -vf scale=800x600 -i $i $i.mp4
     done
 \end{lstlisting}
 
-        Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format das die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
+        Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format, dass die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
         \begin{table}[h]
             \centering
             \begin{tabular}{c|c|c|c}
@@ -416,34 +417,34 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             }
         \end{table}
 
-        der Coder \ref{code:vidConf} wandelt die Eingabe Videos in ein besser handhabbares Format um \ref{tab:formateVid}. \\
-        Aus den MP4 Videos ist es nun leicht Bilder zu extrahieren, die Herangehensweise hierbei ist es jede Sekunde des Videos einen Screenshot zu erstellen.\\
+        der Coder \ref{code:vidConf} wandelt die Eingabevideos in ein besser handhabbares Format um \ref{tab:formateVid}. \\
+        Aus den MP4 Videos ist es nun einfach Bilder zu extrahieren, die Herangehensweise hierbei ist jede Sekunde des Videos einen Screenshot zu erstellen.\\
         \newline
-        Das Skript \textbf{shotGrabber.py} \ref{code:shotGrabber} dient als folge Skript um aus den generierten Videodaten letztendlich Bilder zu erstellen.\\
+        Das Skript \textbf{shotGrabber.py} \ref{code:shotGrabber} dient als Folgeskript um aus den generierten Videodaten letztendlich Bilder zu erstellen.\\
         \lstinputlisting[language=Python, caption={script zur sekündlichen Erstellung von Screenshots}, label={code:shotGrabber}, firstline=14, lastline=28]
-        {../../work/scripts/shotGrabber.py} 
+        {../../work/scripts/shotGrabber.py}
 
-        Die Vorgehensweise dabei ist es alle Videos anzusehen und dann nach jeweils einer Sekunde einen Screenshot abzuspeichern. Der Screenshot ist hierbei der aktuelle Frame des Videos \ref{code:shotGrabber} Zeile 12.\\
+        Die Vorgehensweise dabei ist es alle Videos anzusehen und nach jeweils einer Sekunde einen Screenshot abzuspeichern. Der Screenshot ist hierbei der aktuelle Frame des Videos \ref{code:shotGrabber} Zeile 12.\\
         Gespeichert werden die Bilder jeweils in einen Ordner mit dem Namen des Videos, die Files selbst haben einen einheitlichen Namen: \textit{''shot\_\%d.jpg''}, wobei das \textit{\%d} die Sekunde der Aufnahme codiert. \\
-        Das Ergbnis  der Bilddaten Generierung sind 1244 (221 Originale aus \cite{uwe} und 1023 Bilder aus den Selbst gerierten Daten). \\
+        Das Ergbnis  der Bilddatengenerierung sind 1244 (221 Originale aus \cite{uwe} und 1023 Bilder aus den selbst generierten Daten). \\
         \newline
-        Diese Bilder dienen im Anschluss als Eingabe für ebensoviele Histogramme.
+        Diese Bilder dienen im Anschluss als Eingabe für ebenso viele Histogramme.
 
-    \subsection{Histogramme als Vergleichs Grundlage}
-        Mit Hilfe des \ref{code:histPY_calc} Scriptes, können Histogramme erzeugt werden, die Auskunft über die farbliche Zusammensetzung der Bilder geben. 
+    \subsection{Histogramme als Vergleichsgrundlage}
+        Mit Hilfe des \ref{code:histPY_calc} Scriptes, können Histogramme erzeugt werden, die Auskunft über die farbliche Zusammensetzung der Bilder geben.
 
         \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:calcHist}, label={code:histPY_calc}, firstline=22, lastline=44]
-        {../../work/scripts/hist.py}         
+        {../../work/scripts/hist.py}
 
-        Die Methode zeigt das iterative kumulieren der Werte jedes Pixels, die Arrays \lstinline{hhist_b, hist_g, hist_r} enthalten die Anzahl der \lstinline{uint8_t} werte für die Farbkanäle Rot, Grün und Blau des RGB Formates.\\
-        Weitere Methoden sorgen dann für die generation von csv-dateien für die Weiterverarbeitung \ref{code:histPY_csv} oder für die Darstellung als Kurve \ref{code:histPY_fun}. \\
+        Die Methode zeigt das iterative kumulieren der Werte jedes Pixels, die Arrays \lstinline{hhist_b, hist_g, hist_r} enthalten die Anzahl der \lstinline{uint8_t} Werte für die Farbkanäle Rot, Grün und Blau des RGB Formates.\\
+        Weitere Methoden sorgen dann für die Generation von csv-dateien für die Weiterverarbeitung \ref{code:histPY_csv} oder für die Darstellung als Kurve \ref{code:histPY_fun}. \\
         \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:createCSV}, label={code:histPY_csv}, firstline=80, lastline=90]
         {../../work/scripts/hist.py}
         \lstinputlisting[language=Python, caption={Histogram Generator Skript, Methode:histLong}, label={code:histPY_fun}, firstline=93, lastline=129]
         {../../work/scripts/hist.py}
 
-        Der Ausgabe Plot für das Kommando:\lstinline{gram shot_24.jpg -l s24.csv -o hist_24.png} sieht wie folgt aus \ref{fig:histInUse}.\\
-        
+        Der Ausgabeplot für das Kommando:\lstinline{gram shot_24.jpg -l s24.csv -o hist_24.png} sieht wie folgt aus \ref{fig:histInUse}.\\
+
         \begin{figure*}[h]
                 \includegraphics[width=\textwidth]{pics/code/histInUse.png}
                 \label{fig:histInUse_code}
@@ -467,25 +468,25 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             \label{fig:histInUse}
         \end{figure*}
 
-        Der Parameter \lstinline{ --createCSV} sorgt dafür dass die Arrays \lstinline{hhist_b, hist_g, hist_r} als csv-datei abgespeichert werden. So können später alle Farbwerte aufsummiert werden um ein Gesamthistogram über beispielsweise ein Gesamtes Video zu generieren.\\
-        Die Resultierenden CSV Dateien werden dann mittels des Scriptes \ref{code:collectorPY} zusammengefasst.\\ 
-        Gruppiert wird nach Quelle: ein Histogram beschreibt die Zusammensetzung aller Realen Daten die durch Uwe Widmaier \cite{uwe} aufgezeichnet wurden und ein weiteres über die Daten die im Laborversuch selbst erstellt wurden.\\
-        Auf der Grundlage dieser Histogramme können die erstellten Daten mit den Realen verglichen und evaluiert werden.\\
-        Der explizite Code zu diesem vorgehen findet sich im \ref{sec:Appendix}, sowie eine Liste der generierten Daten. \\
+        Der Parameter \lstinline{ --createCSV} sorgt dafür dass die Arrays \lstinline{hhist_b, hist_g, hist_r} als csv-datei abgespeichert werden. So können später alle Farbwerte aufsummiert werden um ein Gesamthistogram über, beispielsweise, ein gesamtes Video zu generieren.\\
+        Die resultierenden CSV Dateien werden dann mittels des Scriptes \ref{code:collectorPY} zusammengefasst.\\
+        Gruppiert wird nach Quelle: ein Histogram beschreibt die Zusammensetzung aller realen Daten die durch Uwe Widmaier \cite{uwe} aufgezeichnet wurden und ein weiteres über die Daten die im Laborversuch selbst erstellt wurden.\\
+        Auf der Grundlage dieser Histogramme können die erstellten Daten mit den realen Daten verglichen und evaluiert werden.\\
+        Der explizite Code zu diesem Vorgehen findet sich im \ref{sec:Appendix}, sowie eine Liste der generierten Daten. \\
         Die Ergebnisse der hier beschriebenen Algorithmen finden sich im Kapitel Ergebnis \ref{sec:Results}.\\
 
         \newpage
          \subsection{Anwendung von Bildanpassungsalgorithmen}
-        
+
             Die unter \ref{sec:Fundamentals} beschriebenen Algorithmen wirken sehen im code folgendermassen aus \ref{code:plotIt}.
-            Dieses Skript produziert die Ausgabe bilder in \ref{fig:imageAdjust}. \\
-            
+            Dieses Skript produziert die Ausgabebilder in \ref{fig:imageAdjust}. \\
+
             \begin{figure}[H]
                 \begin{subfigure}[h]{0.4\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
                     \label{fig:contrast}
                     \caption{
-                        Originales eingabe Bild 
+                        Originales Eingabebild
                     }
                 \end{subfigure}
                 ~
@@ -501,7 +502,7 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                     \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
                     \label{fig:contrast}
                     \caption{
-                        Änderung des Gamma-wertes um 10\%
+                        Änderung des Gamma-Wertes um 10\%
                     }
                 \end{subfigure}
                 ~
@@ -509,28 +510,28 @@ Sourcen der erstellten skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                     \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
                     \label{fig:contrast}
                     \caption{
-                        Änderung des Kontrastes mittels Sigmoid-funktion um 10\%
+                        Änderung des Kontrastes mittels Sigmoid-Funktion um 10\%
                     }
                 \end{subfigure}
                 ~
                 \caption{Bildbearbeitung von intraoperativen Bildern\label{fig:imageAdjust}}
             \end{figure}
 
-            Die Anpassung wird hier bereits über Histogrammatching vorgenommen, welches die kumulierte Summe der Bilder an eine Eingabe Funktion anpasst.
+            Die Anpassung wird hier bereits über Histogrammatching vorgenommen, welches die kumulierte Summe der Bilder an eine Eingabefunktion anpasst.
             Dadurch ensteht eine Matrix die auf die Pixel des Bildes angewandt werden kann und so jeden Pixel anpasst.
 
-        
+
         \subsection{Histogram Equalization}
-            Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabe Bilder zu erstellen. Die Implementierung dieser Mathematischen Funktionen erfolgt aus Performance-Gründen mittels Octave.\\
-            So kann die Histogramm Generierung, die bisher mittels des python Skripts hist.py \ref{code:histPY_calc} erreicht wurde, verkürzt werden.\\
+            Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabebilder zu erstellen. Die Implementierung dieser mathematischen Funktionen erfolgt aus Performance-Gründen mittels Octave.\\
+            So kann die Histogrammgenerierung, die bisher mittels des python Skripts hist.py \ref{code:histPY_calc} erreicht wurde, verkürzt werden.\\
             \newline
-            Der unterschied der den immensen Geschwindigkeitszuwachs ermöglicht ist hierbei nicht der Wechsel der Sprache, sondern der Methodik.\\
+            Der Unterschied, der den hohen Geschwindigkeitszuwachs ermöglicht, ist hierbei nicht der Wechsel der Sprache, sondern der Methodik.\\
             Während das python-Script iterativ alle Pixel aufsummiert, ist die Vorgehensweise des Octave Scripts vektoriell. Dies kann mit Hilfe der numpy-Bibliothek auch in Python realisiert werden\cite{numpy}.
-            Der Zeitgewinn durch die Vektorielle Rechnung mittels Octave ist immens, er verringert sich von ca 4 Minuten (für RGB Histogramme ungefähr 12 Minuten)) auf unter 1 Sekunde auf dem Verwendeten System. \\
+            Der Zeitgewinn durch die Vektorielle Rechnung mittels Octave ist immens, er verringert sich von ca 4 Minuten (für RGB Histogramme ungefähr 12 Minuten)) auf unter 1 Sekunde auf dem verwendeten System. \\
             Den entsprechenden Code zeigt der Auszug \ref{code:histogram} aus histogram.m \ref{code:histogramM}.\\
 
 \lstinputlisting[language=matlab, caption={octave implementierung der Histogramm Erstellung}, label={code:histogram}]
         {../../work/mathe/own/histogram.m}
 
-        Diese Version des Codes erzeugt allerdings ein Histogram über die Graustufen des Bildes um ein eindimensionales Array zu erhalten, wärend \ref{code:histPY_calc} für jeweils Rot, Grün und Blau eigene Histogramme erstellt.
+        Diese Version des Codes erzeugt allerdings ein Histogramm über die Graustufen des Bildes um ein eindimensionales Array zu erhalten, während \ref{code:histPY_calc} für jeweils Rot, Grün und Blau eigene Histogramme erstellt.
         Für die Anpassung mittels Histogram-Matching wird im code \ref{code:histogram} ein eindimensionaler Vektor erstellt ( Zeile 5 ). Durch die Bildung des Mittelwertes wird so ein Monochromes Bild erstellt. Monochrome Bilder bestehen nur aus Graustufen und deren Histogramme sind entsprechenden eindimensionale Matrizen, sprich lediglich Vektoren.\\
