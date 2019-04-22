@@ -8,43 +8,43 @@
         Im Kapitel Methoden \ref{sec:Methods} beschrieben werden Histogramme für den Vergleich der generierten Daten mit den Vorgabedaten, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der realen Aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
         Zu erwähnen ist, dass sich die generierten Histogramme auf unterschiedlich große Datensätze beziehen.
         Während die Aufnahmen aus Günzburg nur 293MB(Gesamtdauer: 5min 44s) groß sind, erreichen die bereits verkleinerten selbstgenerierten Daten 1GB(Gesamtdauer: 1h 15min 18s).\\
-        Die Histogramme der Datensätze (Abb. \ref{fig:cumsum_mine} und \ref{fig:cumsum_real}) basieren daher nicht auf der selben Datenmenge.
+        Die Histogramme der Datensätze (Abb. \ref{fig:cumsum_mine} und \ref{fig:cumsum_real}) basieren daher nicht auf der gleichen Datenmenge.
 
         \begin{figure}[h]
             \centering
             \begin{subfigure}[b]{0.4\textwidth}
                 \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_OWNData.png}
-                \caption{kumuliertes Histogram der eigenen Daten}
+                \caption{kumuliertes Histogramm der eigenen Daten}
                 \label{fig:cumsum_mine}
             \end{subfigure}
             ~
             \begin{subfigure}[b]{0.4\textwidth}
                 \includegraphics[width=\textwidth]{pics/eval/cumulatedHISTOGRAM_REALData.png}
-                \caption{kumuliertes Histogram der Daten aus Günzburg}
+                \caption{kumuliertes Histogramm der Daten aus Günzburg}
                 \label{fig:cumsum_real}
             \end{subfigure}
-            \caption{Vergleich der Generierten Daten mit realen Laparoskopien}
+            \caption{Vergleich der generierten Daten mit realen Laparoskopien}
             \label{fig:Cmp_hists}
         \end{figure}
 
-        Das Histogram der selbst generierten Daten (Abb. \ref{fig:cumsum_mine}) gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist dass im sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden, dies deutet darauf hin dass die Bilder insgesamt Dunkel ausfallen. Ein Indiz für große Schwarzanteile der Bilder kann eine Häufung von Pixeln mit gleichem wert der Rot, Grün und Blau Anteile darstellen.\\
-        (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse varianz steht.
-        Da es sich bei den Histogrammen jedoch um kumulierte Daten handelt, sprich um ein Histogramm über mehrere Bilder könnten diese sich auch ausmitteln.\\
-        Ein blick auf die Aufnahmen bestätigt jedoch die Annahme, denn die meisten der Bilder enthalten große schwarze Flächen, verursacht durch eine unzureichende Ausleuchtung des laparoskopischen Trainers. \\
+        Das Histogramm der selbst generierten Daten (Abb. \ref{fig:cumsum_mine}) gibt bereits Auskunft darüber wie die Bilder zusammengesetzt sind. Auffällig ist, dass sich die meisten Pixel im Bereich von Intensitäten $ < 50 $ befinden. Dies deutet darauf hin dass die Bilder insgesamt dunkel ausfallen. Ein Indiz für große Schwarzanteile der Bilder kann eine Häufung von Pixeln mit gleichem Wert der Rot-, Grün- und Blauanteile darstellen.\\
+        (Pixel mit der Eigenschaft:$$ R \pm x = G\pm x = B\pm x$$ stellen Graustufen dar, wobei $ x $ stellvertretend für eine gewisse Varianz steht.
+        Da es sich bei den Histogrammen jedoch um kumulierte Daten handelt, sprich um ein Histogramm über mehrere Bilder, könnten diese sich auch ausmitteln.\\
+        Ein Blick auf die Aufnahmen bestätigt diese Annahme, die meisten der Bilder enthalten große schwarze Flächen, verursacht durch eine unzureichende Ausleuchtung des laparoskopischen Trainers. \\
         \newline
-        Zusätzlich zeigt das Histogram \ref{fig:cumsum_mine} einen erhöhten weiß-Anteil (Pixel mit $ (R=G=B) >= 240$ ). Dieser kann mit dem auftreten von Spiegelungen erklärt werden. Das eingespeiste Licht der Halogen Lichtquelle,\cite{light} verursacht wenig diffuses Licht im Trainer und durch die kurzen Abstände zwischen Kamera und Werkzeug, bzw Organ enstehen auf den Feuchten Organen Reflexionen. Dies Reflexionen äussern sich durch weiße Pixel.\\
+        Zusätzlich zeigt das Histogramm \ref{fig:cumsum_mine} einen erhöhten Weißanteil (Pixel mit $ (R=G=B) >= 240$ ). Dieser kann mit dem Auftreten von Spiegelungen erklärt werden. Das eingespeiste Licht der Halogen Lichtquelle,\cite{light} verursacht wenig diffuses Licht im Trainer und durch die kurzen Abstände zwischen Kamera und Werkzeug, bzw Organ enstehen auf den feuchten Organen Reflexionen. Dies Reflexionen äussern sich durch weiße Pixel.\\
 
-        Während hingegen die Pixel des Histograms der Realen Daten \ref{fig:cumsum_real} weiter in Richtung Mitte (Werte im Bereich $ 50 < x < 120 $) verteilt ist.\\
-        Die Überlappung von Grün und Blau Anteilen in Kombination mit einer nach rechts verschobenen Rot kurve deutet darauf hin das es sich auch hier um dunkle Bilder handelt, Jedoch mit deutlichem Einschlag Rot Tones. \\
-        Logischerweise lässt sich das durch dass durch das Aufgezeichnete Motiv erklären, den viszeralen Organen der Patienten.\\
+        Während hingegen die Pixel des Histograms der realen Daten \ref{fig:cumsum_real} weiter in Richtung Mitte (Werte im Bereich $ 50 < x < 120 $) verteilt ist.\\
+        Die Überlappung von Grün- und Blauanteilen in Kombination mit einer nach rechts verschobenen Rotkurve deutet darauf hin, dass es sich auch hier um dunkle Bilder handelt, jedoch mit deutlichem Einschlag des Rottones. \\
+        Logischerweise lässt sich das durch das aufgezeichnete Motiv erklären, den viszeralen Organen der Patienten.\\
 
-        Vergleichend lässt sich hier folglich sagen das die Realen Daten \ref{fig:cumsum_real} Heller sein müssen als die selbst generierten.\\
+        Vergleichend lässt sich hier sagen dass die realen Daten \ref{fig:cumsum_real} heller sein müssen als die selbst generierten.\\
         Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
         In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
-        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die Kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
 
-        Für die ersten Versuche dieser reihe spielt die Helligkeit eine untergeordnete rolle, denn Rauch und andere Verunreinigungen können auch in den Dunkleren Bildern Deutlich mit bloßem Auge erkannt werden.\\
-        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
+        Für die ersten Versuche dieser Reihe spielt die Helligkeit eine untergeordnete Rolle, denn Rauch und andere Verunreinigungen können auch in den dunkleren Bildern deutlich mit bloßem Auge erkannt werden.\\
+        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu, dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
 
         \begin{figure}[h]
             \includegraphics[width=\textwidth]{pics/ownData/darkpic.jpg}
@@ -52,17 +52,17 @@
             \label{fig:closeup}
         \end{figure}
 
-        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich Sichtbarer unterschied zu den Realen Datensätzen.\\
-        Für zukünftige versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies mit unter zu den offensichtlichsten Unterschieden zu den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Dadurch ist der Platz begrenzt in dem sich der Rauch ausbreiten kann, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen und auch die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer ist wesentlich größer.\\
+        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich sichtbarer Unterschied zu den realen Datensätzen.\\
+        Für zukünftige Versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies zu den offensichtlichsten Unterschieden im Vergleich mit den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Der Platz, in dem sich der Rauch ausbreiten kann, ist begrenzt, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen. Ebenso ist die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer wesentlich größer.\\
         \newline
 
-        Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger Professionell abläuft als in den Realen Daten, was sich einfach durch Mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
-        Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches, jedoch kommt es oft vor dass das Kamera Bild abrutscht, nicht direkt die Kauterisierte stelle zeigt oder wackelt. \\
-        Auch dies sind keine direkten Nachteile, jedoch würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
+        Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger professionell abläuft als in den realen Daten, was sich einfach durch mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
+        Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches. Jedoch kommt es oft vor, dass das Kamerabild verrutscht, nicht direkt die kauterisierte Stelle zeigt, oder wackelt. \\
+        Auch dies sind keine direkten Nachteile, allerdings würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
 
 \section{Algorithmen}
     \subsection{historgram matching}
-        Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogram kurven.\\
+        Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogrammkurven.\\
         \begin{figure*}[hp]
             \includegraphics[width=\textwidth]{pics/eval/smokeHist.jpg}
             \caption{Anpassungen der Bilder mittels Histogram-matching}
