@@ -9,6 +9,7 @@
     Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und Videoaufnahmen von Rauch und Dampf erzeugen.
     Nach einem Fehlschlag dieses Vorhabens wurde unter deutlichem Mehraufwand ein zweiter Laborversuch initiiert, welcher brauchbare Ergebnisse lieferte.
 
+    \clearpage
     \subsubsection{Erster Prototyp}
         Der erste Prototyp besteht aus leicht zugänglichen Materialien und sollte das Problem der fehlenden endoskopischen Bilder mit wenig Aufwand lösen.\\
         Zum Einsatz kamen die in Tabelle\ref{tab:usedHW_I} verwendenden Geräte.\\
@@ -55,7 +56,7 @@
 	    \begin{figure*}[hp]
              \begin{subfigure}[b]{\textwidth}
                  \centering
-                 \includegraphics[scale=0.34]{pics/setups/setup1_schematic.png}
+                 \includegraphics[scale=0.3]{pics/setups/setup1_schematic.png}
                  \caption{\textbf{Schematischer Aufbau} \\
                      (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperatur- und  Luftfeuchtigkeits-Sensor, (7)LED-Licht \\
                      \textit{Geräte wie in Tabelle \ref{tab:usedHW_I}.} \\
@@ -67,7 +68,7 @@
 
              \begin{subfigure}[b]{\textwidth}
                  \centering
-                 \includegraphics[scale=0.4]{pics/setups/setup1_real.png}
+                 \includegraphics[scale=0.3]{pics/setups/setup1_real.png}
                  \caption{\textbf{Realer Aufbau} \\
                      (1)Raspberry PI B3+, (2)DSLR, (3)Webcam, (4)Endocam, (5)Temperatur- und  Luftfeuchtigkeits-Sensor, (7)LED-Licht \\
                      \textit{Geräte wie in Tabelle \ref{tab:usedHW_I}.}
@@ -79,7 +80,7 @@
 
              \begin{subfigure}[b]{\textwidth}
                  \centering
-                 \includegraphics[scale=0.2]{pics/setups/setup1_result.png}
+                 \includegraphics[scale=0.15]{pics/setups/setup1_result.png}
                  \caption{\textbf{Ergebnis Bilder} \\
                      Bilder aus den Videos des Aufbaus\ref{fig:MK_I_real}. \\
                      (1)DSLR-output, (2)Webcam-output, (3)Endocam-output.
@@ -108,6 +109,22 @@
     \subsubsection{Zweiter Prototyp}
 
         Aus den Ergebnissen des ersten Prototypes ging hervor, dass es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer, in dem die Versuche durchgeführt wurden, verbessert worden.. \\
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|c|}
+            \hline
+            \textbf{Prototyp 1} & \textbf{Prototyp 2 Verbesserung} \\
+            \hline
+            Organe & Frische Organe (Schlachtung am Versuchstag (21.12.2018)\\
+            Phantom & angepasst an laparoskopische Trainer \\
+            Endoskope & Leihgaben des DKFZ und Prof.Dr. Alfred Franz \\
+            Kauter & Kauter und HF-generator, Leihgaben der NewTec GmbH. \\
+            \hline
+        \end{tabular}
+        \caption{ Verbesserungen der Testumgegbung \label{tab:improvements}}
+    \end{table}
+
         Erwartungsgemäß können mit passenderen Organene (Schwein, frische, etc. \ref{sec:Fundamentals} Bessere Ergebnisse erwartet werden. Deshalb sind die folgenden Versuche mit frischen Organen durchgeführt worden. Zusätzlich zu den professionellen Werkzeugen\ref{tab:recHW_2} wird so eine Verbesserung zum ersten versuch erwartet. \\
 
         \begin{table}[H]
@@ -129,6 +146,7 @@
 
         Der Aufbau des 21.12.2018 beinhaltet die Hardware aus Tabelle \ref{tab:recHW_2}.\\
         Zweiter Prototyp des Laparoskopietrainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
+        \clearpage
 
         Durch den Kontakt zu Dr. Ester Stenau \cite{esther} konnten typische Bewegungsabläufe in minimalinvasiven Eingriffen abgeklärt werden, sowie Sinnvolle Benamungen der zu generierenden Daten. Dies ergab dass chirurgen meist mit 3 verschiedenen Arten von Bewegungen arbeiten:
         \begin{itemize}
@@ -148,7 +166,7 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{pics/setups/Laparoscope_box.jpg}
+            \includegraphics[width=0.8\textwidth]{pics/setups/Laparoscope_box.jpg}
             \caption{Gesamt Aufnahme des gebauten Laparoskopietrainers}
             \label{fig:phantomI}
         \end{figure}
@@ -158,11 +176,13 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{pics/usable_unsure/einstichmuster.jpg}
+            \includegraphics[width=0.8\textwidth]{pics/usable_unsure/einstichmuster.jpg}
             \caption{Plazierung der Werkzeuge und des endoskopes bei Cholezystektomien}
             \label{fig:stabbing}
         \end{figure}
 
+        Zur Verwendung kommen nur 2 Werkzeuge, ein Kauter und eine klemme. Um die benötigten Daten aufzuzeichnen  wird theoretisch nur der Kauter benötigt, aber aus rein praktischen gründen wird die Klemme zum halten und bewegen der Organe verwendet. \\
+        Die auf Bild \ref{fig:phantomII} Einstiche zu sehenden Einstiche kommen daher von den Werkzeugen (unschwer am Blut auf dem Neopren zu erkennen) und links im Bild der Einstich der verschiedenen Laparoskope.
 
         \begin{figure}[H]
             \centering
@@ -170,20 +190,6 @@
             \caption{Neoprensstoff im Deckel des Trainers, mit Einstichen der Werkzeuge und des Endoskopes}
             \label{fig:phantomII}
         \end{figure}
-
-        \begin{table}[H]
-            \centering
-            \begin{tabular}{c|l|l}
-                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\
-                \hline
-                \textbf {1} & Endoskope & Aufnahme Element\\
-                \textbf {2} & Neopren & Haut für Einstiche\\
-                \textbf {3} & Optik & einzuführender teil des Endoskopes\\
-                \textbf {4} & Kauter & Verbrennung Werkzeug\\
-            \end{tabular}
-
-            \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren \ref{fig:MK_II_schematic} und \ref{fig:MK_II_real}\label{tab:usedHW_II}}
-        \end{table}
 
 
         Beim Zweiten Prototyp werden frische Organe verwendet die am Morgen des Versuchstages geschlachtet wurden. Die Frische der Organe ist wichtig da so die Feuchtigkeit des Gewebes erhalten bleibt.
@@ -212,9 +218,10 @@
             \caption{verwendete Organe des 2ten Testaufbaus\label{tab:organlist}}
         \end{table}
 
-        Da die Organe (Tabelle \ref{tab:organlist} und Bild \ref{fig:organs}) von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende Organe gleichzeitig im Trainer verwendet werden.
+        Da die Organe (Tabelle \ref{tab:organlist} und Bild \ref{fig:organs}) von mehreren Tieren stammen wird darauf geachtet das nur jeweils zusammenpassende bzw. zusammenhängende Organe gleichzeitig im Trainer verwendet werden.\\
+        Die meist kauterisierten Organe des Versuches sind Leber in Kombination mit der Gallenblase, da jedoch nur eine der Lebern noch eine Gallenblase enthielt wurde im laufe der ''Operationen'' auf unter anderem die Lunge ausgewichen, da diese die benötigte Feuchtigkeit aufwies die für sinnvollen Rauch und Dampf notwendig ist.
 
-        \begin{figure*}[hp]
+        \begin{figure}[H]
             \begin{subfigure}[b]{\textwidth}
                 \centering
                 \includegraphics[scale=0.4]{pics/setups/setup2_schematic.png}
@@ -234,111 +241,105 @@
             \end{subfigure}
             \caption{Aufbau der Datengenerierung}
             \label{fig:MK_II}
-        \end{figure*}
+        \end{figure}
+
+        In Tabelle \ref{tab:usedHW_II} finden sich die Referenzen zu den Bildern \ref{fig:MK_II_real} und \ref{fig:MK_II_schematic}.\\
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c|l|l}
+                \textbf{REF} & \textbf{Gerät} & \textbf{Beschreibung} \\
+                \hline
+                \textbf {1} & Endoskope & Aufnahme Element\\
+                \textbf {2} & Neopren & Haut für Einstiche\\
+                \textbf {3} & Optik & einzuführendes Objektiv des Endoskopes\\
+                \textbf {4} & Kauter & Verbrennung Werkzeug\\
+            \end{tabular}
+
+            \caption{benutzte Geräte und Werkzeuge\\ Nummern referenzieren die Skizze \ref{fig:MK_II_schematic} und Abbildung \ref{fig:MK_II_real}\label{tab:usedHW_II}}
+        \end{table}
+
+        Der Dargestellt Aufbau beschreibt den größten Teil er Daten Generierung insbesondere im Bereich der realistischen Daten.\\
+        Zusätzlich zu diesen, mit ''Dynamisch'' in den Datensätzen sowie Tabelle \ref{tab:testData} gekennzeichnet, wurden auch noch ''statische Daten'' (mit ''static'' gekennzeichnet \ref{tab:testData}) erzeugt. \\
+        Diese statischen Daten konnten unter Zuhilfenahme eines handelsüblichen Wasserkochers generiert werden.\\
+        Der Dateiname gibt entsprechend an wie die Daten generiert wurden, bzw was darauf zu sehen ist, sowie die Art und den Aufnahmekanal des verwendenden Endoskopes. \\
+        \newline
+        Die statischen Daten haben den Zweck die bereits angesprochenen Erkennungsschwellen zu identifizieren. Mit deren Hilfe sollte es insbesondere möglich sein für jede Erkennung jeder Verschmutzung grenzen festzulegen.\\
+        Desweiteren können so Einflüsse von verschiedenen Bewegungen und und deren Auswirkungen auf die Daten evaluiert werden.
         \clearpage
 
-        \iffalse
-        \begin{figure*}[hp]
+        \begin{figure}[h]
+            \vspace{5cm}            % sieht halt trotzdem wie die letzte scheiße aus
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIRST ROW
-            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für plazierung neben einander
+            \begin{subfigure}[b]{0.32\textwidth}     % eindritteln der Textfläche für plazierung neben einander
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s0.jpg}
-                \caption{\textbf{dynamic Smoke}  \\
-                    Dynamic smoke 1
-                }
+                \caption{Gallenblasen mit Zange 1 }
                 \label{fig:dynamic_1}
             \end{subfigure}
             ~
-            \begin{subfigure}[b]{0.3\textwidth}
+            \begin{subfigure}[b]{0.32\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s0.jpg}
-                \caption{\textbf{more dynamicsmoke} \\
-                }
+                \caption{Gallenblasen Rand 1}
                 \label{fig:dynamic_2}
             \end{subfigure}
             ~
-            \begin{subfigure}[b]{0.3\textwidth}
+            \begin{subfigure}[b]{0.32\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_stain_s0.jpg}
-                \caption{\textbf{even more dynamic smoke} \\
-                    Dynamic smoke 3
-                }
+                \caption{Lunge mit Dampf 1}
                 \label{fig:dynamic_3}
             \end{subfigure}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% second ROW
-            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
+            \begin{subfigure}[b]{0.32\textwidth}     % eindritteln der Textfläche für neben einander
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s1.jpg}
-                \caption{\textbf{dynamic Smoke}  \\
-                    Pic 1
-                }
+                \caption{Gallenblasen mit Zange 2 }
                 \label{fig:dynamic_1}
             \end{subfigure}
             ~       % when I am Right, this should mean that they are placed next to each other
-            \begin{subfigure}[b]{0.3\textwidth}
+            \begin{subfigure}[b]{0.32\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s1.jpg}
-                \caption{\textbf{more dynamicsmoke} \\
-                    Picture 2
-                }
+                \caption{Gallenblasen Rand 2}
                 \label{fig:dynamic_2}
             \end{subfigure}
             ~
-            \begin{subfigure}[b]{0.3\textwidth}
+            \begin{subfigure}[b]{0.32\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_stain_s1.jpg}
-                \caption{\textbf{even more dynamic smoke} \\
-                    Dynamic smoke 2
-                }
+                \caption{Lunge mit Dampf 2}
                 \label{fig:dynamic_3}
             \end{subfigure}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% third ROW
-            \begin{subfigure}[b]{0.3\textwidth}     % eindritteln der Textfläche für neben einander
+            \begin{subfigure}[b]{0.32\textwidth}     % eindritteln der Textfläche für neben einander
                 \centering
                 \includegraphics[width=\textwidth]{pics/ownData/old_dynamicSmoke_s2.jpg}
-                \caption{\textbf{dynamic Smoke}  \\
-                    Pic 1
-                }
+                \caption{Gallenblasen mit Zange 3 }
                 \label{fig:dynamic_1}
         \end{subfigure}
         ~       % when I am Right, this should mean that they are placed next to each other
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.32\textwidth}
             \centering
             \includegraphics[width=\textwidth]{pics/ownData/old_rotation_s2.jpg}
-            \caption{\textbf{more dynamicsmoke} \\
-                Picture 2
-            }
+            \caption{Gallenblasen Rand 3}
             \label{fig:dynamic_2}
         \end{subfigure}
         ~
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.32\textwidth}
             \centering
             \includegraphics[width=\textwidth]{pics/ownData/old_stain_s2.jpg}
-            \caption{\textbf{even more dynamic smoke} \\
-                Pictu 3
-            }
+            \caption{Lunge mit Dampf 3}
             \label{fig:dynamic_3}
         \end{subfigure}
 
-        \caption{Results of the Data Acquirement}
+        \caption{Bilder der Dynamischen Daten}
         \label{fig:DataAcq}
-    \end{figure*}
-    \fi
+    \end{figure}
 
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|l|c|}
-            \hline
-            \textbf{Prototyp 1} & \textbf{Prototyp 2 Verbesserung} \\
-            \hline
-            Organe & Frische Organe (Schlachtung am Versuchstag (21.12.2018)\\
-            Phantom & angepasst an laparoskopische Trainer \\
-            Endoskope & Leihgaben des DKFZ und Prof.Dr. Alfred Franz \\
-            Kauter & Kauter und HF-generator, Leihgaben der NewTec GmbH. \\
-            \hline
-        \end{tabular}
-        \caption{ Verbesserungen der Testumgegbung \label{tab:improvements}}
-    \end{table}
+    \clearpage
+    \cmt{changed strukture here}
 
     Die Verbesserungen in \ref{tab:improvements} erzeugen Daten, die für eine Weiterverarbeitung in Frage kommen, jedoch noch qualitativ echten Daten gegenübergestellt werden müssen. \\
 
