@@ -13,7 +13,8 @@
         Das Kauterisieren von Gewebe hat weiterhin den Effekt das körperinterne Flüssigkeiten wie Blut, Lymphflüssigkeit oder Fette verdampfen. Auch diese können das Pneumoperitoneum nicht verlassen und kondensieren an den kältesten Punkten innerhalb des Patienten, den Instrumenten und dem Objektiv der Kamera. Zu sehen in der rechten unteren Ecke von Bild \ref{fig:realNoise}/(2). \\
 
     \subsection{Verschmutzungen}
-        Desweiteren kann es dazu kommen das sich Spritzer der oben genannten Flüssigkeiten auf dem Objektiv der Kamera sammeln. Diese Spritzer bilden Tropfen auf dem Kamerabild durch die nur teilweise bis gar nicht hindurch gesehen werden kann. Dem Chirurgen bleibt bei solchen Verschmutzungen meist nichts anderes als das Entfernen des Endoskopes um es zu reinigen. \cmt{opak}
+        Desweiteren kann es dazu kommen das sich Spritzer der oben genannten Flüssigkeiten auf dem Objektiv der Kamera sammeln. Diese Spritzer bilden Tropfen auf dem Kamerabild durch die nur teilweise bis gar nicht hindurch gesehen werden kann. Dem Chirurgen bleibt bei solchen Verschmutzungen meist nichts anderes als das Entfernen des Endoskopes um es zu reinigen. 
+        Insbesondere Opake Verschmutzungen sind ein Problem da es hier keine andere Möglichkeit als das entfernen gibt
 
     \begin{figure}[h]
         \centering
@@ -203,6 +204,7 @@
     Verschiedene Verschmutzungen erfordern jeweilige Erkennungsmechanismen.
     Die folgenden Verschmutzungen bzw. deren Erkennung ist in dieser Thesis berücksichtigt.
 
+    \clearpage
     \paragraph{Rauch\\}
         Eine weitverbreitete Anwendung für Raucherkennung findet sich abseits von Operationssälen in ''Riot-control'' - Anwendungen für Überwachungskameras\cite{vision}.
         Die Aufnahmen der Überwachungskameras werden hierfür einige Frames lang analysiert um die Ausbreitung des Rauches als Grundlage für dessen Erkennung zu verwenden.
@@ -218,12 +220,22 @@
         Ebenso können opake Verschmutzungen auftreten, bei denen das filtern oder bearbeiten nicht weiterhelfen kann.
         In diesen Fälle kann es fatal sein den Chirurgen falsche Fakten anzuzeigen.  \\
 
+        \clearpage
 \subsection{Raucherkennung}
         Das Erkennen von Rauch ist bis dato hauptsächlich Thema in der Gefahrenvermeidung. So behandelt das Paper \cite{vision} eine Raucherkennung von Aufnahmen öffentlicher Plätze zur sogenannten ''Riot Control'', also der Überwachung von Demonstrationen und Versammlungen. Mit dem Ziel ein Frühwarnsystem bereitzustellen das Alarm schlägt sobald Rauch aufsteigt. \\
         Technisch verwendet besagtes Paper die Ausbreitungseigenschaften und Farbe des Rauches für die Erkennung. Diese Eigenschaften werden dann über mehrere Frames miteinander verglichen um festzustellen ob sich der Rauch im Bild ausbreitet.
         \newline
-        \cmt{Bilder aus Smoke paper}
+        Das Paper \cite{vision} nutzt die dispensieren Eigenschaften von Rauch um über mehrere Frames eine Erkennung zu ermöglichen. Das Ergebnis des Papers zeigt \ref{fig:smokeDetect}.
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{pics/usable_unsure/smokeDetect.jpg}
+            \caption{ Raucherkennung in Riot Control\\
+            Bild aus Paper \cite{vision} }
+            \label{fig:smokeDetect}
+        \end{figure}
+
+        \clearpage
 \subsection{Helligkeit-, Gamma- und Kontrastanpassung}
         Veranschaulichen lässt sich dies wenn man die mathematische Funktion der Gammakorrektur mit Abb \ref{fig:contrastCurves} vergleicht. Eine Gammaanpassung ist mathematisch wie folgt definiert \ref{eq:1}:
 
@@ -262,8 +274,31 @@
 
         Diese Transformationsmatrix enthält die Parameter für die Funktion, die letztendlich auf jeden Pixel des Bildes angewandt wird.\\
 
+        \clearpage
 \subsection{Dark Channel Prior}
-    \cmt{Bilder aus Papers wie in Praesi!}
+    Ein vielversprechender Ansatz für die Entfernung von Rauch verspricht der ''Dark Channel Prior''.\\
+    Der DCP wurde bereits auf Bildern von Umgebungen erfolgreich zur Dunst und Rauch Reduktion angewandt \ref{fig:dcpOrig}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{pics/usable_unsure/dcp.jpg}
+            \caption{DCP Algorithmus angewandt auf das Eingabebild (links)\\
+               um das Ausgabebild (Mitte) zu erzeugen.\\
+               Die '' Höhenkarte'' (rechts) zeigt die Intensität des DCP.\\
+            Bild aus Paper \cite{darkChannel} }
+            \label{fig:dcpOrig}
+        \end{figure}
+
+        Der DCP Algorithmus wird auch im Paper \cite{imageDehaze} zur Verbesserung von Operationdaten verwendet, jedoch auf das gesamte Bild, mit deutlich geringerem Erfolg \ref{fig:dcpSurg}.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{pics/usable_unsure/surgicalDCP.jpg}
+            \caption{DCP Angewandt auf verrauchte intraoperative Bilder\\
+                (Eingabebild links ; Ausgabebild rechts)\\
+                Aus Paper \cite{imageDehaze}.}
+            \label{fig:dcpSurg}
+        \end{figure}
 
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
