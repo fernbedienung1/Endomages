@@ -135,3 +135,38 @@ unseriös weil Eingabedatei ist anderes Video als Ausgabedatei.
             \item bei Opaken flecken? - was machen
             \item disskussion über maßnahmen
 \end{itemize}
+\cmt{ans chub von Ergebnis}
+
+        Vergleichend lässt sich hier sagen dass die realen Daten \ref{fig:cumsum_real} heller sein müssen als die selbst generierten.\\
+        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
+        In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
+        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
+
+        Für die ersten Versuche dieser Reihe spielt die Helligkeit eine untergeordnete Rolle, denn Rauch und andere Verunreinigungen können auch in den dunkleren Bildern deutlich mit bloßem Auge erkannt werden.\\
+        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu, dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
+
+        \begin{figure}[h]
+            \includegraphics[width=\textwidth]{pics/ownData/darkpic.jpg}
+            \caption{Bild mit schlechtem Licht und deshalb zu nah aufgenommener Leber}
+            \label{fig:closeup}
+        \end{figure}
+
+        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich sichtbarer Unterschied zu den realen Datensätzen.\\
+        Für zukünftige Versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies zu den offensichtlichsten Unterschieden im Vergleich mit den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Der Platz, in dem sich der Rauch ausbreiten kann, ist begrenzt, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen. Ebenso ist die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer wesentlich größer.\\
+        \newline
+
+        Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger professionell abläuft als in den realen Daten, was sich einfach durch mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
+        Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches. Jedoch kommt es oft vor, dass das Kamerabild verrutscht, nicht direkt die kauterisierte Stelle zeigt, oder wackelt. \\
+        Auch dies sind keine direkten Nachteile, allerdings würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
+
+\section{Algorithmen}
+    \subsection{Histogram Matching}
+        Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogrammkurven.\\
+        \begin{figure*}[hp]
+            \includegraphics[width=\textwidth]{pics/eval/smokeHist.jpg}
+            \caption{Anpassungen der Bilder mittels Histogram-matching}
+            \label{fig:smokeHisto}
+        \end{figure*}
+
+    Histogram matching ist eine Vorstufe des in des \gls{DCP}.\\
+    \fuck{Bild aus DCP papers?}

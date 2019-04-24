@@ -78,23 +78,25 @@
         Die schematische Darstellung \ref{fig:schema_biliaris} zeigt die Position der Gallenblase beim Menschen. \\
         Die Leber hat an der Stelle, an der die Gallenblase aufsitzt, eine Mulde - die sogenannte Gallenblasengrube \textit{(Fossa vesicae biliaris)}.
 
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=\textwidth]{pics/net/vesicaBiliaris.png}
-            \caption{ Schematische Darstellung einer Gallenblasen (grün), die auf der Leber sitzt.}
-            % sourch http://medbox.iiab.me:3000/wikipedia_en_medicine_2018-01/A/Cystohepatic_triangle.html
-            \label{fig:schema_biliaris}
-        \end{figure}
 
         Bild \ref{fig:real_biliaris} zeigt eine Gallenblase vom Schwein, die minimal invasiv operiert wird. Der Kauter verbrennt Gewebe der Gallenblasengrube um die Gallenblase von der Leber zu lösen.
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=\textwidth]{pics/ownData/vesicaBiliaris_REAL.jpg}
-            \caption{Reales Bild einer Gallenblase eines Schweines\\
-                \textsc{[eigene Aufnahme]}
-            }
-            \label{fig:real_biliaris}
+            \begin{subfigure}[h]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{pics/net/vesicaBiliaris.png}
+                \caption{ Schematische Darstellung einer Gallenblasen (grün), die auf der Leber sitzt.}
+                \label{fig:schema_biliaris}
+            \end{subfigure}
+            \begin{subfigure}[h]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{pics/ownData/vesicaBiliaris_REAL.jpg}
+                \caption{Reales Bild einer Gallenblase eines Schweines\\
+                    \textsc{[eigene Aufnahme]}
+                }
+                \label{fig:real_biliaris}
+            \end{subfigure}
+            \caption{ Häufiges Ziel minimalinvasiver Eingriffe, die Gallenblase}
+            \label{fig:bladders}
         \end{figure}
 
 	\paragraph{Qualität\\}
@@ -154,14 +156,14 @@
 
                 \begin{figure}[h]
                     \centering
-                    \begin{subfigure}[h]{0.4\textwidth}
+                    \begin{subfigure}[h]{0.49\textwidth}
                         \includegraphics[width=\textwidth]{pics/usable_unsure/monopolar.png}
                         \caption{
                             Diathermie - Monopolares Verfahren.
                         }
                         \label{fig:monopolar}
                     \end{subfigure}
-                    \begin{subfigure}[h]{0.4\textwidth}
+                    \begin{subfigure}[h]{0.49\textwidth}
                         \includegraphics[width=\textwidth]{pics/usable_unsure/bipolar.png}
                         \caption{
                             Diathermie - Bipolares Verfahren.
@@ -266,7 +268,7 @@
 \subsection{Evaluierung von Bilddaten}
     \begin{figure}[H]
         \centering
-        \begin{subfigure}[h]{\textwidth}
+        \begin{subfigure}[h]{0.8\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
             \label{fig:hist_example_pic}
             \caption{
@@ -274,7 +276,7 @@
             }
         \end{subfigure}
         ~
-        \begin{subfigure}[h]{\textwidth}
+        \begin{subfigure}[h]{0.45\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_histsSingle_0.jpg}
             \label{fig:hist_example_singles}
             \caption{
@@ -283,7 +285,7 @@
             }
         \end{subfigure}
         ~
-        \begin{subfigure}[h]{\textwidth}
+        \begin{subfigure}[h]{0.45\textwidth}
             \includegraphics[width=\textwidth]{pics/eval/example_hist_0.png}
             \label{fig:hist_example_hist}
             \caption{

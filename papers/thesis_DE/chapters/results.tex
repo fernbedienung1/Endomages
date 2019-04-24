@@ -1,8 +1,18 @@
 \section{Testdaten Generierung}
+\cmt{decide for one}
+    Die hier beschriebenen Daten sind unter der DOI \textbf{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}.\\
+    Die dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
+    \newline
+    Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{https://github.com/fernbedienung1/Endomages.git}.\\
+
+\cmt{decide for one}
+
     Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Rohdaten mit einer Dauer von 1 Stunde und 16 Minuten. \\
     Zusätzlich zu den 293MB realer laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
 
     Die generierten Daten dienen als Grundlage für die Implementierung der Algorithmen, um \gls{overfitting} zu vermeiden.
+
+    \cmt{struktur der Daten}
 
     \subsection{Vergleich}
         Im Kapitel Methoden \ref{sec:Methods} beschrieben werden Histogramme für den Vergleich der generierten Daten mit den Vorgabedaten, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der realen Aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
@@ -37,37 +47,3 @@
         Während hingegen die Pixel des Histograms der realen Daten \ref{fig:cumsum_real} weiter in Richtung Mitte (Werte im Bereich $ 50 < x < 120 $) verteilt ist.\\
         Die Überlappung von Grün- und Blauanteilen in Kombination mit einer nach rechts verschobenen Rotkurve deutet darauf hin, dass es sich auch hier um dunkle Bilder handelt, jedoch mit deutlichem Einschlag des Rottones. \\
         Logischerweise lässt sich das durch das aufgezeichnete Motiv erklären, den viszeralen Organen der Patienten.\\
-
-        Vergleichend lässt sich hier sagen dass die realen Daten \ref{fig:cumsum_real} heller sein müssen als die selbst generierten.\\
-        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
-        In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
-        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
-
-        Für die ersten Versuche dieser Reihe spielt die Helligkeit eine untergeordnete Rolle, denn Rauch und andere Verunreinigungen können auch in den dunkleren Bildern deutlich mit bloßem Auge erkannt werden.\\
-        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu, dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
-
-        \begin{figure}[h]
-            \includegraphics[width=\textwidth]{pics/ownData/darkpic.jpg}
-            \caption{Bild mit schlechtem Licht und deshalb zu nah aufgenommener Leber}
-            \label{fig:closeup}
-        \end{figure}
-
-        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich sichtbarer Unterschied zu den realen Datensätzen.\\
-        Für zukünftige Versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies zu den offensichtlichsten Unterschieden im Vergleich mit den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Der Platz, in dem sich der Rauch ausbreiten kann, ist begrenzt, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen. Ebenso ist die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer wesentlich größer.\\
-        \newline
-
-        Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger professionell abläuft als in den realen Daten, was sich einfach durch mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
-        Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches. Jedoch kommt es oft vor, dass das Kamerabild verrutscht, nicht direkt die kauterisierte Stelle zeigt, oder wackelt. \\
-        Auch dies sind keine direkten Nachteile, allerdings würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
-
-\section{Algorithmen}
-    \subsection{historgram matching}
-        Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogrammkurven.\\
-        \begin{figure*}[hp]
-            \includegraphics[width=\textwidth]{pics/eval/smokeHist.jpg}
-            \caption{Anpassungen der Bilder mittels Histogram-matching}
-            \label{fig:smokeHisto}
-        \end{figure*}
-
-    Histogram matching ist eine Vorstufe des in des \gls{DCP}.\\
-    \fuck{Bild aus DCP papers?}

@@ -1,12 +1,9 @@
 \section{Generierung von Basisdaten}
-Die hier beschriebenen Daten sind unter der DOI \textbf{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{figshare}.\\
-Die dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
-\newline
-Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{GitHub}.\\
+    Durch den Mangel an Videomaterial dass die im Grundlagenkapitel \ref{sec:Fundamentals} beschriebenen Verunreinigungen enthalten ist es notwendig diese Daten selbst zu generieren.
 
 
 \subsection{Laparoskopische Laborversuche}
-    Während der Bearbeitung des Themas wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden vom Chirurgen entsorgt, da diese die für Mediziner notwendigen Areale verdecken.
+    Während der Bearbeitung des Themas war ein schnell erkanntes Problem dass nur weniger der beschrieben Videos existieren. Deshalb wurde es notwendig eigene Daten zu generieren, denn insbesondere verrauchte und verschmutzte Bilder werden vom Chirurgen entsorgt, da diese die für Mediziner notwendigen Areale verdecken.
     Zusätzlich dazu spielen rechtliche Aspekte eine Rolle, denn Patientendaten dürfen nur mit ausdrücklichem Einverständnis des betreffenden Patienten veröffentlicht werden. \\
     Um die benötigten Daten selbst zu generieren wurden 2 Versuchsreihen erstellt.\\
     Prototyp 1 sollte mit relativ wenig Aufwand bereits brauchbare Ergebnisse und Videoaufnahmen von Rauch und Dampf erzeugen.
@@ -111,7 +108,8 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
     \subsubsection{Zweiter Prototyp}
 
         Aus den Ergebnissen des ersten Prototypes ging hervor, dass es ohne echte Endoskope und Kauter nur schwer möglich ist Daten zu erzeugen die realen Operationen ähneln. Als Resultat dessen sind die eingesetzten Kameras, Werkzeuge und auch der Trainer, in dem die Versuche durchgeführt wurden, verbessert worden.. \\
-        Um darüber hinaus bessere Ergebnisse zu erzielen werden zusätzlich qualitativ hochwertigere Organe verwendet, sowie vom Versuchstier Rind auf Schwein gewechselt.\\
+        Erwartungsgemäß können mit passenderen Organene (Schwein, frische, etc. \ref{sec:Fundamentals} Bessere Ergebnisse erwartet werden. Deshalb sind die folgenden Versuche mit frischen Organen durchgeführt worden. Zusätzlich zu den professionellen Werkzeugen\ref{tab:recHW_2} wird so eine Verbesserung zum ersten versuch erwartet. \\
+
         \begin{table}[H]
             \centering
             \begin{tabular}{l|l|l|l}	%all left aligned
@@ -132,6 +130,21 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         Der Aufbau des 21.12.2018 beinhaltet die Hardware aus Tabelle \ref{tab:recHW_2}.\\
         Zweiter Prototyp des Laparoskopietrainers, mit Verbesserung des Zugangs via Neoprenhaut \ref{fig:phantomI}.\\
 
+        Durch den Kontakt zu Dr. Ester Stenau \cite{esther} konnten typische Bewegungsabläufe in minimalinvasiven Eingriffen abgeklärt werden, sowie Sinnvolle Benamungen der zu generierenden Daten. Dies ergab dass chirurgen meist mit 3 verschiedenen Arten von Bewegungen arbeiten:
+        \begin{itemize}
+            \item Zoom-Bewegungen\\
+                Eintauchen des Endoskops in den Patienten bzw. das Herausziehen des Endoskops aus den Patienten.
+            \item Rotation um die Patientenachse\\
+                Also bei Cholezystektomien die bewegung um den liegenen Patienten herrum. \\
+                (engl. Yaw)
+            \item Rotationen um die Endoskope Achse \\
+                Eine Drehung des Endoskopes selbst, innerhalb des Trokars.\\
+                (engl. Roll)
+        \end{itemize}
+
+        Andere Bewegungen können durchausvorkommen sind aber im Testaufbau vorerst zu vernachlässigen, da die Hauptzweck darin bestehen soll für Algorithmen taugliche Daten zu generieren. Dies benötigt beispielsweise das langsame auftauchen / abziehen der Effekte. Die Videos sind Entsprechend so anzupassen dass besagte Verschmutzungen (siehe Grundlagen \ref{sec:Fundamentals}) auf einem Klaren Bild starten um dieses Dann bis zur unkenntlich zu stören.\\
+        Als Ergebnis sollen Daten enstehen auf denen der Algorithmus so getestet werden kann das ein erstes Eingreifen (quasi untere Erkennungsschwelle) sowie ein Abbrechen des Algorithmus beobachtet werden kann (obere Erkennungsschwelle). \\
+        Diese schwellen sollen die Möglichkeiten der Bearbeitung aufzeigen und so deutlich machen in welchem Maße die Verschmutzungen erkannt und auch (unabhängig davon) beseitigt werden können.
 
         \begin{figure}[H]
             \centering
@@ -141,6 +154,15 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
         \end{figure}
 
         Einstiche im Neoprenstoff für die Einbringung der Werkzeuge in das künstliche Peritoneum \ref{fig:phantomII}.
+        Die Einstiche sind aufgrund der Öffnung der Box relativ nah zusammen, in realen Operationen (Cholezystektomien) wird das Endoskope meist durch den Bauchnabel eingestochen. Dies hat hauptsächlich ästhetische gründe und dient dazu die größte Narbe der Operation zu verbergen, ermöglicht aber auch einen besseren Überblick über die weitern eingebrachten Werkzeuge. Diese werden näher an der Gallenblase in den Körper eingebracht, wie Abblidung \ref{fig:stabbing} darstellt.\\
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{pics/usable_unsure/einstichmuster.jpg}
+            \caption{Plazierung der Werkzeuge und des endoskopes bei Cholezystektomien}
+            \label{fig:stabbing}
+        \end{figure}
+
 
         \begin{figure}[H]
             \centering
@@ -165,6 +187,7 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
 
 
         Beim Zweiten Prototyp werden frische Organe verwendet die am Morgen des Versuchstages geschlachtet wurden. Die Frische der Organe ist wichtig da so die Feuchtigkeit des Gewebes erhalten bleibt.
+
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth]{pics/setups/organs_marked.png}
@@ -319,11 +342,6 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
 
     Die Verbesserungen in \ref{tab:improvements} erzeugen Daten, die für eine Weiterverarbeitung in Frage kommen, jedoch noch qualitativ echten Daten gegenübergestellt werden müssen. \\
 
-    Die generierten Bilder sollten im Laufe der Arbeit noch Chirurgen zur Validierung vorgelegt werden, aufgrund zeitlich nicht kompatibler Verfügbarkeiten der Chirurgen ist dies jedoch nicht mehr im Rahmen der Arbeit zustande gekommen. \\
-    Die generierten Daten bedürfen daher noch einer Prüfung durch Mediziner, Chirurgen oder andwereitig qualifizierte Experten, die bestätigen oder verneinen dass es sich hierbei um realitätsnahe Daten handelt.\\
-    Ausserdem ist zu klären unter welchen Aspekten sich die generierten Daten von realen Daten unterscheiden und in wiefern dies eine Weiterverarbeitung beeinflusst.
-
-    \clearpage
 \subsubsection{Reale Daten}
     Durch einen Kontakt bei der Firma NewTec GmbH wurde es möglich reale intraoperative Bilder von Laparoskopien zu erhalten.
     Diese Bilder hatten maßgeblichen Einfluss auf die Entstehung der Aufnahmen des zweiten Prototypes und dienten als Referenz in Bezug auf Realismus.\\
@@ -341,7 +359,7 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
             Aufgenommen mit einem 3DHD \cite{3DHD}, \\
             Werkzeug im Bild ist ein monopolarer Elektrokauter.\\
         }
-        \label{fig:compareP1P2}
+        \label{fig:wolfVid}
     \end{figure}
 
 
@@ -401,7 +419,7 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
     done
 \end{lstlisting}
 
-        Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format, dass die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formateVid}.
+        Das Ergebnis der Umwandlung sind deutlich kleinere Videos, in einem Format, dass die Ziel-Sprachen Python3.7, Octave, C++ einfach und schnell verwenden können\ref{tab:formatVid}.
         \begin{table}[h]
             \centering
             \begin{tabular}{c|c|c|c}
@@ -513,7 +531,6 @@ Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \
                         Änderung des Kontrastes mittels Sigmoid-Funktion um 10\%
                     }
                 \end{subfigure}
-                ~
                 \caption{Bildbearbeitung von intraoperativen Bildern\label{fig:imageAdjust}}
             \end{figure}
 
