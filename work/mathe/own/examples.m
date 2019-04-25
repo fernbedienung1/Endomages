@@ -2,7 +2,8 @@
 own = imread("../pic/example_pic_0.jpg");
 % the matching function for both
 
-g = @(x) x + x.*1.1; % Helligkeits anpassung
+% Matching functions
+g = @(x) x + x.*1.1; % Brightness adjustment
 h = @(x) x.*1.1;    % Gamma Adjustment
 i = @(x) x ./ (1 + e .^ -1.1);     %sigmoid function /contrast
 
