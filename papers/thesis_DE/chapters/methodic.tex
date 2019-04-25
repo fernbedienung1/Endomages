@@ -496,39 +496,43 @@
         \newpage
          \subsection{Anwendung von Bildanpassungsalgorithmen}
 
-            Die unter \ref{sec:Fundamentals} beschriebenen Algorithmen wirken sehen im code folgendermassen aus \ref{code:plotIt}.
+            Die unter \ref{sec:Fundamentals} beschriebenen Algorithmen wirken sehen im code folgendermassen aus \ref{code:examples}.
             Dieses Skript produziert die Ausgabebilder in \ref{fig:imageAdjust}. \\
 
             \begin{figure}[H]
-                \begin{subfigure}[h]{0.4\textwidth}
+                \begin{subfigure}[h]{0.5\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/example_pic_0.jpg}
-                    \label{fig:contrast}
                     \caption{
-                        Originales Eingabebild
+                        Originales Eingabebild \\
+                        $f(x) = x$
+                        \label{fig:inputData}
                     }
                 \end{subfigure}
                 ~
-                \begin{subfigure}[h]{0.4\textwidth}
+                \begin{subfigure}[h]{0.5\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/brightness.jpg}
-                    \label{fig:contrast}
                     \caption{
-                        Änderung der Helligkeit um 10\%
+                        Änderung der Helligkeit um 10\% \\
+                        $g(x) = x + x*0.1$
+                        \label{fig:brightData}
                     }
                 \end{subfigure}
                 ~
-                \begin{subfigure}[h]{0.4\textwidth}
+                \begin{subfigure}[h]{0.5\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/gamma.jpg}
-                    \label{fig:contrast}
                     \caption{
-                        Änderung des Gamma-Wertes um 10\%
+                        Änderung des Gamma-Wertes um 10\% \\
+                        $h(x) = x*1.1$
+                        \label{fig:gammaData}
                     }
                 \end{subfigure}
                 ~
-                \begin{subfigure}[h]{0.4\textwidth}
+                \begin{subfigure}[h]{0.5\textwidth}
                     \includegraphics[width=\textwidth]{pics/eval/sigmoid.jpg}
-                    \label{fig:contrast}
                     \caption{
-                        Änderung des Kontrastes mittels Sigmoid-Funktion um 10\%
+                        Änderung des Kontrastes mittels Sigmoid-Funktion um 10\% \\
+                        $i(x) = \frac{x}{(1 + e^{ -1.1})} $
+                        \label{fig:SigmoidData}
                     }
                 \end{subfigure}
                 \caption{Bildbearbeitung von intraoperativen Bildern\label{fig:imageAdjust}}
@@ -537,6 +541,33 @@
             Die Anpassung wird hier bereits über Histogrammatching vorgenommen, welches die kumulierte Summe der Bilder an eine Eingabefunktion anpasst.
             Dadurch ensteht eine Matrix die auf die Pixel des Bildes angewandt werden kann und so jeden Pixel anpasst.
 
+            Die Eingabedatei \ref{fig:inputData} wird als Input verwendet für die Anpassung. Um das aufgehellte Bild \ref{fig:brightData} zu erhalten wird die mathematische Funktion \\
+
+            \begin{equation} \label{eq:bright}
+                g(x) = x + x*0.1
+            \end{equation}
+
+            Anzuwenden. Zeile 6 des Codes \ref{code:fastmatch} Zeigt diese Funktion als matlab bzw Octave code.\\
+            Selbes verfahren wird mit den anderen Funktionen \ref{eq:gamma} sowie der Formel\ref{eq:sigmoid}.
+
+            \begin{equation} \label{eq:gamma}
+                h(x) = x*1.1
+            \end{equation}
+
+            und 
+
+            \begin{equation} \label{eq:sigmoid}
+                i(x) = \frac{x}{(1 + e^{ -1.1})} 
+            \end{equation}
+
+            auch diese beiden Formel finden sich im Code \ref{code:fastmatch} wieder der die Bilder \ref{fig:imageAdjust} generiert.
+            Formel \ref{eq:gamma} wird in Zeile 7 als Code beschrieben und Formel \ref{eq:sigmoid} darauf folgend in Zeile 8.
+
+            \lstinputlisting[language=matlab, caption={Code es Histogrammatching}, label={code:fastmatch}, firstline=1, lastline=13]
+                {../../work/mathe/own/examples.m}
+            
+            Mit dieser anfänglichen aber flexiblen Methode ist es möglich das Bild sichtlich zu verändern und auch in einem gewissen Ramen Verbesserungen zu erzeugen. Für ein ''Proof of Concept'' genügt diese Implementierung. Sie ermöglicht es in den Folgeschritten einer Verschmutzungserkennung verschiedene Algorithmen auf verschiedene teile des Bildes anzuwenden. \\
+            Dazu können verschiedene Funktion ( wie \ref{eq:bright}, \ref{eq:gamma}, \ref{eq:sigmoid} ) definiert werden und auf einzelteile des Bildes angewandt werden.\\
 
         \subsection{Histogram Equalization}
             Für die Implementierung des im Grundlagen-Kapitel \ref{sec:Fundamentals} beschriebenen Histogram Matchings ist es nötig Histogramme der Eingabebilder zu erstellen. Die Implementierung dieser mathematischen Funktionen erfolgt aus Performance-Gründen mittels Octave.\\

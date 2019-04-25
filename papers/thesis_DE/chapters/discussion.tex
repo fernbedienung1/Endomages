@@ -1,6 +1,5 @@
 
 \section{Kritischer Blick auf die Arbeit}
-
 \subsection{Ziele der Arbeit}
     \begin{table}[H]
         \centering
@@ -44,12 +43,14 @@
     Die Entferung von Rauch im Pneumoperitoneum kann,
     Wie bereits in der Einführung angedeutet existieren bereits einige Methoden die sich mit der Thematik des Surgical smokes beschäftigen. Die meisten dieser Systeme stützen sich jedoch auf Hardware um zu verhindern, dass das Endoskop überhaupt erst einmal beschlägt, bzw. sich der Rauch im Pneumoperitoneum ausbreitet.\\
     Hierfür gibt es Sauger, die um die Werkzeuge angebracht werden \ref{fig:succer} \cite{succer} oder sogenannte Electrical Dispense Systems, die die Rauchpartikel electrostatisch aufladen, so dass diese zu den Wänden des Pneumoperitoneums magnetisch angezogen werden.\\
+    Diese Electrical Dispense Systems haben im Vergleich zu rauch Absaugungen den Vorteil dass sie nicht gegen das Pneumoperitoneum arbeiten und nicht das eingepumpte Gas wieder entziehen. Deren jedoch nur mäßiger Erfolg und die dafür benötigte zusätzliche Hardware führen auch hier dazu das sich dieses System bis jetzt noch nicht durchgesetzt hat.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{pics/usable_unsure/succer.jpg}
         \caption{Absaugung von Surgical smoke,\\
             mit dem Ziel den Rauch bereits beim Enstehen zu entfernen.
+            \cite{succer}
         }
         \label{fig:succer}
     \end{figure}
@@ -57,13 +58,45 @@
     Diese Systeme finden sich jedoch selten in der Realität, denn sie sind mit extra Aufwand bei der Operation verbunden.\\
     Sauger, etc, bringen weitere Hardware in den Operationssaal, sowie unhandliche Kabel und Schläuche mit sich, was bereits als Problem diagnostiziert wurde, wärend der Hospitation im \gls{ADK}  Gespräch mit Dr Lotspeich \cite{Lotspeich}.\\
     \newline
-    \cmt{Electrical Dispense system}
 
 \subsection{Softwarelösungen}
-\fuck{Alesi surgical Ultravision}
+    Das einzige auffindbare System zur softwareseitigen beseitigung von Rauch in Operationsbildern stellt das \textit{Ultravision system von Alesi} dar. \cite{alesi}
+    Jedoch finden sich nur wenige seriöse Quellen zu diesem system, insbesondere Vorher / Nachher Vergleiche des Systems wirken unprofessionell, da dass angebliche Eingabe video nicht dem Ausgabevideo entspricht \ref{fig:alesi}. \\
 
-Sieht im video nicht schlecht aus ... gibt aber kaum quellen \\
-unseriös weil Eingabedatei ist anderes Video als Ausgabedatei.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{pics/usable_unsure/alesi.jpg}
+        \caption{Beispiel der \textit{Ultravision} software. \cite{alesi} }
+        \label{fig:alesi}
+    \end{figure}
+
+    Auch weiterhin lassen sich im Umfeld des \textit{Ultravision} Systems nur wenige Quellen oder verwertbare Daten finden, weshalb dieses System nicht weiter behandelt wird.
+
+\section{Bedenken}
+
+\begin{itemize}
+	\item Quality of Tests / Setups
+		\begin{itemize}
+			\item TestBox
+			\item Capturing Methoden
+			\item Tools
+		\end{itemize}
+	\item with respect to the Cauterization kinds - thermal / hf
+	\item Dr. Kunze - changes in smoke due to the carbonisation degree of the material
+	\item Dr. Kunzes videos as extra eval data - to avoid overfitting
+\end{itemize}
+
+    \paragraph{Rauch- Arten}
+        Die ersten Gedanken fast aller befragten Ärzte ergaben das sich Rauch je nach Methode und Kauterisiertem Gewebe deutlich unterscheiden kann.\\
+        Hier sollte kritisch beurteilt und erprobt werden ob und in wie fern sich der Rauch unterschiedlicher Kauteriserungsmethoden unterscheidet. Weitere Erkenntnisse über den Rauch und seine Beschaffenheit können wertvolle Informationen bereitstellen welche die Implementierung der Erkennung und der Entfernung Verbessern oder vereinfachen können.\\
+        
+    \paragraph{Datenqualität}
+        Eine wirkliche Beurteilung der erzeugten Daten fehlt. Um Sicherzustellen das der Datensatz auch den beschrieben Kriterien entspricht sollte er noch einem Mediziner vorgelegt werden, welche die ''Realität Aspekte'' bestätigen oder widerlegen sollte bzw. definiert welche teile der Daten adäquat sind und wo ggf. dinge sind die beachtet werden müssen.
+        
+    \subsection{Falsche Realität}
+        opake flecken \\
+        splitscreen - artzt muss denken
+    \subsection{Skalierung}
 
 \section{Verbesserungen}
     \subsection{Generelle Gedanken}
@@ -88,85 +121,51 @@ unseriös weil Eingabedatei ist anderes Video als Ausgabedatei.
     Einfacher Strahlensatz
 
 \subsection{Multispektrales Licht}
-    Multispektrale Absorbtion
+    Ein Gedanke der Früh gefasst, aber  auch früh verworfen wurde war die Möglichkeit die Lichtquellen des Endoskope mit LEDs auszustatten die in verschiedenen Spektren den rauch Belichten, dies könnte so schnell geschehen das es im Normalbetrieb für das Auge des Chirurgen nicht wahrnehmbar ist jedoch ein Bild erzeugt das den rauch aufgrund seiner spektralen Antwort sinnvoll identifizieren kann. \\
+    Dies wäre eine Erweiterung zur bisherigen optischen Erkennung und würde sich mit wenig zusätzlicher Hardware realisieren lassen. Nach bisherigen abschätzungen wäre es Notwendig eine Kamera zu verwenden die die entsprechenden Spektren aufzeichnen kann und eine passende, synchronisierte Lichtquelle bereit zu stellen.\\
+    Dieser Ansatz musste jedoch aufgrund von Finanzierungsproblemen, sowie einem unrealistischen ausmaß für eine Thesis fallengelassen werden.
+    Dennoch ist dieser Ansatz vielversprechend und kann mit den vorgeschlagenen Methoden dieser Thesis vereinbart werden:\\
+    Das identifizieren und des Rauches könnte so verbessert werden um dann mit den vorgeschlagenen Bildbearbeitungsalgorithmen kombiniert zu werden.
 
 \subsection{Erkennung durch Neuronale Netze}
     Ein aktuell sehr nachgefragtes Thema ist die Mustererkennung mittels Neuronaler Netze \cite{CNN_Image}.\\
 
    Formen/Verhalten von Rauch / Dampf / Spritzern  einlernen\\
-    \cmt{Ausfürlicher gehts dann im Ausblick weiter}
 
-\begin{itemize}
-	\item jeder sagt immer irgendwas von wegen \textbf{\textit{DIATHERMIE}} auf jedenfall noch angucken - wie hängt der strom mit dem Rauch zusammen
-	\item LEDs mit verschiedenen Farben für andere spektrale Absorbtion im Bild
-    \item Stereoskop bilder -> kann helfen bei Erkennung?
-	\item ausserdem noch die Licht geschichte mit dem Motorrad helm beschlagen...
-\end{itemize}
+    Vergleichend lässt sich hier sagen dass die realen Daten \ref{fig:cumsum_real} heller sein müssen als die selbst generierten.\\
+    Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
+    In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
+    Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
 
-\paragraph{Medical Considerations}
+    Für die ersten Versuche dieser Reihe spielt die Helligkeit eine untergeordnete Rolle, denn Rauch und andere Verunreinigungen können auch in den dunkleren Bildern deutlich mit bloßem Auge erkannt werden.\\
+    Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu, dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
 
-\begin{itemize}
-	\item Quality of Tests / Setups
-		\begin{itemize}
-			\item TestBox
-			\item Capturing Methoden
-			\item Tools
-		\end{itemize}
-	\item with respect to the Cauterization kinds - thermal / hf
-	\item Dr. Kunze - changes in smoke due to the carbonisation degree of the material
-	\item Dr. Kunzes videos as extra eval data - to avoid overfitting
-\end{itemize}
+    \begin{figure}[h]
+        \includegraphics[width=\textwidth]{pics/ownData/darkpic.jpg}
+        \caption{Bild mit schlechtem Licht und deshalb zu nah aufgenommener Leber}
+        \label{fig:closeup}
+    \end{figure}
 
-\paragraph{Technical Considerations}
+    Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich sichtbarer Unterschied zu den realen Datensätzen.\\
+    Für zukünftige Versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies zu den offensichtlichsten Unterschieden im Vergleich mit den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Der Platz, in dem sich der Rauch ausbreiten kann, ist begrenzt, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen. Ebenso ist die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer wesentlich größer.\\
+    \newline
 
-\begin{itemize}
-	\item everything that takes way to much time in \texttt{RL} situations
-	\item AI approaches
-	\item DDS and single point of failure
-	\item Scalability
-\end{itemize}
+    Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger professionell abläuft als in den realen Daten, was sich einfach durch mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
+    Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches. Jedoch kommt es oft vor, dass das Kamerabild verrutscht, nicht direkt die kauterisierte Stelle zeigt, oder wackelt. \\
+    Auch dies sind keine direkten Nachteile, allerdings würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
 
-\paragraph{Overall considerations}
-
-\begin{itemize}
-        \item Verlgeich zu pyhsikalischen Methoden - warum sollte man es rechnen?
-        \item Weitere Überlegung bezüglich stereoskopischer Bilder - beide benutzen, was "fliegt" ist rauszumachen
-        \item Falsche Fakten! - das bild wird bearbeitet ! - nicht ECHT!
-            \item bei Opaken flecken? - was machen
-            \item disskussion über maßnahmen
-\end{itemize}
-\cmt{ans chub von Ergebnis}
-
-        Vergleichend lässt sich hier sagen dass die realen Daten \ref{fig:cumsum_real} heller sein müssen als die selbst generierten.\\
-        Dies lässt sich durch die Tatsache untermauern das bei der Generation der Daten lediglich eine von zwei möglichen Lichtquellen an die Kamera angeschlossen wurden.
-        In Ermangelung einer zweiten Lichtquelle war dies bereits bei der Generation der Daten abzusehen und entspricht daher den vorherigen Erwartungen.\\
-        Die selbst generierten Daten sind im direkten Vergleich zu den realen Beispieldaten aus Günzburg deutlich dunkler, dies zeigen auch die kumulierten Histogramme der beiden Datensätze \ref{fig:Cmp_hists}
-
-        Für die ersten Versuche dieser Reihe spielt die Helligkeit eine untergeordnete Rolle, denn Rauch und andere Verunreinigungen können auch in den dunkleren Bildern deutlich mit bloßem Auge erkannt werden.\\
-        Da die unzureichende Lichtquelle bereits bei der Erstellung der Daten als Problem erkannt wurde führte dies dazu, dass die Aufnahmen der Organe mit geringen Abstand zum Objektiv aufgezeichnet wurden. \\
-
-        \begin{figure}[h]
-            \includegraphics[width=\textwidth]{pics/ownData/darkpic.jpg}
-            \caption{Bild mit schlechtem Licht und deshalb zu nah aufgenommener Leber}
-            \label{fig:closeup}
-        \end{figure}
-
-        Auch dies steht nicht im direkten Konflikt des Ziels Schmutz aufzuzeichnen, jedoch entsteht so ein deutlich sichtbarer Unterschied zu den realen Datensätzen.\\
-        Für zukünftige Versuche ist jedoch zwingend an eine weitere oder bessere Lichtquelle zu denken, da dies zu den offensichtlichsten Unterschieden im Vergleich mit den realen Daten gehört. Darüber hinaus führt das fehlende Licht dazu dass das Endoskope sehr nah an die Organe und Werkzeuge gehalten werden muss. Der Platz, in dem sich der Rauch ausbreiten kann, ist begrenzt, die Einwirkungen des Dampfes sind wesentlich stärker und häufiger zu sehen. Ebenso ist die Wahrscheinlichkeit der Tropfenbildung an der Kamera durch Spritzer wesentlich größer.\\
-        \newline
-
-        Zu Erwähnen ist ausserdem die Bewegung der Werkzeuge, die in den selbst generierten Videos definitiv weniger professionell abläuft als in den realen Daten, was sich einfach durch mangelnde Erfahrung der ''Chirurgen'' des Versuches erklären lässt.\\
-        Generell hat das keine negativen Auswirkungen auf die Qualität des Schmauches. Jedoch kommt es oft vor, dass das Kamerabild verrutscht, nicht direkt die kauterisierte Stelle zeigt, oder wackelt. \\
-        Auch dies sind keine direkten Nachteile, allerdings würden es viele dieser Bilder in realen Operationen dem Chirurgen nicht erlauben seiner Arbeit ordnungsgemäß nachzugehen.
-
-\section{Algorithmen}
+        \clearpage
+\section{Ausblick}
     \subsection{Histogram Matching}
         Das Bild \ref{fig:smokeHisto} zeigt die Anwendung der Histogram-matching Algorithmen auf ein Bild und deren resultierende Histogrammkurven.\\
-        \begin{figure*}[hp]
+        \begin{figure}[H]
             \includegraphics[width=\textwidth]{pics/eval/smokeHist.jpg}
             \caption{Anpassungen der Bilder mittels Histogram-matching}
             \label{fig:smokeHisto}
-        \end{figure*}
+        \end{figure}
 
-    Histogram matching ist eine Vorstufe des in des \gls{DCP}.\\
-    \fuck{Bild aus DCP papers?}
+    Histogram Matching ist eine Vorstufe des in des \gls{DCP} \cite{darkChannel},\cite{imageDehaze}.\\
+    Da mit dieser arbeit die ersten Schritte in Richtung Bildbearbeitung bereits getan sind wäre der nächste schritt die nicht erreichte Erkennung des Rauches in Angriff zu nehmen. Mit der Erkennung des Rauches kann dann in Richtung des eigentlichen Ziels gearbeitet werden. \\
+    Die Schritte der Rauchererkennung setzen mit großer Wahrscheinlichkeit voraus das von Bild Daten auf Videos gewechselt werden muss, weshalb es sicherlich sinnvoll ist die in Octave bzw. matlab programmierten Scripte effizient in Python oder C++ Code zu übersetzen, um hier sinnvoll mit der openCV-Library weiterarbeiten zu können.
+
+

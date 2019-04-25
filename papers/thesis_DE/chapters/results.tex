@@ -1,20 +1,45 @@
-\section{Testdaten Generierung}
-\cmt{decide for one}
-    Die hier beschriebenen Daten sind unter der DOI \textbf{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}.\\
-    Die dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
+\section{Datenbasis}
+    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Rohdaten mit einer Dauer von 1 Stunde und 16 Minuten. Dies geschah am Standort Pfaffenhofen an der Roth der NewTec GmbH. mit der Hilfe von Prod. Dr. Alfred Franz und B.Eng. Fabian Kramer.\\
+    Zusätzlich zu den 293MB realer laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min ).
+    Die generierten Daten dienen als Grundlage für die Implementierung der Algorithmen. Um \gls{overfitting} zu vermeiden können die Daten aus Günzburg dann für die Evaluation Verwendung finden.\\
+    Die Günzburger Daten können aus Patientenschutz-technischen gründen keinen Eingang in die Datenbasis finden, bzw. nicht veröffentlicht werden.\\
     \newline
-    Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \href{https://github.com/fernbedienung1/Endomages.git}{https://github.com/fernbedienung1/Endomages.git}.\\
+    Die hier beschriebenen Daten sind unter der DOI \textbf{10.6084/m9.figshare.7969367} \cite{myfuckigself} als Download unter GNU GPL 3.0 verfügbar.\\
 
-\cmt{decide for one}
+    \href{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}{https://figshare.com/articles/2018-12-21-EndoscopicSmoke/7969367}.\\
 
-    Im Rahmen der Arbeit wurden am 21.12.2018 Testdaten generiert \ref{tab:testData}, insgesamt 98GB Rohdaten mit einer Dauer von 1 Stunde und 16 Minuten. \\
-    Zusätzlich zu den 293MB realer laparoskopischer Videos aus Günzburg (Gesamtlänge 5:44 min )
+    Die dortige Datei \textbf{''SurgicalNoises.zip''} enthält die auf 800x600 Pixel verkleinerten Videos im mp4 Format, dadurch beschränkt sich die Größe der Datei auf 1.1GB.\\
+    Sourcen der erstellten Skripte sind ebenfalls unter GNU GPL 3.0 verfügbar auf \\
 
-    Die generierten Daten dienen als Grundlage für die Implementierung der Algorithmen, um \gls{overfitting} zu vermeiden.
+    \href{https://github.com/fernbedienung1/Endomages.git}{https://github.com/fernbedienung1/Endomages.git}.\\
 
-    \cmt{struktur der Daten}
+    Bei bedarf der Rohdaten oder etwaigem bedarf an den Günzburger Aufnahmen ist es möglich Prof. Dr. Alfred Franz (\href{Franz@hs-ulm.de}{Franz@hs-ulm.de}) zu Kontaktieren.
 
-    \subsection{Vergleich}
+    \clearpage
+    \section{Beschreibung der Daten}
+    Die Daten \ref{tab:testData} sind im Appendix gelistet und ihr Name codiert den Inhalt der Aufnahmen. Der Name setzt sich wie folgt zusammen:\\
+    $$ <Aufnahmegeraet>-<ZielOrgane>-<Verschmutzung>-<Bewegungsmuster> $$
+    mit den Optionalen namenszusätzen:
+    $$ [-<Instrumente>][-<Kanal>][-<Nummer>].avi $$
+    \newline
+    Um die Tabelle \ref{tab:testData} zusammenzufassen: \\
+    Mit der IDS Industrial Camera \cite{ids} sowie mit dem Bronchoscope\cite{endocam} wurden jeweils 4 Videos aufgezeichnet, jedoch wurde her schnell klar dass mit der 3D stereoendoskop Kamera \cite{3DHD} die besten Endergebnisse erzielt werden können.\\
+    \\
+    Entsprechend wurden die meisten Daten mit dem Stereoendoskop generiert, diese teilen sich immer in Rechte und Linke Känale ein.\\
+    Für die geplanten Bearbeitungen der Thesis wird lediglich ein Kanal der beiden Videos benötigt. Da der Mehraufwand für stereoendoskopische aufnahmen jedoch minimal ausfällt werden beide Kanäle aufgezeichnet.\\
+    Welcher der beiden Kanäle letztendlich für die Algorithmenentwicklung verwendet wird spielt keine rolle, jedoch lässt sich erhoffen das Rauch oder ähnliche ''schwebende'' Partikel in einer stereo Aufnahme deutlicher hervortreten und so besser entfernt werden können\ref{sec:Discussion}. \\
+    \newline
+
+    Die Begriffe \textit{Static} bzw. \textit{Dynamic} beschreiben die Art der Aufnahmen, \textit{Static} bedeutet dass die aufnahmen mit definierten bewegungen ausgeführt wurden, sprich die Rotationen und Zoom Bewegungen  die bereits in Methodik \ref{sec:Methods} und den Grundlagen \ref{sec:Fundamentals} erwähnt wurden.\\
+    \textit{Dynamic} hingegen beschreibt das die Aufnahmen Bewegungen beinhalten die nicht definiert sind, sondern dynamisch an die Situation angepasst wurden.
+    Sprich das Endoskop wurde so bewegt dass mit den Werkzeugen und Kautern gearbeitet werden konnte, um die Gallenblase zu entfernen.\\
+    Der Zusatz \textit{Instruments} beschreibt lediglich ob noch weitere Werkzeuge, zusätzlich zum Kauter in den Trainer eingebucht wurden.\\
+    \newline
+    Die Namensteile: \textit{Beschlagen} bzw \textit{Smoke} beschrieben welches die beabsichtigte Verschmutzung war die aufgezeichnet werden soll. \\
+    Die mit \textit{Beschlagen} gekennzeichneten Bilder wurden unter Zuhilfenahme des in der Methodik \ref{sec:methodic} erwähnten Wasserkochers erzeugt.
+    Die mit \textit{Smoke} gekennzeichneten Bilder wurden im Zusammenhang mit dem Kauter generiert und zeigen nicht ausschließlich \textit{Surgical Smoke} sondern beinhalten in den meisten fällen auch teile von Beschlagen da diese beiden Effekte fast ausschließlich in Kombination auftreten kann hier nicht 100 prozentig unterschieden werden.
+    \clearpage
+    \section{Vergleich}
         Im Kapitel Methoden \ref{sec:Methods} beschrieben werden Histogramme für den Vergleich der generierten Daten mit den Vorgabedaten, Bild \ref{fig:Cmp_hists}zeigt die Histogramme der eigens generierten Daten des Laborversuches vom 21.12.2018 und die der realen Aufnahmen von Dr.Uwe Widmand aus dem \gls{kkhgzkru}.\\
         Zu erwähnen ist, dass sich die generierten Histogramme auf unterschiedlich große Datensätze beziehen.
         Während die Aufnahmen aus Günzburg nur 293MB(Gesamtdauer: 5min 44s) groß sind, erreichen die bereits verkleinerten selbstgenerierten Daten 1GB(Gesamtdauer: 1h 15min 18s).\\
